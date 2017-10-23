@@ -1,0 +1,7 @@
+C:\Users\Daniela\Downloads\UART_to_BLE2\UART_to_BLE\UART_to_BLE_central\UART_to_BLE_central.cydsn\UART_to_BLE_central.cyprj|c7c6c84a-c358-4103-b725-8ba4c3dbac29
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|34789f10-c238-4537-b384-42e809ed0149
+C:\Users\Daniela\Documents\PSoC Creator\4.1\Downloads ( 4.1).cylib\Downloads ( 4.1).cyprj|25e5d6fc-40d6-4342-b024-6e07a4d9c14d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|b26b6957-9e9c-42aa-a38d-38a801331fd4
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|2862e33b-3f0d-45fd-9cd7-567b35528027
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|4776260d-058a-475e-9382-9c05dcb74428
+C:\Users\Daniela\Downloads\UART_to_BLE\UART_to_BLE\UART_to_BLE_peripheral\UART_to_BLE_peripheral.cydsn\UART_to_BLE_peripheral.cyprj|72a008ad-0ff0-4aa2-9e90-42af92ca707d

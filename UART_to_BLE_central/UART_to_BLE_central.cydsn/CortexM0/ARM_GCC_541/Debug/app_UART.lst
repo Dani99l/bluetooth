@@ -1,0 +1,2065 @@
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"app_UART.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.HandleUartRxTraffic,"ax",%progbits
+  20              		.align	2
+  21              		.global	HandleUartRxTraffic
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	HandleUartRxTraffic, %function
+  25              	HandleUartRxTraffic:
+  26              	.LFB35:
+  27              		.file 1 "app_UART.c"
+   1:app_UART.c    **** /*******************************************************************************
+   2:app_UART.c    **** * File Name: app_UART.c
+   3:app_UART.c    **** *
+   4:app_UART.c    **** * Description:
+   5:app_UART.c    **** *  Common BLE application code for client devices.
+   6:app_UART.c    **** *
+   7:app_UART.c    **** *******************************************************************************
+   8:app_UART.c    **** * Copyright 2015, Cypress Semiconductor Corporation.  All rights reserved.
+   9:app_UART.c    **** * You may use this file only in accordance with the license, terms, conditions,
+  10:app_UART.c    **** * disclaimers, and limitations in the end user license agreement accompanying
+  11:app_UART.c    **** * the software package with which this file was provided.
+  12:app_UART.c    **** *******************************************************************************/
+  13:app_UART.c    **** 
+  14:app_UART.c    **** #include "app_UART.h"
+  15:app_UART.c    **** 
+  16:app_UART.c    **** /*******************************************************************************
+  17:app_UART.c    **** * Function Name: HandleUartRxTraffic
+  18:app_UART.c    **** ********************************************************************************
+  19:app_UART.c    **** *
+  20:app_UART.c    **** * Summary:
+  21:app_UART.c    **** *  This function takes data from received notfications and pushes it to the 
+  22:app_UART.c    **** *  UART TX buffer. 
+  23:app_UART.c    **** *
+  24:app_UART.c    **** * Parameters:
+  25:app_UART.c    **** *  CYBLE_GATTC_HANDLE_VALUE_NTF_PARAM_T * - the notification parameter as  
+  26:app_UART.c    **** *                                           recieved by the BLE stack
+  27:app_UART.c    **** *
+  28:app_UART.c    **** * Return:
+  29:app_UART.c    **** *   None.
+  30:app_UART.c    **** *
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 2
+
+
+  31:app_UART.c    **** *******************************************************************************/
+  32:app_UART.c    **** void HandleUartRxTraffic(CYBLE_GATTC_HANDLE_VALUE_NTF_PARAM_T *uartRxDataNotification)
+  33:app_UART.c    **** {
+  28              		.loc 1 33 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 82B0     		sub	sp, sp, #8
+  37              		.cfi_def_cfa_offset 16
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  40 0006 7860     		str	r0, [r7, #4]
+  34:app_UART.c    ****     if(uartRxDataNotification->handleValPair.attrHandle == txCharHandle)
+  41              		.loc 1 34 0
+  42 0008 7B68     		ldr	r3, [r7, #4]
+  43 000a 9A89     		ldrh	r2, [r3, #12]
+  44 000c 074B     		ldr	r3, .L4
+  45 000e 1B88     		ldrh	r3, [r3]
+  46 0010 9A42     		cmp	r2, r3
+  47 0012 07D1     		bne	.L3
+  35:app_UART.c    ****     {
+  36:app_UART.c    ****         UART_SpiUartPutArray(uartRxDataNotification->handleValPair.value.val, \
+  48              		.loc 1 36 0
+  49 0014 7B68     		ldr	r3, [r7, #4]
+  50 0016 5A68     		ldr	r2, [r3, #4]
+  37:app_UART.c    ****             (uint32) uartRxDataNotification->handleValPair.value.len);
+  51              		.loc 1 37 0
+  52 0018 7B68     		ldr	r3, [r7, #4]
+  53 001a 1B89     		ldrh	r3, [r3, #8]
+  36:app_UART.c    ****             (uint32) uartRxDataNotification->handleValPair.value.len);
+  54              		.loc 1 36 0
+  55 001c 1900     		movs	r1, r3
+  56 001e 1000     		movs	r0, r2
+  57 0020 FFF7FEFF 		bl	UART_SpiUartPutArray
+  58              	.L3:
+  38:app_UART.c    ****     }
+  39:app_UART.c    **** }
+  59              		.loc 1 39 0
+  60 0024 C046     		nop
+  61 0026 BD46     		mov	sp, r7
+  62 0028 02B0     		add	sp, sp, #8
+  63              		@ sp needed
+  64 002a 80BD     		pop	{r7, pc}
+  65              	.L5:
+  66              		.align	2
+  67              	.L4:
+  68 002c 00000000 		.word	txCharHandle
+  69              		.cfi_endproc
+  70              	.LFE35:
+  71              		.size	HandleUartRxTraffic, .-HandleUartRxTraffic
+  72              		.section	.text.HandleUartTxTraffic,"ax",%progbits
+  73              		.align	2
+  74              		.global	HandleUartTxTraffic
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 3
+
+
+  75              		.code	16
+  76              		.thumb_func
+  77              		.type	HandleUartTxTraffic, %function
+  78              	HandleUartTxTraffic:
+  79              	.LFB36:
+  40:app_UART.c    **** 
+  41:app_UART.c    **** 
+  42:app_UART.c    **** /*******************************************************************************
+  43:app_UART.c    **** * Function Name: HandleUartTxTraffic
+  44:app_UART.c    **** ********************************************************************************
+  45:app_UART.c    **** *
+  46:app_UART.c    **** * Summary:
+  47:app_UART.c    **** *  This function takes data from UART RX buffer and pushes it to the server 
+  48:app_UART.c    **** *  as Write Without Response command.
+  49:app_UART.c    **** *
+  50:app_UART.c    **** * Parameters:
+  51:app_UART.c    **** *  None.
+  52:app_UART.c    **** *
+  53:app_UART.c    **** * Return:
+  54:app_UART.c    **** *   None.
+  55:app_UART.c    **** *
+  56:app_UART.c    **** *******************************************************************************/
+  57:app_UART.c    **** void HandleUartTxTraffic(void)
+  58:app_UART.c    **** {
+  80              		.loc 1 58 0
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 56
+  83              		@ frame_needed = 1, uses_anonymous_args = 0
+  84 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  85              		.cfi_def_cfa_offset 20
+  86              		.cfi_offset 4, -20
+  87              		.cfi_offset 5, -16
+  88              		.cfi_offset 6, -12
+  89              		.cfi_offset 7, -8
+  90              		.cfi_offset 14, -4
+  91 0002 8FB0     		sub	sp, sp, #60
+  92              		.cfi_def_cfa_offset 80
+  93 0004 00AF     		add	r7, sp, #0
+  94              		.cfi_def_cfa_register 7
+  95              		.loc 1 58 0
+  96 0006 6846     		mov	r0, sp
+  97 0008 7860     		str	r0, [r7, #4]
+  59:app_UART.c    ****     uint8   index;
+  60:app_UART.c    ****     uint8   uartTxData[mtuSize - 3];
+  98              		.loc 1 60 0
+  99 000a 6F48     		ldr	r0, .L13
+ 100 000c 0088     		ldrh	r0, [r0]
+ 101 000e 0338     		subs	r0, r0, #3
+ 102 0010 431E     		subs	r3, r0, #1
+ 103 0012 9C46     		mov	ip, r3
+ 104 0014 6346     		mov	r3, ip
+ 105 0016 3B63     		str	r3, [r7, #48]
+ 106 0018 0300     		movs	r3, r0
+ 107 001a 3B61     		str	r3, [r7, #16]
+ 108 001c 0023     		movs	r3, #0
+ 109 001e 7B61     		str	r3, [r7, #20]
+ 110 0020 3B69     		ldr	r3, [r7, #16]
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 4
+
+
+ 111 0022 5B0F     		lsrs	r3, r3, #29
+ 112 0024 9C46     		mov	ip, r3
+ 113 0026 7B69     		ldr	r3, [r7, #20]
+ 114 0028 DA00     		lsls	r2, r3, #3
+ 115 002a 6346     		mov	r3, ip
+ 116 002c 1A43     		orrs	r2, r3
+ 117 002e 3B69     		ldr	r3, [r7, #16]
+ 118 0030 D900     		lsls	r1, r3, #3
+ 119 0032 0200     		movs	r2, r0
+ 120 0034 1500     		movs	r5, r2
+ 121 0036 0022     		movs	r2, #0
+ 122 0038 1600     		movs	r6, r2
+ 123 003a 6A0F     		lsrs	r2, r5, #29
+ 124 003c F300     		lsls	r3, r6, #3
+ 125 003e FB60     		str	r3, [r7, #12]
+ 126 0040 FB68     		ldr	r3, [r7, #12]
+ 127 0042 1343     		orrs	r3, r2
+ 128 0044 FB60     		str	r3, [r7, #12]
+ 129 0046 EB00     		lsls	r3, r5, #3
+ 130 0048 BB60     		str	r3, [r7, #8]
+ 131 004a 0300     		movs	r3, r0
+ 132 004c 0733     		adds	r3, r3, #7
+ 133 004e DB08     		lsrs	r3, r3, #3
+ 134 0050 DB00     		lsls	r3, r3, #3
+ 135 0052 6A46     		mov	r2, sp
+ 136 0054 D31A     		subs	r3, r2, r3
+ 137 0056 9D46     		mov	sp, r3
+ 138 0058 6B46     		mov	r3, sp
+ 139 005a 0033     		adds	r3, r3, #0
+ 140 005c FB62     		str	r3, [r7, #44]
+  61:app_UART.c    ****     uint16  uartTxDataLength;
+  62:app_UART.c    ****     
+  63:app_UART.c    ****     static uint16 uartIdleCount = UART_IDLE_TIMEOUT;
+  64:app_UART.c    ****     
+  65:app_UART.c    ****     CYBLE_API_RESULT_T              bleApiResult;
+  66:app_UART.c    ****     CYBLE_GATTC_WRITE_CMD_REQ_T     uartTxDataWriteCmd;
+  67:app_UART.c    ****     
+  68:app_UART.c    ****     uartTxDataLength = UART_SpiUartGetRxBufferSize();
+ 141              		.loc 1 68 0
+ 142 005e FFF7FEFF 		bl	UART_SpiUartGetRxBufferSize
+ 143 0062 0200     		movs	r2, r0
+ 144 0064 1C23     		movs	r3, #28
+ 145 0066 1821     		movs	r1, #24
+ 146 0068 8C46     		mov	ip, r1
+ 147 006a BC44     		add	ip, ip, r7
+ 148 006c 6344     		add	r3, r3, ip
+ 149 006e 1A80     		strh	r2, [r3]
+  69:app_UART.c    ****     
+  70:app_UART.c    ****     #ifdef FLOW_CONTROL
+  71:app_UART.c    ****         if(uartTxDataLength >= (UART_UART_RX_BUFFER_SIZE - (UART_UART_RX_BUFFER_SIZE/2)))
+  72:app_UART.c    ****         {
+  73:app_UART.c    ****             DisableUartRxInt();
+  74:app_UART.c    ****         }
+  75:app_UART.c    ****         else
+  76:app_UART.c    ****         {
+  77:app_UART.c    ****             EnableUartRxInt();
+  78:app_UART.c    ****         }
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 5
+
+
+  79:app_UART.c    ****     #endif
+  80:app_UART.c    ****     
+  81:app_UART.c    ****     if((uartTxDataLength != 0))
+ 150              		.loc 1 81 0
+ 151 0070 1C23     		movs	r3, #28
+ 152 0072 1822     		movs	r2, #24
+ 153 0074 9446     		mov	ip, r2
+ 154 0076 BC44     		add	ip, ip, r7
+ 155 0078 6344     		add	r3, r3, ip
+ 156 007a 1B88     		ldrh	r3, [r3]
+ 157 007c 002B     		cmp	r3, #0
+ 158 007e 00D1     		bne	.LCB124
+ 159 0080 9BE0     		b	.L7	@long jump
+ 160              	.LCB124:
+  82:app_UART.c    ****     {
+  83:app_UART.c    ****         if(uartTxDataLength >= (mtuSize - 3))
+ 161              		.loc 1 83 0
+ 162 0082 1C23     		movs	r3, #28
+ 163 0084 1822     		movs	r2, #24
+ 164 0086 9446     		mov	ip, r2
+ 165 0088 BC44     		add	ip, ip, r7
+ 166 008a 6344     		add	r3, r3, ip
+ 167 008c 1A88     		ldrh	r2, [r3]
+ 168 008e 4E4B     		ldr	r3, .L13
+ 169 0090 1B88     		ldrh	r3, [r3]
+ 170 0092 033B     		subs	r3, r3, #3
+ 171 0094 9A42     		cmp	r2, r3
+ 172 0096 0DDB     		blt	.L8
+  84:app_UART.c    ****         {
+  85:app_UART.c    ****             uartIdleCount       = UART_IDLE_TIMEOUT;
+ 173              		.loc 1 85 0
+ 174 0098 4C4B     		ldr	r3, .L13+4
+ 175 009a FA22     		movs	r2, #250
+ 176 009c 9200     		lsls	r2, r2, #2
+ 177 009e 1A80     		strh	r2, [r3]
+  86:app_UART.c    ****             uartTxDataLength    = mtuSize - 3;
+ 178              		.loc 1 86 0
+ 179 00a0 494B     		ldr	r3, .L13
+ 180 00a2 1A88     		ldrh	r2, [r3]
+ 181 00a4 1C23     		movs	r3, #28
+ 182 00a6 1821     		movs	r1, #24
+ 183 00a8 8C46     		mov	ip, r1
+ 184 00aa BC44     		add	ip, ip, r7
+ 185 00ac 6344     		add	r3, r3, ip
+ 186 00ae 033A     		subs	r2, r2, #3
+ 187 00b0 1A80     		strh	r2, [r3]
+ 188 00b2 10E0     		b	.L9
+ 189              	.L8:
+  87:app_UART.c    ****         }
+  88:app_UART.c    ****         else
+  89:app_UART.c    ****         {
+  90:app_UART.c    ****             if(--uartIdleCount == 0)
+ 190              		.loc 1 90 0
+ 191 00b4 454B     		ldr	r3, .L13+4
+ 192 00b6 1B88     		ldrh	r3, [r3]
+ 193 00b8 013B     		subs	r3, r3, #1
+ 194 00ba 9AB2     		uxth	r2, r3
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 6
+
+
+ 195 00bc 434B     		ldr	r3, .L13+4
+ 196 00be 1A80     		strh	r2, [r3]
+ 197 00c0 424B     		ldr	r3, .L13+4
+ 198 00c2 1B88     		ldrh	r3, [r3]
+ 199 00c4 002B     		cmp	r3, #0
+ 200 00c6 06D0     		beq	.L9
+  91:app_UART.c    ****             {
+  92:app_UART.c    ****                 /*uartTxDataLength remains unchanged */;
+  93:app_UART.c    ****             }
+  94:app_UART.c    ****             else
+  95:app_UART.c    ****             {
+  96:app_UART.c    ****                 uartTxDataLength = 0;
+ 201              		.loc 1 96 0
+ 202 00c8 1C23     		movs	r3, #28
+ 203 00ca 1822     		movs	r2, #24
+ 204 00cc 9446     		mov	ip, r2
+ 205 00ce BC44     		add	ip, ip, r7
+ 206 00d0 6344     		add	r3, r3, ip
+ 207 00d2 0022     		movs	r2, #0
+ 208 00d4 1A80     		strh	r2, [r3]
+ 209              	.L9:
+  97:app_UART.c    ****             }
+  98:app_UART.c    ****         }
+  99:app_UART.c    ****         
+ 100:app_UART.c    ****         if(0 != uartTxDataLength)
+ 210              		.loc 1 100 0
+ 211 00d6 1C23     		movs	r3, #28
+ 212 00d8 1822     		movs	r2, #24
+ 213 00da 9446     		mov	ip, r2
+ 214 00dc BC44     		add	ip, ip, r7
+ 215 00de 6344     		add	r3, r3, ip
+ 216 00e0 1B88     		ldrh	r3, [r3]
+ 217 00e2 002B     		cmp	r3, #0
+ 218 00e4 69D0     		beq	.L7
+ 101:app_UART.c    ****         {
+ 102:app_UART.c    ****             uartIdleCount       = UART_IDLE_TIMEOUT;
+ 219              		.loc 1 102 0
+ 220 00e6 394B     		ldr	r3, .L13+4
+ 221 00e8 FA22     		movs	r2, #250
+ 222 00ea 9200     		lsls	r2, r2, #2
+ 223 00ec 1A80     		strh	r2, [r3]
+ 103:app_UART.c    ****             
+ 104:app_UART.c    ****             for(index = 0; index < uartTxDataLength; index++)
+ 224              		.loc 1 104 0
+ 225 00ee 1F23     		movs	r3, #31
+ 226 00f0 1822     		movs	r2, #24
+ 227 00f2 9446     		mov	ip, r2
+ 228 00f4 BC44     		add	ip, ip, r7
+ 229 00f6 6344     		add	r3, r3, ip
+ 230 00f8 0022     		movs	r2, #0
+ 231 00fa 1A70     		strb	r2, [r3]
+ 232 00fc 18E0     		b	.L10
+ 233              	.L11:
+ 105:app_UART.c    ****             {
+ 106:app_UART.c    ****                 uartTxData[index] = (uint8) UART_UartGetByte();
+ 234              		.loc 1 106 0 discriminator 3
+ 235 00fe 1F23     		movs	r3, #31
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 7
+
+
+ 236 0100 1822     		movs	r2, #24
+ 237 0102 9446     		mov	ip, r2
+ 238 0104 BC44     		add	ip, ip, r7
+ 239 0106 6344     		add	r3, r3, ip
+ 240 0108 1C78     		ldrb	r4, [r3]
+ 241 010a FFF7FEFF 		bl	UART_UartGetByte
+ 242 010e 0300     		movs	r3, r0
+ 243 0110 DAB2     		uxtb	r2, r3
+ 244 0112 FB6A     		ldr	r3, [r7, #44]
+ 245 0114 1A55     		strb	r2, [r3, r4]
+ 104:app_UART.c    ****             {
+ 246              		.loc 1 104 0 discriminator 3
+ 247 0116 1F23     		movs	r3, #31
+ 248 0118 1822     		movs	r2, #24
+ 249 011a 9446     		mov	ip, r2
+ 250 011c BC44     		add	ip, ip, r7
+ 251 011e 6344     		add	r3, r3, ip
+ 252 0120 1A78     		ldrb	r2, [r3]
+ 253 0122 1F23     		movs	r3, #31
+ 254 0124 1821     		movs	r1, #24
+ 255 0126 8C46     		mov	ip, r1
+ 256 0128 BC44     		add	ip, ip, r7
+ 257 012a 6344     		add	r3, r3, ip
+ 258 012c 0132     		adds	r2, r2, #1
+ 259 012e 1A70     		strb	r2, [r3]
+ 260              	.L10:
+ 104:app_UART.c    ****             {
+ 261              		.loc 1 104 0 is_stmt 0 discriminator 1
+ 262 0130 1F23     		movs	r3, #31
+ 263 0132 1822     		movs	r2, #24
+ 264 0134 9446     		mov	ip, r2
+ 265 0136 BC44     		add	ip, ip, r7
+ 266 0138 6344     		add	r3, r3, ip
+ 267 013a 1B78     		ldrb	r3, [r3]
+ 268 013c 9BB2     		uxth	r3, r3
+ 269 013e 1C22     		movs	r2, #28
+ 270 0140 1821     		movs	r1, #24
+ 271 0142 8C46     		mov	ip, r1
+ 272 0144 BC44     		add	ip, ip, r7
+ 273 0146 6244     		add	r2, r2, ip
+ 274 0148 1288     		ldrh	r2, [r2]
+ 275 014a 9A42     		cmp	r2, r3
+ 276 014c D7D8     		bhi	.L11
+ 107:app_UART.c    ****             }
+ 108:app_UART.c    ****             
+ 109:app_UART.c    ****             uartTxDataWriteCmd.attrHandle = rxCharHandle;
+ 277              		.loc 1 109 0 is_stmt 1
+ 278 014e 204B     		ldr	r3, .L13+8
+ 279 0150 1A88     		ldrh	r2, [r3]
+ 280 0152 1C23     		movs	r3, #28
+ 281 0154 FB18     		adds	r3, r7, r3
+ 282 0156 1A81     		strh	r2, [r3, #8]
+ 110:app_UART.c    ****             uartTxDataWriteCmd.value.len  = uartTxDataLength;
+ 283              		.loc 1 110 0
+ 284 0158 1C23     		movs	r3, #28
+ 285 015a FB18     		adds	r3, r7, r3
+ 286 015c 1C22     		movs	r2, #28
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 8
+
+
+ 287 015e 1821     		movs	r1, #24
+ 288 0160 8C46     		mov	ip, r1
+ 289 0162 BC44     		add	ip, ip, r7
+ 290 0164 6244     		add	r2, r2, ip
+ 291 0166 1288     		ldrh	r2, [r2]
+ 292 0168 9A80     		strh	r2, [r3, #4]
+ 111:app_UART.c    ****             uartTxDataWriteCmd.value.val  = uartTxData;           
+ 293              		.loc 1 111 0
+ 294 016a FA6A     		ldr	r2, [r7, #44]
+ 295 016c 1C23     		movs	r3, #28
+ 296 016e FB18     		adds	r3, r7, r3
+ 297 0170 1A60     		str	r2, [r3]
+ 298              	.L12:
+ 112:app_UART.c    ****             
+ 113:app_UART.c    ****             #ifdef FLOW_CONTROL
+ 114:app_UART.c    ****                 DisableUartRxInt();
+ 115:app_UART.c    ****             #endif
+ 116:app_UART.c    ****             
+ 117:app_UART.c    ****             do
+ 118:app_UART.c    ****             {
+ 119:app_UART.c    ****                 bleApiResult = CyBle_GattcWriteWithoutResponse(cyBle_connHandle, &uartTxDataWriteCm
+ 299              		.loc 1 119 0 discriminator 2
+ 300 0172 1223     		movs	r3, #18
+ 301 0174 1822     		movs	r2, #24
+ 302 0176 BA18     		adds	r2, r7, r2
+ 303 0178 D418     		adds	r4, r2, r3
+ 304 017a 1C23     		movs	r3, #28
+ 305 017c F918     		adds	r1, r7, r3
+ 306 017e 154B     		ldr	r3, .L13+12
+ 307 0180 1A78     		ldrb	r2, [r3]
+ 308 0182 5B78     		ldrb	r3, [r3, #1]
+ 309 0184 1B02     		lsls	r3, r3, #8
+ 310 0186 1A43     		orrs	r2, r3
+ 311 0188 0023     		movs	r3, #0
+ 312 018a 1204     		lsls	r2, r2, #16
+ 313 018c 120C     		lsrs	r2, r2, #16
+ 314 018e 1B0C     		lsrs	r3, r3, #16
+ 315 0190 1B04     		lsls	r3, r3, #16
+ 316 0192 1343     		orrs	r3, r2
+ 317 0194 1800     		movs	r0, r3
+ 318 0196 FFF7FEFF 		bl	CyBle_GattcWriteWithoutResponse
+ 319 019a 0300     		movs	r3, r0
+ 320 019c 2380     		strh	r3, [r4]
+ 120:app_UART.c    ****                 CyBle_ProcessEvents();
+ 321              		.loc 1 120 0 discriminator 2
+ 322 019e FFF7FEFF 		bl	CyBle_ProcessEvents
+ 121:app_UART.c    ****             }
+ 122:app_UART.c    ****             while((CYBLE_ERROR_OK != bleApiResult) && (CYBLE_STATE_CONNECTED == cyBle_state));
+ 323              		.loc 1 122 0 discriminator 2
+ 324 01a2 1223     		movs	r3, #18
+ 325 01a4 1822     		movs	r2, #24
+ 326 01a6 9446     		mov	ip, r2
+ 327 01a8 BC44     		add	ip, ip, r7
+ 328 01aa 6344     		add	r3, r3, ip
+ 329 01ac 1B88     		ldrh	r3, [r3]
+ 330 01ae 002B     		cmp	r3, #0
+ 331 01b0 03D0     		beq	.L7
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 9
+
+
+ 332              		.loc 1 122 0 is_stmt 0 discriminator 1
+ 333 01b2 094B     		ldr	r3, .L13+16
+ 334 01b4 1B78     		ldrb	r3, [r3]
+ 335 01b6 022B     		cmp	r3, #2
+ 336 01b8 DBD0     		beq	.L12
+ 337              	.L7:
+ 338 01ba 7B68     		ldr	r3, [r7, #4]
+ 339 01bc 9D46     		mov	sp, r3
+ 123:app_UART.c    ****             
+ 124:app_UART.c    ****         }
+ 125:app_UART.c    ****     }
+ 126:app_UART.c    **** }
+ 340              		.loc 1 126 0 is_stmt 1
+ 341 01be C046     		nop
+ 342 01c0 BD46     		mov	sp, r7
+ 343 01c2 0FB0     		add	sp, sp, #60
+ 344              		@ sp needed
+ 345 01c4 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 346              	.L14:
+ 347 01c6 C046     		.align	2
+ 348              	.L13:
+ 349 01c8 00000000 		.word	mtuSize
+ 350 01cc 00000000 		.word	uartIdleCount.7314
+ 351 01d0 00000000 		.word	rxCharHandle
+ 352 01d4 00000000 		.word	cyBle_connHandle
+ 353 01d8 00000000 		.word	cyBle_state
+ 354              		.cfi_endproc
+ 355              	.LFE36:
+ 356              		.size	HandleUartTxTraffic, .-HandleUartTxTraffic
+ 357              		.section	.text.DisableUartRxInt,"ax",%progbits
+ 358              		.align	2
+ 359              		.global	DisableUartRxInt
+ 360              		.code	16
+ 361              		.thumb_func
+ 362              		.type	DisableUartRxInt, %function
+ 363              	DisableUartRxInt:
+ 364              	.LFB37:
+ 127:app_UART.c    **** 
+ 128:app_UART.c    **** /*****************************************************************************************
+ 129:app_UART.c    **** * Function Name: DisableUartRxInt
+ 130:app_UART.c    **** ******************************************************************************************
+ 131:app_UART.c    **** *
+ 132:app_UART.c    **** * Summary:
+ 133:app_UART.c    **** *  This function disables the UART RX interrupt.
+ 134:app_UART.c    **** *
+ 135:app_UART.c    **** * Parameters:
+ 136:app_UART.c    **** *   None.
+ 137:app_UART.c    **** *
+ 138:app_UART.c    **** * Return:
+ 139:app_UART.c    **** *   None.
+ 140:app_UART.c    **** *
+ 141:app_UART.c    **** *****************************************************************************************/
+ 142:app_UART.c    **** void DisableUartRxInt(void)
+ 143:app_UART.c    **** {
+ 365              		.loc 1 143 0
+ 366              		.cfi_startproc
+ 367              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 10
+
+
+ 368              		@ frame_needed = 1, uses_anonymous_args = 0
+ 369 0000 80B5     		push	{r7, lr}
+ 370              		.cfi_def_cfa_offset 8
+ 371              		.cfi_offset 7, -8
+ 372              		.cfi_offset 14, -4
+ 373 0002 00AF     		add	r7, sp, #0
+ 374              		.cfi_def_cfa_register 7
+ 144:app_UART.c    ****     UART_INTR_RX_MASK_REG &= ~UART_RX_INTR_MASK;  
+ 375              		.loc 1 144 0
+ 376 0004 044B     		ldr	r3, .L16
+ 377 0006 044A     		ldr	r2, .L16
+ 378 0008 1268     		ldr	r2, [r2]
+ 379 000a 0421     		movs	r1, #4
+ 380 000c 8A43     		bics	r2, r1
+ 381 000e 1A60     		str	r2, [r3]
+ 145:app_UART.c    **** }
+ 382              		.loc 1 145 0
+ 383 0010 C046     		nop
+ 384 0012 BD46     		mov	sp, r7
+ 385              		@ sp needed
+ 386 0014 80BD     		pop	{r7, pc}
+ 387              	.L17:
+ 388 0016 C046     		.align	2
+ 389              	.L16:
+ 390 0018 C80F2440 		.word	1076105160
+ 391              		.cfi_endproc
+ 392              	.LFE37:
+ 393              		.size	DisableUartRxInt, .-DisableUartRxInt
+ 394              		.section	.text.EnableUartRxInt,"ax",%progbits
+ 395              		.align	2
+ 396              		.global	EnableUartRxInt
+ 397              		.code	16
+ 398              		.thumb_func
+ 399              		.type	EnableUartRxInt, %function
+ 400              	EnableUartRxInt:
+ 401              	.LFB38:
+ 146:app_UART.c    **** 
+ 147:app_UART.c    **** /*****************************************************************************************
+ 148:app_UART.c    **** * Function Name: EnableUartRxInt
+ 149:app_UART.c    **** ******************************************************************************************
+ 150:app_UART.c    **** *
+ 151:app_UART.c    **** * Summary:
+ 152:app_UART.c    **** *  This function enables the UART RX interrupt.
+ 153:app_UART.c    **** *
+ 154:app_UART.c    **** * Parameters:
+ 155:app_UART.c    **** *   None.
+ 156:app_UART.c    **** *
+ 157:app_UART.c    **** * Return:
+ 158:app_UART.c    **** *   None.
+ 159:app_UART.c    **** *
+ 160:app_UART.c    **** *****************************************************************************************/
+ 161:app_UART.c    **** void EnableUartRxInt(void)
+ 162:app_UART.c    **** {
+ 402              		.loc 1 162 0
+ 403              		.cfi_startproc
+ 404              		@ args = 0, pretend = 0, frame = 0
+ 405              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 11
+
+
+ 406 0000 80B5     		push	{r7, lr}
+ 407              		.cfi_def_cfa_offset 8
+ 408              		.cfi_offset 7, -8
+ 409              		.cfi_offset 14, -4
+ 410 0002 00AF     		add	r7, sp, #0
+ 411              		.cfi_def_cfa_register 7
+ 163:app_UART.c    ****     UART_INTR_RX_MASK_REG |= UART_RX_INTR_MASK;  
+ 412              		.loc 1 163 0
+ 413 0004 044B     		ldr	r3, .L19
+ 414 0006 044A     		ldr	r2, .L19
+ 415 0008 1268     		ldr	r2, [r2]
+ 416 000a 0421     		movs	r1, #4
+ 417 000c 0A43     		orrs	r2, r1
+ 418 000e 1A60     		str	r2, [r3]
+ 164:app_UART.c    **** }
+ 419              		.loc 1 164 0
+ 420 0010 C046     		nop
+ 421 0012 BD46     		mov	sp, r7
+ 422              		@ sp needed
+ 423 0014 80BD     		pop	{r7, pc}
+ 424              	.L20:
+ 425 0016 C046     		.align	2
+ 426              	.L19:
+ 427 0018 C80F2440 		.word	1076105160
+ 428              		.cfi_endproc
+ 429              	.LFE38:
+ 430              		.size	EnableUartRxInt, .-EnableUartRxInt
+ 431              		.data
+ 432              		.align	1
+ 433              		.type	uartIdleCount.7314, %object
+ 434              		.size	uartIdleCount.7314, 2
+ 435              	uartIdleCount.7314:
+ 436 0000 E803     		.short	1000
+ 437              		.text
+ 438              	.Letext0:
+ 439              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 440              		.file 3 "Generated_Source\\PSoC4/BLE_Stack.h"
+ 441              		.file 4 "Generated_Source\\PSoC4/BLE_StackGatt.h"
+ 442              		.file 5 "Generated_Source\\PSoC4/BLE_StackGattClient.h"
+ 443              		.file 6 "Generated_Source\\PSoC4/BLE_eventHandler.h"
+ 444              		.file 7 "app_UART.h"
+ 445              		.section	.debug_info,"",%progbits
+ 446              	.Ldebug_info0:
+ 447 0000 DB030000 		.4byte	0x3db
+ 448 0004 0400     		.2byte	0x4
+ 449 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 450 000a 04       		.byte	0x4
+ 451 000b 01       		.uleb128 0x1
+ 452 000c 93030000 		.4byte	.LASF89
+ 453 0010 0C       		.byte	0xc
+ 454 0011 0D060000 		.4byte	.LASF90
+ 455 0015 8B000000 		.4byte	.LASF91
+ 456 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 457 001d 00000000 		.4byte	0
+ 458 0021 00000000 		.4byte	.Ldebug_line0
+ 459 0025 02       		.uleb128 0x2
+ 460 0026 01       		.byte	0x1
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 12
+
+
+ 461 0027 06       		.byte	0x6
+ 462 0028 A1040000 		.4byte	.LASF0
+ 463 002c 02       		.uleb128 0x2
+ 464 002d 01       		.byte	0x1
+ 465 002e 08       		.byte	0x8
+ 466 002f 6F040000 		.4byte	.LASF1
+ 467 0033 02       		.uleb128 0x2
+ 468 0034 02       		.byte	0x2
+ 469 0035 05       		.byte	0x5
+ 470 0036 ED000000 		.4byte	.LASF2
+ 471 003a 02       		.uleb128 0x2
+ 472 003b 02       		.byte	0x2
+ 473 003c 07       		.byte	0x7
+ 474 003d 72050000 		.4byte	.LASF3
+ 475 0041 02       		.uleb128 0x2
+ 476 0042 04       		.byte	0x4
+ 477 0043 05       		.byte	0x5
+ 478 0044 40030000 		.4byte	.LASF4
+ 479 0048 02       		.uleb128 0x2
+ 480 0049 04       		.byte	0x4
+ 481 004a 07       		.byte	0x7
+ 482 004b A3060000 		.4byte	.LASF5
+ 483 004f 02       		.uleb128 0x2
+ 484 0050 08       		.byte	0x8
+ 485 0051 05       		.byte	0x5
+ 486 0052 12030000 		.4byte	.LASF6
+ 487 0056 02       		.uleb128 0x2
+ 488 0057 08       		.byte	0x8
+ 489 0058 07       		.byte	0x7
+ 490 0059 AD040000 		.4byte	.LASF7
+ 491 005d 03       		.uleb128 0x3
+ 492 005e 04       		.byte	0x4
+ 493 005f 05       		.byte	0x5
+ 494 0060 696E7400 		.ascii	"int\000"
+ 495 0064 02       		.uleb128 0x2
+ 496 0065 04       		.byte	0x4
+ 497 0066 07       		.byte	0x7
+ 498 0067 F0040000 		.4byte	.LASF8
+ 499 006b 04       		.uleb128 0x4
+ 500 006c 6D020000 		.4byte	.LASF9
+ 501 0070 02       		.byte	0x2
+ 502 0071 D201     		.2byte	0x1d2
+ 503 0073 2C000000 		.4byte	0x2c
+ 504 0077 04       		.uleb128 0x4
+ 505 0078 42020000 		.4byte	.LASF10
+ 506 007c 02       		.byte	0x2
+ 507 007d D301     		.2byte	0x1d3
+ 508 007f 3A000000 		.4byte	0x3a
+ 509 0083 04       		.uleb128 0x4
+ 510 0084 9C060000 		.4byte	.LASF11
+ 511 0088 02       		.byte	0x2
+ 512 0089 D401     		.2byte	0x1d4
+ 513 008b 48000000 		.4byte	0x48
+ 514 008f 02       		.uleb128 0x2
+ 515 0090 04       		.byte	0x4
+ 516 0091 04       		.byte	0x4
+ 517 0092 F7020000 		.4byte	.LASF12
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 13
+
+
+ 518 0096 02       		.uleb128 0x2
+ 519 0097 08       		.byte	0x8
+ 520 0098 04       		.byte	0x4
+ 521 0099 C0060000 		.4byte	.LASF13
+ 522 009d 02       		.uleb128 0x2
+ 523 009e 01       		.byte	0x1
+ 524 009f 08       		.byte	0x8
+ 525 00a0 92050000 		.4byte	.LASF14
+ 526 00a4 04       		.uleb128 0x4
+ 527 00a5 49050000 		.4byte	.LASF15
+ 528 00a9 02       		.byte	0x2
+ 529 00aa 7E02     		.2byte	0x27e
+ 530 00ac B0000000 		.4byte	0xb0
+ 531 00b0 05       		.uleb128 0x5
+ 532 00b1 83000000 		.4byte	0x83
+ 533 00b5 02       		.uleb128 0x2
+ 534 00b6 08       		.byte	0x8
+ 535 00b7 04       		.byte	0x4
+ 536 00b8 21040000 		.4byte	.LASF16
+ 537 00bc 02       		.uleb128 0x2
+ 538 00bd 04       		.byte	0x4
+ 539 00be 07       		.byte	0x7
+ 540 00bf F7000000 		.4byte	.LASF17
+ 541 00c3 06       		.uleb128 0x6
+ 542 00c4 02       		.byte	0x2
+ 543 00c5 3A000000 		.4byte	0x3a
+ 544 00c9 03       		.byte	0x3
+ 545 00ca EA03     		.2byte	0x3ea
+ 546 00cc A2010000 		.4byte	0x1a2
+ 547 00d0 07       		.uleb128 0x7
+ 548 00d1 0B010000 		.4byte	.LASF18
+ 549 00d5 00       		.byte	0
+ 550 00d6 07       		.uleb128 0x7
+ 551 00d7 E2010000 		.4byte	.LASF19
+ 552 00db 01       		.byte	0x1
+ 553 00dc 07       		.uleb128 0x7
+ 554 00dd 49020000 		.4byte	.LASF20
+ 555 00e1 02       		.byte	0x2
+ 556 00e2 07       		.uleb128 0x7
+ 557 00e3 18060000 		.4byte	.LASF21
+ 558 00e7 03       		.byte	0x3
+ 559 00e8 07       		.uleb128 0x7
+ 560 00e9 D4020000 		.4byte	.LASF22
+ 561 00ed 04       		.byte	0x4
+ 562 00ee 07       		.uleb128 0x7
+ 563 00ef 00020000 		.4byte	.LASF23
+ 564 00f3 05       		.byte	0x5
+ 565 00f4 07       		.uleb128 0x7
+ 566 00f5 97020000 		.4byte	.LASF24
+ 567 00f9 06       		.byte	0x6
+ 568 00fa 07       		.uleb128 0x7
+ 569 00fb 2D040000 		.4byte	.LASF25
+ 570 00ff 07       		.byte	0x7
+ 571 0100 07       		.uleb128 0x7
+ 572 0101 59030000 		.4byte	.LASF26
+ 573 0105 08       		.byte	0x8
+ 574 0106 07       		.uleb128 0x7
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 14
+
+
+ 575 0107 DB040000 		.4byte	.LASF27
+ 576 010b 09       		.byte	0x9
+ 577 010c 07       		.uleb128 0x7
+ 578 010d BA020000 		.4byte	.LASF28
+ 579 0111 0A       		.byte	0xa
+ 580 0112 07       		.uleb128 0x7
+ 581 0113 20030000 		.4byte	.LASF29
+ 582 0117 0B       		.byte	0xb
+ 583 0118 07       		.uleb128 0x7
+ 584 0119 C4040000 		.4byte	.LASF30
+ 585 011d 0C       		.byte	0xc
+ 586 011e 07       		.uleb128 0x7
+ 587 011f FD040000 		.4byte	.LASF31
+ 588 0123 0D       		.byte	0xd
+ 589 0124 07       		.uleb128 0x7
+ 590 0125 25000000 		.4byte	.LASF32
+ 591 0129 0E       		.byte	0xe
+ 592 012a 07       		.uleb128 0x7
+ 593 012b 00000000 		.4byte	.LASF33
+ 594 012f 0F       		.byte	0xf
+ 595 0130 07       		.uleb128 0x7
+ 596 0131 F5070000 		.4byte	.LASF34
+ 597 0135 10       		.byte	0x10
+ 598 0136 07       		.uleb128 0x7
+ 599 0137 5C000000 		.4byte	.LASF35
+ 600 013b 11       		.byte	0x11
+ 601 013c 07       		.uleb128 0x7
+ 602 013d 1F070000 		.4byte	.LASF36
+ 603 0141 12       		.byte	0x12
+ 604 0142 07       		.uleb128 0x7
+ 605 0143 CD070000 		.4byte	.LASF37
+ 606 0147 13       		.byte	0x13
+ 607 0148 07       		.uleb128 0x7
+ 608 0149 5B070000 		.4byte	.LASF38
+ 609 014d 27       		.byte	0x27
+ 610 014e 07       		.uleb128 0x7
+ 611 014f 44010000 		.4byte	.LASF39
+ 612 0153 28       		.byte	0x28
+ 613 0154 07       		.uleb128 0x7
+ 614 0155 7D070000 		.4byte	.LASF40
+ 615 0159 29       		.byte	0x29
+ 616 015a 07       		.uleb128 0x7
+ 617 015b 69010000 		.4byte	.LASF41
+ 618 015f 2A       		.byte	0x2a
+ 619 0160 07       		.uleb128 0x7
+ 620 0161 51060000 		.4byte	.LASF42
+ 621 0165 2B       		.byte	0x2b
+ 622 0166 07       		.uleb128 0x7
+ 623 0167 7D040000 		.4byte	.LASF43
+ 624 016b 2C       		.byte	0x2c
+ 625 016c 07       		.uleb128 0x7
+ 626 016d 1A010000 		.4byte	.LASF44
+ 627 0171 2D       		.byte	0x2d
+ 628 0172 07       		.uleb128 0x7
+ 629 0173 D8050000 		.4byte	.LASF45
+ 630 0177 FE       		.byte	0xfe
+ 631 0178 07       		.uleb128 0x7
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 15
+
+
+ 632 0179 99070000 		.4byte	.LASF46
+ 633 017d FF       		.byte	0xff
+ 634 017e 08       		.uleb128 0x8
+ 635 017f 42070000 		.4byte	.LASF47
+ 636 0183 0001     		.2byte	0x100
+ 637 0185 08       		.uleb128 0x8
+ 638 0186 23080000 		.4byte	.LASF48
+ 639 018a 0101     		.2byte	0x101
+ 640 018c 08       		.uleb128 0x8
+ 641 018d 4F050000 		.4byte	.LASF49
+ 642 0191 0201     		.2byte	0x102
+ 643 0193 08       		.uleb128 0x8
+ 644 0194 A9070000 		.4byte	.LASF50
+ 645 0198 0301     		.2byte	0x103
+ 646 019a 08       		.uleb128 0x8
+ 647 019b AE050000 		.4byte	.LASF51
+ 648 019f 0401     		.2byte	0x104
+ 649 01a1 00       		.byte	0
+ 650 01a2 04       		.uleb128 0x4
+ 651 01a3 73020000 		.4byte	.LASF52
+ 652 01a7 03       		.byte	0x3
+ 653 01a8 5C04     		.2byte	0x45c
+ 654 01aa C3000000 		.4byte	0xc3
+ 655 01ae 09       		.uleb128 0x9
+ 656 01af 04       		.byte	0x4
+ 657 01b0 6B000000 		.4byte	0x6b
+ 658 01b4 04       		.uleb128 0x4
+ 659 01b5 A4010000 		.4byte	.LASF53
+ 660 01b9 04       		.byte	0x4
+ 661 01ba 8901     		.2byte	0x189
+ 662 01bc 77000000 		.4byte	0x77
+ 663 01c0 0A       		.uleb128 0xa
+ 664 01c1 02       		.byte	0x2
+ 665 01c2 04       		.byte	0x4
+ 666 01c3 9301     		.2byte	0x193
+ 667 01c5 E4010000 		.4byte	0x1e4
+ 668 01c9 0B       		.uleb128 0xb
+ 669 01ca B1020000 		.4byte	.LASF54
+ 670 01ce 04       		.byte	0x4
+ 671 01cf 9A01     		.2byte	0x19a
+ 672 01d1 6B000000 		.4byte	0x6b
+ 673 01d5 00       		.byte	0
+ 674 01d6 0B       		.uleb128 0xb
+ 675 01d7 73080000 		.4byte	.LASF55
+ 676 01db 04       		.byte	0x4
+ 677 01dc A001     		.2byte	0x1a0
+ 678 01de 6B000000 		.4byte	0x6b
+ 679 01e2 01       		.byte	0x1
+ 680 01e3 00       		.byte	0
+ 681 01e4 04       		.uleb128 0x4
+ 682 01e5 DB060000 		.4byte	.LASF56
+ 683 01e9 04       		.byte	0x4
+ 684 01ea A201     		.2byte	0x1a2
+ 685 01ec C0010000 		.4byte	0x1c0
+ 686 01f0 0A       		.uleb128 0xa
+ 687 01f1 08       		.byte	0x8
+ 688 01f2 04       		.byte	0x4
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 16
+
+
+ 689 01f3 BE01     		.2byte	0x1be
+ 690 01f5 21020000 		.4byte	0x221
+ 691 01f9 0C       		.uleb128 0xc
+ 692 01fa 76616C00 		.ascii	"val\000"
+ 693 01fe 04       		.byte	0x4
+ 694 01ff C101     		.2byte	0x1c1
+ 695 0201 AE010000 		.4byte	0x1ae
+ 696 0205 00       		.byte	0
+ 697 0206 0C       		.uleb128 0xc
+ 698 0207 6C656E00 		.ascii	"len\000"
+ 699 020b 04       		.byte	0x4
+ 700 020c C401     		.2byte	0x1c4
+ 701 020e 77000000 		.4byte	0x77
+ 702 0212 04       		.byte	0x4
+ 703 0213 0B       		.uleb128 0xb
+ 704 0214 C3070000 		.4byte	.LASF57
+ 705 0218 04       		.byte	0x4
+ 706 0219 CB01     		.2byte	0x1cb
+ 707 021b 77000000 		.4byte	0x77
+ 708 021f 06       		.byte	0x6
+ 709 0220 00       		.byte	0
+ 710 0221 04       		.uleb128 0x4
+ 711 0222 C5050000 		.4byte	.LASF58
+ 712 0226 04       		.byte	0x4
+ 713 0227 CD01     		.2byte	0x1cd
+ 714 0229 F0010000 		.4byte	0x1f0
+ 715 022d 0A       		.uleb128 0xa
+ 716 022e 0C       		.byte	0xc
+ 717 022f 04       		.byte	0x4
+ 718 0230 D001     		.2byte	0x1d0
+ 719 0232 51020000 		.4byte	0x251
+ 720 0236 0B       		.uleb128 0xb
+ 721 0237 1E020000 		.4byte	.LASF59
+ 722 023b 04       		.byte	0x4
+ 723 023c D301     		.2byte	0x1d3
+ 724 023e 21020000 		.4byte	0x221
+ 725 0242 00       		.byte	0
+ 726 0243 0B       		.uleb128 0xb
+ 727 0244 B5060000 		.4byte	.LASF60
+ 728 0248 04       		.byte	0x4
+ 729 0249 D601     		.2byte	0x1d6
+ 730 024b B4010000 		.4byte	0x1b4
+ 731 024f 08       		.byte	0x8
+ 732 0250 00       		.byte	0
+ 733 0251 04       		.uleb128 0x4
+ 734 0252 EF060000 		.4byte	.LASF61
+ 735 0256 04       		.byte	0x4
+ 736 0257 D801     		.2byte	0x1d8
+ 737 0259 2D020000 		.4byte	0x22d
+ 738 025d 0D       		.uleb128 0xd
+ 739 025e 77030000 		.4byte	.LASF62
+ 740 0262 05       		.byte	0x5
+ 741 0263 77       		.byte	0x77
+ 742 0264 51020000 		.4byte	0x251
+ 743 0268 0E       		.uleb128 0xe
+ 744 0269 10       		.byte	0x10
+ 745 026a 05       		.byte	0x5
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 17
+
+
+ 746 026b 8B       		.byte	0x8b
+ 747 026c 89020000 		.4byte	0x289
+ 748 0270 0F       		.uleb128 0xf
+ 749 0271 00010000 		.4byte	.LASF63
+ 750 0275 05       		.byte	0x5
+ 751 0276 8E       		.byte	0x8e
+ 752 0277 E4010000 		.4byte	0x1e4
+ 753 027b 00       		.byte	0
+ 754 027c 0F       		.uleb128 0xf
+ 755 027d 4E000000 		.4byte	.LASF64
+ 756 0281 05       		.byte	0x5
+ 757 0282 91       		.byte	0x91
+ 758 0283 51020000 		.4byte	0x251
+ 759 0287 04       		.byte	0x4
+ 760 0288 00       		.byte	0
+ 761 0289 0D       		.uleb128 0xd
+ 762 028a 4A040000 		.4byte	.LASF65
+ 763 028e 05       		.byte	0x5
+ 764 028f 93       		.byte	0x93
+ 765 0290 68020000 		.4byte	0x268
+ 766 0294 06       		.uleb128 0x6
+ 767 0295 01       		.byte	0x1
+ 768 0296 2C000000 		.4byte	0x2c
+ 769 029a 06       		.byte	0x6
+ 770 029b 5A08     		.2byte	0x85a
+ 771 029d CC020000 		.4byte	0x2cc
+ 772 02a1 07       		.uleb128 0x7
+ 773 02a2 CE010000 		.4byte	.LASF66
+ 774 02a6 00       		.byte	0
+ 775 02a7 07       		.uleb128 0x7
+ 776 02a8 F4050000 		.4byte	.LASF67
+ 777 02ac 01       		.byte	0x1
+ 778 02ad 07       		.uleb128 0x7
+ 779 02ae 24020000 		.4byte	.LASF68
+ 780 02b2 02       		.byte	0x2
+ 781 02b3 07       		.uleb128 0x7
+ 782 02b4 84060000 		.4byte	.LASF69
+ 783 02b8 03       		.byte	0x3
+ 784 02b9 07       		.uleb128 0x7
+ 785 02ba FD020000 		.4byte	.LASF70
+ 786 02be 04       		.byte	0x4
+ 787 02bf 07       		.uleb128 0x7
+ 788 02c0 4F080000 		.4byte	.LASF71
+ 789 02c4 05       		.byte	0x5
+ 790 02c5 07       		.uleb128 0x7
+ 791 02c6 22050000 		.4byte	.LASF72
+ 792 02ca 06       		.byte	0x6
+ 793 02cb 00       		.byte	0
+ 794 02cc 04       		.uleb128 0x4
+ 795 02cd 3B050000 		.4byte	.LASF73
+ 796 02d1 06       		.byte	0x6
+ 797 02d2 6808     		.2byte	0x868
+ 798 02d4 94020000 		.4byte	0x294
+ 799 02d8 10       		.uleb128 0x10
+ 800 02d9 3D060000 		.4byte	.LASF74
+ 801 02dd 01       		.byte	0x1
+ 802 02de 20       		.byte	0x20
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 18
+
+
+ 803 02df 00000000 		.4byte	.LFB35
+ 804 02e3 30000000 		.4byte	.LFE35-.LFB35
+ 805 02e7 01       		.uleb128 0x1
+ 806 02e8 9C       		.byte	0x9c
+ 807 02e9 FC020000 		.4byte	0x2fc
+ 808 02ed 11       		.uleb128 0x11
+ 809 02ee 97050000 		.4byte	.LASF92
+ 810 02f2 01       		.byte	0x1
+ 811 02f3 20       		.byte	0x20
+ 812 02f4 FC020000 		.4byte	0x2fc
+ 813 02f8 02       		.uleb128 0x2
+ 814 02f9 91       		.byte	0x91
+ 815 02fa 74       		.sleb128 -12
+ 816 02fb 00       		.byte	0
+ 817 02fc 09       		.uleb128 0x9
+ 818 02fd 04       		.byte	0x4
+ 819 02fe 89020000 		.4byte	0x289
+ 820 0302 10       		.uleb128 0x10
+ 821 0303 C7060000 		.4byte	.LASF75
+ 822 0307 01       		.byte	0x1
+ 823 0308 39       		.byte	0x39
+ 824 0309 00000000 		.4byte	.LFB36
+ 825 030d DC010000 		.4byte	.LFE36-.LFB36
+ 826 0311 01       		.uleb128 0x1
+ 827 0312 9C       		.byte	0x9c
+ 828 0313 70030000 		.4byte	0x370
+ 829 0317 12       		.uleb128 0x12
+ 830 0318 67020000 		.4byte	.LASF76
+ 831 031c 01       		.byte	0x1
+ 832 031d 3B       		.byte	0x3b
+ 833 031e 6B000000 		.4byte	0x6b
+ 834 0322 02       		.uleb128 0x2
+ 835 0323 91       		.byte	0x91
+ 836 0324 67       		.sleb128 -25
+ 837 0325 12       		.uleb128 0x12
+ 838 0326 80000000 		.4byte	.LASF77
+ 839 032a 01       		.byte	0x1
+ 840 032b 3C       		.byte	0x3c
+ 841 032c 70030000 		.4byte	0x370
+ 842 0330 03       		.uleb128 0x3
+ 843 0331 91       		.byte	0x91
+ 844 0332 5C       		.sleb128 -36
+ 845 0333 06       		.byte	0x6
+ 846 0334 12       		.uleb128 0x12
+ 847 0335 86010000 		.4byte	.LASF78
+ 848 0339 01       		.byte	0x1
+ 849 033a 3D       		.byte	0x3d
+ 850 033b 77000000 		.4byte	0x77
+ 851 033f 02       		.uleb128 0x2
+ 852 0340 91       		.byte	0x91
+ 853 0341 64       		.sleb128 -28
+ 854 0342 12       		.uleb128 0x12
+ 855 0343 C0010000 		.4byte	.LASF79
+ 856 0347 01       		.byte	0x1
+ 857 0348 3F       		.byte	0x3f
+ 858 0349 77000000 		.4byte	0x77
+ 859 034d 05       		.uleb128 0x5
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 19
+
+
+ 860 034e 03       		.byte	0x3
+ 861 034f 00000000 		.4byte	uartIdleCount.7314
+ 862 0353 12       		.uleb128 0x12
+ 863 0354 66080000 		.4byte	.LASF80
+ 864 0358 01       		.byte	0x1
+ 865 0359 41       		.byte	0x41
+ 866 035a A2010000 		.4byte	0x1a2
+ 867 035e 02       		.uleb128 0x2
+ 868 035f 91       		.byte	0x91
+ 869 0360 5A       		.sleb128 -38
+ 870 0361 12       		.uleb128 0x12
+ 871 0362 3C080000 		.4byte	.LASF81
+ 872 0366 01       		.byte	0x1
+ 873 0367 42       		.byte	0x42
+ 874 0368 5D020000 		.4byte	0x25d
+ 875 036c 02       		.uleb128 0x2
+ 876 036d 91       		.byte	0x91
+ 877 036e 4C       		.sleb128 -52
+ 878 036f 00       		.byte	0
+ 879 0370 13       		.uleb128 0x13
+ 880 0371 6B000000 		.4byte	0x6b
+ 881 0375 83030000 		.4byte	0x383
+ 882 0379 14       		.uleb128 0x14
+ 883 037a BC000000 		.4byte	0xbc
+ 884 037e 03       		.uleb128 0x3
+ 885 037f 91       		.byte	0x91
+ 886 0380 60       		.sleb128 -32
+ 887 0381 06       		.byte	0x6
+ 888 0382 00       		.byte	0
+ 889 0383 15       		.uleb128 0x15
+ 890 0384 0E070000 		.4byte	.LASF82
+ 891 0388 01       		.byte	0x1
+ 892 0389 8E       		.byte	0x8e
+ 893 038a 00000000 		.4byte	.LFB37
+ 894 038e 1C000000 		.4byte	.LFE37-.LFB37
+ 895 0392 01       		.uleb128 0x1
+ 896 0393 9C       		.byte	0x9c
+ 897 0394 15       		.uleb128 0x15
+ 898 0395 49030000 		.4byte	.LASF83
+ 899 0399 01       		.byte	0x1
+ 900 039a A1       		.byte	0xa1
+ 901 039b 00000000 		.4byte	.LFB38
+ 902 039f 1C000000 		.4byte	.LFE38-.LFB38
+ 903 03a3 01       		.uleb128 0x1
+ 904 03a4 9C       		.byte	0x9c
+ 905 03a5 16       		.uleb128 0x16
+ 906 03a6 95040000 		.4byte	.LASF84
+ 907 03aa 06       		.byte	0x6
+ 908 03ab B30A     		.2byte	0xab3
+ 909 03ad CC020000 		.4byte	0x2cc
+ 910 03b1 16       		.uleb128 0x16
+ 911 03b2 86020000 		.4byte	.LASF85
+ 912 03b6 06       		.byte	0x6
+ 913 03b7 B40A     		.2byte	0xab4
+ 914 03b9 E4010000 		.4byte	0x1e4
+ 915 03bd 17       		.uleb128 0x17
+ 916 03be 3A020000 		.4byte	.LASF86
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 20
+
+
+ 917 03c2 07       		.byte	0x7
+ 918 03c3 20       		.byte	0x20
+ 919 03c4 77000000 		.4byte	0x77
+ 920 03c8 17       		.uleb128 0x17
+ 921 03c9 97010000 		.4byte	.LASF87
+ 922 03cd 07       		.byte	0x7
+ 923 03ce 21       		.byte	0x21
+ 924 03cf 77000000 		.4byte	0x77
+ 925 03d3 17       		.uleb128 0x17
+ 926 03d4 85050000 		.4byte	.LASF88
+ 927 03d8 07       		.byte	0x7
+ 928 03d9 22       		.byte	0x22
+ 929 03da 77000000 		.4byte	0x77
+ 930 03de 00       		.byte	0
+ 931              		.section	.debug_abbrev,"",%progbits
+ 932              	.Ldebug_abbrev0:
+ 933 0000 01       		.uleb128 0x1
+ 934 0001 11       		.uleb128 0x11
+ 935 0002 01       		.byte	0x1
+ 936 0003 25       		.uleb128 0x25
+ 937 0004 0E       		.uleb128 0xe
+ 938 0005 13       		.uleb128 0x13
+ 939 0006 0B       		.uleb128 0xb
+ 940 0007 03       		.uleb128 0x3
+ 941 0008 0E       		.uleb128 0xe
+ 942 0009 1B       		.uleb128 0x1b
+ 943 000a 0E       		.uleb128 0xe
+ 944 000b 55       		.uleb128 0x55
+ 945 000c 17       		.uleb128 0x17
+ 946 000d 11       		.uleb128 0x11
+ 947 000e 01       		.uleb128 0x1
+ 948 000f 10       		.uleb128 0x10
+ 949 0010 17       		.uleb128 0x17
+ 950 0011 00       		.byte	0
+ 951 0012 00       		.byte	0
+ 952 0013 02       		.uleb128 0x2
+ 953 0014 24       		.uleb128 0x24
+ 954 0015 00       		.byte	0
+ 955 0016 0B       		.uleb128 0xb
+ 956 0017 0B       		.uleb128 0xb
+ 957 0018 3E       		.uleb128 0x3e
+ 958 0019 0B       		.uleb128 0xb
+ 959 001a 03       		.uleb128 0x3
+ 960 001b 0E       		.uleb128 0xe
+ 961 001c 00       		.byte	0
+ 962 001d 00       		.byte	0
+ 963 001e 03       		.uleb128 0x3
+ 964 001f 24       		.uleb128 0x24
+ 965 0020 00       		.byte	0
+ 966 0021 0B       		.uleb128 0xb
+ 967 0022 0B       		.uleb128 0xb
+ 968 0023 3E       		.uleb128 0x3e
+ 969 0024 0B       		.uleb128 0xb
+ 970 0025 03       		.uleb128 0x3
+ 971 0026 08       		.uleb128 0x8
+ 972 0027 00       		.byte	0
+ 973 0028 00       		.byte	0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 21
+
+
+ 974 0029 04       		.uleb128 0x4
+ 975 002a 16       		.uleb128 0x16
+ 976 002b 00       		.byte	0
+ 977 002c 03       		.uleb128 0x3
+ 978 002d 0E       		.uleb128 0xe
+ 979 002e 3A       		.uleb128 0x3a
+ 980 002f 0B       		.uleb128 0xb
+ 981 0030 3B       		.uleb128 0x3b
+ 982 0031 05       		.uleb128 0x5
+ 983 0032 49       		.uleb128 0x49
+ 984 0033 13       		.uleb128 0x13
+ 985 0034 00       		.byte	0
+ 986 0035 00       		.byte	0
+ 987 0036 05       		.uleb128 0x5
+ 988 0037 35       		.uleb128 0x35
+ 989 0038 00       		.byte	0
+ 990 0039 49       		.uleb128 0x49
+ 991 003a 13       		.uleb128 0x13
+ 992 003b 00       		.byte	0
+ 993 003c 00       		.byte	0
+ 994 003d 06       		.uleb128 0x6
+ 995 003e 04       		.uleb128 0x4
+ 996 003f 01       		.byte	0x1
+ 997 0040 0B       		.uleb128 0xb
+ 998 0041 0B       		.uleb128 0xb
+ 999 0042 49       		.uleb128 0x49
+ 1000 0043 13       		.uleb128 0x13
+ 1001 0044 3A       		.uleb128 0x3a
+ 1002 0045 0B       		.uleb128 0xb
+ 1003 0046 3B       		.uleb128 0x3b
+ 1004 0047 05       		.uleb128 0x5
+ 1005 0048 01       		.uleb128 0x1
+ 1006 0049 13       		.uleb128 0x13
+ 1007 004a 00       		.byte	0
+ 1008 004b 00       		.byte	0
+ 1009 004c 07       		.uleb128 0x7
+ 1010 004d 28       		.uleb128 0x28
+ 1011 004e 00       		.byte	0
+ 1012 004f 03       		.uleb128 0x3
+ 1013 0050 0E       		.uleb128 0xe
+ 1014 0051 1C       		.uleb128 0x1c
+ 1015 0052 0B       		.uleb128 0xb
+ 1016 0053 00       		.byte	0
+ 1017 0054 00       		.byte	0
+ 1018 0055 08       		.uleb128 0x8
+ 1019 0056 28       		.uleb128 0x28
+ 1020 0057 00       		.byte	0
+ 1021 0058 03       		.uleb128 0x3
+ 1022 0059 0E       		.uleb128 0xe
+ 1023 005a 1C       		.uleb128 0x1c
+ 1024 005b 05       		.uleb128 0x5
+ 1025 005c 00       		.byte	0
+ 1026 005d 00       		.byte	0
+ 1027 005e 09       		.uleb128 0x9
+ 1028 005f 0F       		.uleb128 0xf
+ 1029 0060 00       		.byte	0
+ 1030 0061 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 22
+
+
+ 1031 0062 0B       		.uleb128 0xb
+ 1032 0063 49       		.uleb128 0x49
+ 1033 0064 13       		.uleb128 0x13
+ 1034 0065 00       		.byte	0
+ 1035 0066 00       		.byte	0
+ 1036 0067 0A       		.uleb128 0xa
+ 1037 0068 13       		.uleb128 0x13
+ 1038 0069 01       		.byte	0x1
+ 1039 006a 0B       		.uleb128 0xb
+ 1040 006b 0B       		.uleb128 0xb
+ 1041 006c 3A       		.uleb128 0x3a
+ 1042 006d 0B       		.uleb128 0xb
+ 1043 006e 3B       		.uleb128 0x3b
+ 1044 006f 05       		.uleb128 0x5
+ 1045 0070 01       		.uleb128 0x1
+ 1046 0071 13       		.uleb128 0x13
+ 1047 0072 00       		.byte	0
+ 1048 0073 00       		.byte	0
+ 1049 0074 0B       		.uleb128 0xb
+ 1050 0075 0D       		.uleb128 0xd
+ 1051 0076 00       		.byte	0
+ 1052 0077 03       		.uleb128 0x3
+ 1053 0078 0E       		.uleb128 0xe
+ 1054 0079 3A       		.uleb128 0x3a
+ 1055 007a 0B       		.uleb128 0xb
+ 1056 007b 3B       		.uleb128 0x3b
+ 1057 007c 05       		.uleb128 0x5
+ 1058 007d 49       		.uleb128 0x49
+ 1059 007e 13       		.uleb128 0x13
+ 1060 007f 38       		.uleb128 0x38
+ 1061 0080 0B       		.uleb128 0xb
+ 1062 0081 00       		.byte	0
+ 1063 0082 00       		.byte	0
+ 1064 0083 0C       		.uleb128 0xc
+ 1065 0084 0D       		.uleb128 0xd
+ 1066 0085 00       		.byte	0
+ 1067 0086 03       		.uleb128 0x3
+ 1068 0087 08       		.uleb128 0x8
+ 1069 0088 3A       		.uleb128 0x3a
+ 1070 0089 0B       		.uleb128 0xb
+ 1071 008a 3B       		.uleb128 0x3b
+ 1072 008b 05       		.uleb128 0x5
+ 1073 008c 49       		.uleb128 0x49
+ 1074 008d 13       		.uleb128 0x13
+ 1075 008e 38       		.uleb128 0x38
+ 1076 008f 0B       		.uleb128 0xb
+ 1077 0090 00       		.byte	0
+ 1078 0091 00       		.byte	0
+ 1079 0092 0D       		.uleb128 0xd
+ 1080 0093 16       		.uleb128 0x16
+ 1081 0094 00       		.byte	0
+ 1082 0095 03       		.uleb128 0x3
+ 1083 0096 0E       		.uleb128 0xe
+ 1084 0097 3A       		.uleb128 0x3a
+ 1085 0098 0B       		.uleb128 0xb
+ 1086 0099 3B       		.uleb128 0x3b
+ 1087 009a 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 23
+
+
+ 1088 009b 49       		.uleb128 0x49
+ 1089 009c 13       		.uleb128 0x13
+ 1090 009d 00       		.byte	0
+ 1091 009e 00       		.byte	0
+ 1092 009f 0E       		.uleb128 0xe
+ 1093 00a0 13       		.uleb128 0x13
+ 1094 00a1 01       		.byte	0x1
+ 1095 00a2 0B       		.uleb128 0xb
+ 1096 00a3 0B       		.uleb128 0xb
+ 1097 00a4 3A       		.uleb128 0x3a
+ 1098 00a5 0B       		.uleb128 0xb
+ 1099 00a6 3B       		.uleb128 0x3b
+ 1100 00a7 0B       		.uleb128 0xb
+ 1101 00a8 01       		.uleb128 0x1
+ 1102 00a9 13       		.uleb128 0x13
+ 1103 00aa 00       		.byte	0
+ 1104 00ab 00       		.byte	0
+ 1105 00ac 0F       		.uleb128 0xf
+ 1106 00ad 0D       		.uleb128 0xd
+ 1107 00ae 00       		.byte	0
+ 1108 00af 03       		.uleb128 0x3
+ 1109 00b0 0E       		.uleb128 0xe
+ 1110 00b1 3A       		.uleb128 0x3a
+ 1111 00b2 0B       		.uleb128 0xb
+ 1112 00b3 3B       		.uleb128 0x3b
+ 1113 00b4 0B       		.uleb128 0xb
+ 1114 00b5 49       		.uleb128 0x49
+ 1115 00b6 13       		.uleb128 0x13
+ 1116 00b7 38       		.uleb128 0x38
+ 1117 00b8 0B       		.uleb128 0xb
+ 1118 00b9 00       		.byte	0
+ 1119 00ba 00       		.byte	0
+ 1120 00bb 10       		.uleb128 0x10
+ 1121 00bc 2E       		.uleb128 0x2e
+ 1122 00bd 01       		.byte	0x1
+ 1123 00be 3F       		.uleb128 0x3f
+ 1124 00bf 19       		.uleb128 0x19
+ 1125 00c0 03       		.uleb128 0x3
+ 1126 00c1 0E       		.uleb128 0xe
+ 1127 00c2 3A       		.uleb128 0x3a
+ 1128 00c3 0B       		.uleb128 0xb
+ 1129 00c4 3B       		.uleb128 0x3b
+ 1130 00c5 0B       		.uleb128 0xb
+ 1131 00c6 27       		.uleb128 0x27
+ 1132 00c7 19       		.uleb128 0x19
+ 1133 00c8 11       		.uleb128 0x11
+ 1134 00c9 01       		.uleb128 0x1
+ 1135 00ca 12       		.uleb128 0x12
+ 1136 00cb 06       		.uleb128 0x6
+ 1137 00cc 40       		.uleb128 0x40
+ 1138 00cd 18       		.uleb128 0x18
+ 1139 00ce 9642     		.uleb128 0x2116
+ 1140 00d0 19       		.uleb128 0x19
+ 1141 00d1 01       		.uleb128 0x1
+ 1142 00d2 13       		.uleb128 0x13
+ 1143 00d3 00       		.byte	0
+ 1144 00d4 00       		.byte	0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 24
+
+
+ 1145 00d5 11       		.uleb128 0x11
+ 1146 00d6 05       		.uleb128 0x5
+ 1147 00d7 00       		.byte	0
+ 1148 00d8 03       		.uleb128 0x3
+ 1149 00d9 0E       		.uleb128 0xe
+ 1150 00da 3A       		.uleb128 0x3a
+ 1151 00db 0B       		.uleb128 0xb
+ 1152 00dc 3B       		.uleb128 0x3b
+ 1153 00dd 0B       		.uleb128 0xb
+ 1154 00de 49       		.uleb128 0x49
+ 1155 00df 13       		.uleb128 0x13
+ 1156 00e0 02       		.uleb128 0x2
+ 1157 00e1 18       		.uleb128 0x18
+ 1158 00e2 00       		.byte	0
+ 1159 00e3 00       		.byte	0
+ 1160 00e4 12       		.uleb128 0x12
+ 1161 00e5 34       		.uleb128 0x34
+ 1162 00e6 00       		.byte	0
+ 1163 00e7 03       		.uleb128 0x3
+ 1164 00e8 0E       		.uleb128 0xe
+ 1165 00e9 3A       		.uleb128 0x3a
+ 1166 00ea 0B       		.uleb128 0xb
+ 1167 00eb 3B       		.uleb128 0x3b
+ 1168 00ec 0B       		.uleb128 0xb
+ 1169 00ed 49       		.uleb128 0x49
+ 1170 00ee 13       		.uleb128 0x13
+ 1171 00ef 02       		.uleb128 0x2
+ 1172 00f0 18       		.uleb128 0x18
+ 1173 00f1 00       		.byte	0
+ 1174 00f2 00       		.byte	0
+ 1175 00f3 13       		.uleb128 0x13
+ 1176 00f4 01       		.uleb128 0x1
+ 1177 00f5 01       		.byte	0x1
+ 1178 00f6 49       		.uleb128 0x49
+ 1179 00f7 13       		.uleb128 0x13
+ 1180 00f8 01       		.uleb128 0x1
+ 1181 00f9 13       		.uleb128 0x13
+ 1182 00fa 00       		.byte	0
+ 1183 00fb 00       		.byte	0
+ 1184 00fc 14       		.uleb128 0x14
+ 1185 00fd 21       		.uleb128 0x21
+ 1186 00fe 00       		.byte	0
+ 1187 00ff 49       		.uleb128 0x49
+ 1188 0100 13       		.uleb128 0x13
+ 1189 0101 2F       		.uleb128 0x2f
+ 1190 0102 18       		.uleb128 0x18
+ 1191 0103 00       		.byte	0
+ 1192 0104 00       		.byte	0
+ 1193 0105 15       		.uleb128 0x15
+ 1194 0106 2E       		.uleb128 0x2e
+ 1195 0107 00       		.byte	0
+ 1196 0108 3F       		.uleb128 0x3f
+ 1197 0109 19       		.uleb128 0x19
+ 1198 010a 03       		.uleb128 0x3
+ 1199 010b 0E       		.uleb128 0xe
+ 1200 010c 3A       		.uleb128 0x3a
+ 1201 010d 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 25
+
+
+ 1202 010e 3B       		.uleb128 0x3b
+ 1203 010f 0B       		.uleb128 0xb
+ 1204 0110 27       		.uleb128 0x27
+ 1205 0111 19       		.uleb128 0x19
+ 1206 0112 11       		.uleb128 0x11
+ 1207 0113 01       		.uleb128 0x1
+ 1208 0114 12       		.uleb128 0x12
+ 1209 0115 06       		.uleb128 0x6
+ 1210 0116 40       		.uleb128 0x40
+ 1211 0117 18       		.uleb128 0x18
+ 1212 0118 9742     		.uleb128 0x2117
+ 1213 011a 19       		.uleb128 0x19
+ 1214 011b 00       		.byte	0
+ 1215 011c 00       		.byte	0
+ 1216 011d 16       		.uleb128 0x16
+ 1217 011e 34       		.uleb128 0x34
+ 1218 011f 00       		.byte	0
+ 1219 0120 03       		.uleb128 0x3
+ 1220 0121 0E       		.uleb128 0xe
+ 1221 0122 3A       		.uleb128 0x3a
+ 1222 0123 0B       		.uleb128 0xb
+ 1223 0124 3B       		.uleb128 0x3b
+ 1224 0125 05       		.uleb128 0x5
+ 1225 0126 49       		.uleb128 0x49
+ 1226 0127 13       		.uleb128 0x13
+ 1227 0128 3F       		.uleb128 0x3f
+ 1228 0129 19       		.uleb128 0x19
+ 1229 012a 3C       		.uleb128 0x3c
+ 1230 012b 19       		.uleb128 0x19
+ 1231 012c 00       		.byte	0
+ 1232 012d 00       		.byte	0
+ 1233 012e 17       		.uleb128 0x17
+ 1234 012f 34       		.uleb128 0x34
+ 1235 0130 00       		.byte	0
+ 1236 0131 03       		.uleb128 0x3
+ 1237 0132 0E       		.uleb128 0xe
+ 1238 0133 3A       		.uleb128 0x3a
+ 1239 0134 0B       		.uleb128 0xb
+ 1240 0135 3B       		.uleb128 0x3b
+ 1241 0136 0B       		.uleb128 0xb
+ 1242 0137 49       		.uleb128 0x49
+ 1243 0138 13       		.uleb128 0x13
+ 1244 0139 3F       		.uleb128 0x3f
+ 1245 013a 19       		.uleb128 0x19
+ 1246 013b 3C       		.uleb128 0x3c
+ 1247 013c 19       		.uleb128 0x19
+ 1248 013d 00       		.byte	0
+ 1249 013e 00       		.byte	0
+ 1250 013f 00       		.byte	0
+ 1251              		.section	.debug_aranges,"",%progbits
+ 1252 0000 34000000 		.4byte	0x34
+ 1253 0004 0200     		.2byte	0x2
+ 1254 0006 00000000 		.4byte	.Ldebug_info0
+ 1255 000a 04       		.byte	0x4
+ 1256 000b 00       		.byte	0
+ 1257 000c 0000     		.2byte	0
+ 1258 000e 0000     		.2byte	0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 26
+
+
+ 1259 0010 00000000 		.4byte	.LFB35
+ 1260 0014 30000000 		.4byte	.LFE35-.LFB35
+ 1261 0018 00000000 		.4byte	.LFB36
+ 1262 001c DC010000 		.4byte	.LFE36-.LFB36
+ 1263 0020 00000000 		.4byte	.LFB37
+ 1264 0024 1C000000 		.4byte	.LFE37-.LFB37
+ 1265 0028 00000000 		.4byte	.LFB38
+ 1266 002c 1C000000 		.4byte	.LFE38-.LFB38
+ 1267 0030 00000000 		.4byte	0
+ 1268 0034 00000000 		.4byte	0
+ 1269              		.section	.debug_ranges,"",%progbits
+ 1270              	.Ldebug_ranges0:
+ 1271 0000 00000000 		.4byte	.LFB35
+ 1272 0004 30000000 		.4byte	.LFE35
+ 1273 0008 00000000 		.4byte	.LFB36
+ 1274 000c DC010000 		.4byte	.LFE36
+ 1275 0010 00000000 		.4byte	.LFB37
+ 1276 0014 1C000000 		.4byte	.LFE37
+ 1277 0018 00000000 		.4byte	.LFB38
+ 1278 001c 1C000000 		.4byte	.LFE38
+ 1279 0020 00000000 		.4byte	0
+ 1280 0024 00000000 		.4byte	0
+ 1281              		.section	.debug_line,"",%progbits
+ 1282              	.Ldebug_line0:
+ 1283 0000 2D010000 		.section	.debug_str,"MS",%progbits,1
+ 1283      0200A400 
+ 1283      00000201 
+ 1283      FB0E0D00 
+ 1283      01010101 
+ 1284              	.LASF33:
+ 1285 0000 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_REGISTERED\000"
+ 1285      455F4552 
+ 1285      524F525F 
+ 1285      4C324341 
+ 1285      505F5053 
+ 1286              	.LASF32:
+ 1287 0025 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_ALREADY_REGISTERED\000"
+ 1287      455F4552 
+ 1287      524F525F 
+ 1287      4C324341 
+ 1287      505F5053 
+ 1288              	.LASF64:
+ 1289 004e 68616E64 		.ascii	"handleValPair\000"
+ 1289      6C655661 
+ 1289      6C506169 
+ 1289      7200
+ 1290              	.LASF35:
+ 1291 005c 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CHANNEL_NOT_FOUND\000"
+ 1291      455F4552 
+ 1291      524F525F 
+ 1291      4C324341 
+ 1291      505F4348 
+ 1292              	.LASF77:
+ 1293 0080 75617274 		.ascii	"uartTxData\000"
+ 1293      54784461 
+ 1293      746100
+ 1294              	.LASF91:
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 27
+
+
+ 1295 008b 433A5C55 		.ascii	"C:\\Users\\Daniela\\Downloads\\UART_to_BLE2\\UART_t"
+ 1295      73657273 
+ 1295      5C44616E 
+ 1295      69656C61 
+ 1295      5C446F77 
+ 1296 00b9 6F5F424C 		.ascii	"o_BLE\\UART_to_BLE_central\\UART_to_BLE_central.cyd"
+ 1296      455C5541 
+ 1296      52545F74 
+ 1296      6F5F424C 
+ 1296      455F6365 
+ 1297 00ea 736E00   		.ascii	"sn\000"
+ 1298              	.LASF2:
+ 1299 00ed 73686F72 		.ascii	"short int\000"
+ 1299      7420696E 
+ 1299      7400
+ 1300              	.LASF17:
+ 1301 00f7 73697A65 		.ascii	"sizetype\000"
+ 1301      74797065 
+ 1301      00
+ 1302              	.LASF63:
+ 1303 0100 636F6E6E 		.ascii	"connHandle\000"
+ 1303      48616E64 
+ 1303      6C6500
+ 1304              	.LASF18:
+ 1305 010b 4359424C 		.ascii	"CYBLE_ERROR_OK\000"
+ 1305      455F4552 
+ 1305      524F525F 
+ 1305      4F4B00
+ 1306              	.LASF44:
+ 1307 011a 4359424C 		.ascii	"CYBLE_ERROR_LL_SAME_TRANSACTION_COLLISION\000"
+ 1307      455F4552 
+ 1307      524F525F 
+ 1307      4C4C5F53 
+ 1307      414D455F 
+ 1308              	.LASF39:
+ 1309 0144 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE_NOT_PERMITED\000"
+ 1309      455F4552 
+ 1309      524F525F 
+ 1309      464C4153 
+ 1309      485F5752 
+ 1310              	.LASF41:
+ 1311 0169 4359424C 		.ascii	"CYBLE_ERROR_HARDWARE_FAILURE\000"
+ 1311      455F4552 
+ 1311      524F525F 
+ 1311      48415244 
+ 1311      57415245 
+ 1312              	.LASF78:
+ 1313 0186 75617274 		.ascii	"uartTxDataLength\000"
+ 1313      54784461 
+ 1313      74614C65 
+ 1313      6E677468 
+ 1313      00
+ 1314              	.LASF87:
+ 1315 0197 74784368 		.ascii	"txCharHandle\000"
+ 1315      61724861 
+ 1315      6E646C65 
+ 1315      00
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 28
+
+
+ 1316              	.LASF53:
+ 1317 01a4 4359424C 		.ascii	"CYBLE_GATT_DB_ATTR_HANDLE_T\000"
+ 1317      455F4741 
+ 1317      54545F44 
+ 1317      425F4154 
+ 1317      54525F48 
+ 1318              	.LASF79:
+ 1319 01c0 75617274 		.ascii	"uartIdleCount\000"
+ 1319      49646C65 
+ 1319      436F756E 
+ 1319      7400
+ 1320              	.LASF66:
+ 1321 01ce 4359424C 		.ascii	"CYBLE_STATE_STOPPED\000"
+ 1321      455F5354 
+ 1321      4154455F 
+ 1321      53544F50 
+ 1321      50454400 
+ 1322              	.LASF19:
+ 1323 01e2 4359424C 		.ascii	"CYBLE_ERROR_INVALID_PARAMETER\000"
+ 1323      455F4552 
+ 1323      524F525F 
+ 1323      494E5641 
+ 1323      4C49445F 
+ 1324              	.LASF23:
+ 1325 0200 4359424C 		.ascii	"CYBLE_ERROR_OOB_NOT_AVAILABLE\000"
+ 1325      455F4552 
+ 1325      524F525F 
+ 1325      4F4F425F 
+ 1325      4E4F545F 
+ 1326              	.LASF59:
+ 1327 021e 76616C75 		.ascii	"value\000"
+ 1327      6500
+ 1328              	.LASF68:
+ 1329 0224 4359424C 		.ascii	"CYBLE_STATE_CONNECTED\000"
+ 1329      455F5354 
+ 1329      4154455F 
+ 1329      434F4E4E 
+ 1329      45435445 
+ 1330              	.LASF86:
+ 1331 023a 6D747553 		.ascii	"mtuSize\000"
+ 1331      697A6500 
+ 1332              	.LASF10:
+ 1333 0242 75696E74 		.ascii	"uint16\000"
+ 1333      313600
+ 1334              	.LASF20:
+ 1335 0249 4359424C 		.ascii	"CYBLE_ERROR_INVALID_OPERATION\000"
+ 1335      455F4552 
+ 1335      524F525F 
+ 1335      494E5641 
+ 1335      4C49445F 
+ 1336              	.LASF76:
+ 1337 0267 696E6465 		.ascii	"index\000"
+ 1337      7800
+ 1338              	.LASF9:
+ 1339 026d 75696E74 		.ascii	"uint8\000"
+ 1339      3800
+ 1340              	.LASF52:
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 29
+
+
+ 1341 0273 4359424C 		.ascii	"CYBLE_API_RESULT_T\000"
+ 1341      455F4150 
+ 1341      495F5245 
+ 1341      53554C54 
+ 1341      5F5400
+ 1342              	.LASF85:
+ 1343 0286 6379426C 		.ascii	"cyBle_connHandle\000"
+ 1343      655F636F 
+ 1343      6E6E4861 
+ 1343      6E646C65 
+ 1343      00
+ 1344              	.LASF24:
+ 1345 0297 4359424C 		.ascii	"CYBLE_ERROR_NO_CONNECTION\000"
+ 1345      455F4552 
+ 1345      524F525F 
+ 1345      4E4F5F43 
+ 1345      4F4E4E45 
+ 1346              	.LASF54:
+ 1347 02b1 62644861 		.ascii	"bdHandle\000"
+ 1347      6E646C65 
+ 1347      00
+ 1348              	.LASF28:
+ 1349 02ba 4359424C 		.ascii	"CYBLE_ERROR_TX_POWER_READ\000"
+ 1349      455F4552 
+ 1349      524F525F 
+ 1349      54585F50 
+ 1349      4F574552 
+ 1350              	.LASF22:
+ 1351 02d4 4359424C 		.ascii	"CYBLE_ERROR_INSUFFICIENT_RESOURCES\000"
+ 1351      455F4552 
+ 1351      524F525F 
+ 1351      494E5355 
+ 1351      46464943 
+ 1352              	.LASF12:
+ 1353 02f7 666C6F61 		.ascii	"float\000"
+ 1353      7400
+ 1354              	.LASF70:
+ 1355 02fd 4359424C 		.ascii	"CYBLE_STATE_SCANNING\000"
+ 1355      455F5354 
+ 1355      4154455F 
+ 1355      5343414E 
+ 1355      4E494E47 
+ 1356              	.LASF6:
+ 1357 0312 6C6F6E67 		.ascii	"long long int\000"
+ 1357      206C6F6E 
+ 1357      6720696E 
+ 1357      7400
+ 1358              	.LASF29:
+ 1359 0320 4359424C 		.ascii	"CYBLE_ERROR_BT_ON_NOT_COMPLETED\000"
+ 1359      455F4552 
+ 1359      524F525F 
+ 1359      42545F4F 
+ 1359      4E5F4E4F 
+ 1360              	.LASF4:
+ 1361 0340 6C6F6E67 		.ascii	"long int\000"
+ 1361      20696E74 
+ 1361      00
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 30
+
+
+ 1362              	.LASF83:
+ 1363 0349 456E6162 		.ascii	"EnableUartRxInt\000"
+ 1363      6C655561 
+ 1363      72745278 
+ 1363      496E7400 
+ 1364              	.LASF26:
+ 1365 0359 4359424C 		.ascii	"CYBLE_ERROR_REPEATED_ATTEMPTS\000"
+ 1365      455F4552 
+ 1365      524F525F 
+ 1365      52455045 
+ 1365      41544544 
+ 1366              	.LASF62:
+ 1367 0377 4359424C 		.ascii	"CYBLE_GATTC_WRITE_CMD_REQ_T\000"
+ 1367      455F4741 
+ 1367      5454435F 
+ 1367      57524954 
+ 1367      455F434D 
+ 1368              	.LASF89:
+ 1369 0393 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1369      43313120 
+ 1369      352E342E 
+ 1369      31203230 
+ 1369      31363036 
+ 1370 03c6 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1370      20726576 
+ 1370      6973696F 
+ 1370      6E203233 
+ 1370      37373135 
+ 1371 03f9 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1371      66756E63 
+ 1371      74696F6E 
+ 1371      2D736563 
+ 1371      74696F6E 
+ 1372              	.LASF16:
+ 1373 0421 6C6F6E67 		.ascii	"long double\000"
+ 1373      20646F75 
+ 1373      626C6500 
+ 1374              	.LASF25:
+ 1375 042d 4359424C 		.ascii	"CYBLE_ERROR_NO_DEVICE_ENTITY\000"
+ 1375      455F4552 
+ 1375      524F525F 
+ 1375      4E4F5F44 
+ 1375      45564943 
+ 1376              	.LASF65:
+ 1377 044a 4359424C 		.ascii	"CYBLE_GATTC_HANDLE_VALUE_NTF_PARAM_T\000"
+ 1377      455F4741 
+ 1377      5454435F 
+ 1377      48414E44 
+ 1377      4C455F56 
+ 1378              	.LASF1:
+ 1379 046f 756E7369 		.ascii	"unsigned char\000"
+ 1379      676E6564 
+ 1379      20636861 
+ 1379      7200
+ 1380              	.LASF43:
+ 1381 047d 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE\000"
+ 1381      455F4552 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 31
+
+
+ 1381      524F525F 
+ 1381      464C4153 
+ 1381      485F5752 
+ 1382              	.LASF84:
+ 1383 0495 6379426C 		.ascii	"cyBle_state\000"
+ 1383      655F7374 
+ 1383      61746500 
+ 1384              	.LASF0:
+ 1385 04a1 7369676E 		.ascii	"signed char\000"
+ 1385      65642063 
+ 1385      68617200 
+ 1386              	.LASF7:
+ 1387 04ad 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1387      206C6F6E 
+ 1387      6720756E 
+ 1387      7369676E 
+ 1387      65642069 
+ 1388              	.LASF30:
+ 1389 04c4 4359424C 		.ascii	"CYBLE_ERROR_SEC_FAILED\000"
+ 1389      455F4552 
+ 1389      524F525F 
+ 1389      5345435F 
+ 1389      4641494C 
+ 1390              	.LASF27:
+ 1391 04db 4359424C 		.ascii	"CYBLE_ERROR_GAP_ROLE\000"
+ 1391      455F4552 
+ 1391      524F525F 
+ 1391      4741505F 
+ 1391      524F4C45 
+ 1392              	.LASF8:
+ 1393 04f0 756E7369 		.ascii	"unsigned int\000"
+ 1393      676E6564 
+ 1393      20696E74 
+ 1393      00
+ 1394              	.LASF31:
+ 1395 04fd 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_WRONG_ENCODING\000"
+ 1395      455F4552 
+ 1395      524F525F 
+ 1395      4C324341 
+ 1395      505F5053 
+ 1396              	.LASF72:
+ 1397 0522 4359424C 		.ascii	"CYBLE_STATE_DISCONNECTED\000"
+ 1397      455F5354 
+ 1397      4154455F 
+ 1397      44495343 
+ 1397      4F4E4E45 
+ 1398              	.LASF73:
+ 1399 053b 4359424C 		.ascii	"CYBLE_STATE_T\000"
+ 1399      455F5354 
+ 1399      4154455F 
+ 1399      5400
+ 1400              	.LASF15:
+ 1401 0549 72656733 		.ascii	"reg32\000"
+ 1401      3200
+ 1402              	.LASF49:
+ 1403 054f 4359424C 		.ascii	"CYBLE_ERROR_CHAR_IS_NOT_DISCOVERED\000"
+ 1403      455F4552 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 32
+
+
+ 1403      524F525F 
+ 1403      43484152 
+ 1403      5F49535F 
+ 1404              	.LASF3:
+ 1405 0572 73686F72 		.ascii	"short unsigned int\000"
+ 1405      7420756E 
+ 1405      7369676E 
+ 1405      65642069 
+ 1405      6E7400
+ 1406              	.LASF88:
+ 1407 0585 72784368 		.ascii	"rxCharHandle\000"
+ 1407      61724861 
+ 1407      6E646C65 
+ 1407      00
+ 1408              	.LASF14:
+ 1409 0592 63686172 		.ascii	"char\000"
+ 1409      00
+ 1410              	.LASF92:
+ 1411 0597 75617274 		.ascii	"uartRxDataNotification\000"
+ 1411      52784461 
+ 1411      74614E6F 
+ 1411      74696669 
+ 1411      63617469 
+ 1412              	.LASF51:
+ 1413 05ae 4359424C 		.ascii	"CYBLE_ERROR_STACK_BUSY\000"
+ 1413      455F4552 
+ 1413      524F525F 
+ 1413      53544143 
+ 1413      4B5F4255 
+ 1414              	.LASF58:
+ 1415 05c5 4359424C 		.ascii	"CYBLE_GATT_VALUE_T\000"
+ 1415      455F4741 
+ 1415      54545F56 
+ 1415      414C5545 
+ 1415      5F5400
+ 1416              	.LASF45:
+ 1417 05d8 4359424C 		.ascii	"CYBLE_ERROR_CONTROLLER_BUSY\000"
+ 1417      455F4552 
+ 1417      524F525F 
+ 1417      434F4E54 
+ 1417      524F4C4C 
+ 1418              	.LASF67:
+ 1419 05f4 4359424C 		.ascii	"CYBLE_STATE_INITIALIZING\000"
+ 1419      455F5354 
+ 1419      4154455F 
+ 1419      494E4954 
+ 1419      49414C49 
+ 1420              	.LASF90:
+ 1421 060d 6170705F 		.ascii	"app_UART.c\000"
+ 1421      55415254 
+ 1421      2E6300
+ 1422              	.LASF21:
+ 1423 0618 4359424C 		.ascii	"CYBLE_ERROR_MEMORY_ALLOCATION_FAILED\000"
+ 1423      455F4552 
+ 1423      524F525F 
+ 1423      4D454D4F 
+ 1423      52595F41 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 33
+
+
+ 1424              	.LASF74:
+ 1425 063d 48616E64 		.ascii	"HandleUartRxTraffic\000"
+ 1425      6C655561 
+ 1425      72745278 
+ 1425      54726166 
+ 1425      66696300 
+ 1426              	.LASF42:
+ 1427 0651 4359424C 		.ascii	"CYBLE_ERROR_UNSUPPORTED_FEATURE_OR_PARAMETER_VALUE\000"
+ 1427      455F4552 
+ 1427      524F525F 
+ 1427      554E5355 
+ 1427      50504F52 
+ 1428              	.LASF69:
+ 1429 0684 4359424C 		.ascii	"CYBLE_STATE_ADVERTISING\000"
+ 1429      455F5354 
+ 1429      4154455F 
+ 1429      41445645 
+ 1429      52544953 
+ 1430              	.LASF11:
+ 1431 069c 75696E74 		.ascii	"uint32\000"
+ 1431      333200
+ 1432              	.LASF5:
+ 1433 06a3 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1433      20756E73 
+ 1433      69676E65 
+ 1433      6420696E 
+ 1433      7400
+ 1434              	.LASF60:
+ 1435 06b5 61747472 		.ascii	"attrHandle\000"
+ 1435      48616E64 
+ 1435      6C6500
+ 1436              	.LASF13:
+ 1437 06c0 646F7562 		.ascii	"double\000"
+ 1437      6C6500
+ 1438              	.LASF75:
+ 1439 06c7 48616E64 		.ascii	"HandleUartTxTraffic\000"
+ 1439      6C655561 
+ 1439      72745478 
+ 1439      54726166 
+ 1439      66696300 
+ 1440              	.LASF56:
+ 1441 06db 4359424C 		.ascii	"CYBLE_CONN_HANDLE_T\000"
+ 1441      455F434F 
+ 1441      4E4E5F48 
+ 1441      414E444C 
+ 1441      455F5400 
+ 1442              	.LASF61:
+ 1443 06ef 4359424C 		.ascii	"CYBLE_GATT_HANDLE_VALUE_PAIR_T\000"
+ 1443      455F4741 
+ 1443      54545F48 
+ 1443      414E444C 
+ 1443      455F5641 
+ 1444              	.LASF82:
+ 1445 070e 44697361 		.ascii	"DisableUartRxInt\000"
+ 1445      626C6555 
+ 1445      61727452 
+ 1445      78496E74 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 34
+
+
+ 1445      00
+ 1446              	.LASF36:
+ 1447 071f 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_IN_RANGE\000"
+ 1447      455F4552 
+ 1447      524F525F 
+ 1447      4C324341 
+ 1447      505F5053 
+ 1448              	.LASF47:
+ 1449 0742 4359424C 		.ascii	"CYBLE_ERROR_NTF_DISABLED\000"
+ 1449      455F4552 
+ 1449      524F525F 
+ 1449      4E54465F 
+ 1449      44495341 
+ 1450              	.LASF38:
+ 1451 075b 4359424C 		.ascii	"CYBLE_ERROR_DEVICE_ALREADY_EXISTS\000"
+ 1451      455F4552 
+ 1451      524F525F 
+ 1451      44455649 
+ 1451      43455F41 
+ 1452              	.LASF40:
+ 1453 077d 4359424C 		.ascii	"CYBLE_ERROR_MIC_AUTH_FAILED\000"
+ 1453      455F4552 
+ 1453      524F525F 
+ 1453      4D49435F 
+ 1453      41555448 
+ 1454              	.LASF46:
+ 1455 0799 4359424C 		.ascii	"CYBLE_ERROR_MAX\000"
+ 1455      455F4552 
+ 1455      524F525F 
+ 1455      4D415800 
+ 1456              	.LASF50:
+ 1457 07a9 4359424C 		.ascii	"CYBLE_ERROR_INVALID_STATE\000"
+ 1457      455F4552 
+ 1457      524F525F 
+ 1457      494E5641 
+ 1457      4C49445F 
+ 1458              	.LASF57:
+ 1459 07c3 61637475 		.ascii	"actualLen\000"
+ 1459      616C4C65 
+ 1459      6E00
+ 1460              	.LASF37:
+ 1461 07cd 4359424C 		.ascii	"CYBLE_ERROR_GATT_DB_INVALID_ATTR_HANDLE\000"
+ 1461      455F4552 
+ 1461      524F525F 
+ 1461      47415454 
+ 1461      5F44425F 
+ 1462              	.LASF34:
+ 1463 07f5 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CONNECTION_ENTITY_NOT_FOUND\000"
+ 1463      455F4552 
+ 1463      524F525F 
+ 1463      4C324341 
+ 1463      505F434F 
+ 1464              	.LASF48:
+ 1465 0823 4359424C 		.ascii	"CYBLE_ERROR_IND_DISABLED\000"
+ 1465      455F4552 
+ 1465      524F525F 
+ 1465      494E445F 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccTalCde.s 			page 35
+
+
+ 1465      44495341 
+ 1466              	.LASF81:
+ 1467 083c 75617274 		.ascii	"uartTxDataWriteCmd\000"
+ 1467      54784461 
+ 1467      74615772 
+ 1467      69746543 
+ 1467      6D6400
+ 1468              	.LASF71:
+ 1469 084f 4359424C 		.ascii	"CYBLE_STATE_CONNECTING\000"
+ 1469      455F5354 
+ 1469      4154455F 
+ 1469      434F4E4E 
+ 1469      45435449 
+ 1470              	.LASF80:
+ 1471 0866 626C6541 		.ascii	"bleApiResult\000"
+ 1471      70695265 
+ 1471      73756C74 
+ 1471      00
+ 1472              	.LASF55:
+ 1473 0873 61747449 		.ascii	"attId\000"
+ 1473      6400
+ 1474              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

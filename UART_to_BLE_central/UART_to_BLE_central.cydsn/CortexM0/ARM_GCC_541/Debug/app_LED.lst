@@ -1,0 +1,764 @@
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccP47YYD.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"app_LED.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.HandleLeds,"ax",%progbits
+  20              		.align	2
+  21              		.global	HandleLeds
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	HandleLeds, %function
+  25              	HandleLeds:
+  26              	.LFB35:
+  27              		.file 1 "app_LED.c"
+   1:app_LED.c     **** /*******************************************************************************
+   2:app_LED.c     **** * File Name: app_LED.c
+   3:app_LED.c     **** *
+   4:app_LED.c     **** * Description:
+   5:app_LED.c     **** *  Common BLE application code for client devices.
+   6:app_LED.c     **** *
+   7:app_LED.c     **** *******************************************************************************
+   8:app_LED.c     **** * Copyright 2015, Cypress Semiconductor Corporation.  All rights reserved.
+   9:app_LED.c     **** * You may use this file only in accordance with the license, terms, conditions,
+  10:app_LED.c     **** * disclaimers, and limitations in the end user license agreement accompanying
+  11:app_LED.c     **** * the software package with which this file was provided.
+  12:app_LED.c     **** *******************************************************************************/
+  13:app_LED.c     **** 
+  14:app_LED.c     **** #include "app_LED.h"
+  15:app_LED.c     **** 
+  16:app_LED.c     **** /*******************************************************************************
+  17:app_LED.c     **** * Function Name: HandleLeds
+  18:app_LED.c     **** ********************************************************************************
+  19:app_LED.c     **** *
+  20:app_LED.c     **** * Summary:
+  21:app_LED.c     **** *  This function handles the toggling of Scan and Connection LED. 
+  22:app_LED.c     **** *
+  23:app_LED.c     **** * Parameters:
+  24:app_LED.c     **** *  None.
+  25:app_LED.c     **** *
+  26:app_LED.c     **** * Return:
+  27:app_LED.c     **** *   None.
+  28:app_LED.c     **** *
+  29:app_LED.c     **** *******************************************************************************/
+  30:app_LED.c     **** void HandleLeds(void)
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccP47YYD.s 			page 2
+
+
+  31:app_LED.c     **** {
+  28              		.loc 1 31 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
+  32:app_LED.c     ****     static uint8        ledState        = LED_OFF;
+  33:app_LED.c     ****     static uint32       scanLedTimer    = SCAN_LED_TIMEOUT;   
+  34:app_LED.c     ****     static uint32       connLedTimer    = CONN_LED_TIMEOUT;   
+  35:app_LED.c     ****     
+  36:app_LED.c     ****     switch (cyBle_state)
+  38              		.loc 1 36 0
+  39 0004 224B     		ldr	r3, .L9
+  40 0006 1B78     		ldrb	r3, [r3]
+  41 0008 022B     		cmp	r3, #2
+  42 000a 1ED0     		beq	.L3
+  43 000c 042B     		cmp	r3, #4
+  44 000e 00D0     		beq	.L4
+  37:app_LED.c     ****     {
+  38:app_LED.c     ****         case CYBLE_STATE_SCANNING:
+  39:app_LED.c     ****             
+  40:app_LED.c     ****             Conn_LED_Write(LED_OFF);
+  41:app_LED.c     ****             
+  42:app_LED.c     ****             if(--scanLedTimer == 0u) 
+  43:app_LED.c     ****             {
+  44:app_LED.c     ****                 scanLedTimer = SCAN_LED_TIMEOUT;
+  45:app_LED.c     ****                 ledState ^= LED_OFF;
+  46:app_LED.c     ****                 
+  47:app_LED.c     ****                 Scan_LED_Write(ledState);
+  48:app_LED.c     ****             }
+  49:app_LED.c     ****             
+  50:app_LED.c     ****             break;
+  51:app_LED.c     ****             
+  52:app_LED.c     ****         case CYBLE_STATE_CONNECTED: 
+  53:app_LED.c     ****             
+  54:app_LED.c     ****             Scan_LED_Write(LED_OFF);
+  55:app_LED.c     ****             
+  56:app_LED.c     ****             if(--connLedTimer == 0u) 
+  57:app_LED.c     ****             {
+  58:app_LED.c     ****                 connLedTimer = CONN_LED_TIMEOUT;
+  59:app_LED.c     ****                 ledState    ^= LED_OFF;
+  60:app_LED.c     ****                 
+  61:app_LED.c     ****                 Conn_LED_Write(ledState);
+  62:app_LED.c     ****             }
+  63:app_LED.c     ****             
+  64:app_LED.c     ****         default:
+  65:app_LED.c     ****             break;
+  45              		.loc 1 65 0
+  46 0010 39E0     		b	.L8
+  47              	.L4:
+  40:app_LED.c     ****             
+  48              		.loc 1 40 0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccP47YYD.s 			page 3
+
+
+  49 0012 0120     		movs	r0, #1
+  50 0014 FFF7FEFF 		bl	Conn_LED_Write
+  42:app_LED.c     ****             {
+  51              		.loc 1 42 0
+  52 0018 1E4B     		ldr	r3, .L9+4
+  53 001a 1B68     		ldr	r3, [r3]
+  54 001c 5A1E     		subs	r2, r3, #1
+  55 001e 1D4B     		ldr	r3, .L9+4
+  56 0020 1A60     		str	r2, [r3]
+  57 0022 1C4B     		ldr	r3, .L9+4
+  58 0024 1B68     		ldr	r3, [r3]
+  59 0026 002B     		cmp	r3, #0
+  60 0028 2BD1     		bne	.L7
+  44:app_LED.c     ****                 ledState ^= LED_OFF;
+  61              		.loc 1 44 0
+  62 002a 1A4B     		ldr	r3, .L9+4
+  63 002c 1A4A     		ldr	r2, .L9+8
+  64 002e 1A60     		str	r2, [r3]
+  45:app_LED.c     ****                 
+  65              		.loc 1 45 0
+  66 0030 1A4B     		ldr	r3, .L9+12
+  67 0032 1B78     		ldrb	r3, [r3]
+  68 0034 0122     		movs	r2, #1
+  69 0036 5340     		eors	r3, r2
+  70 0038 DAB2     		uxtb	r2, r3
+  71 003a 184B     		ldr	r3, .L9+12
+  72 003c 1A70     		strb	r2, [r3]
+  47:app_LED.c     ****             }
+  73              		.loc 1 47 0
+  74 003e 174B     		ldr	r3, .L9+12
+  75 0040 1B78     		ldrb	r3, [r3]
+  76 0042 1800     		movs	r0, r3
+  77 0044 FFF7FEFF 		bl	Scan_LED_Write
+  50:app_LED.c     ****             
+  78              		.loc 1 50 0
+  79 0048 1BE0     		b	.L7
+  80              	.L3:
+  54:app_LED.c     ****             
+  81              		.loc 1 54 0
+  82 004a 0120     		movs	r0, #1
+  83 004c FFF7FEFF 		bl	Scan_LED_Write
+  56:app_LED.c     ****             {
+  84              		.loc 1 56 0
+  85 0050 134B     		ldr	r3, .L9+16
+  86 0052 1B68     		ldr	r3, [r3]
+  87 0054 5A1E     		subs	r2, r3, #1
+  88 0056 124B     		ldr	r3, .L9+16
+  89 0058 1A60     		str	r2, [r3]
+  90 005a 114B     		ldr	r3, .L9+16
+  91 005c 1B68     		ldr	r3, [r3]
+  92 005e 002B     		cmp	r3, #0
+  93 0060 11D1     		bne	.L8
+  58:app_LED.c     ****                 ledState    ^= LED_OFF;
+  94              		.loc 1 58 0
+  95 0062 0F4B     		ldr	r3, .L9+16
+  96 0064 0F4A     		ldr	r2, .L9+20
+  97 0066 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccP47YYD.s 			page 4
+
+
+  59:app_LED.c     ****                 
+  98              		.loc 1 59 0
+  99 0068 0C4B     		ldr	r3, .L9+12
+ 100 006a 1B78     		ldrb	r3, [r3]
+ 101 006c 0122     		movs	r2, #1
+ 102 006e 5340     		eors	r3, r2
+ 103 0070 DAB2     		uxtb	r2, r3
+ 104 0072 0A4B     		ldr	r3, .L9+12
+ 105 0074 1A70     		strb	r2, [r3]
+  61:app_LED.c     ****             }
+ 106              		.loc 1 61 0
+ 107 0076 094B     		ldr	r3, .L9+12
+ 108 0078 1B78     		ldrb	r3, [r3]
+ 109 007a 1800     		movs	r0, r3
+ 110 007c FFF7FEFF 		bl	Conn_LED_Write
+ 111              		.loc 1 65 0
+ 112 0080 01E0     		b	.L8
+ 113              	.L7:
+  50:app_LED.c     ****             
+ 114              		.loc 1 50 0
+ 115 0082 C046     		nop
+ 116 0084 00E0     		b	.L6
+ 117              	.L8:
+ 118              		.loc 1 65 0
+ 119 0086 C046     		nop
+ 120              	.L6:
+  66:app_LED.c     ****     }
+  67:app_LED.c     **** }
+ 121              		.loc 1 67 0
+ 122 0088 C046     		nop
+ 123 008a BD46     		mov	sp, r7
+ 124              		@ sp needed
+ 125 008c 80BD     		pop	{r7, pc}
+ 126              	.L10:
+ 127 008e C046     		.align	2
+ 128              	.L9:
+ 129 0090 00000000 		.word	cyBle_state
+ 130 0094 00000000 		.word	scanLedTimer.7309
+ 131 0098 30750000 		.word	30000
+ 132 009c 04000000 		.word	ledState.7308
+ 133 00a0 08000000 		.word	connLedTimer.7310
+ 134 00a4 50C30000 		.word	50000
+ 135              		.cfi_endproc
+ 136              	.LFE35:
+ 137              		.size	HandleLeds, .-HandleLeds
+ 138              		.data
+ 139              		.align	2
+ 140              		.type	scanLedTimer.7309, %object
+ 141              		.size	scanLedTimer.7309, 4
+ 142              	scanLedTimer.7309:
+ 143 0000 30750000 		.word	30000
+ 144              		.type	ledState.7308, %object
+ 145              		.size	ledState.7308, 1
+ 146              	ledState.7308:
+ 147 0004 01       		.byte	1
+ 148 0005 000000   		.align	2
+ 149              		.type	connLedTimer.7310, %object
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccP47YYD.s 			page 5
+
+
+ 150              		.size	connLedTimer.7310, 4
+ 151              	connLedTimer.7310:
+ 152 0008 50C30000 		.word	50000
+ 153              		.text
+ 154              	.Letext0:
+ 155              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 156              		.file 3 "Generated_Source\\PSoC4/BLE_eventHandler.h"
+ 157              		.section	.debug_info,"",%progbits
+ 158              	.Ldebug_info0:
+ 159 0000 3C010000 		.4byte	0x13c
+ 160 0004 0400     		.2byte	0x4
+ 161 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 162 000a 04       		.byte	0x4
+ 163 000b 01       		.uleb128 0x1
+ 164 000c 85000000 		.4byte	.LASF27
+ 165 0010 0C       		.byte	0xc
+ 166 0011 40020000 		.4byte	.LASF28
+ 167 0015 84010000 		.4byte	.LASF29
+ 168 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 169 001d 00000000 		.4byte	0
+ 170 0021 00000000 		.4byte	.Ldebug_line0
+ 171 0025 02       		.uleb128 0x2
+ 172 0026 01       		.byte	0x1
+ 173 0027 06       		.byte	0x6
+ 174 0028 75020000 		.4byte	.LASF0
+ 175 002c 02       		.uleb128 0x2
+ 176 002d 01       		.byte	0x1
+ 177 002e 08       		.byte	0x8
+ 178 002f 5F000000 		.4byte	.LASF1
+ 179 0033 02       		.uleb128 0x2
+ 180 0034 02       		.byte	0x2
+ 181 0035 05       		.byte	0x5
+ 182 0036 3F010000 		.4byte	.LASF2
+ 183 003a 02       		.uleb128 0x2
+ 184 003b 02       		.byte	0x2
+ 185 003c 07       		.byte	0x7
+ 186 003d 2F000000 		.4byte	.LASF3
+ 187 0041 02       		.uleb128 0x2
+ 188 0042 04       		.byte	0x4
+ 189 0043 05       		.byte	0x5
+ 190 0044 60020000 		.4byte	.LASF4
+ 191 0048 02       		.uleb128 0x2
+ 192 0049 04       		.byte	0x4
+ 193 004a 07       		.byte	0x7
+ 194 004b 6D000000 		.4byte	.LASF5
+ 195 004f 02       		.uleb128 0x2
+ 196 0050 08       		.byte	0x8
+ 197 0051 05       		.byte	0x5
+ 198 0052 1B020000 		.4byte	.LASF6
+ 199 0056 02       		.uleb128 0x2
+ 200 0057 08       		.byte	0x8
+ 201 0058 07       		.byte	0x7
+ 202 0059 48000000 		.4byte	.LASF7
+ 203 005d 03       		.uleb128 0x3
+ 204 005e 04       		.byte	0x4
+ 205 005f 05       		.byte	0x5
+ 206 0060 696E7400 		.ascii	"int\000"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccP47YYD.s 			page 6
+
+
+ 207 0064 02       		.uleb128 0x2
+ 208 0065 04       		.byte	0x4
+ 209 0066 07       		.byte	0x7
+ 210 0067 50010000 		.4byte	.LASF8
+ 211 006b 04       		.uleb128 0x4
+ 212 006c 7F000000 		.4byte	.LASF9
+ 213 0070 02       		.byte	0x2
+ 214 0071 D201     		.2byte	0x1d2
+ 215 0073 2C000000 		.4byte	0x2c
+ 216 0077 04       		.uleb128 0x4
+ 217 0078 49010000 		.4byte	.LASF10
+ 218 007c 02       		.byte	0x2
+ 219 007d D401     		.2byte	0x1d4
+ 220 007f 48000000 		.4byte	0x48
+ 221 0083 02       		.uleb128 0x2
+ 222 0084 04       		.byte	0x4
+ 223 0085 04       		.byte	0x4
+ 224 0086 42000000 		.4byte	.LASF11
+ 225 008a 02       		.uleb128 0x2
+ 226 008b 08       		.byte	0x8
+ 227 008c 04       		.byte	0x4
+ 228 008d 38010000 		.4byte	.LASF12
+ 229 0091 02       		.uleb128 0x2
+ 230 0092 01       		.byte	0x1
+ 231 0093 08       		.byte	0x8
+ 232 0094 5D010000 		.4byte	.LASF13
+ 233 0098 02       		.uleb128 0x2
+ 234 0099 08       		.byte	0x8
+ 235 009a 04       		.byte	0x4
+ 236 009b 69020000 		.4byte	.LASF14
+ 237 009f 02       		.uleb128 0x2
+ 238 00a0 04       		.byte	0x4
+ 239 00a1 07       		.byte	0x7
+ 240 00a2 FD010000 		.4byte	.LASF15
+ 241 00a6 05       		.uleb128 0x5
+ 242 00a7 01       		.byte	0x1
+ 243 00a8 2C000000 		.4byte	0x2c
+ 244 00ac 03       		.byte	0x3
+ 245 00ad 5A08     		.2byte	0x85a
+ 246 00af DE000000 		.4byte	0xde
+ 247 00b3 06       		.uleb128 0x6
+ 248 00b4 70010000 		.4byte	.LASF16
+ 249 00b8 00       		.byte	0
+ 250 00b9 06       		.uleb128 0x6
+ 251 00ba 81020000 		.4byte	.LASF17
+ 252 00be 01       		.byte	0x1
+ 253 00bf 06       		.uleb128 0x6
+ 254 00c0 4A020000 		.4byte	.LASF18
+ 255 00c4 02       		.byte	0x2
+ 256 00c5 06       		.uleb128 0x6
+ 257 00c6 13010000 		.4byte	.LASF19
+ 258 00ca 03       		.byte	0x3
+ 259 00cb 06       		.uleb128 0x6
+ 260 00cc 06020000 		.4byte	.LASF20
+ 261 00d0 04       		.byte	0x4
+ 262 00d1 06       		.uleb128 0x6
+ 263 00d2 29020000 		.4byte	.LASF21
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccP47YYD.s 			page 7
+
+
+ 264 00d6 05       		.byte	0x5
+ 265 00d7 06       		.uleb128 0x6
+ 266 00d8 0D000000 		.4byte	.LASF22
+ 267 00dc 06       		.byte	0x6
+ 268 00dd 00       		.byte	0
+ 269 00de 04       		.uleb128 0x4
+ 270 00df 62010000 		.4byte	.LASF23
+ 271 00e3 03       		.byte	0x3
+ 272 00e4 6808     		.2byte	0x868
+ 273 00e6 A6000000 		.4byte	0xa6
+ 274 00ea 07       		.uleb128 0x7
+ 275 00eb F2010000 		.4byte	.LASF30
+ 276 00ef 01       		.byte	0x1
+ 277 00f0 1E       		.byte	0x1e
+ 278 00f1 00000000 		.4byte	.LFB35
+ 279 00f5 A8000000 		.4byte	.LFE35-.LFB35
+ 280 00f9 01       		.uleb128 0x1
+ 281 00fa 9C       		.byte	0x9c
+ 282 00fb 33010000 		.4byte	0x133
+ 283 00ff 08       		.uleb128 0x8
+ 284 0100 26000000 		.4byte	.LASF24
+ 285 0104 01       		.byte	0x1
+ 286 0105 20       		.byte	0x20
+ 287 0106 6B000000 		.4byte	0x6b
+ 288 010a 05       		.uleb128 0x5
+ 289 010b 03       		.byte	0x3
+ 290 010c 04000000 		.4byte	ledState.7308
+ 291 0110 08       		.uleb128 0x8
+ 292 0111 2B010000 		.4byte	.LASF25
+ 293 0115 01       		.byte	0x1
+ 294 0116 21       		.byte	0x21
+ 295 0117 77000000 		.4byte	0x77
+ 296 011b 05       		.uleb128 0x5
+ 297 011c 03       		.byte	0x3
+ 298 011d 00000000 		.4byte	scanLedTimer.7309
+ 299 0121 08       		.uleb128 0x8
+ 300 0122 00000000 		.4byte	.LASF26
+ 301 0126 01       		.byte	0x1
+ 302 0127 22       		.byte	0x22
+ 303 0128 77000000 		.4byte	0x77
+ 304 012c 05       		.uleb128 0x5
+ 305 012d 03       		.byte	0x3
+ 306 012e 08000000 		.4byte	connLedTimer.7310
+ 307 0132 00       		.byte	0
+ 308 0133 09       		.uleb128 0x9
+ 309 0134 E6010000 		.4byte	.LASF31
+ 310 0138 03       		.byte	0x3
+ 311 0139 B30A     		.2byte	0xab3
+ 312 013b DE000000 		.4byte	0xde
+ 313 013f 00       		.byte	0
+ 314              		.section	.debug_abbrev,"",%progbits
+ 315              	.Ldebug_abbrev0:
+ 316 0000 01       		.uleb128 0x1
+ 317 0001 11       		.uleb128 0x11
+ 318 0002 01       		.byte	0x1
+ 319 0003 25       		.uleb128 0x25
+ 320 0004 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccP47YYD.s 			page 8
+
+
+ 321 0005 13       		.uleb128 0x13
+ 322 0006 0B       		.uleb128 0xb
+ 323 0007 03       		.uleb128 0x3
+ 324 0008 0E       		.uleb128 0xe
+ 325 0009 1B       		.uleb128 0x1b
+ 326 000a 0E       		.uleb128 0xe
+ 327 000b 55       		.uleb128 0x55
+ 328 000c 17       		.uleb128 0x17
+ 329 000d 11       		.uleb128 0x11
+ 330 000e 01       		.uleb128 0x1
+ 331 000f 10       		.uleb128 0x10
+ 332 0010 17       		.uleb128 0x17
+ 333 0011 00       		.byte	0
+ 334 0012 00       		.byte	0
+ 335 0013 02       		.uleb128 0x2
+ 336 0014 24       		.uleb128 0x24
+ 337 0015 00       		.byte	0
+ 338 0016 0B       		.uleb128 0xb
+ 339 0017 0B       		.uleb128 0xb
+ 340 0018 3E       		.uleb128 0x3e
+ 341 0019 0B       		.uleb128 0xb
+ 342 001a 03       		.uleb128 0x3
+ 343 001b 0E       		.uleb128 0xe
+ 344 001c 00       		.byte	0
+ 345 001d 00       		.byte	0
+ 346 001e 03       		.uleb128 0x3
+ 347 001f 24       		.uleb128 0x24
+ 348 0020 00       		.byte	0
+ 349 0021 0B       		.uleb128 0xb
+ 350 0022 0B       		.uleb128 0xb
+ 351 0023 3E       		.uleb128 0x3e
+ 352 0024 0B       		.uleb128 0xb
+ 353 0025 03       		.uleb128 0x3
+ 354 0026 08       		.uleb128 0x8
+ 355 0027 00       		.byte	0
+ 356 0028 00       		.byte	0
+ 357 0029 04       		.uleb128 0x4
+ 358 002a 16       		.uleb128 0x16
+ 359 002b 00       		.byte	0
+ 360 002c 03       		.uleb128 0x3
+ 361 002d 0E       		.uleb128 0xe
+ 362 002e 3A       		.uleb128 0x3a
+ 363 002f 0B       		.uleb128 0xb
+ 364 0030 3B       		.uleb128 0x3b
+ 365 0031 05       		.uleb128 0x5
+ 366 0032 49       		.uleb128 0x49
+ 367 0033 13       		.uleb128 0x13
+ 368 0034 00       		.byte	0
+ 369 0035 00       		.byte	0
+ 370 0036 05       		.uleb128 0x5
+ 371 0037 04       		.uleb128 0x4
+ 372 0038 01       		.byte	0x1
+ 373 0039 0B       		.uleb128 0xb
+ 374 003a 0B       		.uleb128 0xb
+ 375 003b 49       		.uleb128 0x49
+ 376 003c 13       		.uleb128 0x13
+ 377 003d 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccP47YYD.s 			page 9
+
+
+ 378 003e 0B       		.uleb128 0xb
+ 379 003f 3B       		.uleb128 0x3b
+ 380 0040 05       		.uleb128 0x5
+ 381 0041 01       		.uleb128 0x1
+ 382 0042 13       		.uleb128 0x13
+ 383 0043 00       		.byte	0
+ 384 0044 00       		.byte	0
+ 385 0045 06       		.uleb128 0x6
+ 386 0046 28       		.uleb128 0x28
+ 387 0047 00       		.byte	0
+ 388 0048 03       		.uleb128 0x3
+ 389 0049 0E       		.uleb128 0xe
+ 390 004a 1C       		.uleb128 0x1c
+ 391 004b 0B       		.uleb128 0xb
+ 392 004c 00       		.byte	0
+ 393 004d 00       		.byte	0
+ 394 004e 07       		.uleb128 0x7
+ 395 004f 2E       		.uleb128 0x2e
+ 396 0050 01       		.byte	0x1
+ 397 0051 3F       		.uleb128 0x3f
+ 398 0052 19       		.uleb128 0x19
+ 399 0053 03       		.uleb128 0x3
+ 400 0054 0E       		.uleb128 0xe
+ 401 0055 3A       		.uleb128 0x3a
+ 402 0056 0B       		.uleb128 0xb
+ 403 0057 3B       		.uleb128 0x3b
+ 404 0058 0B       		.uleb128 0xb
+ 405 0059 27       		.uleb128 0x27
+ 406 005a 19       		.uleb128 0x19
+ 407 005b 11       		.uleb128 0x11
+ 408 005c 01       		.uleb128 0x1
+ 409 005d 12       		.uleb128 0x12
+ 410 005e 06       		.uleb128 0x6
+ 411 005f 40       		.uleb128 0x40
+ 412 0060 18       		.uleb128 0x18
+ 413 0061 9642     		.uleb128 0x2116
+ 414 0063 19       		.uleb128 0x19
+ 415 0064 01       		.uleb128 0x1
+ 416 0065 13       		.uleb128 0x13
+ 417 0066 00       		.byte	0
+ 418 0067 00       		.byte	0
+ 419 0068 08       		.uleb128 0x8
+ 420 0069 34       		.uleb128 0x34
+ 421 006a 00       		.byte	0
+ 422 006b 03       		.uleb128 0x3
+ 423 006c 0E       		.uleb128 0xe
+ 424 006d 3A       		.uleb128 0x3a
+ 425 006e 0B       		.uleb128 0xb
+ 426 006f 3B       		.uleb128 0x3b
+ 427 0070 0B       		.uleb128 0xb
+ 428 0071 49       		.uleb128 0x49
+ 429 0072 13       		.uleb128 0x13
+ 430 0073 02       		.uleb128 0x2
+ 431 0074 18       		.uleb128 0x18
+ 432 0075 00       		.byte	0
+ 433 0076 00       		.byte	0
+ 434 0077 09       		.uleb128 0x9
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccP47YYD.s 			page 10
+
+
+ 435 0078 34       		.uleb128 0x34
+ 436 0079 00       		.byte	0
+ 437 007a 03       		.uleb128 0x3
+ 438 007b 0E       		.uleb128 0xe
+ 439 007c 3A       		.uleb128 0x3a
+ 440 007d 0B       		.uleb128 0xb
+ 441 007e 3B       		.uleb128 0x3b
+ 442 007f 05       		.uleb128 0x5
+ 443 0080 49       		.uleb128 0x49
+ 444 0081 13       		.uleb128 0x13
+ 445 0082 3F       		.uleb128 0x3f
+ 446 0083 19       		.uleb128 0x19
+ 447 0084 3C       		.uleb128 0x3c
+ 448 0085 19       		.uleb128 0x19
+ 449 0086 00       		.byte	0
+ 450 0087 00       		.byte	0
+ 451 0088 00       		.byte	0
+ 452              		.section	.debug_aranges,"",%progbits
+ 453 0000 1C000000 		.4byte	0x1c
+ 454 0004 0200     		.2byte	0x2
+ 455 0006 00000000 		.4byte	.Ldebug_info0
+ 456 000a 04       		.byte	0x4
+ 457 000b 00       		.byte	0
+ 458 000c 0000     		.2byte	0
+ 459 000e 0000     		.2byte	0
+ 460 0010 00000000 		.4byte	.LFB35
+ 461 0014 A8000000 		.4byte	.LFE35-.LFB35
+ 462 0018 00000000 		.4byte	0
+ 463 001c 00000000 		.4byte	0
+ 464              		.section	.debug_ranges,"",%progbits
+ 465              	.Ldebug_ranges0:
+ 466 0000 00000000 		.4byte	.LFB35
+ 467 0004 A8000000 		.4byte	.LFE35
+ 468 0008 00000000 		.4byte	0
+ 469 000c 00000000 		.4byte	0
+ 470              		.section	.debug_line,"",%progbits
+ 471              	.Ldebug_line0:
+ 472 0000 88000000 		.section	.debug_str,"MS",%progbits,1
+ 472      02005A00 
+ 472      00000201 
+ 472      FB0E0D00 
+ 472      01010101 
+ 473              	.LASF26:
+ 474 0000 636F6E6E 		.ascii	"connLedTimer\000"
+ 474      4C656454 
+ 474      696D6572 
+ 474      00
+ 475              	.LASF22:
+ 476 000d 4359424C 		.ascii	"CYBLE_STATE_DISCONNECTED\000"
+ 476      455F5354 
+ 476      4154455F 
+ 476      44495343 
+ 476      4F4E4E45 
+ 477              	.LASF24:
+ 478 0026 6C656453 		.ascii	"ledState\000"
+ 478      74617465 
+ 478      00
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccP47YYD.s 			page 11
+
+
+ 479              	.LASF3:
+ 480 002f 73686F72 		.ascii	"short unsigned int\000"
+ 480      7420756E 
+ 480      7369676E 
+ 480      65642069 
+ 480      6E7400
+ 481              	.LASF11:
+ 482 0042 666C6F61 		.ascii	"float\000"
+ 482      7400
+ 483              	.LASF7:
+ 484 0048 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 484      206C6F6E 
+ 484      6720756E 
+ 484      7369676E 
+ 484      65642069 
+ 485              	.LASF1:
+ 486 005f 756E7369 		.ascii	"unsigned char\000"
+ 486      676E6564 
+ 486      20636861 
+ 486      7200
+ 487              	.LASF5:
+ 488 006d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 488      20756E73 
+ 488      69676E65 
+ 488      6420696E 
+ 488      7400
+ 489              	.LASF9:
+ 490 007f 75696E74 		.ascii	"uint8\000"
+ 490      3800
+ 491              	.LASF27:
+ 492 0085 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 492      43313120 
+ 492      352E342E 
+ 492      31203230 
+ 492      31363036 
+ 493 00b8 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 493      20726576 
+ 493      6973696F 
+ 493      6E203233 
+ 493      37373135 
+ 494 00eb 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 494      66756E63 
+ 494      74696F6E 
+ 494      2D736563 
+ 494      74696F6E 
+ 495              	.LASF19:
+ 496 0113 4359424C 		.ascii	"CYBLE_STATE_ADVERTISING\000"
+ 496      455F5354 
+ 496      4154455F 
+ 496      41445645 
+ 496      52544953 
+ 497              	.LASF25:
+ 498 012b 7363616E 		.ascii	"scanLedTimer\000"
+ 498      4C656454 
+ 498      696D6572 
+ 498      00
+ 499              	.LASF12:
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccP47YYD.s 			page 12
+
+
+ 500 0138 646F7562 		.ascii	"double\000"
+ 500      6C6500
+ 501              	.LASF2:
+ 502 013f 73686F72 		.ascii	"short int\000"
+ 502      7420696E 
+ 502      7400
+ 503              	.LASF10:
+ 504 0149 75696E74 		.ascii	"uint32\000"
+ 504      333200
+ 505              	.LASF8:
+ 506 0150 756E7369 		.ascii	"unsigned int\000"
+ 506      676E6564 
+ 506      20696E74 
+ 506      00
+ 507              	.LASF13:
+ 508 015d 63686172 		.ascii	"char\000"
+ 508      00
+ 509              	.LASF23:
+ 510 0162 4359424C 		.ascii	"CYBLE_STATE_T\000"
+ 510      455F5354 
+ 510      4154455F 
+ 510      5400
+ 511              	.LASF16:
+ 512 0170 4359424C 		.ascii	"CYBLE_STATE_STOPPED\000"
+ 512      455F5354 
+ 512      4154455F 
+ 512      53544F50 
+ 512      50454400 
+ 513              	.LASF29:
+ 514 0184 433A5C55 		.ascii	"C:\\Users\\Daniela\\Downloads\\UART_to_BLE2\\UART_t"
+ 514      73657273 
+ 514      5C44616E 
+ 514      69656C61 
+ 514      5C446F77 
+ 515 01b2 6F5F424C 		.ascii	"o_BLE\\UART_to_BLE_central\\UART_to_BLE_central.cyd"
+ 515      455C5541 
+ 515      52545F74 
+ 515      6F5F424C 
+ 515      455F6365 
+ 516 01e3 736E00   		.ascii	"sn\000"
+ 517              	.LASF31:
+ 518 01e6 6379426C 		.ascii	"cyBle_state\000"
+ 518      655F7374 
+ 518      61746500 
+ 519              	.LASF30:
+ 520 01f2 48616E64 		.ascii	"HandleLeds\000"
+ 520      6C654C65 
+ 520      647300
+ 521              	.LASF15:
+ 522 01fd 73697A65 		.ascii	"sizetype\000"
+ 522      74797065 
+ 522      00
+ 523              	.LASF20:
+ 524 0206 4359424C 		.ascii	"CYBLE_STATE_SCANNING\000"
+ 524      455F5354 
+ 524      4154455F 
+ 524      5343414E 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccP47YYD.s 			page 13
+
+
+ 524      4E494E47 
+ 525              	.LASF6:
+ 526 021b 6C6F6E67 		.ascii	"long long int\000"
+ 526      206C6F6E 
+ 526      6720696E 
+ 526      7400
+ 527              	.LASF21:
+ 528 0229 4359424C 		.ascii	"CYBLE_STATE_CONNECTING\000"
+ 528      455F5354 
+ 528      4154455F 
+ 528      434F4E4E 
+ 528      45435449 
+ 529              	.LASF28:
+ 530 0240 6170705F 		.ascii	"app_LED.c\000"
+ 530      4C45442E 
+ 530      6300
+ 531              	.LASF18:
+ 532 024a 4359424C 		.ascii	"CYBLE_STATE_CONNECTED\000"
+ 532      455F5354 
+ 532      4154455F 
+ 532      434F4E4E 
+ 532      45435445 
+ 533              	.LASF4:
+ 534 0260 6C6F6E67 		.ascii	"long int\000"
+ 534      20696E74 
+ 534      00
+ 535              	.LASF14:
+ 536 0269 6C6F6E67 		.ascii	"long double\000"
+ 536      20646F75 
+ 536      626C6500 
+ 537              	.LASF0:
+ 538 0275 7369676E 		.ascii	"signed char\000"
+ 538      65642063 
+ 538      68617200 
+ 539              	.LASF17:
+ 540 0281 4359424C 		.ascii	"CYBLE_STATE_INITIALIZING\000"
+ 540      455F5354 
+ 540      4154455F 
+ 540      494E4954 
+ 540      49414C49 
+ 541              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
