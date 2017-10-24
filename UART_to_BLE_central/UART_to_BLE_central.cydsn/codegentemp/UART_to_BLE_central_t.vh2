@@ -1,5 +1,5 @@
--- Project:   C:\Users\Daniela\Downloads\UART_to_BLE2\UART_to_BLE\UART_to_BLE_central\UART_to_BLE_central.cydsn\UART_to_BLE_central.cyprj
--- Generated: 10/18/2017 11:36:46
+-- Project:   C:\Users\Daniela\Desktop\Bluetooth_Project\UART_to_BLE_central\UART_to_BLE_central.cydsn\UART_to_BLE_central.cyprj
+-- Generated: 10/24/2017 11:25:58
 -- PSoC Creator  4.1 Update 1
 
 ENTITY UART_to_BLE_central IS

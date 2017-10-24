@@ -1,6 +1,6 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
- (DATE "2017-10-18T10:36:46Z")
+ (DATE "2017-10-24T10:25:58Z")
  (DESIGN "UART_to_BLE_central")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")

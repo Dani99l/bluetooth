@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
   21:Generated_Source\PSoC4/UART_SPI_UART.c **** 
   22:Generated_Source\PSoC4/UART_SPI_UART.c **** /***************************************
   23:Generated_Source\PSoC4/UART_SPI_UART.c **** *        SPI/UART Private Vars
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 2
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 2
 
 
   24:Generated_Source\PSoC4/UART_SPI_UART.c **** ***************************************/
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
   78:Generated_Source\PSoC4/UART_SPI_UART.c ****     *  software receive buffer.
   79:Generated_Source\PSoC4/UART_SPI_UART.c ****     *  UART_rxBufferTail - the start index to get data from the 
   80:Generated_Source\PSoC4/UART_SPI_UART.c ****     *  software receive buffer.
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 3
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 3
 
 
   81:Generated_Source\PSoC4/UART_SPI_UART.c ****     *
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
   67              		.loc 1 102 0
   68 0026 0023     		movs	r3, #0
   69 0028 3B60     		str	r3, [r7]
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 4
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 4
 
 
   70              	.L3:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
   92 0046 C046     		.align	2
   93              	.L5:
   94 0048 00000000 		.word	UART_rxBufferHead
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 5
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 5
 
 
   95 004c 00000000 		.word	UART_rxBufferTail
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  163:Generated_Source\PSoC4/UART_SPI_UART.c **** 
  164:Generated_Source\PSoC4/UART_SPI_UART.c ****         #if (UART_CHECK_RX_SW_BUFFER)
  165:Generated_Source\PSoC4/UART_SPI_UART.c ****         {
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 6
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 6
 
 
  166:Generated_Source\PSoC4/UART_SPI_UART.c ****             locHead = UART_rxBufferHead;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  156 003a 80BD     		pop	{r7, pc}
  157              	.L12:
  158              		.align	2
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 7
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 7
 
 
  159              	.L11:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  189 000c 1A68     		ldr	r2, [r3]
  190 000e 0E4B     		ldr	r3, .L14+4
  191 0010 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 8
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 8
 
 
  209:Generated_Source\PSoC4/UART_SPI_UART.c ****             UART_rxBufferOverflow = 0u;
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  223              		.align	2
  224              	.L14:
  225 0044 00000000 		.word	UART_rxBufferTail
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 9
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 9
 
 
  226 0048 00000000 		.word	UART_rxBufferHead
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  253 0004 00AF     		add	r7, sp, #0
  254              		.cfi_def_cfa_register 7
  255 0006 7860     		str	r0, [r7, #4]
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 10
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 10
 
 
  259:Generated_Source\PSoC4/UART_SPI_UART.c ****     #if (UART_INTERNAL_TX_SW_BUFFER_CONST)
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  293:Generated_Source\PSoC4/UART_SPI_UART.c **** 
  294:Generated_Source\PSoC4/UART_SPI_UART.c ****                 UART_PutWordInTxBuffer(locHead, txData);
  295:Generated_Source\PSoC4/UART_SPI_UART.c **** 
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 11
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 11
 
 
  296:Generated_Source\PSoC4/UART_SPI_UART.c ****                 UART_txBufferHead = locHead;
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  302              		.loc 1 292 0 is_stmt 1
  303 004a 124B     		ldr	r3, .L23+16
  304 004c 0222     		movs	r2, #2
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 12
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 12
 
 
  305 004e 1A60     		str	r2, [r3]
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  355              		.thumb_func
  356              		.type	UART_SpiUartPutArray, %function
  357              	UART_SpiUartPutArray:
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 13
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 13
 
 
  358              	.LFB6:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  382 0016 1B78     		ldrb	r3, [r3]
  383 0018 1800     		movs	r0, r3
  384 001a FFF7FEFF 		bl	UART_SpiUartWriteTxData
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 14
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 14
 
 
  344:Generated_Source\PSoC4/UART_SPI_UART.c ****         {
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  372:Generated_Source\PSoC4/UART_SPI_UART.c ****     *******************************************************************************/
  373:Generated_Source\PSoC4/UART_SPI_UART.c ****     uint32 UART_SpiUartGetTxBufferSize(void)
  374:Generated_Source\PSoC4/UART_SPI_UART.c ****     {
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 15
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 15
 
 
  412              		.loc 1 374 0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  449 002e 9446     		mov	ip, r2
  450 0030 6344     		add	r3, r3, ip
  451 0032 7B60     		str	r3, [r7, #4]
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 16
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 16
 
 
  452              	.L30:
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  479              		@ args = 0, pretend = 0, frame = 0
  480              		@ frame_needed = 1, uses_anonymous_args = 0
  481 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 17
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 17
 
 
  482              		.cfi_def_cfa_offset 8
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  522 0040 FFF7FEFF 		bl	CyIntEnable
  433:Generated_Source\PSoC4/UART_SPI_UART.c ****         }
  434:Generated_Source\PSoC4/UART_SPI_UART.c ****         #else
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 18
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 18
 
 
  435:Generated_Source\PSoC4/UART_SPI_UART.c ****         {
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  556              		.cfi_offset 14, -4
  557 0002 82B0     		sub	sp, sp, #8
  558              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 19
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 19
 
 
  559 0004 00AF     		add	r7, sp, #0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  477:Generated_Source\PSoC4/UART_SPI_UART.c **** {
  592              		.loc 1 477 0
  593              		.cfi_startproc
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 20
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 20
 
 
  594              		@ args = 0, pretend = 0, frame = 8
@@ -1194,18 +1194,18 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  636 000b 01       		.uleb128 0x1
  637 000c A2000000 		.4byte	.LASF42
  638 0010 0C       		.byte	0xc
- 639 0011 C6020000 		.4byte	.LASF43
- 640 0015 F5010000 		.4byte	.LASF44
+ 639 0011 BD020000 		.4byte	.LASF43
+ 640 0015 C8010000 		.4byte	.LASF44
  641 0019 00000000 		.4byte	.Ldebug_ranges0+0
  642 001d 00000000 		.4byte	0
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 21
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 21
 
 
  643 0021 00000000 		.4byte	.Ldebug_line0
  644 0025 02       		.uleb128 0x2
  645 0026 01       		.byte	0x1
  646 0027 06       		.byte	0x6
- 647 0028 4E030000 		.4byte	.LASF0
+ 647 0028 45030000 		.4byte	.LASF0
  648 002c 02       		.uleb128 0x2
  649 002d 01       		.byte	0x1
  650 002e 08       		.byte	0x8
@@ -1213,7 +1213,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  652 0033 02       		.uleb128 0x2
  653 0034 02       		.byte	0x2
  654 0035 05       		.byte	0x5
- 655 0036 BC020000 		.4byte	.LASF2
+ 655 0036 B3020000 		.4byte	.LASF2
  656 003a 02       		.uleb128 0x2
  657 003b 02       		.byte	0x2
  658 003c 07       		.byte	0x7
@@ -1221,7 +1221,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  660 0041 02       		.uleb128 0x2
  661 0042 04       		.byte	0x4
  662 0043 05       		.byte	0x5
- 663 0044 04030000 		.4byte	.LASF4
+ 663 0044 FB020000 		.4byte	.LASF4
  664 0048 02       		.uleb128 0x2
  665 0049 04       		.byte	0x4
  666 004a 07       		.byte	0x7
@@ -1229,11 +1229,11 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  668 004f 02       		.uleb128 0x2
  669 0050 08       		.byte	0x8
  670 0051 05       		.byte	0x5
- 671 0052 68020000 		.4byte	.LASF6
+ 671 0052 5F020000 		.4byte	.LASF6
  672 0056 02       		.uleb128 0x2
  673 0057 08       		.byte	0x8
  674 0058 07       		.byte	0x7
- 675 0059 C8010000 		.4byte	.LASF7
+ 675 0059 21020000 		.4byte	.LASF7
  676 005d 03       		.uleb128 0x3
  677 005e 04       		.byte	0x4
  678 005f 05       		.byte	0x5
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  697 0086 54000000 		.4byte	.LASF11
  698 008a 02       		.uleb128 0x2
  699 008b 08       		.byte	0x8
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 22
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 22
 
 
  700 008c 04       		.byte	0x4
@@ -1266,7 +1266,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  702 0091 02       		.uleb128 0x2
  703 0092 01       		.byte	0x1
  704 0093 08       		.byte	0x8
- 705 0094 0D030000 		.4byte	.LASF13
+ 705 0094 04030000 		.4byte	.LASF13
  706 0098 05       		.uleb128 0x5
  707 0099 6B000000 		.4byte	0x6b
  708 009d 04       		.uleb128 0x4
@@ -1279,13 +1279,13 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  715 00ae 02       		.uleb128 0x2
  716 00af 08       		.byte	0x8
  717 00b0 04       		.byte	0x4
- 718 00b1 2C030000 		.4byte	.LASF15
+ 718 00b1 23030000 		.4byte	.LASF15
  719 00b5 02       		.uleb128 0x2
  720 00b6 04       		.byte	0x4
  721 00b7 07       		.byte	0x7
- 722 00b8 5F020000 		.4byte	.LASF16
+ 722 00b8 56020000 		.4byte	.LASF16
  723 00bc 06       		.uleb128 0x6
- 724 00bd ED020000 		.4byte	.LASF19
+ 724 00bd E4020000 		.4byte	.LASF19
  725 00c1 01       		.byte	0x1
  726 00c2 53       		.byte	0x53
  727 00c3 77000000 		.4byte	0x77
@@ -1303,7 +1303,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  739 00e1 91       		.byte	0x91
  740 00e2 74       		.sleb128 -12
  741 00e3 07       		.uleb128 0x7
- 742 00e4 57020000 		.4byte	.LASF18
+ 742 00e4 4E020000 		.4byte	.LASF18
  743 00e8 01       		.byte	0x1
  744 00e9 58       		.byte	0x58
  745 00ea 77000000 		.4byte	0x77
@@ -1312,13 +1312,13 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  748 00f0 70       		.sleb128 -16
  749 00f1 00       		.byte	0
  750 00f2 06       		.uleb128 0x6
- 751 00f3 5A030000 		.4byte	.LASF20
+ 751 00f3 51030000 		.4byte	.LASF20
  752 00f7 01       		.byte	0x1
  753 00f8 9D       		.byte	0x9d
  754 00f9 77000000 		.4byte	0x77
  755 00fd 00000000 		.4byte	.LFB3
  756 0101 48000000 		.4byte	.LFE3-.LFB3
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 23
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 23
 
 
  757 0105 01       		.uleb128 0x1
@@ -1342,7 +1342,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  775 0126 70       		.sleb128 -16
  776 0127 00       		.byte	0
  777 0128 08       		.uleb128 0x8
- 778 0129 12030000 		.4byte	.LASF29
+ 778 0129 09030000 		.4byte	.LASF29
  779 012d 01       		.byte	0x1
  780 012e C8       		.byte	0xc8
  781 012f 00000000 		.4byte	.LFB4
@@ -1350,7 +1350,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  783 0137 01       		.uleb128 0x1
  784 0138 9C       		.byte	0x9c
  785 0139 09       		.uleb128 0x9
- 786 013a 76020000 		.4byte	.LASF23
+ 786 013a 6D020000 		.4byte	.LASF23
  787 013e 01       		.byte	0x1
  788 013f 0101     		.2byte	0x101
  789 0141 00000000 		.4byte	.LFB5
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  811 016e 0C       		.uleb128 0xc
  812 016f 9B010000 		.4byte	.LASF24
  813 0173 01       		.byte	0x1
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 24
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 24
 
 
  814 0174 5401     		.2byte	0x154
@@ -1418,7 +1418,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  848 01b6 0F       		.uleb128 0xf
  849 01b7 6B000000 		.4byte	0x6b
  850 01bb 10       		.uleb128 0x10
- 851 01bc 8E020000 		.4byte	.LASF28
+ 851 01bc 85020000 		.4byte	.LASF28
  852 01c0 01       		.byte	0x1
  853 01c1 7501     		.2byte	0x175
  854 01c3 77000000 		.4byte	0x77
@@ -1436,9 +1436,9 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  866 01e2 91       		.byte	0x91
  867 01e3 74       		.sleb128 -12
  868 01e4 0B       		.uleb128 0xb
- 869 01e5 57020000 		.4byte	.LASF18
+ 869 01e5 4E020000 		.4byte	.LASF18
  870 01e9 01       		.byte	0x1
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 25
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 25
 
 
  871 01ea 7901     		.2byte	0x179
@@ -1494,11 +1494,11 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  921 0258 74       		.sleb128 -12
  922 0259 00       		.byte	0
  923 025a 12       		.uleb128 0x12
- 924 025b 76030000 		.4byte	.LASF35
+ 924 025b 6D030000 		.4byte	.LASF35
  925 025f 01       		.byte	0x1
  926 0260 1C       		.byte	0x1c
  927 0261 A9000000 		.4byte	0xa9
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 26
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 26
 
 
  928 0265 05       		.uleb128 0x5
@@ -1513,7 +1513,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  937 0277 03       		.byte	0x3
  938 0278 00000000 		.4byte	UART_rxBufferTail
  939 027c 12       		.uleb128 0x12
- 940 027d DF010000 		.4byte	.LASF37
+ 940 027d 38020000 		.4byte	.LASF37
  941 0281 01       		.byte	0x1
  942 0282 26       		.byte	0x26
  943 0283 98000000 		.4byte	0x98
@@ -1521,7 +1521,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  945 0288 03       		.byte	0x3
  946 0289 00000000 		.4byte	UART_rxBufferOverflow
  947 028d 12       		.uleb128 0x12
- 948 028e AA020000 		.4byte	.LASF38
+ 948 028e A1020000 		.4byte	.LASF38
  949 0292 01       		.byte	0x1
  950 0293 2C       		.byte	0x2c
  951 0294 A9000000 		.4byte	0xa9
@@ -1558,13 +1558,13 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  982 02db E7020000 		.4byte	0x2e7
  983 02df 14       		.uleb128 0x14
  984 02e0 B5000000 		.4byte	0xb5
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 27
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 27
 
 
  985 02e4 FF07     		.2byte	0x7ff
  986 02e6 00       		.byte	0
  987 02e7 12       		.uleb128 0x12
- 988 02e8 38030000 		.4byte	.LASF41
+ 988 02e8 2F030000 		.4byte	.LASF41
  989 02ec 01       		.byte	0x1
  990 02ed 37       		.byte	0x37
  991 02ee F8020000 		.4byte	0x2f8
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  1039 0027 00       		.byte	0
  1040 0028 00       		.byte	0
  1041 0029 04       		.uleb128 0x4
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 28
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 28
 
 
  1042 002a 16       		.uleb128 0x16
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  1096 0061 0B       		.uleb128 0xb
  1097 0062 49       		.uleb128 0x49
  1098 0063 13       		.uleb128 0x13
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 29
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 29
 
 
  1099 0064 02       		.uleb128 0x2
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  1153 009c 00       		.byte	0
  1154 009d 03       		.uleb128 0x3
  1155 009e 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 30
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 30
 
 
  1156 009f 3A       		.uleb128 0x3a
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  1210 00d6 08       		.uleb128 0x8
  1211 00d7 3A       		.uleb128 0x3a
  1212 00d8 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 31
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 31
 
 
  1213 00d9 3B       		.uleb128 0x3b
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  1267 0110 3F       		.uleb128 0x3f
  1268 0111 19       		.uleb128 0x19
  1269 0112 03       		.uleb128 0x3
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 32
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 32
 
 
  1270 0113 0E       		.uleb128 0xe
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  1324 0000 5C000000 		.4byte	0x5c
  1325 0004 0200     		.2byte	0x2
  1326 0006 00000000 		.4byte	.Ldebug_info0
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 33
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 33
 
 
  1327 000a 04       		.byte	0x4
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  1377 0000 72656733 		.ascii	"reg32\000"
  1377      3200
  1378              	.LASF27:
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 34
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 34
 
 
  1379 0006 636F756E 		.ascii	"count\000"
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  1403      43313120 
  1403      352E342E 
  1403      31203230 
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 35
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 35
 
 
  1403      31363036 
@@ -2098,126 +2098,122 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 1
  1425      6F757263 
  1425      654D6173 
  1425      6B00
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 36
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 36
 
 
  1426              	.LASF32:
  1427 01be 696E7453 		.ascii	"intSource\000"
  1427      6F757263 
  1427      6500
- 1428              	.LASF7:
- 1429 01c8 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1429      206C6F6E 
- 1429      6720756E 
- 1429      7369676E 
- 1429      65642069 
- 1430              	.LASF37:
- 1431 01df 55415254 		.ascii	"UART_rxBufferOverflow\000"
- 1431      5F727842 
- 1431      75666665 
- 1431      724F7665 
- 1431      72666C6F 
- 1432              	.LASF44:
- 1433 01f5 433A5C55 		.ascii	"C:\\Users\\Daniela\\Downloads\\UART_to_BLE2\\UART_t"
- 1433      73657273 
- 1433      5C44616E 
- 1433      69656C61 
- 1433      5C446F77 
- 1434 0223 6F5F424C 		.ascii	"o_BLE\\UART_to_BLE_central\\UART_to_BLE_central.cyd"
- 1434      455C5541 
- 1434      52545F74 
- 1434      6F5F424C 
- 1434      455F6365 
- 1435 0254 736E00   		.ascii	"sn\000"
- 1436              	.LASF18:
- 1437 0257 6C6F6354 		.ascii	"locTail\000"
- 1437      61696C00 
- 1438              	.LASF16:
- 1439 025f 73697A65 		.ascii	"sizetype\000"
- 1439      74797065 
- 1439      00
- 1440              	.LASF6:
- 1441 0268 6C6F6E67 		.ascii	"long long int\000"
- 1441      206C6F6E 
- 1441      6720696E 
- 1441      7400
- 1442              	.LASF23:
- 1443 0276 55415254 		.ascii	"UART_SpiUartWriteTxData\000"
- 1443      5F537069 
- 1443      55617274 
- 1443      57726974 
- 1443      65547844 
- 1444              	.LASF28:
- 1445 028e 55415254 		.ascii	"UART_SpiUartGetTxBufferSize\000"
- 1445      5F537069 
- 1445      55617274 
- 1445      47657454 
- 1445      78427566 
- 1446              	.LASF38:
- 1447 02aa 55415254 		.ascii	"UART_txBufferHead\000"
- 1447      5F747842 
- 1447      75666665 
- 1447      72486561 
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 37
+ 1428              	.LASF44:
+ 1429 01c8 433A5C55 		.ascii	"C:\\Users\\Daniela\\Desktop\\Bluetooth_Project\\UAR"
+ 1429      73657273 
+ 1429      5C44616E 
+ 1429      69656C61 
+ 1429      5C446573 
+ 1430 01f6 545F746F 		.ascii	"T_to_BLE_central\\UART_to_BLE_central.cydsn\000"
+ 1430      5F424C45 
+ 1430      5F63656E 
+ 1430      7472616C 
+ 1430      5C554152 
+ 1431              	.LASF7:
+ 1432 0221 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1432      206C6F6E 
+ 1432      6720756E 
+ 1432      7369676E 
+ 1432      65642069 
+ 1433              	.LASF37:
+ 1434 0238 55415254 		.ascii	"UART_rxBufferOverflow\000"
+ 1434      5F727842 
+ 1434      75666665 
+ 1434      724F7665 
+ 1434      72666C6F 
+ 1435              	.LASF18:
+ 1436 024e 6C6F6354 		.ascii	"locTail\000"
+ 1436      61696C00 
+ 1437              	.LASF16:
+ 1438 0256 73697A65 		.ascii	"sizetype\000"
+ 1438      74797065 
+ 1438      00
+ 1439              	.LASF6:
+ 1440 025f 6C6F6E67 		.ascii	"long long int\000"
+ 1440      206C6F6E 
+ 1440      6720696E 
+ 1440      7400
+ 1441              	.LASF23:
+ 1442 026d 55415254 		.ascii	"UART_SpiUartWriteTxData\000"
+ 1442      5F537069 
+ 1442      55617274 
+ 1442      57726974 
+ 1442      65547844 
+ 1443              	.LASF28:
+ 1444 0285 55415254 		.ascii	"UART_SpiUartGetTxBufferSize\000"
+ 1444      5F537069 
+ 1444      55617274 
+ 1444      47657454 
+ 1444      78427566 
+ 1445              	.LASF38:
+ 1446 02a1 55415254 		.ascii	"UART_txBufferHead\000"
+ 1446      5F747842 
+ 1446      75666665 
+ 1446      72486561 
+ 1446      6400
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccHnScHL.s 			page 37
 
 
- 1447      6400
- 1448              	.LASF2:
- 1449 02bc 73686F72 		.ascii	"short int\000"
- 1449      7420696E 
- 1449      7400
- 1450              	.LASF43:
- 1451 02c6 47656E65 		.ascii	"Generated_Source\\PSoC4\\UART_SPI_UART.c\000"
- 1451      72617465 
- 1451      645F536F 
- 1451      75726365 
- 1451      5C50536F 
- 1452              	.LASF19:
- 1453 02ed 55415254 		.ascii	"UART_SpiUartReadRxData\000"
- 1453      5F537069 
- 1453      55617274 
- 1453      52656164 
- 1453      52784461 
- 1454              	.LASF4:
- 1455 0304 6C6F6E67 		.ascii	"long int\000"
- 1455      20696E74 
- 1455      00
- 1456              	.LASF13:
- 1457 030d 63686172 		.ascii	"char\000"
- 1457      00
- 1458              	.LASF29:
- 1459 0312 55415254 		.ascii	"UART_SpiUartClearRxBuffer\000"
- 1459      5F537069 
- 1459      55617274 
- 1459      436C6561 
- 1459      72527842 
- 1460              	.LASF15:
- 1461 032c 6C6F6E67 		.ascii	"long double\000"
- 1461      20646F75 
- 1461      626C6500 
- 1462              	.LASF41:
- 1463 0338 55415254 		.ascii	"UART_txBufferInternal\000"
- 1463      5F747842 
- 1463      75666665 
- 1463      72496E74 
- 1463      65726E61 
- 1464              	.LASF0:
- 1465 034e 7369676E 		.ascii	"signed char\000"
- 1465      65642063 
- 1465      68617200 
- 1466              	.LASF20:
- 1467 035a 55415254 		.ascii	"UART_SpiUartGetRxBufferSize\000"
- 1467      5F537069 
- 1467      55617274 
- 1467      47657452 
- 1467      78427566 
- 1468              	.LASF35:
- 1469 0376 55415254 		.ascii	"UART_rxBufferHead\000"
- 1469      5F727842 
- 1469      75666665 
- 1469      72486561 
- 1469      6400
- 1470              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyVulkO.s 			page 38
-
-
+ 1447              	.LASF2:
+ 1448 02b3 73686F72 		.ascii	"short int\000"
+ 1448      7420696E 
+ 1448      7400
+ 1449              	.LASF43:
+ 1450 02bd 47656E65 		.ascii	"Generated_Source\\PSoC4\\UART_SPI_UART.c\000"
+ 1450      72617465 
+ 1450      645F536F 
+ 1450      75726365 
+ 1450      5C50536F 
+ 1451              	.LASF19:
+ 1452 02e4 55415254 		.ascii	"UART_SpiUartReadRxData\000"
+ 1452      5F537069 
+ 1452      55617274 
+ 1452      52656164 
+ 1452      52784461 
+ 1453              	.LASF4:
+ 1454 02fb 6C6F6E67 		.ascii	"long int\000"
+ 1454      20696E74 
+ 1454      00
+ 1455              	.LASF13:
+ 1456 0304 63686172 		.ascii	"char\000"
+ 1456      00
+ 1457              	.LASF29:
+ 1458 0309 55415254 		.ascii	"UART_SpiUartClearRxBuffer\000"
+ 1458      5F537069 
+ 1458      55617274 
+ 1458      436C6561 
+ 1458      72527842 
+ 1459              	.LASF15:
+ 1460 0323 6C6F6E67 		.ascii	"long double\000"
+ 1460      20646F75 
+ 1460      626C6500 
+ 1461              	.LASF41:
+ 1462 032f 55415254 		.ascii	"UART_txBufferInternal\000"
+ 1462      5F747842 
+ 1462      75666665 
+ 1462      72496E74 
+ 1462      65726E61 
+ 1463              	.LASF0:
+ 1464 0345 7369676E 		.ascii	"signed char\000"
+ 1464      65642063 
+ 1464      68617200 
+ 1465              	.LASF20:
+ 1466 0351 55415254 		.ascii	"UART_SpiUartGetRxBufferSize\000"
+ 1466      5F537069 
+ 1466      55617274 
+ 1466      47657452 
+ 1466      78427566 
+ 1467              	.LASF35:
+ 1468 036d 55415254 		.ascii	"UART_rxBufferHead\000"
+ 1468      5F727842 
+ 1468      75666665 
+ 1468      72486561 
+ 1468      6400
+ 1469              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

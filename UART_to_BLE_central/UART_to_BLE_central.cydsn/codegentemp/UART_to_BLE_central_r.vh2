@@ -1,5 +1,5 @@
 -- Project:   UART_to_BLE_central
--- Generated: 10/18/2017 11:36:43
+-- Generated: 10/24/2017 11:25:55
 -- PSoC Creator  4.1 Update 1
 
 ENTITY UART_to_BLE_central IS

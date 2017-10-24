@@ -1,4 +1,4 @@
-C:\Users\Daniela\Downloads\UART_to_BLE2\UART_to_BLE\UART_to_BLE_central\UART_to_BLE_central.cydsn\TopDesign\TopDesign.cysch
+C:\Users\Daniela\Desktop\Bluetooth_Project\UART_to_BLE_central\UART_to_BLE_central.cydsn\TopDesign\TopDesign.cysch
 C:\Users\Daniela\Documents\PSoC Creator\4.1\Downloads ( 4.1).cylib\BLE_v3_40\BLE_v3_40.cysym
 C:\Users\Daniela\Documents\PSoC Creator\4.1\Downloads ( 4.1).cylib\BLE_v3_40\BLE_v3_40.chm
 C:\Users\Daniela\Documents\PSoC Creator\4.1\Downloads ( 4.1).cylib\BLE_v3_40\BLE_v3_40.dll
@@ -269,7 +269,7 @@ C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\CyPrim
 C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v
 C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_m0s8_scb_v2_0\cy_m0s8_scb_v2_0.cysym
 C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_m0s8_scb_v2_0\PSoC4\cy_m0s8_scb_v2_0.cyprimitive
-C:\Users\Daniela\Downloads\UART_to_BLE2\UART_to_BLE\UART_to_BLE_central\UART_to_BLE_central.cydsn\UART_to_BLE_central.cydwr
+C:\Users\Daniela\Desktop\Bluetooth_Project\UART_to_BLE_central\UART_to_BLE_central.cydsn\UART_to_BLE_central.cydwr
 C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\cy_boot_v5_60\PSoC4\API\cm0gcc.ld
 C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\cy_boot_v5_60\PSoC4\API\Cm0RealView.scat
 C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\cy_boot_v5_60\PSoC4\API\Cm0Start.c

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
   20:Generated_Source\PSoC4/CyFlash.c **** #include "CyFlash.h"
   21:Generated_Source\PSoC4/CyFlash.c **** 
   22:Generated_Source\PSoC4/CyFlash.c **** 
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 2
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 2
 
 
   23:Generated_Source\PSoC4/CyFlash.c **** /*******************************************************************************
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
   77:Generated_Source\PSoC4/CyFlash.c **** *
   78:Generated_Source\PSoC4/CyFlash.c **** * \return \ref group_flash_status_codes
   79:Generated_Source\PSoC4/CyFlash.c **** *
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 3
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 3
 
 
   80:Generated_Source\PSoC4/CyFlash.c **** *******************************************************************************/
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
   68 002a ADE0     		b	.L2	@long jump
   69              	.LCB29:
   98:Generated_Source\PSoC4/CyFlash.c ****     {
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 4
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 4
 
 
   99:Generated_Source\PSoC4/CyFlash.c ****         /* Copy data to be written into internal variable */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  128:Generated_Source\PSoC4/CyFlash.c ****         parameters[1u] = CY_FLASH_SIZEOF_ROW - 1u;
   94              		.loc 1 128 0
   95 0050 0C23     		movs	r3, #12
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 5
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 5
 
 
   96 0052 FB18     		adds	r3, r7, r3
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  145 0098 1340     		ands	r3, r2
  146 009a 00E0     		b	.L6
  147              	.L7:
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 6
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 6
 
 
  148              		.loc 1 133 0 discriminator 5
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  185 00da BA18     		adds	r2, r7, r2
  186 00dc 1360     		str	r3, [r2]
  187              	.L10:
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 7
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 7
 
 
  151:Generated_Source\PSoC4/CyFlash.c ****             }
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  229 0116 1B0F     		lsrs	r3, r3, #28
  230 0118 1A07     		lsls	r2, r3, #28
  231 011a F023     		movs	r3, #240
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 8
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 8
 
 
  232 011c 1B06     		lsls	r3, r3, #24
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  184:Generated_Source\PSoC4/CyFlash.c **** 
  185:Generated_Source\PSoC4/CyFlash.c **** 
  186:Generated_Source\PSoC4/CyFlash.c ****                     if(retValue == CY_SYS_FLASH_SUCCESS)
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 9
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 9
 
 
  187:Generated_Source\PSoC4/CyFlash.c ****                     {
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  294 017c FB18     		adds	r3, r7, r3
  295 017e 1B78     		ldrb	r3, [r3]
  296 0180 1800     		movs	r0, r3
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 10
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 10
 
 
  297 0182 FFF7FEFF 		bl	CyExitCriticalSection
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  223:Generated_Source\PSoC4/CyFlash.c **** 
  224:Generated_Source\PSoC4/CyFlash.c **** 
  225:Generated_Source\PSoC4/CyFlash.c **** #if (CY_IP_FLASH_PARALLEL_PGM_EN && (CY_IP_FLASH_MACROS > 1u))
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 11
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 11
 
 
  226:Generated_Source\PSoC4/CyFlash.c **** /*******************************************************************************
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  280:Generated_Source\PSoC4/CyFlash.c ****         CY_NOP;
  281:Generated_Source\PSoC4/CyFlash.c ****         retValue = CY_FLASH_API_RETURN;
  282:Generated_Source\PSoC4/CyFlash.c **** 
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 12
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 12
 
 
  283:Generated_Source\PSoC4/CyFlash.c ****         if(retValue == CY_SYS_FLASH_SUCCESS)
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  337:Generated_Source\PSoC4/CyFlash.c **** * is complete. The CPUSS_SYSARG register will be reflecting the SRAM address 
  338:Generated_Source\PSoC4/CyFlash.c **** * during an ongoing non-blocking operation.
  339:Generated_Source\PSoC4/CyFlash.c **** * Calling this API before starting a non-blocking write row operation 
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 13
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 13
 
 
  340:Generated_Source\PSoC4/CyFlash.c **** * using the \ref CySysFlashStartWriteRow() API will cause improper operation.
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  394:Generated_Source\PSoC4/CyFlash.c ****                                          CY_FLASH_PARAM_KEY_TWO_OFFSET) | CY_FLASH_KEY_ONE);
  395:Generated_Source\PSoC4/CyFlash.c ****     CY_FLASH_CPUSS_SYSARG_REG = (uint32) &parameters[0u];
  396:Generated_Source\PSoC4/CyFlash.c ****     CY_FLASH_CPUSS_SYSREQ_REG = CY_FLASH_CPUSS_REQ_START | CY_FLASH_API_OPCODE_RESUME_NON_BLOCKING;
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 14
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 14
 
 
  397:Generated_Source\PSoC4/CyFlash.c ****     
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  431:Generated_Source\PSoC4/CyFlash.c ****         {
  432:Generated_Source\PSoC4/CyFlash.c ****             CY_SYS_CLK_SELECT_REG &= (uint32)(~CY_FLASH_WAIT_STATE_EN);
  433:Generated_Source\PSoC4/CyFlash.c ****         }
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 15
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 15
 
 
  434:Generated_Source\PSoC4/CyFlash.c ****         else
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  395 004a 1268     		ldr	r2, [r2]
  396 004c 0321     		movs	r1, #3
  397 004e 8A43     		bics	r2, r1
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 16
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 16
 
 
  398 0050 0221     		movs	r1, #2
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  471:Generated_Source\PSoC4/CyFlash.c **** ****************************************************************************//**
  472:Generated_Source\PSoC4/CyFlash.c **** *
  473:Generated_Source\PSoC4/CyFlash.c **** * Writes data to a row of SFlash user configurable area.
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 17
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 17
 
 
  474:Generated_Source\PSoC4/CyFlash.c **** *
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  463 0020 A0E0     		b	.L29	@long jump
  464              	.LCB375:
  465              		.loc 1 498 0 is_stmt 0 discriminator 1
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 18
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 18
 
 
  466 0022 3B68     		ldr	r3, [r7]
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  508 0062 1A60     		str	r2, [r3]
  510:Generated_Source\PSoC4/CyFlash.c ****         CY_NOP;
  509              		.loc 1 510 0
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 19
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 19
 
 
  510              		.syntax divided
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  561 00aa 5FD1     		bne	.L44
  514:Generated_Source\PSoC4/CyFlash.c ****         {
  515:Generated_Source\PSoC4/CyFlash.c ****             /***************************************************************
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 20
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 20
 
 
  516:Generated_Source\PSoC4/CyFlash.c ****             * Mask all the exceptions to guarantee that Flash write will
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  596 00e8 2A4A     		ldr	r2, .L46+24
  597 00ea 1A60     		str	r2, [r3]
  536:Generated_Source\PSoC4/CyFlash.c ****                 parameters[1u] = (uint32) rowNum;
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 21
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 21
 
 
  598              		.loc 1 536 0
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  647 0130 1B68     		ldr	r3, [r3]
  648 0132 FF22     		movs	r2, #255
  649 0134 1340     		ands	r3, r2
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 22
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 22
 
 
  650 0136 00E0     		b	.L40
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  688              		.loc 1 556 0
  689 016c 9823     		movs	r3, #152
  690 016e FB18     		adds	r3, r7, r3
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 23
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 23
 
 
  691 0170 1B68     		ldr	r3, [r3]
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  730              		.cfi_def_cfa_register 7
  572:Generated_Source\PSoC4/CyFlash.c ****     cystatus retValue = CY_SYS_FLASH_SUCCESS;
  731              		.loc 1 572 0
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 24
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 24
 
 
  732 0006 0023     		movs	r3, #0
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  625:Generated_Source\PSoC4/CyFlash.c ****             /* FM-Lite Clock Backup System Call */
  626:Generated_Source\PSoC4/CyFlash.c ****             parameters[0u] =
  734              		.loc 1 626 0
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 25
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 25
 
 
  735 000a 3B1D     		adds	r3, r7, #4
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  782 004c 04D0     		beq	.L51
  783              		.loc 1 633 0 discriminator 4
  784 004e 084B     		ldr	r3, .L54+8
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 26
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 26
 
 
  785 0050 1B68     		ldr	r3, [r3]
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  652:Generated_Source\PSoC4/CyFlash.c **** *
  653:Generated_Source\PSoC4/CyFlash.c **** *******************************************************************************/
  654:Generated_Source\PSoC4/CyFlash.c **** static cystatus CySysFlashClockConfig(void)
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 27
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 27
 
 
  655:Generated_Source\PSoC4/CyFlash.c **** {
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  694:Generated_Source\PSoC4/CyFlash.c ****         CySysClkWriteHfclkDirect(CY_SYS_CLK_HFCLK_IMO);
  695:Generated_Source\PSoC4/CyFlash.c **** 
  696:Generated_Source\PSoC4/CyFlash.c ****         /* The IMO should be the source for the charge pump clock */
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 28
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 28
 
 
  697:Generated_Source\PSoC4/CyFlash.c ****         CY_SYS_CLK_SELECT_REG =  (CY_SYS_CLK_SELECT_REG &
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  876 0040 04D0     		beq	.L59
  877              		.loc 1 710 0 discriminator 4
  878 0042 064B     		ldr	r3, .L62
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 29
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 29
 
 
  879 0044 1B68     		ldr	r3, [r3]
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  914              		.loc 1 729 0
  915              		.cfi_startproc
  916              		@ args = 0, pretend = 0, frame = 16
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 30
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 30
 
 
  917              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  772:Generated_Source\PSoC4/CyFlash.c ****             CY_SYS_CLK_SELECT_REG = cySysFlashBackup.clkSelectReg;
  773:Generated_Source\PSoC4/CyFlash.c **** 
  774:Generated_Source\PSoC4/CyFlash.c ****             /* Stop IMO if needed */
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 31
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 31
 
 
  775:Generated_Source\PSoC4/CyFlash.c ****             if (0u == cySysFlashBackup.clkImoEna)
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  965 0038 FF22     		movs	r2, #255
  966 003a 1340     		ands	r3, r2
  967 003c 0DE0     		b	.L66
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 32
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 32
 
 
  968              	.L65:
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1014              	.Ldebug_info0:
  1015 0000 16030000 		.4byte	0x316
  1016 0004 0400     		.2byte	0x4
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 33
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 33
 
 
  1017 0006 00000000 		.4byte	.Ldebug_abbrev0
@@ -1927,14 +1927,14 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1020 000c CB000000 		.4byte	.LASF35
  1021 0010 0C       		.byte	0xc
  1022 0011 8A010000 		.4byte	.LASF36
- 1023 0015 D1010000 		.4byte	.LASF37
+ 1023 0015 85020000 		.4byte	.LASF37
  1024 0019 00000000 		.4byte	.Ldebug_ranges0+0
  1025 001d 00000000 		.4byte	0
  1026 0021 00000000 		.4byte	.Ldebug_line0
  1027 0025 02       		.uleb128 0x2
  1028 0026 01       		.byte	0x1
  1029 0027 06       		.byte	0x6
- 1030 0028 DB020000 		.4byte	.LASF0
+ 1030 0028 79020000 		.4byte	.LASF0
  1031 002c 02       		.uleb128 0x2
  1032 002d 01       		.byte	0x1
  1033 002e 08       		.byte	0x8
@@ -1950,7 +1950,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1043 0041 02       		.uleb128 0x2
  1044 0042 04       		.byte	0x4
  1045 0043 05       		.byte	0x5
- 1046 0044 C6020000 		.4byte	.LASF4
+ 1046 0044 64020000 		.4byte	.LASF4
  1047 0048 02       		.uleb128 0x2
  1048 0049 04       		.byte	0x4
  1049 004a 07       		.byte	0x7
@@ -1958,7 +1958,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1051 004f 02       		.uleb128 0x2
  1052 0050 08       		.byte	0x8
  1053 0051 05       		.byte	0x5
- 1054 0052 3C020000 		.4byte	.LASF6
+ 1054 0052 DA010000 		.4byte	.LASF6
  1055 0056 02       		.uleb128 0x2
  1056 0057 08       		.byte	0x8
  1057 0058 07       		.byte	0x7
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1071 0073 2C000000 		.4byte	0x2c
  1072 0077 04       		.uleb128 0x4
  1073 0078 6A010000 		.4byte	.LASF10
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 34
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 34
 
 
  1074 007c 02       		.byte	0x2
@@ -2000,7 +2000,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1090 009d 02       		.uleb128 0x2
  1091 009e 01       		.byte	0x1
  1092 009f 08       		.byte	0x8
- 1093 00a0 4A020000 		.4byte	.LASF14
+ 1093 00a0 E8010000 		.4byte	.LASF14
  1094 00a4 04       		.uleb128 0x4
  1095 00a5 00000000 		.4byte	.LASF15
  1096 00a9 02       		.byte	0x2
@@ -2016,11 +2016,11 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1106 00c1 02       		.uleb128 0x2
  1107 00c2 08       		.byte	0x8
  1108 00c3 04       		.byte	0x4
- 1109 00c4 CF020000 		.4byte	.LASF17
+ 1109 00c4 6D020000 		.4byte	.LASF17
  1110 00c8 02       		.uleb128 0x2
  1111 00c9 04       		.byte	0x4
  1112 00ca 07       		.byte	0x7
- 1113 00cb 33020000 		.4byte	.LASF18
+ 1113 00cb D1010000 		.4byte	.LASF18
  1114 00cf 06       		.uleb128 0x6
  1115 00d0 2E000000 		.4byte	.LASF38
  1116 00d4 14       		.byte	0x14
@@ -2034,11 +2034,11 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1124 00e2 83000000 		.4byte	0x83
  1125 00e6 00       		.byte	0
  1126 00e7 07       		.uleb128 0x7
- 1127 00e8 54020000 		.4byte	.LASF20
+ 1127 00e8 F2010000 		.4byte	.LASF20
  1128 00ec 03       		.byte	0x3
  1129 00ed E7       		.byte	0xe7
  1130 00ee F4000000 		.4byte	0xf4
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 35
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 35
 
 
  1131 00f2 04       		.byte	0x4
@@ -2051,12 +2051,12 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1138 0102 03       		.byte	0x3
  1139 0103 00       		.byte	0
  1140 0104 0A       		.uleb128 0xa
- 1141 0105 A5020000 		.4byte	.LASF21
+ 1141 0105 43020000 		.4byte	.LASF21
  1142 0109 03       		.byte	0x3
  1143 010a ED       		.byte	0xed
  1144 010b CF000000 		.4byte	0xcf
  1145 010f 0B       		.uleb128 0xb
- 1146 0110 E7020000 		.4byte	.LASF29
+ 1146 0110 DE020000 		.4byte	.LASF29
  1147 0114 01       		.byte	0x1
  1148 0115 51       		.byte	0x51
  1149 0116 83000000 		.4byte	0x83
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1185 0160 91       		.byte	0x91
  1186 0161 64       		.sleb128 -28
  1187 0162 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 36
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 36
 
 
  1188 0163 A9000000 		.4byte	.LASF26
@@ -2132,7 +2132,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1216 019b 05       		.uleb128 0x5
  1217 019c 8B010000 		.4byte	0x18b
  1218 01a0 10       		.uleb128 0x10
- 1219 01a1 FA020000 		.4byte	.LASF39
+ 1219 01a1 F1020000 		.4byte	.LASF39
  1220 01a5 01       		.byte	0x1
  1221 01a6 A601     		.2byte	0x1a6
  1222 01a8 00000000 		.4byte	.LFB3
@@ -2141,7 +2141,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1225 01b1 9C       		.byte	0x9c
  1226 01b2 D5010000 		.4byte	0x1d5
  1227 01b6 11       		.uleb128 0x11
- 1228 01b7 4F020000 		.4byte	.LASF28
+ 1228 01b7 ED010000 		.4byte	.LASF28
  1229 01bb 01       		.byte	0x1
  1230 01bc A601     		.2byte	0x1a6
  1231 01be 83000000 		.4byte	0x83
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1242 01d3 6F       		.sleb128 -17
  1243 01d4 00       		.byte	0
  1244 01d5 13       		.uleb128 0x13
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 37
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 37
 
 
  1245 01d6 4A000000 		.4byte	.LASF30
@@ -2218,14 +2218,14 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1299 0249 02       		.uleb128 0x2
  1300 024a 91       		.byte	0x91
  1301 024b 6F       		.sleb128 -17
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 38
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 38
 
 
  1302 024c 00       		.byte	0
  1303 024d 05       		.uleb128 0x5
  1304 024e 8B010000 		.4byte	0x18b
  1305 0252 14       		.uleb128 0x14
- 1306 0253 8F020000 		.4byte	.LASF31
+ 1306 0253 2D020000 		.4byte	.LASF31
  1307 0257 01       		.byte	0x1
  1308 0258 3A02     		.2byte	0x23a
  1309 025a A4000000 		.4byte	0xa4
@@ -2261,7 +2261,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1339 029b 05       		.uleb128 0x5
  1340 029c 8B020000 		.4byte	0x28b
  1341 02a0 14       		.uleb128 0x14
- 1342 02a1 62020000 		.4byte	.LASF32
+ 1342 02a1 00020000 		.4byte	.LASF32
  1343 02a5 01       		.byte	0x1
  1344 02a6 8E02     		.2byte	0x28e
  1345 02a8 A4000000 		.4byte	0xa4
@@ -2278,12 +2278,12 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1356 02c6 02       		.uleb128 0x2
  1357 02c7 91       		.byte	0x91
  1358 02c8 74       		.sleb128 -12
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 39
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 39
 
 
  1359 02c9 00       		.byte	0
  1360 02ca 14       		.uleb128 0x14
- 1361 02cb 78020000 		.4byte	.LASF33
+ 1361 02cb 16020000 		.4byte	.LASF33
  1362 02cf 01       		.byte	0x1
  1363 02d0 D802     		.2byte	0x2d8
  1364 02d2 A4000000 		.4byte	0xa4
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1413 000d 11       		.uleb128 0x11
  1414 000e 01       		.uleb128 0x1
  1415 000f 10       		.uleb128 0x10
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 40
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 40
 
 
  1416 0010 17       		.uleb128 0x17
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1470 0046 3B       		.uleb128 0x3b
  1471 0047 0B       		.uleb128 0xb
  1472 0048 01       		.uleb128 0x1
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 41
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 41
 
 
  1473 0049 13       		.uleb128 0x13
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1527 007f 03       		.uleb128 0x3
  1528 0080 0E       		.uleb128 0xe
  1529 0081 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 42
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 42
 
 
  1530 0082 0B       		.uleb128 0xb
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1584 00b9 49       		.uleb128 0x49
  1585 00ba 13       		.uleb128 0x13
  1586 00bb 00       		.byte	0
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 43
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 43
 
 
  1587 00bc 00       		.byte	0
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1641 00f3 0B       		.uleb128 0xb
  1642 00f4 3B       		.uleb128 0x3b
  1643 00f5 05       		.uleb128 0x5
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 44
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 44
 
 
  1644 00f6 49       		.uleb128 0x49
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1698 012e 01       		.uleb128 0x1
  1699 012f 13       		.uleb128 0x13
  1700 0130 00       		.byte	0
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 45
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 45
 
 
  1701 0131 00       		.byte	0
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1748              	.LASF24:
  1749 000f 72657456 		.ascii	"retValue\000"
  1749      616C7565 
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 46
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 46
 
 
  1749      00
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1773      73684261 
  1773      636B7570 
  1773      00
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 47
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 47
 
 
  1774              	.LASF9:
@@ -2816,90 +2816,89 @@ ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 1
  1795      72727570 
  1795      74537461 
  1795      746500
- 1796              	.LASF37:
- 1797 01d1 433A5C55 		.ascii	"C:\\Users\\Daniela\\Downloads\\UART_to_BLE2\\UART_t"
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 48
+ 1796              	.LASF18:
+ 1797 01d1 73697A65 		.ascii	"sizetype\000"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 48
 
 
- 1797      73657273 
- 1797      5C44616E 
- 1797      69656C61 
- 1797      5C446F77 
- 1798 01ff 6F5F424C 		.ascii	"o_BLE\\UART_to_BLE_central\\UART_to_BLE_central.cyd"
- 1798      455C5541 
- 1798      52545F74 
- 1798      6F5F424C 
- 1798      455F6365 
- 1799 0230 736E00   		.ascii	"sn\000"
- 1800              	.LASF18:
- 1801 0233 73697A65 		.ascii	"sizetype\000"
- 1801      74797065 
+ 1797      74797065 
+ 1797      00
+ 1798              	.LASF6:
+ 1799 01da 6C6F6E67 		.ascii	"long long int\000"
+ 1799      206C6F6E 
+ 1799      6720696E 
+ 1799      7400
+ 1800              	.LASF14:
+ 1801 01e8 63686172 		.ascii	"char\000"
  1801      00
- 1802              	.LASF6:
- 1803 023c 6C6F6E67 		.ascii	"long long int\000"
- 1803      206C6F6E 
- 1803      6720696E 
- 1803      7400
- 1804              	.LASF14:
- 1805 024a 63686172 		.ascii	"char\000"
- 1805      00
- 1806              	.LASF28:
- 1807 024f 66726571 		.ascii	"freq\000"
- 1807      00
- 1808              	.LASF20:
- 1809 0254 636C6F63 		.ascii	"clockSettings\000"
- 1809      6B536574 
- 1809      74696E67 
- 1809      7300
- 1810              	.LASF32:
- 1811 0262 43795379 		.ascii	"CySysFlashClockConfig\000"
+ 1802              	.LASF28:
+ 1803 01ed 66726571 		.ascii	"freq\000"
+ 1803      00
+ 1804              	.LASF20:
+ 1805 01f2 636C6F63 		.ascii	"clockSettings\000"
+ 1805      6B536574 
+ 1805      74696E67 
+ 1805      7300
+ 1806              	.LASF32:
+ 1807 0200 43795379 		.ascii	"CySysFlashClockConfig\000"
+ 1807      73466C61 
+ 1807      7368436C 
+ 1807      6F636B43 
+ 1807      6F6E6669 
+ 1808              	.LASF33:
+ 1809 0216 43795379 		.ascii	"CySysFlashClockRestore\000"
+ 1809      73466C61 
+ 1809      7368436C 
+ 1809      6F636B52 
+ 1809      6573746F 
+ 1810              	.LASF31:
+ 1811 022d 43795379 		.ascii	"CySysFlashClockBackup\000"
  1811      73466C61 
  1811      7368436C 
- 1811      6F636B43 
- 1811      6F6E6669 
- 1812              	.LASF33:
- 1813 0278 43795379 		.ascii	"CySysFlashClockRestore\000"
- 1813      73466C61 
- 1813      7368436C 
- 1813      6F636B52 
- 1813      6573746F 
- 1814              	.LASF31:
- 1815 028f 43795379 		.ascii	"CySysFlashClockBackup\000"
- 1815      73466C61 
- 1815      7368436C 
- 1815      6F636B42 
- 1815      61636B75 
- 1816              	.LASF21:
- 1817 02a5 43595F53 		.ascii	"CY_SYS_FLASH_CLOCK_BACKUP_STRUCT\000"
- 1817      59535F46 
- 1817      4C415348 
- 1817      5F434C4F 
- 1817      434B5F42 
- 1818              	.LASF4:
- 1819 02c6 6C6F6E67 		.ascii	"long int\000"
- 1819      20696E74 
-ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccKVainy.s 			page 49
+ 1811      6F636B42 
+ 1811      61636B75 
+ 1812              	.LASF21:
+ 1813 0243 43595F53 		.ascii	"CY_SYS_FLASH_CLOCK_BACKUP_STRUCT\000"
+ 1813      59535F46 
+ 1813      4C415348 
+ 1813      5F434C4F 
+ 1813      434B5F42 
+ 1814              	.LASF4:
+ 1815 0264 6C6F6E67 		.ascii	"long int\000"
+ 1815      20696E74 
+ 1815      00
+ 1816              	.LASF17:
+ 1817 026d 6C6F6E67 		.ascii	"long double\000"
+ 1817      20646F75 
+ 1817      626C6500 
+ 1818              	.LASF0:
+ 1819 0279 7369676E 		.ascii	"signed char\000"
+ 1819      65642063 
+ 1819      68617200 
+ 1820              	.LASF37:
+ 1821 0285 433A5C55 		.ascii	"C:\\Users\\Daniela\\Desktop\\Bluetooth_Project\\UAR"
+ 1821      73657273 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc7p0l7R.s 			page 49
 
 
- 1819      00
- 1820              	.LASF17:
- 1821 02cf 6C6F6E67 		.ascii	"long double\000"
- 1821      20646F75 
- 1821      626C6500 
- 1822              	.LASF0:
- 1823 02db 7369676E 		.ascii	"signed char\000"
- 1823      65642063 
- 1823      68617200 
- 1824              	.LASF29:
- 1825 02e7 43795379 		.ascii	"CySysFlashWriteRow\000"
- 1825      73466C61 
- 1825      73685772 
- 1825      69746552 
- 1825      6F7700
- 1826              	.LASF39:
- 1827 02fa 43795379 		.ascii	"CySysFlashSetWaitCycles\000"
- 1827      73466C61 
- 1827      73685365 
- 1827      74576169 
- 1827      74437963 
- 1828              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1821      5C44616E 
+ 1821      69656C61 
+ 1821      5C446573 
+ 1822 02b3 545F746F 		.ascii	"T_to_BLE_central\\UART_to_BLE_central.cydsn\000"
+ 1822      5F424C45 
+ 1822      5F63656E 
+ 1822      7472616C 
+ 1822      5C554152 
+ 1823              	.LASF29:
+ 1824 02de 43795379 		.ascii	"CySysFlashWriteRow\000"
+ 1824      73466C61 
+ 1824      73685772 
+ 1824      69746552 
+ 1824      6F7700
+ 1825              	.LASF39:
+ 1826 02f1 43795379 		.ascii	"CySysFlashSetWaitCycles\000"
+ 1826      73466C61 
+ 1826      73685365 
+ 1826      74576169 
+ 1826      74437963 
+ 1827              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
