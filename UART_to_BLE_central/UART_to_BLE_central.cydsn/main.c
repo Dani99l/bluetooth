@@ -24,7 +24,7 @@
 *******************************************************************************/
 
 #include "main.h"
-
+#include "teste.h"
 int main()
 {
     #ifdef LOW_POWER_MODE    
@@ -35,7 +35,7 @@ int main()
     CYBLE_API_RESULT_T      bleApiResult;
    
     CyGlobalIntEnable; 
-    
+ 
     /* Start UART and BLE component and display project information */
     UART_Start();   
     bleApiResult = CyBle_Start(AppCallBack); 
@@ -71,9 +71,9 @@ int main()
         /* Enter infinite loop */
         while(1);
     }
-    
+    UART_UartPutString("\n\r Before processEvents1 ");
     CyBle_ProcessEvents();
-    
+    UART_UartPutString("\n\r After processEvents1 ");
     /***************************************************************************
     * Main polling loop
     ***************************************************************************/
@@ -122,13 +122,13 @@ int main()
         /*******************************************************************
         *  Process all pending BLE events in the stack
         *******************************************************************/      
+      // UART_UartPutString("\n\r Before handleBLE ");
         HandleBleProcessing();
+        //UART_UartPutString(ultoa(CyBle_GetState()));
+      //  UART_UartPutString("\n\r after handleBLE ");
         //UART_UartPutString("\n\r\t\ entre handle e cyble ");
         CyBle_ProcessEvents();
     }
 }
-
-
-
 
 /* [] END OF FILE */

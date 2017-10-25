@@ -1,6 +1,6 @@
-C:\Users\Daniela\Desktop\Bluetooth_Project\UART_to_BLE_central\UART_to_BLE_central.cydsn\UART_to_BLE_central.cyprj|7dc91e13-aa8b-409c-ac64-8a19a828c986
-C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1430e94b-d08f-4d27-9910-838c36abc93e
-C:\Users\Daniela\Documents\PSoC Creator\4.1\Downloads ( 4.1).cylib\Downloads ( 4.1).cyprj|7b21eb73-e046-4608-810d-567aac03c657
-C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|127ee308-8531-4759-93ac-f8a441a34da3
-C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|91668934-f90e-4578-b52d-73335f046afd
-C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|ad3b915b-9921-4f6f-89e6-7d130426324d
+C:\Users\Daniela\Desktop\Bluetooth_Project\UART_to_BLE_central\UART_to_BLE_central.cydsn\UART_to_BLE_central.cyprj|9ddb0c99-de27-4b6b-9b0d-01b824dd2d85
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1b132fb1-e639-45f8-917f-23db7de09b7f
+C:\Users\Daniela\Documents\PSoC Creator\4.1\Downloads ( 4.1).cylib\Downloads ( 4.1).cyprj|b4a1a0fa-9844-4890-9d5e-dfe705333a9b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|decff8c4-6a73-4902-8c71-ab4ccedb6fef
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|83e9908b-c324-41a2-9812-fcbc4fd6792a
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|9e2c4cb4-a956-41db-8217-d4192366feae

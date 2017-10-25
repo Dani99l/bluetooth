@@ -81,13 +81,14 @@ CYBLE_GATTC_WRITE_REQ_T     enableNotificationReqParam   = {
 void HandleBleProcessing(void)
 {    
     CYBLE_API_RESULT_T      cyble_api_result;
-    
+   // cyBle_state=CYBLE_STATE_SCANNING;
     switch (cyBle_state)
     {
         case CYBLE_STATE_SCANNING:
             if(peerDeviceFound)
             {
-                CyBle_GapcStopScan();
+               CyBle_GapcStopScan();
+               UART_UartPutString("\n\r Scanning e peer found");
             }
             break;
     
@@ -98,17 +99,20 @@ void HandleBleProcessing(void)
             if((INFO_EXCHANGE_COMPLETE != infoExchangeState))
             {
                 attrHandleInit();
+                UART_UartPutString("\n\r Connected with info exchanged");
             }
             
             /* enable notifications if not enabled already */
             else if(false == notificationEnabled)
             {
                 enableNotifications();
+                UART_UartPutString("\n\r not Connected -> go to notifications");
             }
             
             /* if client has all required info and stack is free, handle UART traffic */
             else if(CyBle_GattGetBusStatus() != CYBLE_STACK_STATE_BUSY)
             {
+                UART_UartPutString("\n\r Information from central sent");
                 HandleUartTxTraffic();
             }
             
@@ -116,6 +120,7 @@ void HandleBleProcessing(void)
                 
         case CYBLE_STATE_DISCONNECTED:
         {
+            UART_UartPutString("\n\rIn disconected state but retrying to connect");
             if(peerDeviceFound)
             {
                 cyble_api_result = CyBle_GapcConnectDevice(&peerAddr);

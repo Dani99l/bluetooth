@@ -40,10 +40,12 @@
           <File BuildType="BUILD" Toolchain="">app_Ble.c</File>
           <File BuildType="BUILD" Toolchain="">app_UART.c</File>
           <File BuildType="BUILD" Toolchain="">app_LED.c</File>
+          <File BuildType="BUILD" Toolchain="">teste.c</File>
           <File BuildType="BUILD" Toolchain="">main.h</File>
           <File BuildType="BUILD" Toolchain="">app_UART.h</File>
           <File BuildType="BUILD" Toolchain="">app_Ble.h</File>
           <File BuildType="BUILD" Toolchain="">app_LED.h</File>
+          <File BuildType="BUILD" Toolchain="">teste.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\Daniela\Desktop\Bluetooth_Project\UART_to_BLE_central\UART_to_BLE_central.cydsn\Generated_Source\PSoC4">
