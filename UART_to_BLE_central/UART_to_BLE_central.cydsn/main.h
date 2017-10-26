@@ -27,12 +27,24 @@
 //    #define     FLOW_CONTROL
     #define     PRINT_MESSAGE_LOG
 //    #define     LOW_POWER_MODE
+    CYBLE_API_RESULT_T      bleApiResult;
     
+    /************APP BLE*****************/
+    volatile static bool peerDeviceFound         = false;
+    volatile static bool notificationEnabled     = false;
+    static INFO_EXCHANGE_STATE_T    infoExchangeState   = INFO_EXCHANGE_START;
+    static CYBLE_GAP_BD_ADDR_T      peerAddr;           /* BD address of the peer device */
+    static INFO_EXCHANGE_STATE_T    infoExchangeState   = INFO_EXCHANGE_START;
+
+    CYBLE_GATT_ATTR_HANDLE_RANGE_T  attrHandleRange;
+    CYBLE_GATTC_FIND_INFO_REQ_T     charDescHandleRange;
     /***************************************
     *       Function Prototypes
     ***************************************/
     void AppCallBack(uint32 , void *);  
-    
+    void stopBLE();
+    void startBLE();
+    void start();
 #endif
 
 /* [] END OF FILE */

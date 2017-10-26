@@ -3,12 +3,10 @@
 <!--This file is machine generated and read. It is not intended to be edited by hand.-->
 <!--Due to this, there is no schema for this file.-->
 <CyGuid_2867d519-54d2-4c01-9830-c51cb08bc3dd type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWorkspaceSerialize" version="5" xml_contents_version="3" name="UART_to_BLE_central-000" persistent="UART_to_BLE_central-000.cywrk" platform="NOT_USED">
-<current_project name=".\UART_to_BLE_central.cyprj" />
+<current_project name="" />
 <wrkspc_folders />
 <files />
-<projects>
-<v>.\UART_to_BLE_central.cyprj</v>
-</projects>
+<projects />
 <workspace_id v="6652678f-63cb-4b3c-a980-086963452bf3" />
 <WriteAppVersionLastSavedWith v="4.1.0.3210" />
 <WriteAppMarketingVersionLastSavedWith v="4.1 Update 1" />

@@ -1,0 +1,1939 @@
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"BLE_custom.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.section	.gnu.lto_.profile.58eba3f6,"",%progbits
+  19 0000 789C6361 		.ascii	"x\234ca`d`a`\000\222L\214\000\000o\000\016"
+  19      60646061 
+  19      6000924C 
+  19      8C00006F 
+  19      000E
+  20              		.text
+  21              		.section	.gnu.lto_.icf.58eba3f6,"",%progbits
+  22 0000 789C6361 		.ascii	"x\234ca`d\000\001>\006\004`bX?\363A\013\023\343\254"
+  22      60640001 
+  22      3E060460 
+  22      62583FF3 
+  22      410B13E3 
+  23 0015 7BEF4EB2 		.ascii	"{\357N\2623\000\000,\247\005\373"
+  23      3300002C 
+  23      A705FB
+  24              		.text
+  25              		.section	.gnu.lto_.jmpfuncs.58eba3f6,"",%progbits
+  26 0000 789C6361 		.ascii	"x\234ca`d\000\001V\006\004\000\213\000\000\000\356\000"
+  26      60640001 
+  26      56060400 
+  26      8B000000 
+  26      EE00
+  27 0012 0C       		.ascii	"\014"
+  28              		.text
+  29              		.section	.gnu.lto_.inline.58eba3f6,"",%progbits
+  30 0000 789C6361 		.ascii	"x\234ca`d\000\001\021\006\004\000\21203120\001\231l"
+  30      60640001 
+  30      11060400 
+  30      8A303331 
+  30      32300199 
+  31 0015 0BE499C0 		.ascii	"\013\344\231\300b\000\012\031\000\352"
+  31      62000A19 
+  31      00EA
+  32              		.text
+  33              		.section	.gnu.lto_.pureconst.58eba3f6,"",%progbits
+  34 0000 789C6361 		.ascii	"x\234ca`d`f`\000\222\014\000\000X\000\012"
+  34      60646066 
+  34      6000920C 
+  34      00005800 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 2
+
+
+  34      0A
+  35              		.text
+  36              		.section	.gnu.lto_CyBle_CustomInit.58eba3f6,"",%progbits
+  37 0000 789C6361 		.ascii	"x\234ca`d\000\201\032 V\003bi fdf`d\232p\216\201\241"
+  37      60640081 
+  37      1A205603 
+  37      62692066 
+  37      64666064 
+  38 0019 91838991 		.ascii	"\221\203\211\221\021\304h\340`d\250gb\254g\374\312\364"
+  38      11C468E0 
+  38      6064A867 
+  38      62AC67FC 
+  38      CAF4
+  39 002b 9789F150 		.ascii	"\227\211\361P\373\263\235L\232\313\033\200\340A\353"
+  39      FBB39D4C 
+  39      9ACB1B80 
+  39      E041EB
+  40 003a 63838615 		.ascii	"c\203\206\025\007\030[\231\031\030\3763\201Mb`\\\316"
+  40      07185B99 
+  40      1918FE33 
+  40      814D6260 
+  40      5CCE
+  41 004c A8C90054 		.ascii	"\250\311\000T\366h\343\277\251\274l- e\012\020I\306"
+  41      F668E3BF 
+  41      A9BC6C2D 
+  41      20650A10 
+  41      49C6
+  42 005e 158C6C20 		.ascii	"\025\214l \353\326\007\035h\370\377\277\271\341\300"
+  42      EBD6071D 
+  42      68F8FFBF 
+  42      B9E1C0
+  43 006d 6CB68353 		.ascii	"l\266\203S\330\2012\037\200\030d\317G&&\020\315\374"
+  43      D881321F 
+  43      801864CF 
+  43      47262610 
+  43      CDFC
+  44 007f 8A9109A4 		.ascii	"\212\221\011\244\026l\334\007&F\220\030P\205\212{j^"
+  44      166CDC07 
+  44      26469018 
+  44      50858A7B 
+  44      6A5E
+  45 0091 6A516249 		.ascii	"jQbIjJ|p~iQrjL@p\276\263I\214\223\217k|riqI~\256^2\003"
+  45      6A4A7C70 
+  45      7E695172 
+  45      6A4C4070 
+  45      BEB3498C 
+  46 00b2 00ADE53A 		.ascii	"\000\255\345:S"
+  46      53
+  47              		.text
+  48              		.section	.gnu.lto_cyBle_customs.58eba3f6,"",%progbits
+  49 0000 789C6361 		.ascii	"x\234ca`d\000\201\375@\014a10\374eb\\\367\351\313:\266"
+  49      60640081 
+  49      FD400C61 
+  49      3130FC65 
+  49      625CF7E9 
+  50 0017 2F4CADCC 		.ascii	"/L\255\314\014\214\374@\356\314\211s\253,\2665t,h\020"
+  50      0C8CFC40 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 3
+
+
+  50      EECC8973 
+  50      AB2CB635 
+  50      742C6810 
+  51 002b 68656664 		.ascii	"hefd4\224a\\\316(\003R\367\367N\343?&\210:> wZ\327\304"
+  51      3494615C 
+  51      CE280352 
+  51      F7F74EE3 
+  51      3F26883A 
+  52 0045 C5EC1085 		.ascii	"\305\354\020\205\012\255\314L\377\230\030\030W2\312"
+  52      0AADCC4C 
+  52      FF981818 
+  52      5732CA
+  53 0054 FC636264 		.ascii	"\374cbd\\\301h\001R\337{\355\231+\334 f\220A\253 \022"
+  53      5CC16801 
+  53      52DF7BED 
+  53      992BDC20 
+  53      669041AB 
+  54 006a BF5F4CB9 		.ascii	"\277_L\271\311\0101\210\007\310\375|}\362=\016\270A"
+  54      C9083188 
+  54      07C8FD7C 
+  54      7DF23D0E 
+  54      B841
+  55 007c 2CFF9898 		.ascii	",\377\230\230\030\327\200\014bf\\\015Q\177~\326\273"
+  55      18D7800C 
+  55      62665C0D 
+  55      517F7ED6 
+  55      BB
+  56 008d C3EC7093 		.ascii	"\303\354p\223XA&\255\005\3120\256\003\022\000\277\011"
+  56      584126AD 
+  56      05CA30AE 
+  56      031200BF 
+  56      09
+  57 009e 4342     		.ascii	"CB"
+  58              		.text
+  59              		.section	.gnu.lto_.symbol_nodes.58eba3f6,"",%progbits
+  60 0000 789C6361 		.ascii	"x\234ca`d\220f\000\002&\346z\006\206\011\347\030\030"
+  60      60649066 
+  60      000226E6 
+  60      7A068609 
+  60      E71818
+  61 0013 80D4AE06 		.ascii	"\200\324\256\006E\006\006V&\206F!\220\014\000J\250\004"
+  61      45060656 
+  61      26864621 
+  61      900C004A 
+  61      A804
+  62 0025 77       		.ascii	"w"
+  63              		.text
+  64              		.section	.gnu.lto_.refs.58eba3f6,"",%progbits
+  65 0000 789C6361 		.ascii	"x\234ca`\004B \000\000\0009\000\007"
+  65      60044220 
+  65      00000039 
+  65      0007
+  66              		.text
+  67              		.section	.gnu.lto_.decls.58eba3f6,"",%progbits
+  68 0000 789C8D55 		.ascii	"x\234\215U}L[U\024\277\347\275\256\314\007\024R\210"
+  68      7D4C5B55 
+  68      14BFE7BD 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 4
+
+
+  68      AECC0714 
+  68      5288
+  69 0012 592226B8 		.ascii	"Y\"&\270tHb\302$1\376-\024\371H60\266\220\230,\351j"
+  69      744862C2 
+  69      2431FE2D 
+  69      14F94836 
+  69      30B69098 
+  70 0029 57C3E22C 		.ascii	"W\303\342,\246\024\023\376\273RE\226\305\001\233\233"
+  70      A61413FE 
+  70      BB524596 
+  70      C5019B9B 
+  71 0039 930F45CC 		.ascii	"\223\017E\314f\331\326Q6g\307\306\260\314\255\024\306"
+  71      66D9D651 
+  71      3667C7C6 
+  71      B0CCAD14 
+  71      C6
+  72 004a C7008731 		.ascii	"\307\000\2071,\212\314?\360+\302\324([\010\236{\357"
+  72      2C8ACC3F 
+  72      F02BC2D4 
+  72      285B089E 
+  72      7BEF
+  73 005c 6B5F4B80 		.ascii	"k_K\200x\323s\357=\347\235s~\277\373\273\257\255\216"
+  73      78D373EF 
+  73      3DE79D73 
+  73      7EBFFBBB 
+  73      AFAD8E
+  74 006f 0061A34D 		.ascii	"\000a\243MO\310^\334v\340~\015\207\214k\025\321\006"
+  74      4FC85EDC 
+  74      76E07E0D 
+  74      878C6B15 
+  74      D106
+  75 0081 CBF2ABEB 		.ascii	"\313\362\253\353\014I\034\321x\325\272\334\365\203\325"
+  75      0C491CD1 
+  75      78D5BADC 
+  75      F583D5
+  76 0090 210CC941 		.ascii	"!\014\311A\013\241\205\321\"hSh\323h:\264!\264\033h"
+  76      0BA185D1 
+  76      22685368 
+  76      D3683AB4 
+  76      21B41B68 
+  77 00a4 2368631B 		.ascii	"#hc\033\364`cU\002\337\314\237T\231\203\357@&\352\001"
+  77      F4606355 
+  77      02DFCC9F 
+  77      549983EF 
+  77      4026EA01 
+  78 00b8 08809881 		.ascii	"\010\200\230\201\033\021\306]\334HDl\242\241\330  \236"
+  78      1B11C65D 
+  78      DC48446C 
+  78      A2A1D820 
+  78      209E
+  79 00ca 486A9468 		.ascii	"Hj\224h\315\370G\255\207\265\350\340M\264\356\240\026"
+  79      CDF847AD 
+  79      87B5E8E0 
+  79      4DB4EEA0 
+  79      16
+  80 00db 418C017F 		.ascii	"A\214\001\177,\212 \326U,\222V\021\327o\035\243(\347"
+  80      2C8A20D6 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 5
+
+
+  80      552C9256 
+  80      11D76F1D 
+  80      A328E7
+  81 00ee 280C91A2 		.ascii	"(\014\221\242\207n\352;\272\230*K\300\366?\254\370\212"
+  81      876EEA3B 
+  81      BA982A4B 
+  81      C0F63FAC 
+  81      F88A
+  82 0100 F3CE531C 		.ascii	"\363\316S\034-\224J\317h\312L\275\023\350\220\377\222"
+  82      2D944ACF 
+  82      68CA4CBD 
+  82      13E890FF 
+  82      92
+  83 0111 C0A8800E 		.ascii	"\300\250\200\016\335\345\361\266\373\006t3\025\310F"
+  83      DDE5F1B6 
+  83      FB067433 
+  83      15C846
+  84 0120 7775A4BD 		.ascii	"wu\244\275M\332q\222\327yi\266\016\252\036\207s\220"
+  84      4DDA7192 
+  84      D77969B6 
+  84      0EAA1E87 
+  84      7390
+  85 0132 0567210B 		.ascii	"\005g!\013\361\316\303\016\234_\325\211N\2776\237\230"
+  85      F1CEC30E 
+  85      9C5FD589 
+  85      4EBF369F 
+  85      98
+  86 0143 34ECECA2 		.ascii	"4\354\354\242\201\000\235_\011\244\234\364\322\010\226"
+  86      81009D5F 
+  86      09A49CF4 
+  86      D20896
+  87 0152 65B32CF0 		.ascii	"e\263,\360\201\014=\220\307H\372\330\035\020\370\034"
+  87      810C3D90 
+  87      C748FAD8 
+  87      1D10F81C 
+  88 0162 E690AF1F 		.ascii	"\346\220\257\037v2\224\037\373\377M\222\0138\321\237"
+  88      7632941F 
+  88      FBFF4D92 
+  88      0B38D19F 
+  89 0172 1EF9AF1A 		.ascii	"\036\371\257\032\004\037=\272\327\202\003\341m\202\317"
+  89      041F3DBA 
+  89      D78203E1 
+  89      6D82CF
+  90 0181 B3E85EEE 		.ascii	"\263\350^\356\234\3758YiR\371\030#\006\226\247\021\352"
+  90      9CFD3859 
+  90      6952F918 
+  90      230696A7 
+  90      11EA
+  91 0193 0305E7DD 		.ascii	"\003\005\347\335Y\370a\275\246\227\306:\223Eq:\272\267"
+  91      59F861BD 
+  91      A697C63A 
+  91      9345713A 
+  91      BAB7
+  92 01a5 D6FE09A5 		.ascii	"\326\376\011\245\211\326\022\272\203\336{\376\307\344"
+  92      89D612BA 
+  92      83DE7BFE 
+  92      C7E4
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 6
+
+
+  93 01b3 0A8E7AFA 		.ascii	"\012\216z\372\341\243%\246B\216\2027'c\240\367\267\376"
+  93      E1A325A6 
+  93      428E8237 
+  93      2763A0F7 
+  93      B7FE
+  94 01c5 955411E0 		.ascii	"\225T\021\340\357\317\247\341K\212\274\237\355\245\216"
+  94      EFCFA7E1 
+  94      4B8ABC9F 
+  94      EDA58E
+  95 01d4 0F86FC7A 		.ascii	"\017\206\374zPr\221E\003\245^\252\370\014\004.\"\207"
+  95      50729145 
+  95      03A55EAA 
+  95      F80C042E 
+  95      2287
+  96 01e6 4BC801FA 		.ascii	"K\310\001\372!\227\025\261\303\302\227\030\274\214\301"
+  96      219715B1 
+  96      C3C29718 
+  96      BC8CC1
+  97 01f5 338CEFFC 		.ascii	"3\214\357\374'\303\225\037\276\207\342\303\025P \250"
+  97      27C3951F 
+  97      BE87E2C3 
+  97      155020A8 
+  98 0205 0992A308 		.ascii	"\011\222\243\010\375\216\336\015\266\310\362a\340 \015"
+  98      FD8EDE0D 
+  98      B6C8F261 
+  98      E0200D
+  99 0214 477A5B94 		.ascii	"Gz[\224MA\0066\005i\277\275\347\314\273\014\344\032"
+  99      4D410636 
+  99      0569BFBD 
+  99      E7CCBB0C 
+  99      E41A
+ 100 0226 825CD540 		.ascii	"\202\\\325@\256\200\212\262\330\265\272\220,\217s\024"
+ 100      AE808AB2 
+ 100      D8B5BA90 
+ 100      2C8F7314 
+ 101 0236 689E38B1 		.ascii	"h\2368\261\260M\276'\234\356\273\017{\222\344e\341x"
+ 101      B04DBE27 
+ 101      9CEEBB0F 
+ 101      7B92E465 
+ 101      E178
+ 102 0248 8F4C2EA4 		.ascii	"\217L.\244\031[XOD\177\301\315\373E\361\011\204\300"
+ 102      195B584F 
+ 102      447FC1CD 
+ 102      FB45F109 
+ 102      84C0
+ 103 025a 18951BB3 		.ascii	"\030\225\033\263u\003\323\337\337O\002\223)#\267\233"
+ 103      7503D3DF 
+ 103      DF4F0293 
+ 103      2923B79B 
+ 104 026a F19DFFE8 		.ascii	"\361\235\377\350Xq\353\341Fzg?/\033D\032_C\206F\177"
+ 104      5871EBE1 
+ 104      467A673F 
+ 104      2F1B441A 
+ 104      5F438646 
+ 105 027f 376B918F 		.ascii	"7k\221\217\023\351f\375C\035\215),\027\233\302W\033"
+ 105      13E966FD 
+ 105      431D8D29 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 7
+
+
+ 105      2C179BC2 
+ 105      571B
+ 106 0291 E65E64A0 		.ascii	"\346^d\240\244\225_{\210Rp\223\270Kg\351xJ\270\211\242"
+ 106      A4955F7B 
+ 106      88527093 
+ 106      B84B67E9 
+ 106      784AB889 
+ 107 02a6 0C81096E 		.ascii	"\014\201\011n\200\211\277\334\\\220\320\361p\012\245"
+ 107      8089BFDC 
+ 107      5C90D0F1 
+ 107      700AA5
+ 108 02b5 DB591251 		.ascii	"\333Y\022Q\265P_\374\316\271?~\321\313=\374\353!}\023"
+ 108      B5505FFC 
+ 108      CEB93F7E 
+ 108      D1CB3DFC 
+ 108      EB217D13 
+ 109 02c9 082D1920 		.ascii	"\010-\031 #wC\010\030\306\316[\243\364\205\201\241\204"
+ 109      23774308 
+ 109      18C6CE5B 
+ 109      A3F48581 
+ 109      A184
+ 110 02db 31E99626 		.ascii	"1\351\226&:\003\345X?7\365\376\256\252\211\023\252\311"
+ 110      3A03E558 
+ 110      3F37F5FE 
+ 110      AEAA8913 
+ 110      AAC9
+ 111 02ed 12B51344 		.ascii	"\022\265\023D\022\325\374\373\301\3549\005PL\023W3t"
+ 111      12D5FCFB 
+ 111      C1EC3905 
+ 111      504C1357 
+ 111      3374
+ 112 02ff 3D6C3A45 		.ascii	"=l:EC\0152\027\363\013l?\272\261\230\255j\177N>\200"
+ 112      430D3217 
+ 112      F30B6C3F 
+ 112      BAB198AD 
+ 112      6A7F4E3E 
+ 113 0314 CF7B79F7 		.ascii	"\317{y\367Q\225\371md>\202\314\307\022\230\007\205>"
+ 113      5195F96D 
+ 113      643E82CC 
+ 113      C7129807 
+ 113      853E
+ 114 0326 A389FA88 		.ascii	"\243\211\372\210{\231i|\362m\016\214\004\341\272\012"
+ 114      7B99697C 
+ 114      F26D0E8C 
+ 114      04E1BA0A 
+ 115 0336 1C5325EE 		.ascii	"\034S%\356f\360\210\301\263\003\023zyP\310\351[\034"
+ 115      66F088C1 
+ 115      B303137A 
+ 115      7950C8E9 
+ 115      5B1C
+ 116 0348 0FE86372 		.ascii	"\017\350cr\256c\004\223HdkR\337\0129'0i\\\223s4*\347"
+ 116      AE630493 
+ 116      48646B52 
+ 116      DF0A3927 
+ 116      30695C93 
+ 117 0360 CDE5C829 		.ascii	"\315\345\310)C\274\234,Q;\360\235\0049\341\364\361\367"
+ 117      43BC9C2C 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 8
+
+
+ 117      513BF09D 
+ 117      0439E1F4 
+ 117      F1F7
+ 118 0372 67950C95 		.ascii	"g\225\014\225JhS*$\201\007\326\015\317\267\017C<\312"
+ 118      4A68532A 
+ 118      248107D6 
+ 118      0DCFB70F 
+ 118      433CCA
+ 119 0385 D456284D 		.ascii	"\324V(M\315+\017\222w}F\003]\370\353\267X\177\214\322"
+ 119      CD2B0F92 
+ 119      777D4603 
+ 119      5DF8EBB7 
+ 119      587F8CD2 
+ 120 0399 529846D9 		.ascii	"R\230F\331.\010\376q\205,b\305?\230\031\330E\322\315"
+ 120      2E08FE71 
+ 120      852C62C5 
+ 120      3F9819D8 
+ 120      45D2CD
+ 121 03ac F585879C 		.ascii	"\365\205\207\2346s]\255\247\346\2152\327A\317\366\222"
+ 121      36735DAD 
+ 121      A7E68D32 
+ 121      D741CFF6 
+ 121      92
+ 122 03bd F2CA6C73 		.ascii	"\362\312ls~>1\2258]N\267\335\343<`\263\324\324\271\035"
+ 122      7E3E3195 
+ 122      385D4EB7 
+ 122      DDE33C60 
+ 122      B3D4D4B9 
+ 123 03d2 CE7D2F59 		.ascii	"\316}/Yj\314\317\355+\334\363\242\315\301\323\363\034"
+ 123      6ACCCFED 
+ 123      2BDCF3A2 
+ 123      CDC1D3F3 
+ 123      1C
+ 124 03e3 24D5C1CB 		.ascii	"$\325\301\313\205_\233.V\213\323\375V\251\335u\340\220"
+ 124      855F9B2E 
+ 124      568BD3FD 
+ 124      56A9DD75 
+ 124      E090
+ 125 03f5 535F77D0 		.ascii	"S_w\320\345\311\177\376\251MZ9\352=\365o:k\363\252\311"
+ 125      E5C97FFE 
+ 125      A94D5A39 
+ 125      EA3DF56F 
+ 125      3A6BF3AA 
+ 126 040a 13E65758 		.ascii	"\023\346WX\337\222\002\253\325VTh\303\345e[iAy\021\306"
+ 126      DF9202AB 
+ 126      D5565468 
+ 126      C3E5655B 
+ 126      69417911 
+ 127 041f AC4F6F41 		.ascii	"\254OoA\304\342\261;^/\261{<\330\303\240\241\227\271"
+ 127      C4E2B13B 
+ 127      5E2FB17B 
+ 127      3CD8C3A0 
+ 127      A197B9
+ 128 0432 5EABC9D4 		.ascii	"^\253\311\324\\s\265\335-\010\031\023\203E\316Z\307"
+ 128      5C73B5DD 
+ 128      2D081913 
+ 128      8345CE5A 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 9
+
+
+ 128      C7
+ 129 0443 FF386735 		.ascii	"\3778g5\311\024\374\314\225\026k\305^\213\255\254\274"
+ 129      C914FCCC 
+ 129      95166BC5 
+ 129      5E8BADAC 
+ 129      BC
+ 130 0454 B8C2664D 		.ascii	"\270\302fMK\014Z\377\003\016FD6"
+ 130      4B0C5AFF 
+ 130      030E4644 
+ 130      36
+ 131              		.text
+ 132              		.section	.gnu.lto_.symtab.58eba3f6,"",%progbits
+ 133 0000 4379426C 		.ascii	"CyBle_CustomInit\000"
+ 133      655F4375 
+ 133      73746F6D 
+ 133      496E6974 
+ 133      00
+ 134 0011 00       		.ascii	"\000"
+ 135 0012 00       		.ascii	"\000"
+ 136 0013 00       		.ascii	"\000"
+ 137 0014 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 137      00000000 
+ 138 001c AD000000 		.ascii	"\255\000\000\000"
+ 139 0020 6379426C 		.ascii	"cyBle_customs\000"
+ 139      655F6375 
+ 139      73746F6D 
+ 139      7300
+ 140 002e 00       		.ascii	"\000"
+ 141 002f 00       		.ascii	"\000"
+ 142 0030 00       		.ascii	"\000"
+ 143 0031 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 143      00000000 
+ 144 0039 D3000000 		.ascii	"\323\000\000\000"
+ 145              		.text
+ 146              		.section	.gnu.lto_.opts,"",%progbits
+ 147 0000 272D666D 		.ascii	"'-fmath-errno' '-fsigned-zeros' '-ftrapping-math' '"
+ 147      6174682D 
+ 147      6572726E 
+ 147      6F272027 
+ 147      2D667369 
+ 148 0033 2D666E6F 		.ascii	"-fno-trapv' '-fno-openmp' '-fno-openacc' '-mcpu=cor"
+ 148      2D747261 
+ 148      70762720 
+ 148      272D666E 
+ 148      6F2D6F70 
+ 149 0066 7465782D 		.ascii	"tex-m0' '-mthumb' '-g' '-O3' '-ffunction-sections' "
+ 149      6D302720 
+ 149      272D6D74 
+ 149      68756D62 
+ 149      2720272D 
+ 150 0099 272D6666 		.ascii	"'-ffat-lto-objects' '-finline-functions' '-flto'\000"
+ 150      61742D6C 
+ 150      746F2D6F 
+ 150      626A6563 
+ 150      74732720 
+ 151              		.text
+ 152              		.cfi_sections	.debug_frame
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 10
+
+
+ 153              		.section	.text.CyBle_CustomInit,"ax",%progbits
+ 154              		.align	2
+ 155              		.global	CyBle_CustomInit
+ 156              		.code	16
+ 157              		.thumb_func
+ 158              		.type	CyBle_CustomInit, %function
+ 159              	CyBle_CustomInit:
+ 160              	.LFB2:
+ 161              		.file 1 "Generated_Source\\PSoC4\\BLE_custom.c"
+   1:Generated_Source\PSoC4/BLE_custom.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC4/BLE_custom.c **** * \file CYBLE_custom.c
+   3:Generated_Source\PSoC4/BLE_custom.c **** * \version 3.40
+   4:Generated_Source\PSoC4/BLE_custom.c **** * 
+   5:Generated_Source\PSoC4/BLE_custom.c **** * \brief
+   6:Generated_Source\PSoC4/BLE_custom.c **** *  Contains the source code for the Custom Service.
+   7:Generated_Source\PSoC4/BLE_custom.c **** * 
+   8:Generated_Source\PSoC4/BLE_custom.c **** ********************************************************************************
+   9:Generated_Source\PSoC4/BLE_custom.c **** * \copyright
+  10:Generated_Source\PSoC4/BLE_custom.c **** * Copyright 2014-2016, Cypress Semiconductor Corporation.  All rights reserved.
+  11:Generated_Source\PSoC4/BLE_custom.c **** * You may use this file only in accordance with the license, terms, conditions,
+  12:Generated_Source\PSoC4/BLE_custom.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  13:Generated_Source\PSoC4/BLE_custom.c **** * the software package with which this file was provided.
+  14:Generated_Source\PSoC4/BLE_custom.c **** *******************************************************************************/
+  15:Generated_Source\PSoC4/BLE_custom.c **** 
+  16:Generated_Source\PSoC4/BLE_custom.c **** 
+  17:Generated_Source\PSoC4/BLE_custom.c **** #include "BLE_eventHandler.h"
+  18:Generated_Source\PSoC4/BLE_custom.c **** 
+  19:Generated_Source\PSoC4/BLE_custom.c **** #ifdef CYBLE_CUSTOM_SERVER
+  20:Generated_Source\PSoC4/BLE_custom.c **** 
+  21:Generated_Source\PSoC4/BLE_custom.c **** /* If any custom service with custom characteristics is defined in the
+  22:Generated_Source\PSoC4/BLE_custom.c **** * customizer's GUI their handles will be present in this array.
+  23:Generated_Source\PSoC4/BLE_custom.c **** */
+  24:Generated_Source\PSoC4/BLE_custom.c **** /* This array contains attribute handles for the defined Custom Services and their characteristics 
+  25:Generated_Source\PSoC4/BLE_custom.c ****    The array index definitions are located in the CYBLE_custom.h file. */
+  26:Generated_Source\PSoC4/BLE_custom.c **** const CYBLE_CUSTOMS_T cyBle_customs[0x01u] = {
+  27:Generated_Source\PSoC4/BLE_custom.c **** 
+  28:Generated_Source\PSoC4/BLE_custom.c ****     /* Custom Service service */
+  29:Generated_Source\PSoC4/BLE_custom.c ****     {
+  30:Generated_Source\PSoC4/BLE_custom.c ****         0x000Cu, /* Handle of the Custom Service service */ 
+  31:Generated_Source\PSoC4/BLE_custom.c ****         {
+  32:Generated_Source\PSoC4/BLE_custom.c **** 
+  33:Generated_Source\PSoC4/BLE_custom.c ****             /* Custom Characteristic characteristic */
+  34:Generated_Source\PSoC4/BLE_custom.c ****             {
+  35:Generated_Source\PSoC4/BLE_custom.c ****                 0x000Eu, /* Handle of the Custom Characteristic characteristic */ 
+  36:Generated_Source\PSoC4/BLE_custom.c ****                 
+  37:Generated_Source\PSoC4/BLE_custom.c ****                 /* Array of Descriptors handles */
+  38:Generated_Source\PSoC4/BLE_custom.c ****                 {
+  39:Generated_Source\PSoC4/BLE_custom.c ****                     0x000Fu, /* Handle of the Client Characteristic Configuration descriptor */ 
+  40:Generated_Source\PSoC4/BLE_custom.c ****                 }, 
+  41:Generated_Source\PSoC4/BLE_custom.c ****             },
+  42:Generated_Source\PSoC4/BLE_custom.c ****         }, 
+  43:Generated_Source\PSoC4/BLE_custom.c ****     },
+  44:Generated_Source\PSoC4/BLE_custom.c **** };
+  45:Generated_Source\PSoC4/BLE_custom.c **** 
+  46:Generated_Source\PSoC4/BLE_custom.c **** 
+  47:Generated_Source\PSoC4/BLE_custom.c **** #endif /* (CYBLE_CUSTOM_SERVER) */
+  48:Generated_Source\PSoC4/BLE_custom.c **** 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 11
+
+
+  49:Generated_Source\PSoC4/BLE_custom.c **** #ifdef CYBLE_CUSTOM_CLIENT
+  50:Generated_Source\PSoC4/BLE_custom.c ****     
+  51:Generated_Source\PSoC4/BLE_custom.c **** 
+  52:Generated_Source\PSoC4/BLE_custom.c **** static uint16 cyBle_customDisServIndex;
+  53:Generated_Source\PSoC4/BLE_custom.c **** static uint16 cyBle_customDisCharIndex;
+  54:Generated_Source\PSoC4/BLE_custom.c **** 
+  55:Generated_Source\PSoC4/BLE_custom.c **** #endif /* (CYBLE_CUSTOM_CLIENT) */
+  56:Generated_Source\PSoC4/BLE_custom.c **** 
+  57:Generated_Source\PSoC4/BLE_custom.c **** 
+  58:Generated_Source\PSoC4/BLE_custom.c **** /****************************************************************************** 
+  59:Generated_Source\PSoC4/BLE_custom.c **** * Function Name: CyBle_CustomInit
+  60:Generated_Source\PSoC4/BLE_custom.c **** ***************************************************************************//**
+  61:Generated_Source\PSoC4/BLE_custom.c **** * 
+  62:Generated_Source\PSoC4/BLE_custom.c **** *  This function initializes Custom Service.
+  63:Generated_Source\PSoC4/BLE_custom.c **** * 
+  64:Generated_Source\PSoC4/BLE_custom.c **** * \return
+  65:Generated_Source\PSoC4/BLE_custom.c **** *  None
+  66:Generated_Source\PSoC4/BLE_custom.c **** * 
+  67:Generated_Source\PSoC4/BLE_custom.c **** ******************************************************************************/
+  68:Generated_Source\PSoC4/BLE_custom.c **** void CyBle_CustomInit(void)
+  69:Generated_Source\PSoC4/BLE_custom.c **** {
+ 162              		.loc 1 69 0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166              		@ link register save eliminated.
+  70:Generated_Source\PSoC4/BLE_custom.c ****     
+  71:Generated_Source\PSoC4/BLE_custom.c **** #ifdef CYBLE_CUSTOM_CLIENT
+  72:Generated_Source\PSoC4/BLE_custom.c **** 
+  73:Generated_Source\PSoC4/BLE_custom.c ****     uint16 locServIndex;
+  74:Generated_Source\PSoC4/BLE_custom.c ****     uint16 locCharIndex;
+  75:Generated_Source\PSoC4/BLE_custom.c ****     uint16 locDescIndex;
+  76:Generated_Source\PSoC4/BLE_custom.c ****     
+  77:Generated_Source\PSoC4/BLE_custom.c ****     for(locServIndex = 0u; locServIndex < CYBLE_CUSTOMC_SERVICE_COUNT; locServIndex++)
+  78:Generated_Source\PSoC4/BLE_custom.c ****     {
+  79:Generated_Source\PSoC4/BLE_custom.c ****         if(cyBle_serverInfo[CYBLE_SRVI_CUSTOMS + locServIndex].range.startHandle == CYBLE_GATT_INVA
+  80:Generated_Source\PSoC4/BLE_custom.c ****         {
+  81:Generated_Source\PSoC4/BLE_custom.c ****             for(locCharIndex = 0u; locCharIndex < cyBle_customCServ[locServIndex].charCount; locCha
+  82:Generated_Source\PSoC4/BLE_custom.c ****             {
+  83:Generated_Source\PSoC4/BLE_custom.c ****                 cyBle_customCServ[locServIndex].customServChar[locCharIndex].
+  84:Generated_Source\PSoC4/BLE_custom.c ****                     customServCharHandle = 0u;
+  85:Generated_Source\PSoC4/BLE_custom.c ****                 
+  86:Generated_Source\PSoC4/BLE_custom.c ****                 for(locDescIndex = 0u; locDescIndex < 
+  87:Generated_Source\PSoC4/BLE_custom.c ****                     cyBle_customCServ[locServIndex].customServChar[locCharIndex].descCount; 
+  88:Generated_Source\PSoC4/BLE_custom.c ****                         locDescIndex++)
+  89:Generated_Source\PSoC4/BLE_custom.c ****                 {
+  90:Generated_Source\PSoC4/BLE_custom.c ****                     cyBle_customCServ[locServIndex].customServChar[locCharIndex].
+  91:Generated_Source\PSoC4/BLE_custom.c ****                         customServCharDesc[locDescIndex].descHandle = 0u;
+  92:Generated_Source\PSoC4/BLE_custom.c ****                 }
+  93:Generated_Source\PSoC4/BLE_custom.c ****             }
+  94:Generated_Source\PSoC4/BLE_custom.c ****         }
+  95:Generated_Source\PSoC4/BLE_custom.c ****     }
+  96:Generated_Source\PSoC4/BLE_custom.c **** 
+  97:Generated_Source\PSoC4/BLE_custom.c **** #endif /* (CYBLE_CUSTOM_CLIENT) */
+  98:Generated_Source\PSoC4/BLE_custom.c **** }
+ 167              		.loc 1 98 0
+ 168              		@ sp needed
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 12
+
+
+ 169 0000 7047     		bx	lr
+ 170              		.cfi_endproc
+ 171              	.LFE2:
+ 172              		.size	CyBle_CustomInit, .-CyBle_CustomInit
+ 173              		.global	cyBle_customs
+ 174 0002 C046     		.section	.rodata
+ 175              		.align	2
+ 176              		.type	cyBle_customs, %object
+ 177              		.size	cyBle_customs, 6
+ 178              	cyBle_customs:
+ 179 0000 0C00     		.short	12
+ 180 0002 0E00     		.short	14
+ 181 0004 0F00     		.short	15
+ 182              		.text
+ 183              	.Letext0:
+ 184              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 185              		.file 3 "Generated_Source\\PSoC4\\BLE_StackGatt.h"
+ 186              		.file 4 "Generated_Source\\PSoC4\\BLE_custom.h"
+ 187              		.file 5 "Generated_Source\\PSoC4\\BLE_Stack.h"
+ 188              		.section	.debug_info,"",%progbits
+ 189              	.Ldebug_info0:
+ 190 0000 15030000 		.4byte	0x315
+ 191 0004 0400     		.2byte	0x4
+ 192 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 193 000a 04       		.byte	0x4
+ 194 000b 01       		.uleb128 0x1
+ 195 000c D5010000 		.4byte	.LASF94
+ 196 0010 0C       		.byte	0xc
+ 197 0011 6D030000 		.4byte	.LASF95
+ 198 0015 C2040000 		.4byte	.LASF96
+ 199 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 200 001d 00000000 		.4byte	0
+ 201 0021 00000000 		.4byte	.Ldebug_line0
+ 202 0025 02       		.uleb128 0x2
+ 203 0026 01       		.byte	0x1
+ 204 0027 06       		.byte	0x6
+ 205 0028 EF050000 		.4byte	.LASF0
+ 206 002c 02       		.uleb128 0x2
+ 207 002d 01       		.byte	0x1
+ 208 002e 08       		.byte	0x8
+ 209 002f 76050000 		.4byte	.LASF1
+ 210 0033 02       		.uleb128 0x2
+ 211 0034 02       		.byte	0x2
+ 212 0035 05       		.byte	0x5
+ 213 0036 B7000000 		.4byte	.LASF2
+ 214 003a 02       		.uleb128 0x2
+ 215 003b 02       		.byte	0x2
+ 216 003c 07       		.byte	0x7
+ 217 003d CF070000 		.4byte	.LASF3
+ 218 0041 02       		.uleb128 0x2
+ 219 0042 04       		.byte	0x4
+ 220 0043 05       		.byte	0x5
+ 221 0044 DE030000 		.4byte	.LASF4
+ 222 0048 02       		.uleb128 0x2
+ 223 0049 04       		.byte	0x4
+ 224 004a 07       		.byte	0x7
+ 225 004b 80060000 		.4byte	.LASF5
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 13
+
+
+ 226 004f 02       		.uleb128 0x2
+ 227 0050 08       		.byte	0x8
+ 228 0051 05       		.byte	0x5
+ 229 0052 23010000 		.4byte	.LASF6
+ 230 0056 02       		.uleb128 0x2
+ 231 0057 08       		.byte	0x8
+ 232 0058 07       		.byte	0x7
+ 233 0059 91030000 		.4byte	.LASF7
+ 234 005d 03       		.uleb128 0x3
+ 235 005e 04       		.byte	0x4
+ 236 005f 05       		.byte	0x5
+ 237 0060 696E7400 		.ascii	"int\000"
+ 238 0064 02       		.uleb128 0x2
+ 239 0065 04       		.byte	0x4
+ 240 0066 07       		.byte	0x7
+ 241 0067 58060000 		.4byte	.LASF8
+ 242 006b 04       		.uleb128 0x4
+ 243 006c CE010000 		.4byte	.LASF86
+ 244 0070 02       		.byte	0x2
+ 245 0071 D301     		.2byte	0x1d3
+ 246 0073 3A000000 		.4byte	0x3a
+ 247 0077 02       		.uleb128 0x2
+ 248 0078 04       		.byte	0x4
+ 249 0079 04       		.byte	0x4
+ 250 007a 25030000 		.4byte	.LASF9
+ 251 007e 02       		.uleb128 0x2
+ 252 007f 08       		.byte	0x8
+ 253 0080 04       		.byte	0x4
+ 254 0081 A0080000 		.4byte	.LASF10
+ 255 0085 02       		.uleb128 0x2
+ 256 0086 01       		.byte	0x1
+ 257 0087 08       		.byte	0x8
+ 258 0088 AE070000 		.4byte	.LASF11
+ 259 008c 02       		.uleb128 0x2
+ 260 008d 08       		.byte	0x8
+ 261 008e 04       		.byte	0x4
+ 262 008f 44050000 		.4byte	.LASF12
+ 263 0093 02       		.uleb128 0x2
+ 264 0094 04       		.byte	0x4
+ 265 0095 07       		.byte	0x7
+ 266 0096 F9000000 		.4byte	.LASF13
+ 267 009a 05       		.uleb128 0x5
+ 268 009b 01       		.byte	0x1
+ 269 009c 2C000000 		.4byte	0x2c
+ 270 00a0 05       		.byte	0x5
+ 271 00a1 3501     		.2byte	0x135
+ 272 00a3 58020000 		.4byte	0x258
+ 273 00a7 06       		.uleb128 0x6
+ 274 00a8 CF020000 		.4byte	.LASF14
+ 275 00ac 00       		.byte	0
+ 276 00ad 06       		.uleb128 0x6
+ 277 00ae 68010000 		.4byte	.LASF15
+ 278 00b2 01       		.byte	0x1
+ 279 00b3 06       		.uleb128 0x6
+ 280 00b4 440A0000 		.4byte	.LASF16
+ 281 00b8 02       		.byte	0x2
+ 282 00b9 06       		.uleb128 0x6
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 14
+
+
+ 283 00ba 1A090000 		.4byte	.LASF17
+ 284 00be 03       		.byte	0x3
+ 285 00bf 06       		.uleb128 0x6
+ 286 00c0 42010000 		.4byte	.LASF18
+ 287 00c4 04       		.byte	0x4
+ 288 00c5 06       		.uleb128 0x6
+ 289 00c6 70040000 		.4byte	.LASF19
+ 290 00ca 05       		.byte	0x5
+ 291 00cb 06       		.uleb128 0x6
+ 292 00cc 3E000000 		.4byte	.LASF20
+ 293 00d0 06       		.byte	0x6
+ 294 00d1 06       		.uleb128 0x6
+ 295 00d2 78090000 		.4byte	.LASF21
+ 296 00d6 20       		.byte	0x20
+ 297 00d7 06       		.uleb128 0x6
+ 298 00d8 92060000 		.4byte	.LASF22
+ 299 00dc 21       		.byte	0x21
+ 300 00dd 06       		.uleb128 0x6
+ 301 00de 00000000 		.4byte	.LASF23
+ 302 00e2 22       		.byte	0x22
+ 303 00e3 06       		.uleb128 0x6
+ 304 00e4 8C040000 		.4byte	.LASF24
+ 305 00e8 23       		.byte	0x23
+ 306 00e9 06       		.uleb128 0x6
+ 307 00ea 3C060000 		.4byte	.LASF25
+ 308 00ee 24       		.byte	0x24
+ 309 00ef 06       		.uleb128 0x6
+ 310 00f0 C1000000 		.4byte	.LASF26
+ 311 00f4 25       		.byte	0x25
+ 312 00f5 06       		.uleb128 0x6
+ 313 00f6 27040000 		.4byte	.LASF27
+ 314 00fa 26       		.byte	0x26
+ 315 00fb 06       		.uleb128 0x6
+ 316 00fc 08040000 		.4byte	.LASF28
+ 317 0100 27       		.byte	0x27
+ 318 0101 06       		.uleb128 0x6
+ 319 0102 71000000 		.4byte	.LASF29
+ 320 0106 28       		.byte	0x28
+ 321 0107 06       		.uleb128 0x6
+ 322 0108 CA060000 		.4byte	.LASF30
+ 323 010c 29       		.byte	0x29
+ 324 010d 06       		.uleb128 0x6
+ 325 010e 5E070000 		.4byte	.LASF31
+ 326 0112 2A       		.byte	0x2a
+ 327 0113 06       		.uleb128 0x6
+ 328 0114 40080000 		.4byte	.LASF32
+ 329 0118 2B       		.byte	0x2b
+ 330 0119 06       		.uleb128 0x6
+ 331 011a 22070000 		.4byte	.LASF33
+ 332 011e 2C       		.byte	0x2c
+ 333 011f 06       		.uleb128 0x6
+ 334 0120 44030000 		.4byte	.LASF34
+ 335 0124 2D       		.byte	0x2d
+ 336 0125 06       		.uleb128 0x6
+ 337 0126 93000000 		.4byte	.LASF35
+ 338 012a 2E       		.byte	0x2e
+ 339 012b 06       		.uleb128 0x6
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 15
+
+
+ 340 012c 2E0B0000 		.4byte	.LASF36
+ 341 0130 2F       		.byte	0x2f
+ 342 0131 06       		.uleb128 0x6
+ 343 0132 02010000 		.4byte	.LASF37
+ 344 0136 30       		.byte	0x30
+ 345 0137 06       		.uleb128 0x6
+ 346 0138 20050000 		.4byte	.LASF38
+ 347 013c 31       		.byte	0x31
+ 348 013d 06       		.uleb128 0x6
+ 349 013e E2070000 		.4byte	.LASF39
+ 350 0142 32       		.byte	0x32
+ 351 0143 06       		.uleb128 0x6
+ 352 0144 87070000 		.4byte	.LASF40
+ 353 0148 33       		.byte	0x33
+ 354 0149 06       		.uleb128 0x6
+ 355 014a E7060000 		.4byte	.LASF41
+ 356 014e 34       		.byte	0x34
+ 357 014f 06       		.uleb128 0x6
+ 358 0150 DF080000 		.4byte	.LASF42
+ 359 0154 35       		.byte	0x35
+ 360 0155 06       		.uleb128 0x6
+ 361 0156 BD030000 		.4byte	.LASF43
+ 362 015a 36       		.byte	0x36
+ 363 015b 06       		.uleb128 0x6
+ 364 015c 7B010000 		.4byte	.LASF44
+ 365 0160 37       		.byte	0x37
+ 366 0161 06       		.uleb128 0x6
+ 367 0162 57000000 		.4byte	.LASF45
+ 368 0166 40       		.byte	0x40
+ 369 0167 06       		.uleb128 0x6
+ 370 0168 65060000 		.4byte	.LASF46
+ 371 016c 41       		.byte	0x41
+ 372 016d 06       		.uleb128 0x6
+ 373 016e DB000000 		.4byte	.LASF47
+ 374 0172 42       		.byte	0x42
+ 375 0173 06       		.uleb128 0x6
+ 376 0174 B0010000 		.4byte	.LASF48
+ 377 0178 43       		.byte	0x43
+ 378 0179 06       		.uleb128 0x6
+ 379 017a 020A0000 		.4byte	.LASF49
+ 380 017e 44       		.byte	0x44
+ 381 017f 06       		.uleb128 0x6
+ 382 0180 9C090000 		.4byte	.LASF50
+ 383 0184 45       		.byte	0x45
+ 384 0185 06       		.uleb128 0x6
+ 385 0186 E1090000 		.4byte	.LASF51
+ 386 018a 46       		.byte	0x46
+ 387 018b 06       		.uleb128 0x6
+ 388 018c D1050000 		.4byte	.LASF52
+ 389 0190 47       		.byte	0x47
+ 390 0191 06       		.uleb128 0x6
+ 391 0192 15060000 		.4byte	.LASF53
+ 392 0196 48       		.byte	0x48
+ 393 0197 06       		.uleb128 0x6
+ 394 0198 2B030000 		.4byte	.LASF54
+ 395 019c 49       		.byte	0x49
+ 396 019d 06       		.uleb128 0x6
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 16
+
+
+ 397 019e 03080000 		.4byte	.LASF55
+ 398 01a2 4A       		.byte	0x4a
+ 399 01a3 06       		.uleb128 0x6
+ 400 01a4 8F020000 		.4byte	.LASF56
+ 401 01a8 4B       		.byte	0x4b
+ 402 01a9 06       		.uleb128 0x6
+ 403 01aa FB050000 		.4byte	.LASF57
+ 404 01ae 4C       		.byte	0x4c
+ 405 01af 06       		.uleb128 0x6
+ 406 01b0 24000000 		.4byte	.LASF58
+ 407 01b4 4D       		.byte	0x4d
+ 408 01b5 06       		.uleb128 0x6
+ 409 01b6 C3090000 		.4byte	.LASF59
+ 410 01ba 4E       		.byte	0x4e
+ 411 01bb 06       		.uleb128 0x6
+ 412 01bc 93050000 		.4byte	.LASF60
+ 413 01c0 4F       		.byte	0x4f
+ 414 01c1 06       		.uleb128 0x6
+ 415 01c2 AF0A0000 		.4byte	.LASF61
+ 416 01c6 50       		.byte	0x50
+ 417 01c7 06       		.uleb128 0x6
+ 418 01c8 21080000 		.4byte	.LASF62
+ 419 01cc 51       		.byte	0x51
+ 420 01cd 06       		.uleb128 0x6
+ 421 01ce 4F040000 		.4byte	.LASF63
+ 422 01d2 52       		.byte	0x52
+ 423 01d3 06       		.uleb128 0x6
+ 424 01d4 E7030000 		.4byte	.LASF64
+ 425 01d8 53       		.byte	0x53
+ 426 01d9 06       		.uleb128 0x6
+ 427 01da AE020000 		.4byte	.LASF65
+ 428 01de 54       		.byte	0x54
+ 429 01df 06       		.uleb128 0x6
+ 430 01e0 F80A0000 		.4byte	.LASF66
+ 431 01e4 55       		.byte	0x55
+ 432 01e5 06       		.uleb128 0x6
+ 433 01e6 8D0A0000 		.4byte	.LASF67
+ 434 01ea 56       		.byte	0x56
+ 435 01eb 06       		.uleb128 0x6
+ 436 01ec 640A0000 		.4byte	.LASF68
+ 437 01f0 57       		.byte	0x57
+ 438 01f1 06       		.uleb128 0x6
+ 439 01f2 FF060000 		.4byte	.LASF69
+ 440 01f6 58       		.byte	0x58
+ 441 01f7 06       		.uleb128 0x6
+ 442 01f8 50050000 		.4byte	.LASF70
+ 443 01fc 70       		.byte	0x70
+ 444 01fd 06       		.uleb128 0x6
+ 445 01fe 52090000 		.4byte	.LASF71
+ 446 0202 71       		.byte	0x71
+ 447 0203 06       		.uleb128 0x6
+ 448 0204 B3070000 		.4byte	.LASF72
+ 449 0208 72       		.byte	0x72
+ 450 0209 06       		.uleb128 0x6
+ 451 020a E6020000 		.4byte	.LASF73
+ 452 020e 73       		.byte	0x73
+ 453 020f 06       		.uleb128 0x6
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 17
+
+
+ 454 0210 FC080000 		.4byte	.LASF74
+ 455 0214 74       		.byte	0x74
+ 456 0215 06       		.uleb128 0x6
+ 457 0216 A9060000 		.4byte	.LASF75
+ 458 021a 75       		.byte	0x75
+ 459 021b 06       		.uleb128 0x6
+ 460 021c 04030000 		.4byte	.LASF76
+ 461 0220 76       		.byte	0x76
+ 462 0221 06       		.uleb128 0x6
+ 463 0222 33090000 		.4byte	.LASF77
+ 464 0226 77       		.byte	0x77
+ 465 0227 06       		.uleb128 0x6
+ 466 0228 7D080000 		.4byte	.LASF78
+ 467 022c 78       		.byte	0x78
+ 468 022d 06       		.uleb128 0x6
+ 469 022e A7080000 		.4byte	.LASF79
+ 470 0232 79       		.byte	0x79
+ 471 0233 06       		.uleb128 0x6
+ 472 0234 200A0000 		.4byte	.LASF80
+ 473 0238 7A       		.byte	0x7a
+ 474 0239 06       		.uleb128 0x6
+ 475 023a 5F080000 		.4byte	.LASF81
+ 476 023e FA       		.byte	0xfa
+ 477 023f 06       		.uleb128 0x6
+ 478 0240 B2050000 		.4byte	.LASF82
+ 479 0244 FB       		.byte	0xfb
+ 480 0245 06       		.uleb128 0x6
+ 481 0246 1C0B0000 		.4byte	.LASF83
+ 482 024a FC       		.byte	0xfc
+ 483 024b 06       		.uleb128 0x6
+ 484 024c 46070000 		.4byte	.LASF84
+ 485 0250 FD       		.byte	0xfd
+ 486 0251 06       		.uleb128 0x6
+ 487 0252 560A0000 		.4byte	.LASF85
+ 488 0256 FF       		.byte	0xff
+ 489 0257 00       		.byte	0
+ 490 0258 04       		.uleb128 0x4
+ 491 0259 CE0A0000 		.4byte	.LASF87
+ 492 025d 03       		.byte	0x3
+ 493 025e 8901     		.2byte	0x189
+ 494 0260 6B000000 		.4byte	0x6b
+ 495 0264 07       		.uleb128 0x7
+ 496 0265 04       		.byte	0x4
+ 497 0266 04       		.byte	0x4
+ 498 0267 41       		.byte	0x41
+ 499 0268 85020000 		.4byte	0x285
+ 500 026c 08       		.uleb128 0x8
+ 501 026d CA080000 		.4byte	.LASF88
+ 502 0271 04       		.byte	0x4
+ 503 0272 44       		.byte	0x44
+ 504 0273 58020000 		.4byte	0x258
+ 505 0277 00       		.byte	0
+ 506 0278 08       		.uleb128 0x8
+ 507 0279 7C020000 		.4byte	.LASF89
+ 508 027d 04       		.byte	0x4
+ 509 027e 46       		.byte	0x46
+ 510 027f 85020000 		.4byte	0x285
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 18
+
+
+ 511 0283 02       		.byte	0x2
+ 512 0284 00       		.byte	0
+ 513 0285 09       		.uleb128 0x9
+ 514 0286 58020000 		.4byte	0x258
+ 515 028a 95020000 		.4byte	0x295
+ 516 028e 0A       		.uleb128 0xa
+ 517 028f 93000000 		.4byte	0x93
+ 518 0293 00       		.byte	0
+ 519 0294 00       		.byte	0
+ 520 0295 0B       		.uleb128 0xb
+ 521 0296 A8030000 		.4byte	.LASF90
+ 522 029a 04       		.byte	0x4
+ 523 029b 48       		.byte	0x48
+ 524 029c 64020000 		.4byte	0x264
+ 525 02a0 07       		.uleb128 0x7
+ 526 02a1 06       		.byte	0x6
+ 527 02a2 04       		.byte	0x4
+ 528 02a3 4B       		.byte	0x4b
+ 529 02a4 C1020000 		.4byte	0x2c1
+ 530 02a8 08       		.uleb128 0x8
+ 531 02a9 31010000 		.4byte	.LASF91
+ 532 02ad 04       		.byte	0x4
+ 533 02ae 4E       		.byte	0x4e
+ 534 02af 58020000 		.4byte	0x258
+ 535 02b3 00       		.byte	0
+ 536 02b4 08       		.uleb128 0x8
+ 537 02b5 84050000 		.4byte	.LASF92
+ 538 02b9 04       		.byte	0x4
+ 539 02ba 51       		.byte	0x51
+ 540 02bb C1020000 		.4byte	0x2c1
+ 541 02bf 02       		.byte	0x2
+ 542 02c0 00       		.byte	0
+ 543 02c1 09       		.uleb128 0x9
+ 544 02c2 95020000 		.4byte	0x295
+ 545 02c6 D1020000 		.4byte	0x2d1
+ 546 02ca 0A       		.uleb128 0xa
+ 547 02cb 93000000 		.4byte	0x93
+ 548 02cf 00       		.byte	0
+ 549 02d0 00       		.byte	0
+ 550 02d1 0B       		.uleb128 0xb
+ 551 02d2 B2040000 		.4byte	.LASF93
+ 552 02d6 04       		.byte	0x4
+ 553 02d7 53       		.byte	0x53
+ 554 02d8 A0020000 		.4byte	0x2a0
+ 555 02dc 0C       		.uleb128 0xc
+ 556 02dd 57010000 		.4byte	.LASF97
+ 557 02e1 01       		.byte	0x1
+ 558 02e2 44       		.byte	0x44
+ 559 02e3 00000000 		.4byte	.LFB2
+ 560 02e7 02000000 		.4byte	.LFE2-.LFB2
+ 561 02eb 01       		.uleb128 0x1
+ 562 02ec 9C       		.byte	0x9c
+ 563 02ed 09       		.uleb128 0x9
+ 564 02ee FD020000 		.4byte	0x2fd
+ 565 02f2 FD020000 		.4byte	0x2fd
+ 566 02f6 0A       		.uleb128 0xa
+ 567 02f7 93000000 		.4byte	0x93
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 19
+
+
+ 568 02fb 00       		.byte	0
+ 569 02fc 00       		.byte	0
+ 570 02fd 0D       		.uleb128 0xd
+ 571 02fe D1020000 		.4byte	0x2d1
+ 572 0302 0E       		.uleb128 0xe
+ 573 0303 EA0A0000 		.4byte	.LASF98
+ 574 0307 01       		.byte	0x1
+ 575 0308 1A       		.byte	0x1a
+ 576 0309 13030000 		.4byte	0x313
+ 577 030d 05       		.uleb128 0x5
+ 578 030e 03       		.byte	0x3
+ 579 030f 00000000 		.4byte	cyBle_customs
+ 580 0313 0D       		.uleb128 0xd
+ 581 0314 ED020000 		.4byte	0x2ed
+ 582 0318 00       		.byte	0
+ 583              		.section	.debug_abbrev,"",%progbits
+ 584              	.Ldebug_abbrev0:
+ 585 0000 01       		.uleb128 0x1
+ 586 0001 11       		.uleb128 0x11
+ 587 0002 01       		.byte	0x1
+ 588 0003 25       		.uleb128 0x25
+ 589 0004 0E       		.uleb128 0xe
+ 590 0005 13       		.uleb128 0x13
+ 591 0006 0B       		.uleb128 0xb
+ 592 0007 03       		.uleb128 0x3
+ 593 0008 0E       		.uleb128 0xe
+ 594 0009 1B       		.uleb128 0x1b
+ 595 000a 0E       		.uleb128 0xe
+ 596 000b 55       		.uleb128 0x55
+ 597 000c 17       		.uleb128 0x17
+ 598 000d 11       		.uleb128 0x11
+ 599 000e 01       		.uleb128 0x1
+ 600 000f 10       		.uleb128 0x10
+ 601 0010 17       		.uleb128 0x17
+ 602 0011 00       		.byte	0
+ 603 0012 00       		.byte	0
+ 604 0013 02       		.uleb128 0x2
+ 605 0014 24       		.uleb128 0x24
+ 606 0015 00       		.byte	0
+ 607 0016 0B       		.uleb128 0xb
+ 608 0017 0B       		.uleb128 0xb
+ 609 0018 3E       		.uleb128 0x3e
+ 610 0019 0B       		.uleb128 0xb
+ 611 001a 03       		.uleb128 0x3
+ 612 001b 0E       		.uleb128 0xe
+ 613 001c 00       		.byte	0
+ 614 001d 00       		.byte	0
+ 615 001e 03       		.uleb128 0x3
+ 616 001f 24       		.uleb128 0x24
+ 617 0020 00       		.byte	0
+ 618 0021 0B       		.uleb128 0xb
+ 619 0022 0B       		.uleb128 0xb
+ 620 0023 3E       		.uleb128 0x3e
+ 621 0024 0B       		.uleb128 0xb
+ 622 0025 03       		.uleb128 0x3
+ 623 0026 08       		.uleb128 0x8
+ 624 0027 00       		.byte	0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 20
+
+
+ 625 0028 00       		.byte	0
+ 626 0029 04       		.uleb128 0x4
+ 627 002a 16       		.uleb128 0x16
+ 628 002b 00       		.byte	0
+ 629 002c 03       		.uleb128 0x3
+ 630 002d 0E       		.uleb128 0xe
+ 631 002e 3A       		.uleb128 0x3a
+ 632 002f 0B       		.uleb128 0xb
+ 633 0030 3B       		.uleb128 0x3b
+ 634 0031 05       		.uleb128 0x5
+ 635 0032 49       		.uleb128 0x49
+ 636 0033 13       		.uleb128 0x13
+ 637 0034 00       		.byte	0
+ 638 0035 00       		.byte	0
+ 639 0036 05       		.uleb128 0x5
+ 640 0037 04       		.uleb128 0x4
+ 641 0038 01       		.byte	0x1
+ 642 0039 0B       		.uleb128 0xb
+ 643 003a 0B       		.uleb128 0xb
+ 644 003b 49       		.uleb128 0x49
+ 645 003c 13       		.uleb128 0x13
+ 646 003d 3A       		.uleb128 0x3a
+ 647 003e 0B       		.uleb128 0xb
+ 648 003f 3B       		.uleb128 0x3b
+ 649 0040 05       		.uleb128 0x5
+ 650 0041 01       		.uleb128 0x1
+ 651 0042 13       		.uleb128 0x13
+ 652 0043 00       		.byte	0
+ 653 0044 00       		.byte	0
+ 654 0045 06       		.uleb128 0x6
+ 655 0046 28       		.uleb128 0x28
+ 656 0047 00       		.byte	0
+ 657 0048 03       		.uleb128 0x3
+ 658 0049 0E       		.uleb128 0xe
+ 659 004a 1C       		.uleb128 0x1c
+ 660 004b 0B       		.uleb128 0xb
+ 661 004c 00       		.byte	0
+ 662 004d 00       		.byte	0
+ 663 004e 07       		.uleb128 0x7
+ 664 004f 13       		.uleb128 0x13
+ 665 0050 01       		.byte	0x1
+ 666 0051 0B       		.uleb128 0xb
+ 667 0052 0B       		.uleb128 0xb
+ 668 0053 3A       		.uleb128 0x3a
+ 669 0054 0B       		.uleb128 0xb
+ 670 0055 3B       		.uleb128 0x3b
+ 671 0056 0B       		.uleb128 0xb
+ 672 0057 01       		.uleb128 0x1
+ 673 0058 13       		.uleb128 0x13
+ 674 0059 00       		.byte	0
+ 675 005a 00       		.byte	0
+ 676 005b 08       		.uleb128 0x8
+ 677 005c 0D       		.uleb128 0xd
+ 678 005d 00       		.byte	0
+ 679 005e 03       		.uleb128 0x3
+ 680 005f 0E       		.uleb128 0xe
+ 681 0060 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 21
+
+
+ 682 0061 0B       		.uleb128 0xb
+ 683 0062 3B       		.uleb128 0x3b
+ 684 0063 0B       		.uleb128 0xb
+ 685 0064 49       		.uleb128 0x49
+ 686 0065 13       		.uleb128 0x13
+ 687 0066 38       		.uleb128 0x38
+ 688 0067 0B       		.uleb128 0xb
+ 689 0068 00       		.byte	0
+ 690 0069 00       		.byte	0
+ 691 006a 09       		.uleb128 0x9
+ 692 006b 01       		.uleb128 0x1
+ 693 006c 01       		.byte	0x1
+ 694 006d 49       		.uleb128 0x49
+ 695 006e 13       		.uleb128 0x13
+ 696 006f 01       		.uleb128 0x1
+ 697 0070 13       		.uleb128 0x13
+ 698 0071 00       		.byte	0
+ 699 0072 00       		.byte	0
+ 700 0073 0A       		.uleb128 0xa
+ 701 0074 21       		.uleb128 0x21
+ 702 0075 00       		.byte	0
+ 703 0076 49       		.uleb128 0x49
+ 704 0077 13       		.uleb128 0x13
+ 705 0078 2F       		.uleb128 0x2f
+ 706 0079 0B       		.uleb128 0xb
+ 707 007a 00       		.byte	0
+ 708 007b 00       		.byte	0
+ 709 007c 0B       		.uleb128 0xb
+ 710 007d 16       		.uleb128 0x16
+ 711 007e 00       		.byte	0
+ 712 007f 03       		.uleb128 0x3
+ 713 0080 0E       		.uleb128 0xe
+ 714 0081 3A       		.uleb128 0x3a
+ 715 0082 0B       		.uleb128 0xb
+ 716 0083 3B       		.uleb128 0x3b
+ 717 0084 0B       		.uleb128 0xb
+ 718 0085 49       		.uleb128 0x49
+ 719 0086 13       		.uleb128 0x13
+ 720 0087 00       		.byte	0
+ 721 0088 00       		.byte	0
+ 722 0089 0C       		.uleb128 0xc
+ 723 008a 2E       		.uleb128 0x2e
+ 724 008b 00       		.byte	0
+ 725 008c 3F       		.uleb128 0x3f
+ 726 008d 19       		.uleb128 0x19
+ 727 008e 03       		.uleb128 0x3
+ 728 008f 0E       		.uleb128 0xe
+ 729 0090 3A       		.uleb128 0x3a
+ 730 0091 0B       		.uleb128 0xb
+ 731 0092 3B       		.uleb128 0x3b
+ 732 0093 0B       		.uleb128 0xb
+ 733 0094 27       		.uleb128 0x27
+ 734 0095 19       		.uleb128 0x19
+ 735 0096 11       		.uleb128 0x11
+ 736 0097 01       		.uleb128 0x1
+ 737 0098 12       		.uleb128 0x12
+ 738 0099 06       		.uleb128 0x6
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 22
+
+
+ 739 009a 40       		.uleb128 0x40
+ 740 009b 18       		.uleb128 0x18
+ 741 009c 9742     		.uleb128 0x2117
+ 742 009e 19       		.uleb128 0x19
+ 743 009f 00       		.byte	0
+ 744 00a0 00       		.byte	0
+ 745 00a1 0D       		.uleb128 0xd
+ 746 00a2 26       		.uleb128 0x26
+ 747 00a3 00       		.byte	0
+ 748 00a4 49       		.uleb128 0x49
+ 749 00a5 13       		.uleb128 0x13
+ 750 00a6 00       		.byte	0
+ 751 00a7 00       		.byte	0
+ 752 00a8 0E       		.uleb128 0xe
+ 753 00a9 34       		.uleb128 0x34
+ 754 00aa 00       		.byte	0
+ 755 00ab 03       		.uleb128 0x3
+ 756 00ac 0E       		.uleb128 0xe
+ 757 00ad 3A       		.uleb128 0x3a
+ 758 00ae 0B       		.uleb128 0xb
+ 759 00af 3B       		.uleb128 0x3b
+ 760 00b0 0B       		.uleb128 0xb
+ 761 00b1 49       		.uleb128 0x49
+ 762 00b2 13       		.uleb128 0x13
+ 763 00b3 3F       		.uleb128 0x3f
+ 764 00b4 19       		.uleb128 0x19
+ 765 00b5 02       		.uleb128 0x2
+ 766 00b6 18       		.uleb128 0x18
+ 767 00b7 00       		.byte	0
+ 768 00b8 00       		.byte	0
+ 769 00b9 00       		.byte	0
+ 770              		.section	.debug_aranges,"",%progbits
+ 771 0000 1C000000 		.4byte	0x1c
+ 772 0004 0200     		.2byte	0x2
+ 773 0006 00000000 		.4byte	.Ldebug_info0
+ 774 000a 04       		.byte	0x4
+ 775 000b 00       		.byte	0
+ 776 000c 0000     		.2byte	0
+ 777 000e 0000     		.2byte	0
+ 778 0010 00000000 		.4byte	.LFB2
+ 779 0014 02000000 		.4byte	.LFE2-.LFB2
+ 780 0018 00000000 		.4byte	0
+ 781 001c 00000000 		.4byte	0
+ 782              		.section	.debug_ranges,"",%progbits
+ 783              	.Ldebug_ranges0:
+ 784 0000 00000000 		.4byte	.LFB2
+ 785 0004 02000000 		.4byte	.LFE2
+ 786 0008 00000000 		.4byte	0
+ 787 000c 00000000 		.4byte	0
+ 788              		.section	.debug_line,"",%progbits
+ 789              	.Ldebug_line0:
+ 790 0000 92000000 		.section	.debug_str,"MS",%progbits,1
+ 790      02007900 
+ 790      00000201 
+ 790      FB0E0D00 
+ 790      01010101 
+ 791              	.LASF23:
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 23
+
+
+ 792 0000 4359424C 		.ascii	"CYBLE_EVT_GAP_PASSKEY_ENTRY_REQUEST\000"
+ 792      455F4556 
+ 792      545F4741 
+ 792      505F5041 
+ 792      53534B45 
+ 793              	.LASF58:
+ 794 0024 4359424C 		.ascii	"CYBLE_EVT_GATTC_WRITE_RSP\000"
+ 794      455F4556 
+ 794      545F4741 
+ 794      5454435F 
+ 794      57524954 
+ 795              	.LASF20:
+ 796 003e 4359424C 		.ascii	"CYBLE_EVT_MEMORY_REQUEST\000"
+ 796      455F4556 
+ 796      545F4D45 
+ 796      4D4F5259 
+ 796      5F524551 
+ 797              	.LASF45:
+ 798 0057 4359424C 		.ascii	"CYBLE_EVT_GATTC_ERROR_RSP\000"
+ 798      455F4556 
+ 798      545F4741 
+ 798      5454435F 
+ 798      4552524F 
+ 799              	.LASF29:
+ 800 0071 4359424C 		.ascii	"CYBLE_EVT_GAP_DEVICE_DISCONNECTED\000"
+ 800      455F4556 
+ 800      545F4741 
+ 800      505F4445 
+ 800      56494345 
+ 801              	.LASF35:
+ 802 0093 4359424C 		.ascii	"CYBLE_EVT_GAP_KEYPRESS_NOTIFICATION\000"
+ 802      455F4556 
+ 802      545F4741 
+ 802      505F4B45 
+ 802      59505245 
+ 803              	.LASF2:
+ 804 00b7 73686F72 		.ascii	"short int\000"
+ 804      7420696E 
+ 804      7400
+ 805              	.LASF26:
+ 806 00c1 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_FAILED\000"
+ 806      455F4556 
+ 806      545F4741 
+ 806      505F4155 
+ 806      54485F46 
+ 807              	.LASF47:
+ 808 00db 4359424C 		.ascii	"CYBLE_EVT_GATT_DISCONNECT_IND\000"
+ 808      455F4556 
+ 808      545F4741 
+ 808      54545F44 
+ 808      4953434F 
+ 809              	.LASF13:
+ 810 00f9 73697A65 		.ascii	"sizetype\000"
+ 810      74797065 
+ 810      00
+ 811              	.LASF37:
+ 812 0102 4359424C 		.ascii	"CYBLE_EVT_GAP_DATA_LENGTH_CHANGE\000"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 24
+
+
+ 812      455F4556 
+ 812      545F4741 
+ 812      505F4441 
+ 812      54415F4C 
+ 813              	.LASF6:
+ 814 0123 6C6F6E67 		.ascii	"long long int\000"
+ 814      206C6F6E 
+ 814      6720696E 
+ 814      7400
+ 815              	.LASF91:
+ 816 0131 63757374 		.ascii	"customServHandle\000"
+ 816      6F6D5365 
+ 816      72764861 
+ 816      6E646C65 
+ 816      00
+ 817              	.LASF18:
+ 818 0142 4359424C 		.ascii	"CYBLE_EVT_HCI_STATUS\000"
+ 818      455F4556 
+ 818      545F4843 
+ 818      495F5354 
+ 818      41545553 
+ 819              	.LASF97:
+ 820 0157 4379426C 		.ascii	"CyBle_CustomInit\000"
+ 820      655F4375 
+ 820      73746F6D 
+ 820      496E6974 
+ 820      00
+ 821              	.LASF15:
+ 822 0168 4359424C 		.ascii	"CYBLE_EVT_STACK_ON\000"
+ 822      455F4556 
+ 822      545F5354 
+ 822      41434B5F 
+ 822      4F4E00
+ 823              	.LASF44:
+ 824 017b 4359424C 		.ascii	"CYBLE_EVT_GAP_SMP_LOC_P256_KEYS_GEN_AND_SET_COMPLET"
+ 824      455F4556 
+ 824      545F4741 
+ 824      505F534D 
+ 824      505F4C4F 
+ 825 01ae 4500     		.ascii	"E\000"
+ 826              	.LASF48:
+ 827 01b0 4359424C 		.ascii	"CYBLE_EVT_GATTS_XCNHG_MTU_REQ\000"
+ 827      455F4556 
+ 827      545F4741 
+ 827      5454535F 
+ 827      58434E48 
+ 828              	.LASF86:
+ 829 01ce 75696E74 		.ascii	"uint16\000"
+ 829      313600
+ 830              	.LASF94:
+ 831 01d5 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 831      43313120 
+ 831      352E342E 
+ 831      31203230 
+ 831      31363036 
+ 832 0208 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 832      20726576 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 25
+
+
+ 832      6973696F 
+ 832      6E203233 
+ 832      37373135 
+ 833 023b 33202D66 		.ascii	"3 -ffunction-sections -ffat-lto-objects -finline-fu"
+ 833      66756E63 
+ 833      74696F6E 
+ 833      2D736563 
+ 833      74696F6E 
+ 834 026e 6E637469 		.ascii	"nctions -flto\000"
+ 834      6F6E7320 
+ 834      2D666C74 
+ 834      6F00
+ 835              	.LASF89:
+ 836 027c 63757374 		.ascii	"customServCharDesc\000"
+ 836      6F6D5365 
+ 836      72764368 
+ 836      61724465 
+ 836      736300
+ 837              	.LASF56:
+ 838 028f 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_MULTI_RSP\000"
+ 838      455F4556 
+ 838      545F4741 
+ 838      5454435F 
+ 838      52454144 
+ 839              	.LASF65:
+ 840 02ae 4359424C 		.ascii	"CYBLE_EVT_GATTS_HANDLE_VALUE_CNF\000"
+ 840      455F4556 
+ 840      545F4741 
+ 840      5454535F 
+ 840      48414E44 
+ 841              	.LASF14:
+ 842 02cf 4359424C 		.ascii	"CYBLE_EVT_HOST_INVALID\000"
+ 842      455F4556 
+ 842      545F484F 
+ 842      53545F49 
+ 842      4E56414C 
+ 843              	.LASF73:
+ 844 02e6 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_CONN_IND\000"
+ 844      455F4556 
+ 844      545F4C32 
+ 844      4341505F 
+ 844      43424643 
+ 845              	.LASF76:
+ 846 0304 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DISCONN_CNF\000"
+ 846      455F4556 
+ 846      545F4C32 
+ 846      4341505F 
+ 846      43424643 
+ 847              	.LASF9:
+ 848 0325 666C6F61 		.ascii	"float\000"
+ 848      7400
+ 849              	.LASF54:
+ 850 032b 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_RSP\000"
+ 850      455F4556 
+ 850      545F4741 
+ 850      5454435F 
+ 850      52454144 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 26
+
+
+ 851              	.LASF34:
+ 852 0344 4359424C 		.ascii	"CYBLE_EVT_GAP_NUMERIC_COMPARISON_REQUEST\000"
+ 852      455F4556 
+ 852      545F4741 
+ 852      505F4E55 
+ 852      4D455249 
+ 853              	.LASF95:
+ 854 036d 47656E65 		.ascii	"Generated_Source\\PSoC4\\BLE_custom.c\000"
+ 854      72617465 
+ 854      645F536F 
+ 854      75726365 
+ 854      5C50536F 
+ 855              	.LASF7:
+ 856 0391 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 856      206C6F6E 
+ 856      6720756E 
+ 856      7369676E 
+ 856      65642069 
+ 857              	.LASF90:
+ 858 03a8 4359424C 		.ascii	"CYBLE_CUSTOMS_INFO_T\000"
+ 858      455F4355 
+ 858      53544F4D 
+ 858      535F494E 
+ 858      464F5F54 
+ 859              	.LASF43:
+ 860 03bd 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_REQ_REPLY_ERR\000"
+ 860      455F4556 
+ 860      545F4741 
+ 860      505F4155 
+ 860      54485F52 
+ 861              	.LASF4:
+ 862 03de 6C6F6E67 		.ascii	"long int\000"
+ 862      20696E74 
+ 862      00
+ 863              	.LASF64:
+ 864 03e7 4359424C 		.ascii	"CYBLE_EVT_GATTC_HANDLE_VALUE_IND\000"
+ 864      455F4556 
+ 864      545F4741 
+ 864      5454435F 
+ 864      48414E44 
+ 865              	.LASF28:
+ 866 0408 4359424C 		.ascii	"CYBLE_EVT_GAP_DEVICE_CONNECTED\000"
+ 866      455F4556 
+ 866      545F4741 
+ 866      505F4445 
+ 866      56494345 
+ 867              	.LASF27:
+ 868 0427 4359424C 		.ascii	"CYBLE_EVT_GAPP_ADVERTISEMENT_START_STOP\000"
+ 868      455F4556 
+ 868      545F4741 
+ 868      50505F41 
+ 868      44564552 
+ 869              	.LASF63:
+ 870 044f 4359424C 		.ascii	"CYBLE_EVT_GATTC_HANDLE_VALUE_NTF\000"
+ 870      455F4556 
+ 870      545F4741 
+ 870      5454435F 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 27
+
+
+ 870      48414E44 
+ 871              	.LASF19:
+ 872 0470 4359424C 		.ascii	"CYBLE_EVT_STACK_BUSY_STATUS\000"
+ 872      455F4556 
+ 872      545F5354 
+ 872      41434B5F 
+ 872      42555359 
+ 873              	.LASF24:
+ 874 048c 4359424C 		.ascii	"CYBLE_EVT_GAP_PASSKEY_DISPLAY_REQUEST\000"
+ 874      455F4556 
+ 874      545F4741 
+ 874      505F5041 
+ 874      53534B45 
+ 875              	.LASF93:
+ 876 04b2 4359424C 		.ascii	"CYBLE_CUSTOMS_T\000"
+ 876      455F4355 
+ 876      53544F4D 
+ 876      535F5400 
+ 877              	.LASF96:
+ 878 04c2 433A5C55 		.ascii	"C:\\Users\\Daniela\\Desktop\\Bluetooth_Project\\Thr"
+ 878      73657273 
+ 878      5C44616E 
+ 878      69656C61 
+ 878      5C446573 
+ 879 04f0 6F756768 		.ascii	"oughput\\GATT Notification - Data Outgoing.cydsn\000"
+ 879      7075745C 
+ 879      47415454 
+ 879      204E6F74 
+ 879      69666963 
+ 880              	.LASF38:
+ 881 0520 4359424C 		.ascii	"CYBLE_EVT_GAP_ENHANCE_CONN_COMPLETE\000"
+ 881      455F4556 
+ 881      545F4741 
+ 881      505F454E 
+ 881      48414E43 
+ 882              	.LASF12:
+ 883 0544 6C6F6E67 		.ascii	"long double\000"
+ 883      20646F75 
+ 883      626C6500 
+ 884              	.LASF70:
+ 885 0550 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CONN_PARAM_UPDATE_REQ\000"
+ 885      455F4556 
+ 885      545F4C32 
+ 885      4341505F 
+ 885      434F4E4E 
+ 886              	.LASF1:
+ 887 0576 756E7369 		.ascii	"unsigned char\000"
+ 887      676E6564 
+ 887      20636861 
+ 887      7200
+ 888              	.LASF92:
+ 889 0584 63757374 		.ascii	"customServInfo\000"
+ 889      6F6D5365 
+ 889      7276496E 
+ 889      666F00
+ 890              	.LASF60:
+ 891 0593 4359424C 		.ascii	"CYBLE_EVT_GATTS_PREP_WRITE_REQ\000"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 28
+
+
+ 891      455F4556 
+ 891      545F4741 
+ 891      5454535F 
+ 891      50524550 
+ 892              	.LASF82:
+ 893 05b2 4359424C 		.ascii	"CYBLE_EVT_LE_PING_AUTH_TIMEOUT\000"
+ 893      455F4556 
+ 893      545F4C45 
+ 893      5F50494E 
+ 893      475F4155 
+ 894              	.LASF52:
+ 895 05d1 4359424C 		.ascii	"CYBLE_EVT_GATTC_FIND_INFO_RSP\000"
+ 895      455F4556 
+ 895      545F4741 
+ 895      5454435F 
+ 895      46494E44 
+ 896              	.LASF0:
+ 897 05ef 7369676E 		.ascii	"signed char\000"
+ 897      65642063 
+ 897      68617200 
+ 898              	.LASF57:
+ 899 05fb 4359424C 		.ascii	"CYBLE_EVT_GATTS_WRITE_REQ\000"
+ 899      455F4556 
+ 899      545F4741 
+ 899      5454535F 
+ 899      57524954 
+ 900              	.LASF53:
+ 901 0615 4359424C 		.ascii	"CYBLE_EVT_GATTC_FIND_BY_TYPE_VALUE_RSP\000"
+ 901      455F4556 
+ 901      545F4741 
+ 901      5454435F 
+ 901      46494E44 
+ 902              	.LASF25:
+ 903 063c 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_COMPLETE\000"
+ 903      455F4556 
+ 903      545F4741 
+ 903      505F4155 
+ 903      54485F43 
+ 904              	.LASF8:
+ 905 0658 756E7369 		.ascii	"unsigned int\000"
+ 905      676E6564 
+ 905      20696E74 
+ 905      00
+ 906              	.LASF46:
+ 907 0665 4359424C 		.ascii	"CYBLE_EVT_GATT_CONNECT_IND\000"
+ 907      455F4556 
+ 907      545F4741 
+ 907      54545F43 
+ 907      4F4E4E45 
+ 908              	.LASF5:
+ 909 0680 6C6F6E67 		.ascii	"long unsigned int\000"
+ 909      20756E73 
+ 909      69676E65 
+ 909      6420696E 
+ 909      7400
+ 910              	.LASF22:
+ 911 0692 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_REQ\000"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 29
+
+
+ 911      455F4556 
+ 911      545F4741 
+ 911      505F4155 
+ 911      54485F52 
+ 912              	.LASF75:
+ 913 06a9 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DISCONN_IND\000"
+ 913      455F4556 
+ 913      545F4C32 
+ 913      4341505F 
+ 913      43424643 
+ 914              	.LASF30:
+ 915 06ca 4359424C 		.ascii	"CYBLE_EVT_GAP_ENCRYPT_CHANGE\000"
+ 915      455F4556 
+ 915      545F4741 
+ 915      505F454E 
+ 915      43525950 
+ 916              	.LASF41:
+ 917 06e7 4359424C 		.ascii	"CYBLE_EVT_GAP_CONN_ESTB\000"
+ 917      455F4556 
+ 917      545F4741 
+ 917      505F434F 
+ 917      4E4E5F45 
+ 918              	.LASF69:
+ 919 06ff 4359424C 		.ascii	"CYBLE_EVT_GATTC_LONG_PROCEDURE_END\000"
+ 919      455F4556 
+ 919      545F4741 
+ 919      5454435F 
+ 919      4C4F4E47 
+ 920              	.LASF33:
+ 921 0722 4359424C 		.ascii	"CYBLE_EVT_GAP_KEYINFO_EXCHNGE_CMPLT\000"
+ 921      455F4556 
+ 921      545F4741 
+ 921      505F4B45 
+ 921      59494E46 
+ 922              	.LASF84:
+ 923 0746 4359424C 		.ascii	"CYBLE_EVT_FLASH_CORRUPT\000"
+ 923      455F4556 
+ 923      545F464C 
+ 923      4153485F 
+ 923      434F5252 
+ 924              	.LASF31:
+ 925 075e 4359424C 		.ascii	"CYBLE_EVT_GAP_CONNECTION_UPDATE_COMPLETE\000"
+ 925      455F4556 
+ 925      545F4741 
+ 925      505F434F 
+ 925      4E4E4543 
+ 926              	.LASF40:
+ 927 0787 4359424C 		.ascii	"CYBLE_EVT_GAP_SMP_NEGOTIATED_AUTH_INFO\000"
+ 927      455F4556 
+ 927      545F4741 
+ 927      505F534D 
+ 927      505F4E45 
+ 928              	.LASF11:
+ 929 07ae 63686172 		.ascii	"char\000"
+ 929      00
+ 930              	.LASF72:
+ 931 07b3 4359424C 		.ascii	"CYBLE_EVT_L2CAP_COMMAND_REJ\000"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 30
+
+
+ 931      455F4556 
+ 931      545F4C32 
+ 931      4341505F 
+ 931      434F4D4D 
+ 932              	.LASF3:
+ 933 07cf 73686F72 		.ascii	"short unsigned int\000"
+ 933      7420756E 
+ 933      7369676E 
+ 933      65642069 
+ 933      6E7400
+ 934              	.LASF39:
+ 935 07e2 4359424C 		.ascii	"CYBLE_EVT_GAPC_DIRECT_ADV_REPORT\000"
+ 935      455F4556 
+ 935      545F4741 
+ 935      50435F44 
+ 935      49524543 
+ 936              	.LASF55:
+ 937 0803 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BLOB_RSP\000"
+ 937      455F4556 
+ 937      545F4741 
+ 937      5454435F 
+ 937      52454144 
+ 938              	.LASF62:
+ 939 0821 4359424C 		.ascii	"CYBLE_EVT_GATTC_EXEC_WRITE_RSP\000"
+ 939      455F4556 
+ 939      545F4741 
+ 939      5454435F 
+ 939      45584543 
+ 940              	.LASF32:
+ 941 0840 4359424C 		.ascii	"CYBLE_EVT_GAPC_SCAN_START_STOP\000"
+ 941      455F4556 
+ 941      545F4741 
+ 941      50435F53 
+ 941      43414E5F 
+ 942              	.LASF81:
+ 943 085f 4359424C 		.ascii	"CYBLE_EVT_PENDING_FLASH_WRITE\000"
+ 943      455F4556 
+ 943      545F5045 
+ 943      4E44494E 
+ 943      475F464C 
+ 944              	.LASF78:
+ 945 087d 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_RX_CREDIT_IND\000"
+ 945      455F4556 
+ 945      545F4C32 
+ 945      4341505F 
+ 945      43424643 
+ 946              	.LASF10:
+ 947 08a0 646F7562 		.ascii	"double\000"
+ 947      6C6500
+ 948              	.LASF79:
+ 949 08a7 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_TX_CREDIT_IND\000"
+ 949      455F4556 
+ 949      545F4C32 
+ 949      4341505F 
+ 949      43424643 
+ 950              	.LASF88:
+ 951 08ca 63757374 		.ascii	"customServCharHandle\000"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 31
+
+
+ 951      6F6D5365 
+ 951      72764368 
+ 951      61724861 
+ 951      6E646C65 
+ 952              	.LASF42:
+ 953 08df 4359424C 		.ascii	"CYBLE_EVT_GAP_SCAN_REQ_RECVD\000"
+ 953      455F4556 
+ 953      545F4741 
+ 953      505F5343 
+ 953      414E5F52 
+ 954              	.LASF74:
+ 955 08fc 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_CONN_CNF\000"
+ 955      455F4556 
+ 955      545F4C32 
+ 955      4341505F 
+ 955      43424643 
+ 956              	.LASF17:
+ 957 091a 4359424C 		.ascii	"CYBLE_EVT_HARDWARE_ERROR\000"
+ 957      455F4556 
+ 957      545F4841 
+ 957      52445741 
+ 957      52455F45 
+ 958              	.LASF77:
+ 959 0933 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DATA_READ\000"
+ 959      455F4556 
+ 959      545F4C32 
+ 959      4341505F 
+ 959      43424643 
+ 960              	.LASF71:
+ 961 0952 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CONN_PARAM_UPDATE_RSP\000"
+ 961      455F4556 
+ 961      545F4C32 
+ 961      4341505F 
+ 961      434F4E4E 
+ 962              	.LASF21:
+ 963 0978 4359424C 		.ascii	"CYBLE_EVT_GAPC_SCAN_PROGRESS_RESULT\000"
+ 963      455F4556 
+ 963      545F4741 
+ 963      50435F53 
+ 963      43414E5F 
+ 964              	.LASF50:
+ 965 099c 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BY_GROUP_TYPE_RSP\000"
+ 965      455F4556 
+ 965      545F4741 
+ 965      5454435F 
+ 965      52454144 
+ 966              	.LASF59:
+ 967 09c3 4359424C 		.ascii	"CYBLE_EVT_GATTS_WRITE_CMD_REQ\000"
+ 967      455F4556 
+ 967      545F4741 
+ 967      5454535F 
+ 967      57524954 
+ 968              	.LASF51:
+ 969 09e1 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BY_TYPE_RSP\000"
+ 969      455F4556 
+ 969      545F4741 
+ 969      5454435F 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 32
+
+
+ 969      52454144 
+ 970              	.LASF49:
+ 971 0a02 4359424C 		.ascii	"CYBLE_EVT_GATTC_XCHNG_MTU_RSP\000"
+ 971      455F4556 
+ 971      545F4741 
+ 971      5454435F 
+ 971      5843484E 
+ 972              	.LASF80:
+ 973 0a20 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DATA_WRITE_IND\000"
+ 973      455F4556 
+ 973      545F4C32 
+ 973      4341505F 
+ 973      43424643 
+ 974              	.LASF16:
+ 975 0a44 4359424C 		.ascii	"CYBLE_EVT_TIMEOUT\000"
+ 975      455F4556 
+ 975      545F5449 
+ 975      4D454F55 
+ 975      5400
+ 976              	.LASF85:
+ 977 0a56 4359424C 		.ascii	"CYBLE_EVT_MAX\000"
+ 977      455F4556 
+ 977      545F4D41 
+ 977      5800
+ 978              	.LASF68:
+ 979 0a64 4359424C 		.ascii	"CYBLE_EVT_GATTS_READ_CHAR_VAL_ACCESS_REQ\000"
+ 979      455F4556 
+ 979      545F4741 
+ 979      5454535F 
+ 979      52454144 
+ 980              	.LASF67:
+ 981 0a8d 4359424C 		.ascii	"CYBLE_EVT_GATTC_STOP_CMD_COMPLETE\000"
+ 981      455F4556 
+ 981      545F4741 
+ 981      5454435F 
+ 981      53544F50 
+ 982              	.LASF61:
+ 983 0aaf 4359424C 		.ascii	"CYBLE_EVT_GATTS_EXEC_WRITE_REQ\000"
+ 983      455F4556 
+ 983      545F4741 
+ 983      5454535F 
+ 983      45584543 
+ 984              	.LASF87:
+ 985 0ace 4359424C 		.ascii	"CYBLE_GATT_DB_ATTR_HANDLE_T\000"
+ 985      455F4741 
+ 985      54545F44 
+ 985      425F4154 
+ 985      54525F48 
+ 986              	.LASF98:
+ 987 0aea 6379426C 		.ascii	"cyBle_customs\000"
+ 987      655F6375 
+ 987      73746F6D 
+ 987      7300
+ 988              	.LASF66:
+ 989 0af8 4359424C 		.ascii	"CYBLE_EVT_GATTS_DATA_SIGNED_CMD_REQ\000"
+ 989      455F4556 
+ 989      545F4741 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccVQv2jc.s 			page 33
+
+
+ 989      5454535F 
+ 989      44415441 
+ 990              	.LASF83:
+ 991 0b1c 4359424C 		.ascii	"CYBLE_EVT_HCI_PKT\000"
+ 991      455F4556 
+ 991      545F4843 
+ 991      495F504B 
+ 991      5400
+ 992              	.LASF36:
+ 993 0b2e 4359424C 		.ascii	"CYBLE_EVT_GAP_OOB_GENERATED_NOTIFICATION\000"
+ 993      455F4556 
+ 993      545F4741 
+ 993      505F4F4F 
+ 993      425F4745 
+ 994              		.comm	__gnu_lto_v1,1,1
+ 995              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

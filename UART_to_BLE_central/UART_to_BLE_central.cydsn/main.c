@@ -4,23 +4,9 @@
 * Version: 1.0
 *
 * Description:
-*  BLE example project that works as a BLE to UART bridge, using 
-*  Cypress's BLE component APIs and application layer callback. 
-*  This project demostrates a custom service usage for BLE to UART  
-*  bridge in a CENTRAL role.
+* Works as the master(server) which will receive the data from slaves
+* based on example code from cypress -Project 20
 *
-* References:
-*  BLUETOOTH SPECIFICATION Version 4.1
-*
-* Hardware Dependency:
-*  (1) CY8CKIT-042 BLE
-*  (2) An external UART transciever (if flow control is enabled) 
-*
-********************************************************************************
-* Copyright 2015, Cypress Semiconductor Corporation.  All rights reserved.
-* You may use this file only in accordance with the license, terms, conditions,
-* disclaimers, and limitations in the end user license agreement accompanying
-* the software package with which this file was provided.
 *******************************************************************************/
 
 #include "main.h"
@@ -32,103 +18,298 @@ int main()
         CYBLE_BLESS_STATE_T     blessState;
     #endif
     
-    CYBLE_API_RESULT_T      bleApiResult;
-   
+    start();
+    startBLE();
+    if(bleApiResult==CYBLE_EVT_GATT_CONNECT_IND){ //if server is connected
+        
+    }
+    
+}
+
+static void StartScan(void)
+{   //* Starts a scan on the Central device.
+
+    /* Re-initialize all variables for scanning and then start a fresh scan */
+        
+    CyBle_GapcStartScan(CYBLE_SCANNING_FAST);
+    UART_UartPutString("\n\r Start Scan: ");
+}
+
+void startBLE(){
+   //This function init the BLE component, this means, BLE STACK 
+   // AppCallBack manages the state BLE machine
+    
+    CyBle_Start(AppCallBack);  
+}
+
+void stopBLE(){
+    //Stops any proccesing in BLE Stack
+    CyBle_Stop();
+}
+
+void start(){
+    
     CyGlobalIntEnable; 
  
     /* Start UART and BLE component and display project information */
-    UART_Start();   
-    bleApiResult = CyBle_Start(AppCallBack); 
-    UART_UartPutString("\n\r DEBBUG");
-    if(bleApiResult == CYBLE_ERROR_OK)
-    {
-        #ifdef PRINT_MESSAGE_LOG
-            UART_UartPutString("\n\r************************************************************");
-            UART_UartPutString("\n\r***************** BLE UART example project *****************");
-            UART_UartPutString("\n\r************************************************************\n\r");
-            UART_UartPutString("\n\rDevice role \t: CENTRAL");
-            
-            #ifdef LOW_POWER_MODE
-                UART_UartPutString("\n\rLow Power Mode \t: ENABLED");
-            #else
-                UART_UartPutString("\n\rLow Power Mode \t: DISABLED");
-            #endif
-            
-            #ifdef FLOW_CONTROL
-                UART_UartPutString("\n\rFlow Control \t: ENABLED");  
-            #else
-                UART_UartPutString("\n\rFlow Control \t: DISABLED");
-            #endif
-            
-        #endif
-    }
-    else
-    {
-        #ifdef PRINT_MESSAGE_LOG   
-            UART_UartPutString("\n\r\t\tCyBle stack initilization FAILED!!! \n\r ");
-        #endif
-        
-        /* Enter infinite loop */
-        while(1);
-    }
-    UART_UartPutString("\n\r Before processEvents1 ");
-    CyBle_ProcessEvents();
-    UART_UartPutString("\n\r After processEvents1 ");
-    /***************************************************************************
-    * Main polling loop
-    ***************************************************************************/
-    while(1)
-    {               
-        #ifdef LOW_POWER_MODE
-            
-            if((CyBle_GetState() != CYBLE_STATE_INITIALIZING) && (CyBle_GetState() != CYBLE_STATE_DISCONNECTED))
-            {
-                /* Enter DeepSleep mode between connection intervals */
-                
-                lpMode = CyBle_EnterLPM(CYBLE_BLESS_DEEPSLEEP);
-                CyGlobalIntDisable;
-                blessState = CyBle_GetBleSsState();
+    UART_Start();    
+}
 
-                if(lpMode == CYBLE_BLESS_DEEPSLEEP) 
-                {   
-                    if((blessState == CYBLE_BLESS_STATE_ECO_ON || blessState == CYBLE_BLESS_STATE_DEEPSLEEP) && \
-                            (UART_SpiUartGetTxBufferSize() + UART_GET_TX_FIFO_SR_VALID) == 0u)
-                    {
-                        EnableUartRxInt();
-                        CySysPmSleep();
-                        DisableUartRxInt();
-                    }
-                }
-                else
-                {
-                    if((blessState != CYBLE_BLESS_STATE_EVENT_CLOSE) && \
-                            (UART_SpiUartGetTxBufferSize() + UART_GET_TX_FIFO_SR_VALID) == 0u)
-                    {
-                        EnableUartRxInt();
-                        CySysPmSleep();
-                        DisableUartRxInt();
-                    }
-                }
-                CyGlobalIntEnable;
+
+/*******************************************************************************
+* Function Name: AppCallBack
+********************************************************************************
+*
+* Summary:
+*   Call back function for BLE stack to handle BLESS events
+*
+* Parameters:
+*   event       - the event generated by stack
+*   eventParam  - the parameters related to the corresponding event
+*
+* Return:
+*   None.
+*
+*******************************************************************************/
+void AppCallBack(uint32 event, void *eventParam)
+{
+    CYBLE_GATTC_READ_BY_TYPE_RSP_PARAM_T    *readResponse;
+    CYBLE_GAPC_ADV_REPORT_T		            *advReport;
+    CYBLE_GATTC_FIND_BY_TYPE_RSP_PARAM_T    *findResponse;
+    CYBLE_GATTC_FIND_INFO_RSP_PARAM_T       *findInfoResponse;
+    
+    switch (event)
+    {
+        case CYBLE_EVT_STACK_ON:
+      
+            break;
+        
+        case CYBLE_EVT_GAPC_SCAN_PROGRESS_RESULT:
+            
+            advReport = (CYBLE_GAPC_ADV_REPORT_T *) eventParam;
+            
+            /* check if report has manfacturing data corresponding to the intended matching peer */
+            if((advReport->eventType == CYBLE_GAPC_SCAN_RSP) && (advReport->dataLen == 0x06) \
+                    && (advReport->data[1] == 0xff) && (advReport->data[2] == 0x31)  \
+                    && (advReport->data[3] == 0x01) && (advReport->data[4] == 0x3b) \
+                    && (advReport->data[5] == 0x04))
+            {
+                peerDeviceFound = true;
                 
-                /* Handle advertising led blinking */
-                HandleLeds();
+                memcpy(peerAddr.bdAddr, advReport->peerBdAddr, sizeof(peerAddr.bdAddr));
+                peerAddr.type = advReport->peerAddrType;
+                
+                #ifdef PRINT_MESSAGE_LOG   
+                    UART_UartPutString("\n\r\n\rServer with matching custom service discovered...");
+                #endif
+            }           
+            
+            break;    
+            
+        case CYBLE_EVT_GAP_DEVICE_DISCONNECTED:
+            
+            /* RESET all flags */
+            peerDeviceFound         = false;
+            notificationEnabled     = false;
+            infoExchangeState       = INFO_EXCHANGE_START;
+            
+            #ifdef PRINT_MESSAGE_LOG   
+                UART_UartPutString("\n\r DISCONNECTED!!! \n\r ");
+                while(0 != (UART_SpiUartGetTxBufferSize() + UART_GET_TX_FIFO_SR_VALID));
+            #endif
+            
+            /* RESET Uart and flush all buffers */
+            UART_Stop();
+            UART_SpiUartClearTxBuffer();
+            UART_SpiUartClearRxBuffer();
+            UART_Start();
+            
+            break;
+        
+        case CYBLE_EVT_GATTC_READ_BY_TYPE_RSP:
+            
+            readResponse = (CYBLE_GATTC_READ_BY_TYPE_RSP_PARAM_T *) eventParam;
+            
+            if(0 == memcmp((uint8 *)&(readResponse->attrData.attrValue[5]), (uint8 *)uartTxAttrUuid, 16))
+            {
+                txCharHandle = readResponse->attrData.attrValue[3];
+                txCharHandle |= (readResponse->attrData.attrValue[4] << 8);
+                
+                infoExchangeState |= TX_ATTR_HANDLE_FOUND;
+            }
+            else if(0 == memcmp((uint8 *)&(readResponse->attrData.attrValue[5]), (uint8 *)uartRxAttrUuid, 16))
+            {
+                rxCharHandle = readResponse->attrData.attrValue[3];
+                rxCharHandle |= (readResponse->attrData.attrValue[4] << 8);
+                
+                infoExchangeState |= RX_ATTR_HANDLE_FOUND;
+               
             }
             
-        #else
-            HandleLeds();
-        #endif
+            break;
+            
+        case CYBLE_EVT_GATTC_FIND_INFO_RSP:
+            
+            findInfoResponse = (CYBLE_GATTC_FIND_INFO_RSP_PARAM_T *) eventParam;
+            
+            if((0x29 == findInfoResponse->handleValueList.list[3]) && \
+                                (0x02 == findInfoResponse->handleValueList.list[2]))
+            {
+                txCharDescHandle = findInfoResponse->handleValueList.list[0];
+                txCharDescHandle |= findInfoResponse->handleValueList.list[1] << 8;
+            
+                infoExchangeState |= TX_CCCD_HANDLE_FOUND;
+            }
+           
+            break;
+            
+        case CYBLE_EVT_GATTC_XCHNG_MTU_RSP:   
+            
+            /*set the 'mtuSize' variable based on the minimum MTU supported by both devices */
+            if(CYBLE_GATT_MTU > ((CYBLE_GATT_XCHG_MTU_PARAM_T *)eventParam)->mtu)
+            {
+                mtuSize = ((CYBLE_GATT_XCHG_MTU_PARAM_T *)eventParam)->mtu;
+            }
+            else
+            {
+                mtuSize = CYBLE_GATT_MTU;
+            }
+            
+            infoExchangeState |= MTU_XCHNG_COMPLETE;
+            
+            break;
+            
+        case CYBLE_EVT_GATTC_HANDLE_VALUE_NTF:
+            
+            HandleUartRxTraffic((CYBLE_GATTC_HANDLE_VALUE_NTF_PARAM_T *)eventParam);
+			
+            break;
         
-        /*******************************************************************
-        *  Process all pending BLE events in the stack
-        *******************************************************************/      
-      // UART_UartPutString("\n\r Before handleBLE ");
-        HandleBleProcessing();
-        //UART_UartPutString(ultoa(CyBle_GetState()));
-      //  UART_UartPutString("\n\r after handleBLE ");
-        //UART_UartPutString("\n\r\t\ entre handle e cyble ");
-        CyBle_ProcessEvents();
+        case CYBLE_EVT_GATTC_FIND_BY_TYPE_VALUE_RSP:
+            
+            findResponse            = (CYBLE_GATTC_FIND_BY_TYPE_RSP_PARAM_T *) eventParam;
+            
+            bleUartServiceHandle    = findResponse->range->startHandle;
+            bleUartServiceEndHandle = findResponse->range->endHandle;
+            
+            infoExchangeState |= BLE_UART_SERVICE_HANDLE_FOUND;
+            
+            break;
+        
+        case CYBLE_EVT_GATTS_XCNHG_MTU_REQ:
+            
+            /*set the 'mtuSize' variable based on the minimum MTU supported by both devices */
+            if(CYBLE_GATT_MTU > ((CYBLE_GATT_XCHG_MTU_PARAM_T *)eventParam)->mtu)
+            {
+                mtuSize = ((CYBLE_GATT_XCHG_MTU_PARAM_T *)eventParam)->mtu;
+            }
+            else
+            {
+                mtuSize = CYBLE_GATT_MTU;
+            }
+            
+            break;    
+        
+        case CYBLE_EVT_GATTC_WRITE_RSP:
+            
+            notificationEnabled = true;
+            
+            #ifdef PRINT_MESSAGE_LOG   
+                UART_UartPutString("\n\rNotifications enabled\n\r");
+                UART_UartPutString("\n\rStart entering data:\n\r");
+            #endif
+            
+            break;
+        
+        case CYBLE_EVT_GATT_CONNECT_IND:
+            
+            #ifdef PRINT_MESSAGE_LOG   
+                UART_UartPutString("\n\rConnection established");             
+            #endif
+            
+            break;
+            
+        default:            
+            break;
     }
 }
 
-/* [] END OF FILE */
+/*******************************************************************************
+* Function Name: HandleBleProcessing
+********************************************************************************
+*
+* Summary:
+*   Handles the BLE state machine for intiating different procedures
+*   during different states of BLESS.
+*
+* Parameters:
+*   None.
+*
+* Return:
+*   None.
+*
+*******************************************************************************/
+void HandleBleProcessing(void)
+{    
+    CYBLE_API_RESULT_T      cyble_api_result;
+   // cyBle_state=CYBLE_STATE_SCANNING;
+    switch (cyBle_state)
+    {
+        case CYBLE_STATE_SCANNING:
+            if(peerDeviceFound)
+            {
+               CyBle_GapcStopScan();
+               UART_UartPutString("\n\r Scanning e peer found");
+            }
+            break;
+    
+        case CYBLE_STATE_CONNECTED:
+            
+            /* if Client does not has all the information about attribute handles 
+             * call procedure for getting it */
+            if((INFO_EXCHANGE_COMPLETE != infoExchangeState))
+            {
+                attrHandleInit();
+                UART_UartPutString("\n\r Connected with info exchanged");
+            }
+            
+            /* enable notifications if not enabled already */
+            else if(false == notificationEnabled)
+            {
+                enableNotifications();
+                UART_UartPutString("\n\r not Connected -> go to notifications");
+            }
+            
+            /* if client has all required info and stack is free, handle UART traffic */
+            else if(CyBle_GattGetBusStatus() != CYBLE_STACK_STATE_BUSY)
+            {
+                UART_UartPutString("\n\r Information from central sent");
+                HandleUartTxTraffic();
+            }
+            
+            break;
+                
+        case CYBLE_STATE_DISCONNECTED:
+        {
+            UART_UartPutString("\n\rIn disconected state but retrying to connect");
+            if(peerDeviceFound)
+            {
+                cyble_api_result = CyBle_GapcConnectDevice(&peerAddr);
+                
+			    if(CYBLE_ERROR_OK == cyble_api_result)
+			    {
+				    peerDeviceFound = false;
+			    }
+            }
+            else
+            {
+                CyBle_GapcStartScan(CYBLE_SCANNING_FAST);  
+            }
+            break;
+        }
+        
+        default:
+            break;       
+    }
+}
+

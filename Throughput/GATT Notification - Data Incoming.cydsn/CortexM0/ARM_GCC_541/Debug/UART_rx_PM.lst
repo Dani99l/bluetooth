@@ -1,0 +1,1264 @@
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"UART_rx_PM.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.section	.gnu.lto_.profile.58565533,"",%progbits
+  19 0000 789C6361 		.ascii	"x\234ca`d`a`\000\222\034l\000\000\200\000\031"
+  19      60646061 
+  19      6000921C 
+  19      6C000080 
+  19      0019
+  20              		.text
+  21              		.section	.gnu.lto_.icf.58565533,"",%progbits
+  22 0000 789C6361 		.ascii	"x\234ca`d\000\001a\006\004`f8\333\272\177)\033\343\322"
+  22      60640001 
+  22      61060460 
+  22      6638DBBA 
+  22      7F291BE3 
+  23 0015 A70B6C98 		.ascii	"\247\013l\230\346-9\372\223\225\001\000Rt\010F"
+  23      E62D39FA 
+  23      93950100 
+  23      52740846 
+  24              		.text
+  25              		.section	.gnu.lto_.jmpfuncs.58565533,"",%progbits
+  26 0000 789C6361 		.ascii	"x\234ca`d\000\001\016\006\004`\202b\000\001^\000\022"
+  26      60640001 
+  26      0E060460 
+  26      82620001 
+  26      5E0012
+  27              		.text
+  28              		.section	.gnu.lto_.inline.58565533,"",%progbits
+  29 0000 789C6361 		.ascii	"x\234ca`d\000\001\015\006\004`b``ead`bY \317\300\266"
+  29      60640001 
+  29      0D060460 
+  29      62606065 
+  29      61646062 
+  30 0019 409E0922 		.ascii	"@\236\011\"\206!\304\000\000G\374\003^"
+  30      8621C400 
+  30      0047FC03 
+  30      5E
+  31              		.text
+  32              		.section	.gnu.lto_.pureconst.58565533,"",%progbits
+  33 0000 789C6361 		.ascii	"x\234ca`d`e```b\220b\222\002\000\000\357\000C"
+  33      60646065 
+  33      60606062 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 2
+
+
+  33      90629202 
+  33      0000EF00 
+  34              		.text
+  35              		.section	.gnu.lto_UART_rx_Sleep.58565533,"",%progbits
+  36 0000 789C4D50 		.ascii	"x\234MP\277KBQ\024>\347\336\247\317\212\240=\207\006"
+  36      BF4B4251 
+  36      143EE7DE 
+  36      A7CF8AA0 
+  36      3D8706
+  37 0013 095C72E9 		.ascii	"\011\\r\351\037\210\206Z\002\321\332\204G\330[\023\244"
+  37      1F88865A 
+  37      02D1DA84 
+  37      47D85B13 
+  37      A4
+  38 0024 A0CDEB8F 		.ascii	"\240\315\353\217G\332 .\331\024\322 \332\017\263hIZ"
+  38      47DA202E 
+  38      D914D220 
+  38      DA0FB368 
+  38      495A
+  39 0036 1ED2D010 		.ascii	"\036\322\320\020\006ASK48X\203A.\205\317\316y.\035\270"
+  39      0641534B 
+  39      34385883 
+  39      412E85CF 
+  39      CE792E1D 
+  40 004b 9C7BBFF3 		.ascii	"\234{\277\363\335\357;\347h\200\300\261Ji\236\362,\035"
+  40      DDEF3BE7 
+  40      6880C0B1 
+  40      4A699EF2 
+  40      2C1D
+  41 005d 9480A2D4 		.ascii	"\224\200\242\324\001H\373\004\"_\224\017!%0\205\003"
+  41      0148FB04 
+  41      225F940F 
+  41      21253085 
+  41      03
+  42 006e 3114D8DE 		.ascii	"1\024\330\336\357\266D\260\246(\336\254#\251\3526Z\022"
+  42      EFB644B0 
+  42      A628DEAC 
+  42      23A9EA36 
+  42      5A12
+  43 0080 60245C25 		.ascii	"`$\\%\300\032\006\201h\357\327\316\341\2647\307\264"
+  43      C01A0681 
+  43      68EFD7CE 
+  43      E1B437C7 
+  43      B4
+  44 0091 B97111EB 		.ascii	"\271q\021\353\350e\273f\304V\243QV\331w\236\201\324"
+  44      E865BB66 
+  44      C456A351 
+  44      56D9779E 
+  44      81D4
+  45 00a3 045892D0 		.ascii	"\004X\222\320>1\330\353K\010\316\262\213\355\237\003"
+  45      3E31D8EB 
+  45      4B08CEB2 
+  45      8BED9F03 
+  46 00b3 A73AC19F 		.ascii	"\247:\301\237\262\222}\313V\373I\377\026\226\024\310"
+  46      B2927DCB 
+  46      56FB49FF 
+  46      169614C8 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 3
+
+
+  47 00c3 FA37C567 		.ascii	"\3727\305ggj\374\314gJJ#\350\243\332y\320+x\234\316"
+  47      676AFCCC 
+  47      674A4A23 
+  47      E8A3DA79 
+  47      D02B789C 
+  48 00d8 514712CF 		.ascii	"QG\022\317\320\217\247\350'\343s\254 t1S>\011\260\336"
+  48      D08FA7E8 
+  48      27E373AC 
+  48      20743153 
+  48      3E09B0DE 
+  49 00ec 7F31CD15 		.ascii	"\1771\315\025k\265>_\365\324P\345\225\232!\254@\363"
+  49      6BB53E5F 
+  49      F5D450E5 
+  49      959A21AC 
+  49      40F3
+  50 00fe 30DC7B7C 		.ascii	"0\334{|\271\237dA\345\342\036l\320\022.X\222\212\305"
+  50      B99F6441 
+  50      E5E21E6C 
+  50      D0122E58 
+  50      928AC5
+  51 0111 DBAB822F 		.ascii	"\333\253\202/\324\340\001\225aI/^\222\213\343n\001\233"
+  51      D4E00195 
+  51      61492F5E 
+  51      928BE36E 
+  51      019B
+  52 0123 18A2A6A1 		.ascii	"\030\242\246\241\207\031\373\327\303\226\356j\372\324"
+  52      8719FBD7 
+  52      C396EE6A 
+  52      FAD4
+  53 0131 39CD4694 		.ascii	"9\315F\224\300\212\271m&7w\314-#\232\330M\306\315X8"
+  53      C08AB96D 
+  53      263777CC 
+  53      2D239AD8 
+  53      4DC6CD58 
+  54 0146 9A585E8C 		.ascii	"\232X^\214m,E\326\215\344\236\021^[\210\303\037\321"
+  54      6D2C45D6 
+  54      8DE49E11 
+  54      5E5B88C3 
+  54      1FD1
+  55 0158 E08004   		.ascii	"\340\200\004"
+  56              		.text
+  57              		.section	.gnu.lto_UART_rx_backup.58565533,"",%progbits
+  58 0000 789C6361 		.ascii	"x\234ca`d\000\001k \206\260\030\030\37621\256\177\263"
+  58      60640001 
+  58      6B2086B0 
+  58      1818FE32 
+  58      31AE7FB3 
+  59 0014 F327EF17 		.ascii	"\363'\357\027\246Vf\240 \220{\341\356\212\343\374\026"
+  59      A65666A0 
+  59      20907BE1 
+  59      EE8AE3FC 
+  59      16
+  60 0025 DB1A3A16 		.ascii	"\333\032:\0264\030\26423\376cb`\\\316(\363\217\211\021"
+  60      3418B432 
+  60      33FE6362 
+  60      605CCE28 
+  60      F38F8911 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 4
+
+
+  61 0039 42318128 		.ascii	"B1\201(\006\306\025\214\026\014\000\345\232\024I"
+  61      06C6158C 
+  61      160C00E5 
+  61      9A1449
+  62              		.text
+  63              		.section	.gnu.lto_UART_rx_Wakeup.58565533,"",%progbits
+  64 0000 789C6361 		.ascii	"x\234ca`d\000\001w \245\006\244\245\201\230\221\231"
+  64      60640001 
+  64      7720A506 
+  64      A4A58198 
+  64      9199
+  65 0012 819169C2 		.ascii	"\201\221i\3029\006\206F\016&FF\020\243\201\203\221\241"
+  65      39068646 
+  65      0E264646 
+  65      10A38183 
+  65      91A1
+  66 0024 9E89B19E 		.ascii	"\236\211\261\236\361+\323_&\306C\355\317v2i.o\000\202"
+  66      F12BD35F 
+  66      26C643ED 
+  66      CF763269 
+  66      2E6F0082 
+  67 0038 07475F19 		.ascii	"\007G_\0314\2548\300\330\312\314\300\360\237\011l\022"
+  67      34AC38C0 
+  67      D8CACCC0 
+  67      F09F096C 
+  67      12
+  68 0049 03E37246 		.ascii	"\003\343rFM\006\240\262G\033\377M\345ek\001)S\200H2"
+  68      4D06A0B2 
+  68      471BFF4D 
+  68      E5656B01 
+  68      29538048 
+  69 005e AE606403 		.ascii	"\256`d\003Y\267>\350@\303\377\377\315\015\007\256\263"
+  69      59B73EE8 
+  69      40C3FFFF 
+  69      CD0D07AE 
+  69      B3
+  70 006f 1D9CC4CE 		.ascii	"\035\234\304\316\302\304\320\312\014\024\376\000T\002"
+  70      C2C4D0CA 
+  70      0C14FE00 
+  70      5402
+  71 007d B2EC2313 		.ascii	"\262\354#\023\023\210f~\306\330\264\353\343\265\203"
+  71      1388667E 
+  71      C6D8B4EB 
+  71      E3B583
+  72 008c 9C205DCD 		.ascii	"\234 ]\315\314 \213\247\265\036:\317\376\205\251\225"
+  72      CC208BA7 
+  72      B51E3ACF 
+  72      FE85A995 
+  73 009c 99891164 		.ascii	"\231\211\021d\301\316\235on\263\327\377m\350hh\020\000"
+  73      C1CE9D6F 
+  73      6EB3D7FF 
+  73      6DE86868 
+  73      1000
+  74 00ae 8A7502DD 		.ascii	"\212u\002\335\000\022~u\346\352\021\256\371\214s\033"
+  74      00127E75 
+  74      E6EA11AE 
+  74      F98C731B 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 5
+
+
+  75 00be 1BC0E2CC 		.ascii	"\033\300\342\314\214\253\200\016_\311(\003\226\354\333"
+  75      8CAB800E 
+  75      5FC92803 
+  75      96ECDB
+  76 00cd B1A19343 		.ascii	"\261\241\223C_\267\225\231\205q5\343|\306\177`73\256"
+  76      5FB79599 
+  76      857135E3 
+  76      7CC67F60 
+  76      3733AE
+  77 00e0 61D46778 		.ascii	"a\324gx\306xh\332B1\220e\3106\261\202m\332\334w\351"
+  77      C67868DA 
+  77      42319065 
+  77      C836B182 
+  77      6DDADC77 
+  78 00f5 1F3784DB 		.ascii	"\0377\204\333\3214\241\201\005(\364z\351\271\023\354"
+  78      D134A181 
+  78      0528F47A 
+  78      E9B913EC 
+  79 0105 205B5A80 		.ascii	" [Z\200\366\030\003}\300\306\270\216Q\206q-\310\036"
+  79      F618037D 
+  79      C0C6B88E 
+  79      5186712D 
+  79      C81E
+  80 0117 C6F540A3 		.ascii	"\306\365@\243\201Nfx\305\330t`\262;\310Lp\310|\000\272"
+  80      814E6678 
+  80      C5D87460 
+  80      B23BC84C 
+  80      70C87C00 
+  81 012c 1BE833A0 		.ascii	"\033\3503\240\235*\356\251y\251E\211%\251)\361\301\371"
+  81      9D2AEEA9 
+  81      79A94589 
+  81      25A929F1 
+  81      C1F9
+  82 013e A545C9A9 		.ascii	"\245E\311\2511\001\301\371\316&1\241\216A!\361E\025"
+  82      3101C1F9 
+  82      CE2631A1 
+  82      8E4121F1 
+  82      4515
+  83 0150 F101BE7A 		.ascii	"\361\001\276z\311\014\000\327|\177~"
+  83      C90C00D7 
+  83      7C7F7E
+  84              		.text
+  85              		.section	.gnu.lto_.symbol_nodes.58565533,"",%progbits
+  86 0000 789C6361 		.ascii	"x\234ca`d\320a\000\002&\306z\006\206\011\347\030\030"
+  86      6064D061 
+  86      000226C6 
+  86      7A068609 
+  86      E71818
+  87 0013 80D4AE06 		.ascii	"\200\324\256\006E\006\006V\006\206\006!\006\006f&\246"
+  87      45060656 
+  87      06860621 
+  87      06066626 
+  87      A6
+  88 0024 7A461409 		.ascii	"zF\024\011\006\000\276o\010B"
+  88      0600BE6F 
+  88      0842
+  89              		.text
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 6
+
+
+  90              		.section	.gnu.lto_.refs.58565533,"",%progbits
+  91 0000 789C6361 		.ascii	"x\234ca`d\340f`\000\222\214\214L\214L@\222\001\000\001"
+  91      6064E066 
+  91      6000928C 
+  91      8C4C8C4C 
+  91      40920100 
+  92 0015 54001B   		.ascii	"T\000\033"
+  93              		.text
+  94              		.section	.gnu.lto_.decls.58565533,"",%progbits
+  95 0000 789C8D54 		.ascii	"x\234\215T]H\024Q\024\276gf7\327a\335 +|\350\301b\313"
+  95      5D481451 
+  95      14BE6766 
+  95      37D761DD 
+  95      202B7CE8 
+  96 0017 7D32B49E 		.ascii	"}2\264\236\243\0222\210BZ\265\027At\033*\214\\t\027"
+  96      A3123288 
+  96      425AB517 
+  96      41741B2A 
+  96      8C5C7417 
+  97 002b F2A95B09 		.ascii	"\362\251[\011VD\370SVf\264T\224\265\332\332\337\246"
+  97      5644F853 
+  97      5666B454 
+  97      94B5DADA 
+  97      DFA6
+  98 003d 59BA9AE5 		.ascii	"Y\272\232\345\272\321\303R\020f?\033\021\025\371P\351"
+  98      BAD1C352 
+  98      10663F1B 
+  98      1115F950 
+  98      E9
+  99 004e 4B85D8B9 		.ascii	"K\205\330\271?\263\263\211F\2279s\357\271\367|\337\371"
+  99      3FB3B389 
+  99      46973973 
+  99      EFB9F77C 
+  99      DFF9
+ 100 0060 BB331602 		.ascii	"\2733\026\002\204\215MVB^\343<\2052\203\303\202s)1\207"
+ 100      848D4D56 
+ 100      425EE33C 
+ 100      853283C3 
+ 100      82732931 
+ 101 0075 82D28512 		.ascii	"\202\322\205\022Ba\210a\362\367`gi\022\223\2032\212"
+ 101      42618861 
+ 101      F2F76067 
+ 101      69129383 
+ 101      328A
+ 102 0087 32821243 		.ascii	"2\202\022C\031B\351\221\270~9w\315\3033,}\345H\234*"
+ 102      1942E991 
+ 102      B87E3977 
+ 102      CDC3332C 
+ 102      7DE5489C 
+ 103 009c 3103280F 		.ascii	"1\003(\017\310\334#4\313w\252O#\216T\337\363\3450\255"
+ 103      C8DC2334 
+ 103      CB77AA4F 
+ 103      238E54DF 
+ 103      F3E530AD 
+ 104 00b0 40C7F349 		.ascii	"@\307\363I\252\215\303\030\250D\026\206\000\2107p!B"
+ 104      AA8DC318 
+ 104      A8441686 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 7
+
+
+ 104      00883770 
+ 104      2142
+ 105 00c2 B88A0B85 		.ascii	"\270\212\013\205\210\205\261\225\034\004\304\211\"w"
+ 105      8885B195 
+ 105      1C04C489 
+ 105      2277
+ 106 00d0 8949C61F 		.ascii	"\211I\306\037\211\207\031cp\022\223\035$\010\222\021"
+ 106      89871963 
+ 106      7012931D 
+ 106      24089211 
+ 107 00e0 F0630182 		.ascii	"\360c\001\202$\253\230\024\023\221\3027+\"#f\303\015"
+ 107      24AB9814 
+ 107      1391C237 
+ 107      2B222366 
+ 107      C30D
+ 108 00f2 2F334FFA 		.ascii	"/3O\372b\363\207\037vU\001\266~\367\263cSn'\305\321"
+ 108      62F3871F 
+ 108      765501B6 
+ 108      7EF7B363 
+ 108      536E27C5 
+ 109 0107 48A9E232 		.ascii	"H\251\3422+\023\257\357nW\247\024X\244\201\005\325\357"
+ 109      2B13AFEF 
+ 109      6E57A714 
+ 109      58A48105 
+ 109      D5EF
+ 110 0119 CFDA3E38 		.ascii	"\317\332>8P]\254A6\252\323\243\347\332\224\254V\216"
+ 110      505DAC41 
+ 110      36AAD3A3 
+ 110      E7DA94AC 
+ 110      568E
+ 111 012b 3B4CB32D 		.ascii	";L\263-P\272\024\202\260\014\256\3032\364\327\011Y\370"
+ 111      50BA1482 
+ 111      B00CAEC3 
+ 111      32F4D709 
+ 111      59F8
+ 112 013d AEB408A6 		.ascii	"\256\264\010\246`s\375e\313\212\000\015t\323\304\344"
+ 112      6073FD65 
+ 112      CB8A000D 
+ 112      74D3C4E4 
+ 113 014d B7FCB334 		.ascii	"\267\374\2634R\2170\205YA\007\250p\015rY\220\035\254"
+ 113      528F3085 
+ 113      594107A8 
+ 113      700D7259 
+ 113      901DAC
+ 114 0160 0704AEC2 		.ascii	"\007\004\256\3028\306\333\005+\020\371\364\355\364u"
+ 114      38C6DB05 
+ 114      2B10F9F4 
+ 114      EDF475
+ 115 016f 87BA8E07 		.ascii	"\207\272\216\007\332\036=\336\340\020,\221\027O\354"
+ 115      DA1E3DDE 
+ 115      E0102C91 
+ 115      174FEC
+ 116 017e B4F120A5 		.ascii	"\264\361 \245\3539\307\015\223\343F*G\210s$.\277:\007"
+ 116      EB39C70D 
+ 116      93E3462A 
+ 116      47887324 
+ 116      2EBF3A07 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 8
+
+
+ 117 0192 EA56CEF1 		.ascii	"\352V\316\361\373\363\3111\0209\331Q=\3247\326\264P"
+ 117      FBF3C931 
+ 117      1039D951 
+ 117      3DD437D6 
+ 117      B450
+ 118 01a4 E49460C7 		.ascii	"\344\224`\307m}S1\2538\266\241:\036\017\277W\3252\216"
+ 118      6D7D5331 
+ 118      AB38B6A1 
+ 118      3A1E0FBF 
+ 118      57D5328E 
+ 119 01b8 7C13BD16 		.ascii	"|\023\275\026d\325\310\321x\007\027\342Vh\242\367g\206"
+ 119      64D5C8D1 
+ 119      780717E2 
+ 119      5668A2F7 
+ 119      6786
+ 120 01ca D86216B1 		.ascii	"\330b\026\261w\037\177\244\253:[+\341K\027&\255\240"
+ 120      771F7FA4 
+ 120      AB3A5B2B 
+ 120      E14B1726 
+ 120      ADA0
+ 121 01dc B98E507A 		.ascii	"\271\216Pz\210\325gQ\324A\222\345\201^p1\020\013\031"
+ 121      88D56751 
+ 121      D44192E5 
+ 121      815E7031 
+ 121      100B19
+ 122 01ef C2B87917 		.ascii	"\302\270y\0277\257\260J&z\033JO7\260\322\364\200\006"
+ 122      37AFB04A 
+ 122      267A1B4A 
+ 122      4F37B0D2 
+ 122      F48006
+ 123 0202 F7CCB472 		.ascii	"\367\314\264r4\331\270_\255\2374\365\004p\207\201\330"
+ 123      34D9B85F 
+ 123      AD9F34F5 
+ 123      04708781 
+ 123      D8
+ 124 0213 9778BADA 		.ascii	"\227x\272\332\312\025\353y\332\026\266\2023\323\351"
+ 124      CA15EB79 
+ 124      DA16B682 
+ 124      33D3E9
+ 125 0222 745D644E 		.ascii	"t]dN\0233\261U\355\267(=\272\200s\365!\327C\3104c\270"
+ 125      1333B155 
+ 125      EDB7283D 
+ 125      BA8073F5 
+ 125      21D743C8 
+ 126 0239 CDFB9487 		.ascii	"\315\373\224\207/\322$\233O\301G\340\026\032\334\344"
+ 126      2FD2249B 
+ 126      4FC147E0 
+ 126      161ADCE4 
+ 127 0249 67CC1CDD 		.ascii	"g\314\034\335C\004\243\355\007'\014\240<\000'\277\036"
+ 127      4304A3ED 
+ 127      07270CA0 
+ 127      3C0027BF 
+ 127      1E
+ 128 025a DC45A455 		.ascii	"\334E\244U7\350\357\317\246_\235d\027\246g\222\246w"
+ 128      37E8EFCF 
+ 128      A65F9D64 
+ 128      17A66792 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 9
+
+
+ 128      A677
+ 129 026c E6340D32 		.ascii	"\3464\0152\227\242\010\221\026\235R\033\263!2}y!_\007"
+ 129      97A20891 
+ 129      169D521B 
+ 129      B321327D 
+ 129      79215F07 
+ 130 0280 8E4C2BEA 		.ascii	"\216L+\352 \317W\0116]\035I\203L\327\234\301\303#\214"
+ 130      20CF5709 
+ 130      365D1D49 
+ 130      834CD79C 
+ 130      C1C3238C 
+ 131 0294 F95FF10B 		.ascii	"\371_\361\013G\3473\260\322Ch6hV\232\271\345\336&\342"
+ 131      47E733B0 
+ 131      D2436836 
+ 131      68569AB9 
+ 131      E5DE26E2 
+ 132 02a8 A7EEC0CA 		.ascii	"\247\356\300\312K\224\006\360\322v\327\265P\272\231"
+ 132      4B9406F0 
+ 132      D276D7B5 
+ 132      50BA99
+ 133 02b7 DB760BDB 		.ascii	"\333v\013\333\224B\261\235b\374/\014\303J\304\335\357"
+ 133      9442B19D 
+ 133      62FC2F0C 
+ 133      C34AC4DD 
+ 133      EF
+ 134 02c8 0C9D5135 		.ascii	"\014\235Q5l\374\341\377k<\203\274\245\355V\365\245H"
+ 134      6CFCE1FF 
+ 134      6B3C83BC 
+ 134      A5ED56F5 
+ 134      A548
+ 135 02da ACB7E76B 		.ascii	"\254\267\347k\247C\\\2359\030\242\377\270:\007\3166"
+ 135      A7435C9D 
+ 135      3918A2FF 
+ 135      B83A07CE 
+ 135      36
+ 136 02eb 1FA4D930 		.ascii	"\037\244\3310\202E~b&\364\030\344\335\011G\343w\323"
+ 136      82457E62 
+ 136      26F418E4 
+ 136      DD0947E3 
+ 136      77D3
+ 137 02fd ECC7CC1B 		.ascii	"\354\307\314\033\311-\315ov\024\354\374_1\312?\215\346"
+ 137      C92DCD6F 
+ 137      7614ECFC 
+ 137      5F31CA3F 
+ 137      8DE6
+ 138 030f 899916E5 		.ascii	"\211\231\026\345/\353\241\224\246\021\210Ik6g\224l\330"
+ 138      2FEBA194 
+ 138      A6118849 
+ 138      6B366794 
+ 138      6CD8
+ 139 0321 5E5C5EB3 		.ascii	"^\\^\263\277\334\275W\327\275\266\302m%\331\005yy\304"
+ 139      BFDCBD57 
+ 139      D7BDB6C2 
+ 139      6D25D905 
+ 139      7979C4
+ 140 0334 59A8EFD3 		.ascii	"Y\250\357\323k*|\372\316rw\265\277\306\243\227\025\271"
+ 140      6B2A7CFA 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 10
+
+
+ 140      CE7277B5 
+ 140      BFC6A397 
+ 140      15B9
+ 141 0346 AB0BD696 		.ascii	"\253\013\326\226\031\326E[s=\304ah;*\252t\2777\251V"
+ 141      19D6455B 
+ 141      733DC461 
+ 141      683B2AAA 
+ 141      74BF37A9 
+ 142 035b 5678AAFC 		.ascii	"Vx\252\374^[\355\236j\267\017)\026\370\367\354\363\255"
+ 142      5E5BED9E 
+ 142      6AB70F29 
+ 142      16F8F7EC 
+ 142      F3AD
+ 143 036d C95F3E0F 		.ascii	"\311_>\017\245\247\316W\347\325ksw\2234\257\207\003"
+ 143      A5A7CE57 
+ 143      E7D56B73 
+ 143      779334AF 
+ 143      8703
+ 144 037f 6CFEDA4A 		.ascii	"l\376\332J\276\230\017\"\035!d\211\341s\343\206\202"
+ 144      BE980F22 
+ 144      1D216489 
+ 144      E173E386 
+ 144      82
+ 145 0390 2D2545E5 		.ascii	"-%E\345\356\342\355%\005\305\326\032}\327\232\374?\021"
+ 145      EEE2ED25 
+ 145      05C5D61A 
+ 145      7DD79AFC 
+ 145      3F11
+ 146 03a2 7FC55A   		.ascii	"\177\305Z"
+ 147              		.text
+ 148              		.section	.gnu.lto_.symtab.58565533,"",%progbits
+ 149 0000 55415254 		.ascii	"UART_rx_Sleep\000"
+ 149      5F72785F 
+ 149      536C6565 
+ 149      7000
+ 150 000e 00       		.ascii	"\000"
+ 151 000f 00       		.ascii	"\000"
+ 152 0010 00       		.ascii	"\000"
+ 153 0011 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 153      00000000 
+ 154 0019 AD000000 		.ascii	"\255\000\000\000"
+ 155 001d 55415254 		.ascii	"UART_rx_Wakeup\000"
+ 155      5F72785F 
+ 155      57616B65 
+ 155      757000
+ 156 002c 00       		.ascii	"\000"
+ 157 002d 00       		.ascii	"\000"
+ 158 002e 00       		.ascii	"\000"
+ 159 002f 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 159      00000000 
+ 160 0037 AF000000 		.ascii	"\257\000\000\000"
+ 161              		.text
+ 162              		.section	.gnu.lto_.opts,"",%progbits
+ 163 0000 272D666D 		.ascii	"'-fmath-errno' '-fsigned-zeros' '-ftrapping-math' '"
+ 163      6174682D 
+ 163      6572726E 
+ 163      6F272027 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 11
+
+
+ 163      2D667369 
+ 164 0033 2D666E6F 		.ascii	"-fno-trapv' '-fno-openmp' '-fno-openacc' '-mcpu=cor"
+ 164      2D747261 
+ 164      70762720 
+ 164      272D666E 
+ 164      6F2D6F70 
+ 165 0066 7465782D 		.ascii	"tex-m0' '-mthumb' '-g' '-O3' '-ffunction-sections' "
+ 165      6D302720 
+ 165      272D6D74 
+ 165      68756D62 
+ 165      2720272D 
+ 166 0099 272D6666 		.ascii	"'-ffat-lto-objects' '-finline-functions' '-flto'\000"
+ 166      61742D6C 
+ 166      746F2D6F 
+ 166      626A6563 
+ 166      74732720 
+ 167              		.text
+ 168              		.cfi_sections	.debug_frame
+ 169              		.section	.text.UART_rx_Sleep,"ax",%progbits
+ 170              		.align	2
+ 171              		.global	UART_rx_Sleep
+ 172              		.code	16
+ 173              		.thumb_func
+ 174              		.type	UART_rx_Sleep, %function
+ 175              	UART_rx_Sleep:
+ 176              	.LFB0:
+ 177              		.file 1 "Generated_Source\\PSoC4\\UART_rx_PM.c"
+   1:Generated_Source\PSoC4/UART_rx_PM.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/UART_rx_PM.c **** * File Name: UART_rx.c  
+   3:Generated_Source\PSoC4/UART_rx_PM.c **** * Version 2.20
+   4:Generated_Source\PSoC4/UART_rx_PM.c **** *
+   5:Generated_Source\PSoC4/UART_rx_PM.c **** * Description:
+   6:Generated_Source\PSoC4/UART_rx_PM.c **** *  This file contains APIs to set up the Pins component for low power modes.
+   7:Generated_Source\PSoC4/UART_rx_PM.c **** *
+   8:Generated_Source\PSoC4/UART_rx_PM.c **** * Note:
+   9:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  10:Generated_Source\PSoC4/UART_rx_PM.c **** ********************************************************************************
+  11:Generated_Source\PSoC4/UART_rx_PM.c **** * Copyright 2015, Cypress Semiconductor Corporation.  All rights reserved.
+  12:Generated_Source\PSoC4/UART_rx_PM.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:Generated_Source\PSoC4/UART_rx_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:Generated_Source\PSoC4/UART_rx_PM.c **** * the software package with which this file was provided.
+  15:Generated_Source\PSoC4/UART_rx_PM.c **** *******************************************************************************/
+  16:Generated_Source\PSoC4/UART_rx_PM.c **** 
+  17:Generated_Source\PSoC4/UART_rx_PM.c **** #include "cytypes.h"
+  18:Generated_Source\PSoC4/UART_rx_PM.c **** #include "UART_rx.h"
+  19:Generated_Source\PSoC4/UART_rx_PM.c **** 
+  20:Generated_Source\PSoC4/UART_rx_PM.c **** static UART_rx_BACKUP_STRUCT  UART_rx_backup = {0u, 0u, 0u};
+  21:Generated_Source\PSoC4/UART_rx_PM.c **** 
+  22:Generated_Source\PSoC4/UART_rx_PM.c **** 
+  23:Generated_Source\PSoC4/UART_rx_PM.c **** /*******************************************************************************
+  24:Generated_Source\PSoC4/UART_rx_PM.c **** * Function Name: UART_rx_Sleep
+  25:Generated_Source\PSoC4/UART_rx_PM.c **** ****************************************************************************//**
+  26:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  27:Generated_Source\PSoC4/UART_rx_PM.c **** * \brief Stores the pin configuration and prepares the pin for entering chip 
+  28:Generated_Source\PSoC4/UART_rx_PM.c **** *  deep-sleep/hibernate modes. This function applies only to SIO and USBIO pins.
+  29:Generated_Source\PSoC4/UART_rx_PM.c **** *  It should not be called for GPIO or GPIO_OVT pins.
+  30:Generated_Source\PSoC4/UART_rx_PM.c **** *
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 12
+
+
+  31:Generated_Source\PSoC4/UART_rx_PM.c **** * <b>Note</b> This function is available in PSoC 4 only.
+  32:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  33:Generated_Source\PSoC4/UART_rx_PM.c **** * \return 
+  34:Generated_Source\PSoC4/UART_rx_PM.c **** *  None 
+  35:Generated_Source\PSoC4/UART_rx_PM.c **** *  
+  36:Generated_Source\PSoC4/UART_rx_PM.c **** * \sideeffect
+  37:Generated_Source\PSoC4/UART_rx_PM.c **** *  For SIO pins, this function configures the pin input threshold to CMOS and
+  38:Generated_Source\PSoC4/UART_rx_PM.c **** *  drive level to Vddio. This is needed for SIO pins when in device 
+  39:Generated_Source\PSoC4/UART_rx_PM.c **** *  deep-sleep/hibernate modes.
+  40:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  41:Generated_Source\PSoC4/UART_rx_PM.c **** * \funcusage
+  42:Generated_Source\PSoC4/UART_rx_PM.c **** *  \snippet UART_rx_SUT.c usage_UART_rx_Sleep_Wakeup
+  43:Generated_Source\PSoC4/UART_rx_PM.c **** *******************************************************************************/
+  44:Generated_Source\PSoC4/UART_rx_PM.c **** void UART_rx_Sleep(void)
+  45:Generated_Source\PSoC4/UART_rx_PM.c **** {
+ 178              		.loc 1 45 0
+ 179              		.cfi_startproc
+ 180              		@ args = 0, pretend = 0, frame = 0
+ 181              		@ frame_needed = 0, uses_anonymous_args = 0
+ 182              		@ link register save eliminated.
+  46:Generated_Source\PSoC4/UART_rx_PM.c ****     #if defined(UART_rx__PC)
+  47:Generated_Source\PSoC4/UART_rx_PM.c ****         UART_rx_backup.pcState = UART_rx_PC;
+ 183              		.loc 1 47 0
+ 184 0000 024B     		ldr	r3, .L2
+  48:Generated_Source\PSoC4/UART_rx_PM.c ****     #else
+  49:Generated_Source\PSoC4/UART_rx_PM.c ****         #if (CY_PSOC4_4200L)
+  50:Generated_Source\PSoC4/UART_rx_PM.c ****             /* Save the regulator state and put the PHY into suspend mode */
+  51:Generated_Source\PSoC4/UART_rx_PM.c ****             UART_rx_backup.usbState = UART_rx_CR1_REG;
+  52:Generated_Source\PSoC4/UART_rx_PM.c ****             UART_rx_USB_POWER_REG |= UART_rx_USBIO_ENTER_SLEEP;
+  53:Generated_Source\PSoC4/UART_rx_PM.c ****             UART_rx_CR1_REG &= UART_rx_USBIO_CR1_OFF;
+  54:Generated_Source\PSoC4/UART_rx_PM.c ****         #endif
+  55:Generated_Source\PSoC4/UART_rx_PM.c ****     #endif
+  56:Generated_Source\PSoC4/UART_rx_PM.c ****     #if defined(CYIPBLOCK_m0s8ioss_VERSION) && defined(UART_rx__SIO)
+  57:Generated_Source\PSoC4/UART_rx_PM.c ****         UART_rx_backup.sioState = UART_rx_SIO_REG;
+  58:Generated_Source\PSoC4/UART_rx_PM.c ****         /* SIO requires unregulated output buffer and single ended input buffer */
+  59:Generated_Source\PSoC4/UART_rx_PM.c ****         UART_rx_SIO_REG &= (uint32)(~UART_rx_SIO_LPM_MASK);
+  60:Generated_Source\PSoC4/UART_rx_PM.c ****     #endif  
+  61:Generated_Source\PSoC4/UART_rx_PM.c **** }
+ 185              		.loc 1 61 0
+ 186              		@ sp needed
+  47:Generated_Source\PSoC4/UART_rx_PM.c ****     #else
+ 187              		.loc 1 47 0
+ 188 0002 1A68     		ldr	r2, [r3]
+ 189 0004 024B     		ldr	r3, .L2+4
+ 190 0006 1A60     		str	r2, [r3]
+ 191              		.loc 1 61 0
+ 192 0008 7047     		bx	lr
+ 193              	.L3:
+ 194 000a C046     		.align	2
+ 195              	.L2:
+ 196 000c 08010440 		.word	1074004232
+ 197 0010 00000000 		.word	.LANCHOR0
+ 198              		.cfi_endproc
+ 199              	.LFE0:
+ 200              		.size	UART_rx_Sleep, .-UART_rx_Sleep
+ 201              		.section	.text.UART_rx_Wakeup,"ax",%progbits
+ 202              		.align	2
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 13
+
+
+ 203              		.global	UART_rx_Wakeup
+ 204              		.code	16
+ 205              		.thumb_func
+ 206              		.type	UART_rx_Wakeup, %function
+ 207              	UART_rx_Wakeup:
+ 208              	.LFB1:
+  62:Generated_Source\PSoC4/UART_rx_PM.c **** 
+  63:Generated_Source\PSoC4/UART_rx_PM.c **** 
+  64:Generated_Source\PSoC4/UART_rx_PM.c **** /*******************************************************************************
+  65:Generated_Source\PSoC4/UART_rx_PM.c **** * Function Name: UART_rx_Wakeup
+  66:Generated_Source\PSoC4/UART_rx_PM.c **** ****************************************************************************//**
+  67:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  68:Generated_Source\PSoC4/UART_rx_PM.c **** * \brief Restores the pin configuration that was saved during Pin_Sleep(). This 
+  69:Generated_Source\PSoC4/UART_rx_PM.c **** * function applies only to SIO and USBIO pins. It should not be called for
+  70:Generated_Source\PSoC4/UART_rx_PM.c **** * GPIO or GPIO_OVT pins.
+  71:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  72:Generated_Source\PSoC4/UART_rx_PM.c **** * For USBIO pins, the wakeup is only triggered for falling edge interrupts.
+  73:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  74:Generated_Source\PSoC4/UART_rx_PM.c **** * <b>Note</b> This function is available in PSoC 4 only.
+  75:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  76:Generated_Source\PSoC4/UART_rx_PM.c **** * \return 
+  77:Generated_Source\PSoC4/UART_rx_PM.c **** *  None
+  78:Generated_Source\PSoC4/UART_rx_PM.c **** *  
+  79:Generated_Source\PSoC4/UART_rx_PM.c **** * \funcusage
+  80:Generated_Source\PSoC4/UART_rx_PM.c **** *  Refer to UART_rx_Sleep() for an example usage.
+  81:Generated_Source\PSoC4/UART_rx_PM.c **** *******************************************************************************/
+  82:Generated_Source\PSoC4/UART_rx_PM.c **** void UART_rx_Wakeup(void)
+  83:Generated_Source\PSoC4/UART_rx_PM.c **** {
+ 209              		.loc 1 83 0
+ 210              		.cfi_startproc
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 213              		@ link register save eliminated.
+  84:Generated_Source\PSoC4/UART_rx_PM.c ****     #if defined(UART_rx__PC)
+  85:Generated_Source\PSoC4/UART_rx_PM.c ****         UART_rx_PC = UART_rx_backup.pcState;
+ 214              		.loc 1 85 0
+ 215 0000 024B     		ldr	r3, .L5
+  86:Generated_Source\PSoC4/UART_rx_PM.c ****     #else
+  87:Generated_Source\PSoC4/UART_rx_PM.c ****         #if (CY_PSOC4_4200L)
+  88:Generated_Source\PSoC4/UART_rx_PM.c ****             /* Restore the regulator state and come out of suspend mode */
+  89:Generated_Source\PSoC4/UART_rx_PM.c ****             UART_rx_USB_POWER_REG &= UART_rx_USBIO_EXIT_SLEEP_PH1;
+  90:Generated_Source\PSoC4/UART_rx_PM.c ****             UART_rx_CR1_REG = UART_rx_backup.usbState;
+  91:Generated_Source\PSoC4/UART_rx_PM.c ****             UART_rx_USB_POWER_REG &= UART_rx_USBIO_EXIT_SLEEP_PH2;
+  92:Generated_Source\PSoC4/UART_rx_PM.c ****         #endif
+  93:Generated_Source\PSoC4/UART_rx_PM.c ****     #endif
+  94:Generated_Source\PSoC4/UART_rx_PM.c ****     #if defined(CYIPBLOCK_m0s8ioss_VERSION) && defined(UART_rx__SIO)
+  95:Generated_Source\PSoC4/UART_rx_PM.c ****         UART_rx_SIO_REG = UART_rx_backup.sioState;
+  96:Generated_Source\PSoC4/UART_rx_PM.c ****     #endif
+  97:Generated_Source\PSoC4/UART_rx_PM.c **** }
+ 216              		.loc 1 97 0
+ 217              		@ sp needed
+  85:Generated_Source\PSoC4/UART_rx_PM.c ****     #else
+ 218              		.loc 1 85 0
+ 219 0002 1A68     		ldr	r2, [r3]
+ 220 0004 024B     		ldr	r3, .L5+4
+ 221 0006 1A60     		str	r2, [r3]
+ 222              		.loc 1 97 0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 14
+
+
+ 223 0008 7047     		bx	lr
+ 224              	.L6:
+ 225 000a C046     		.align	2
+ 226              	.L5:
+ 227 000c 00000000 		.word	.LANCHOR0
+ 228 0010 08010440 		.word	1074004232
+ 229              		.cfi_endproc
+ 230              	.LFE1:
+ 231              		.size	UART_rx_Wakeup, .-UART_rx_Wakeup
+ 232              		.bss
+ 233              		.align	2
+ 234              		.set	.LANCHOR0,. + 0
+ 235              		.type	UART_rx_backup, %object
+ 236              		.size	UART_rx_backup, 12
+ 237              	UART_rx_backup:
+ 238 0000 00000000 		.space	12
+ 238      00000000 
+ 238      00000000 
+ 239              		.text
+ 240              	.Letext0:
+ 241              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 242              		.file 3 "Generated_Source\\PSoC4\\UART_rx.h"
+ 243              		.section	.debug_info,"",%progbits
+ 244              	.Ldebug_info0:
+ 245 0000 05010000 		.4byte	0x105
+ 246 0004 0400     		.2byte	0x4
+ 247 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 248 000a 04       		.byte	0x4
+ 249 000b 01       		.uleb128 0x1
+ 250 000c 7B000000 		.4byte	.LASF20
+ 251 0010 0C       		.byte	0xc
+ 252 0011 1E000000 		.4byte	.LASF21
+ 253 0015 BB010000 		.4byte	.LASF22
+ 254 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 255 001d 00000000 		.4byte	0
+ 256 0021 00000000 		.4byte	.Ldebug_line0
+ 257 0025 02       		.uleb128 0x2
+ 258 0026 01       		.byte	0x1
+ 259 0027 06       		.byte	0x6
+ 260 0028 AF010000 		.4byte	.LASF0
+ 261 002c 02       		.uleb128 0x2
+ 262 002d 01       		.byte	0x1
+ 263 002e 08       		.byte	0x8
+ 264 002f 48000000 		.4byte	.LASF1
+ 265 0033 02       		.uleb128 0x2
+ 266 0034 02       		.byte	0x2
+ 267 0035 05       		.byte	0x5
+ 268 0036 94010000 		.4byte	.LASF2
+ 269 003a 02       		.uleb128 0x2
+ 270 003b 02       		.byte	0x2
+ 271 003c 07       		.byte	0x7
+ 272 003d 68000000 		.4byte	.LASF3
+ 273 0041 02       		.uleb128 0x2
+ 274 0042 04       		.byte	0x4
+ 275 0043 05       		.byte	0x5
+ 276 0044 A6010000 		.4byte	.LASF4
+ 277 0048 02       		.uleb128 0x2
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 15
+
+
+ 278 0049 04       		.byte	0x4
+ 279 004a 07       		.byte	0x7
+ 280 004b 56000000 		.4byte	.LASF5
+ 281 004f 02       		.uleb128 0x2
+ 282 0050 08       		.byte	0x8
+ 283 0051 05       		.byte	0x5
+ 284 0052 81010000 		.4byte	.LASF6
+ 285 0056 02       		.uleb128 0x2
+ 286 0057 08       		.byte	0x8
+ 287 0058 07       		.byte	0x7
+ 288 0059 61010000 		.4byte	.LASF7
+ 289 005d 03       		.uleb128 0x3
+ 290 005e 04       		.byte	0x4
+ 291 005f 05       		.byte	0x5
+ 292 0060 696E7400 		.ascii	"int\000"
+ 293 0064 02       		.uleb128 0x2
+ 294 0065 04       		.byte	0x4
+ 295 0066 07       		.byte	0x7
+ 296 0067 54010000 		.4byte	.LASF8
+ 297 006b 04       		.uleb128 0x4
+ 298 006c 4D010000 		.4byte	.LASF12
+ 299 0070 02       		.byte	0x2
+ 300 0071 D401     		.2byte	0x1d4
+ 301 0073 48000000 		.4byte	0x48
+ 302 0077 02       		.uleb128 0x2
+ 303 0078 04       		.byte	0x4
+ 304 0079 04       		.byte	0x4
+ 305 007a 42000000 		.4byte	.LASF9
+ 306 007e 02       		.uleb128 0x2
+ 307 007f 08       		.byte	0x8
+ 308 0080 04       		.byte	0x4
+ 309 0081 38010000 		.4byte	.LASF10
+ 310 0085 02       		.uleb128 0x2
+ 311 0086 01       		.byte	0x1
+ 312 0087 08       		.byte	0x8
+ 313 0088 8F010000 		.4byte	.LASF11
+ 314 008c 04       		.uleb128 0x4
+ 315 008d 00000000 		.4byte	.LASF13
+ 316 0091 02       		.byte	0x2
+ 317 0092 7E02     		.2byte	0x27e
+ 318 0094 98000000 		.4byte	0x98
+ 319 0098 05       		.uleb128 0x5
+ 320 0099 6B000000 		.4byte	0x6b
+ 321 009d 06       		.uleb128 0x6
+ 322 009e 0C       		.byte	0xc
+ 323 009f 03       		.byte	0x3
+ 324 00a0 21       		.byte	0x21
+ 325 00a1 CA000000 		.4byte	0xca
+ 326 00a5 07       		.uleb128 0x7
+ 327 00a6 9E010000 		.4byte	.LASF14
+ 328 00aa 03       		.byte	0x3
+ 329 00ab 23       		.byte	0x23
+ 330 00ac 6B000000 		.4byte	0x6b
+ 331 00b0 00       		.byte	0
+ 332 00b1 07       		.uleb128 0x7
+ 333 00b2 78010000 		.4byte	.LASF15
+ 334 00b6 03       		.byte	0x3
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 16
+
+
+ 335 00b7 24       		.byte	0x24
+ 336 00b8 6B000000 		.4byte	0x6b
+ 337 00bc 04       		.byte	0x4
+ 338 00bd 07       		.uleb128 0x7
+ 339 00be 06000000 		.4byte	.LASF16
+ 340 00c2 03       		.byte	0x3
+ 341 00c3 25       		.byte	0x25
+ 342 00c4 6B000000 		.4byte	0x6b
+ 343 00c8 08       		.byte	0x8
+ 344 00c9 00       		.byte	0
+ 345 00ca 08       		.uleb128 0x8
+ 346 00cb 22010000 		.4byte	.LASF17
+ 347 00cf 03       		.byte	0x3
+ 348 00d0 26       		.byte	0x26
+ 349 00d1 9D000000 		.4byte	0x9d
+ 350 00d5 09       		.uleb128 0x9
+ 351 00d6 3F010000 		.4byte	.LASF18
+ 352 00da 01       		.byte	0x1
+ 353 00db 2C       		.byte	0x2c
+ 354 00dc 00000000 		.4byte	.LFB0
+ 355 00e0 14000000 		.4byte	.LFE0-.LFB0
+ 356 00e4 01       		.uleb128 0x1
+ 357 00e5 9C       		.byte	0x9c
+ 358 00e6 09       		.uleb128 0x9
+ 359 00e7 0F000000 		.4byte	.LASF19
+ 360 00eb 01       		.byte	0x1
+ 361 00ec 52       		.byte	0x52
+ 362 00ed 00000000 		.4byte	.LFB1
+ 363 00f1 14000000 		.4byte	.LFE1-.LFB1
+ 364 00f5 01       		.uleb128 0x1
+ 365 00f6 9C       		.byte	0x9c
+ 366 00f7 0A       		.uleb128 0xa
+ 367 00f8 19020000 		.4byte	.LASF23
+ 368 00fc 01       		.byte	0x1
+ 369 00fd 14       		.byte	0x14
+ 370 00fe CA000000 		.4byte	0xca
+ 371 0102 05       		.uleb128 0x5
+ 372 0103 03       		.byte	0x3
+ 373 0104 00000000 		.4byte	UART_rx_backup
+ 374 0108 00       		.byte	0
+ 375              		.section	.debug_abbrev,"",%progbits
+ 376              	.Ldebug_abbrev0:
+ 377 0000 01       		.uleb128 0x1
+ 378 0001 11       		.uleb128 0x11
+ 379 0002 01       		.byte	0x1
+ 380 0003 25       		.uleb128 0x25
+ 381 0004 0E       		.uleb128 0xe
+ 382 0005 13       		.uleb128 0x13
+ 383 0006 0B       		.uleb128 0xb
+ 384 0007 03       		.uleb128 0x3
+ 385 0008 0E       		.uleb128 0xe
+ 386 0009 1B       		.uleb128 0x1b
+ 387 000a 0E       		.uleb128 0xe
+ 388 000b 55       		.uleb128 0x55
+ 389 000c 17       		.uleb128 0x17
+ 390 000d 11       		.uleb128 0x11
+ 391 000e 01       		.uleb128 0x1
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 17
+
+
+ 392 000f 10       		.uleb128 0x10
+ 393 0010 17       		.uleb128 0x17
+ 394 0011 00       		.byte	0
+ 395 0012 00       		.byte	0
+ 396 0013 02       		.uleb128 0x2
+ 397 0014 24       		.uleb128 0x24
+ 398 0015 00       		.byte	0
+ 399 0016 0B       		.uleb128 0xb
+ 400 0017 0B       		.uleb128 0xb
+ 401 0018 3E       		.uleb128 0x3e
+ 402 0019 0B       		.uleb128 0xb
+ 403 001a 03       		.uleb128 0x3
+ 404 001b 0E       		.uleb128 0xe
+ 405 001c 00       		.byte	0
+ 406 001d 00       		.byte	0
+ 407 001e 03       		.uleb128 0x3
+ 408 001f 24       		.uleb128 0x24
+ 409 0020 00       		.byte	0
+ 410 0021 0B       		.uleb128 0xb
+ 411 0022 0B       		.uleb128 0xb
+ 412 0023 3E       		.uleb128 0x3e
+ 413 0024 0B       		.uleb128 0xb
+ 414 0025 03       		.uleb128 0x3
+ 415 0026 08       		.uleb128 0x8
+ 416 0027 00       		.byte	0
+ 417 0028 00       		.byte	0
+ 418 0029 04       		.uleb128 0x4
+ 419 002a 16       		.uleb128 0x16
+ 420 002b 00       		.byte	0
+ 421 002c 03       		.uleb128 0x3
+ 422 002d 0E       		.uleb128 0xe
+ 423 002e 3A       		.uleb128 0x3a
+ 424 002f 0B       		.uleb128 0xb
+ 425 0030 3B       		.uleb128 0x3b
+ 426 0031 05       		.uleb128 0x5
+ 427 0032 49       		.uleb128 0x49
+ 428 0033 13       		.uleb128 0x13
+ 429 0034 00       		.byte	0
+ 430 0035 00       		.byte	0
+ 431 0036 05       		.uleb128 0x5
+ 432 0037 35       		.uleb128 0x35
+ 433 0038 00       		.byte	0
+ 434 0039 49       		.uleb128 0x49
+ 435 003a 13       		.uleb128 0x13
+ 436 003b 00       		.byte	0
+ 437 003c 00       		.byte	0
+ 438 003d 06       		.uleb128 0x6
+ 439 003e 13       		.uleb128 0x13
+ 440 003f 01       		.byte	0x1
+ 441 0040 0B       		.uleb128 0xb
+ 442 0041 0B       		.uleb128 0xb
+ 443 0042 3A       		.uleb128 0x3a
+ 444 0043 0B       		.uleb128 0xb
+ 445 0044 3B       		.uleb128 0x3b
+ 446 0045 0B       		.uleb128 0xb
+ 447 0046 01       		.uleb128 0x1
+ 448 0047 13       		.uleb128 0x13
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 18
+
+
+ 449 0048 00       		.byte	0
+ 450 0049 00       		.byte	0
+ 451 004a 07       		.uleb128 0x7
+ 452 004b 0D       		.uleb128 0xd
+ 453 004c 00       		.byte	0
+ 454 004d 03       		.uleb128 0x3
+ 455 004e 0E       		.uleb128 0xe
+ 456 004f 3A       		.uleb128 0x3a
+ 457 0050 0B       		.uleb128 0xb
+ 458 0051 3B       		.uleb128 0x3b
+ 459 0052 0B       		.uleb128 0xb
+ 460 0053 49       		.uleb128 0x49
+ 461 0054 13       		.uleb128 0x13
+ 462 0055 38       		.uleb128 0x38
+ 463 0056 0B       		.uleb128 0xb
+ 464 0057 00       		.byte	0
+ 465 0058 00       		.byte	0
+ 466 0059 08       		.uleb128 0x8
+ 467 005a 16       		.uleb128 0x16
+ 468 005b 00       		.byte	0
+ 469 005c 03       		.uleb128 0x3
+ 470 005d 0E       		.uleb128 0xe
+ 471 005e 3A       		.uleb128 0x3a
+ 472 005f 0B       		.uleb128 0xb
+ 473 0060 3B       		.uleb128 0x3b
+ 474 0061 0B       		.uleb128 0xb
+ 475 0062 49       		.uleb128 0x49
+ 476 0063 13       		.uleb128 0x13
+ 477 0064 00       		.byte	0
+ 478 0065 00       		.byte	0
+ 479 0066 09       		.uleb128 0x9
+ 480 0067 2E       		.uleb128 0x2e
+ 481 0068 00       		.byte	0
+ 482 0069 3F       		.uleb128 0x3f
+ 483 006a 19       		.uleb128 0x19
+ 484 006b 03       		.uleb128 0x3
+ 485 006c 0E       		.uleb128 0xe
+ 486 006d 3A       		.uleb128 0x3a
+ 487 006e 0B       		.uleb128 0xb
+ 488 006f 3B       		.uleb128 0x3b
+ 489 0070 0B       		.uleb128 0xb
+ 490 0071 27       		.uleb128 0x27
+ 491 0072 19       		.uleb128 0x19
+ 492 0073 11       		.uleb128 0x11
+ 493 0074 01       		.uleb128 0x1
+ 494 0075 12       		.uleb128 0x12
+ 495 0076 06       		.uleb128 0x6
+ 496 0077 40       		.uleb128 0x40
+ 497 0078 18       		.uleb128 0x18
+ 498 0079 9742     		.uleb128 0x2117
+ 499 007b 19       		.uleb128 0x19
+ 500 007c 00       		.byte	0
+ 501 007d 00       		.byte	0
+ 502 007e 0A       		.uleb128 0xa
+ 503 007f 34       		.uleb128 0x34
+ 504 0080 00       		.byte	0
+ 505 0081 03       		.uleb128 0x3
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 19
+
+
+ 506 0082 0E       		.uleb128 0xe
+ 507 0083 3A       		.uleb128 0x3a
+ 508 0084 0B       		.uleb128 0xb
+ 509 0085 3B       		.uleb128 0x3b
+ 510 0086 0B       		.uleb128 0xb
+ 511 0087 49       		.uleb128 0x49
+ 512 0088 13       		.uleb128 0x13
+ 513 0089 02       		.uleb128 0x2
+ 514 008a 18       		.uleb128 0x18
+ 515 008b 00       		.byte	0
+ 516 008c 00       		.byte	0
+ 517 008d 00       		.byte	0
+ 518              		.section	.debug_aranges,"",%progbits
+ 519 0000 24000000 		.4byte	0x24
+ 520 0004 0200     		.2byte	0x2
+ 521 0006 00000000 		.4byte	.Ldebug_info0
+ 522 000a 04       		.byte	0x4
+ 523 000b 00       		.byte	0
+ 524 000c 0000     		.2byte	0
+ 525 000e 0000     		.2byte	0
+ 526 0010 00000000 		.4byte	.LFB0
+ 527 0014 14000000 		.4byte	.LFE0-.LFB0
+ 528 0018 00000000 		.4byte	.LFB1
+ 529 001c 14000000 		.4byte	.LFE1-.LFB1
+ 530 0020 00000000 		.4byte	0
+ 531 0024 00000000 		.4byte	0
+ 532              		.section	.debug_ranges,"",%progbits
+ 533              	.Ldebug_ranges0:
+ 534 0000 00000000 		.4byte	.LFB0
+ 535 0004 14000000 		.4byte	.LFE0
+ 536 0008 00000000 		.4byte	.LFB1
+ 537 000c 14000000 		.4byte	.LFE1
+ 538 0010 00000000 		.4byte	0
+ 539 0014 00000000 		.4byte	0
+ 540              		.section	.debug_line,"",%progbits
+ 541              	.Ldebug_line0:
+ 542 0000 8D000000 		.section	.debug_str,"MS",%progbits,1
+ 542      02005400 
+ 542      00000201 
+ 542      FB0E0D00 
+ 542      01010101 
+ 543              	.LASF13:
+ 544 0000 72656733 		.ascii	"reg32\000"
+ 544      3200
+ 545              	.LASF16:
+ 546 0006 75736253 		.ascii	"usbState\000"
+ 546      74617465 
+ 546      00
+ 547              	.LASF19:
+ 548 000f 55415254 		.ascii	"UART_rx_Wakeup\000"
+ 548      5F72785F 
+ 548      57616B65 
+ 548      757000
+ 549              	.LASF21:
+ 550 001e 47656E65 		.ascii	"Generated_Source\\PSoC4\\UART_rx_PM.c\000"
+ 550      72617465 
+ 550      645F536F 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 20
+
+
+ 550      75726365 
+ 550      5C50536F 
+ 551              	.LASF9:
+ 552 0042 666C6F61 		.ascii	"float\000"
+ 552      7400
+ 553              	.LASF1:
+ 554 0048 756E7369 		.ascii	"unsigned char\000"
+ 554      676E6564 
+ 554      20636861 
+ 554      7200
+ 555              	.LASF5:
+ 556 0056 6C6F6E67 		.ascii	"long unsigned int\000"
+ 556      20756E73 
+ 556      69676E65 
+ 556      6420696E 
+ 556      7400
+ 557              	.LASF3:
+ 558 0068 73686F72 		.ascii	"short unsigned int\000"
+ 558      7420756E 
+ 558      7369676E 
+ 558      65642069 
+ 558      6E7400
+ 559              	.LASF20:
+ 560 007b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 560      43313120 
+ 560      352E342E 
+ 560      31203230 
+ 560      31363036 
+ 561 00ae 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 561      20726576 
+ 561      6973696F 
+ 561      6E203233 
+ 561      37373135 
+ 562 00e1 33202D66 		.ascii	"3 -ffunction-sections -ffat-lto-objects -finline-fu"
+ 562      66756E63 
+ 562      74696F6E 
+ 562      2D736563 
+ 562      74696F6E 
+ 563 0114 6E637469 		.ascii	"nctions -flto\000"
+ 563      6F6E7320 
+ 563      2D666C74 
+ 563      6F00
+ 564              	.LASF17:
+ 565 0122 55415254 		.ascii	"UART_rx_BACKUP_STRUCT\000"
+ 565      5F72785F 
+ 565      4241434B 
+ 565      55505F53 
+ 565      54525543 
+ 566              	.LASF10:
+ 567 0138 646F7562 		.ascii	"double\000"
+ 567      6C6500
+ 568              	.LASF18:
+ 569 013f 55415254 		.ascii	"UART_rx_Sleep\000"
+ 569      5F72785F 
+ 569      536C6565 
+ 569      7000
+ 570              	.LASF12:
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 21
+
+
+ 571 014d 75696E74 		.ascii	"uint32\000"
+ 571      333200
+ 572              	.LASF8:
+ 573 0154 756E7369 		.ascii	"unsigned int\000"
+ 573      676E6564 
+ 573      20696E74 
+ 573      00
+ 574              	.LASF7:
+ 575 0161 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 575      206C6F6E 
+ 575      6720756E 
+ 575      7369676E 
+ 575      65642069 
+ 576              	.LASF15:
+ 577 0178 73696F53 		.ascii	"sioState\000"
+ 577      74617465 
+ 577      00
+ 578              	.LASF6:
+ 579 0181 6C6F6E67 		.ascii	"long long int\000"
+ 579      206C6F6E 
+ 579      6720696E 
+ 579      7400
+ 580              	.LASF11:
+ 581 018f 63686172 		.ascii	"char\000"
+ 581      00
+ 582              	.LASF2:
+ 583 0194 73686F72 		.ascii	"short int\000"
+ 583      7420696E 
+ 583      7400
+ 584              	.LASF14:
+ 585 019e 70635374 		.ascii	"pcState\000"
+ 585      61746500 
+ 586              	.LASF4:
+ 587 01a6 6C6F6E67 		.ascii	"long int\000"
+ 587      20696E74 
+ 587      00
+ 588              	.LASF0:
+ 589 01af 7369676E 		.ascii	"signed char\000"
+ 589      65642063 
+ 589      68617200 
+ 590              	.LASF22:
+ 591 01bb 433A5C55 		.ascii	"C:\\Users\\Daniela\\Desktop\\Bluetooth_Project\\Thr"
+ 591      73657273 
+ 591      5C44616E 
+ 591      69656C61 
+ 591      5C446573 
+ 592 01e9 6F756768 		.ascii	"oughput\\GATT Notification - Data Incoming.cydsn\000"
+ 592      7075745C 
+ 592      47415454 
+ 592      204E6F74 
+ 592      69666963 
+ 593              	.LASF23:
+ 594 0219 55415254 		.ascii	"UART_rx_backup\000"
+ 594      5F72785F 
+ 594      6261636B 
+ 594      757000
+ 595              		.comm	__gnu_lto_v1,1,1
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cc52xpos.s 			page 22
+
+
+ 596              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

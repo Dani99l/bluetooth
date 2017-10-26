@@ -1,0 +1,1700 @@
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Timer_PM.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.section	.gnu.lto_.profile.58566111,"",%progbits
+  19 0000 789C6361 		.ascii	"x\234ca`d`a`\000\222\252\374\000\000\303\000?"
+  19      60646061 
+  19      600092AA 
+  19      FC0000C3 
+  19      003F
+  20              		.text
+  21              		.section	.gnu.lto_.icf.58566111,"",%progbits
+  22 0000 789C6361 		.ascii	"x\234ca`d\000\001\005\006\004`eX?\363A\013\023\343\233"
+  22      60640001 
+  22      05060460 
+  22      65583FF3 
+  22      410B13E3 
+  23 0015 8E759799 		.ascii	"\216u\227\231\231&m_|\227\231\031,\302\322q\371\337"
+  23      99266D5F 
+  23      7C979919 
+  23      2CC2D271 
+  23      F9DF
+  24 0027 1B360600 		.ascii	"\0336\006\000\3570\016\240"
+  24      EF300EA0 
+  25              		.text
+  26              		.section	.gnu.lto_.jmpfuncs.58566111,"",%progbits
+  27 0000 789C6361 		.ascii	"x\234ca`d\000\001\001\006\004`\001b\220(3\204\311\000"
+  27      60640001 
+  27      01060460 
+  27      01629028 
+  27      3384C900 
+  28 0014 00030E00 		.ascii	"\000\003\016\000\""
+  28      22
+  29              		.text
+  30              		.section	.gnu.lto_.inline.58566111,"",%progbits
+  31 0000 789C6361 		.ascii	"x\234ca`d\000\2010\006\004`a``fbd`\0022\331\026\310"
+  31      60640081 
+  31      30060460 
+  31      61606066 
+  31      62646002 
+  32 0018 8328A022 		.ascii	"\203(\240\".A\240\010\317\004?\204\020\027\220`\306"
+  32      2E41A008 
+  32      CF043F84 
+  32      10179060 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 2
+
+
+  32      C6
+  33 0029 50C9C2C0 		.ascii	"P\311\302\300\316\011\024a\373\240\207\252\222\001\000"
+  33      CE091461 
+  33      FBA087AA 
+  33      920100
+  34 0038 04D605E9 		.ascii	"\004\326\005\351"
+  35              		.text
+  36              		.section	.gnu.lto_.pureconst.58566111,"",%progbits
+  37 0000 789C6361 		.ascii	"x\234ca`d\340d```a``\224bf`\221\000\000\001\261\000"
+  37      6064E064 
+  37      60606061 
+  37      60609462 
+  37      66609100 
+  38 0018 4D       		.ascii	"M"
+  39              		.text
+  40              		.section	.gnu.lto_Timer_SaveConfig.58566111,"",%progbits
+  41 0000 789C6361 		.ascii	"x\234ca`d\000\201j V\001bi fdf`d\232p\216\201\241\221"
+  41      60640081 
+  41      6A205601 
+  41      62692066 
+  41      64666064 
+  42 001a 83899111 		.ascii	"\203\211\221\021\304h\340`d\250gb\254g\374\312\364\227"
+  42      C468E060 
+  42      64A86762 
+  42      AC67FCCA 
+  42      F497
+  43 002c 89F150FB 		.ascii	"\211\361P\373\263\235L\232\313\033\200\340\301\321\311"
+  43      B39D4C9A 
+  43      CB1B80E0 
+  43      C1D1C9
+  44 003b CC0D2B0E 		.ascii	"\314\015+\0160\266230\374g\002\233\304\300\270\234Q"
+  44      30B63233 
+  44      30FC6702 
+  44      9BC4C0B8 
+  44      9C51
+  45 004d 9301A8EC 		.ascii	"\223\001\250\354\321\306\177Sy\331Z@\312\024 \222\214"
+  45      D1C67F53 
+  45      79D95A40 
+  45      CA142092 
+  45      8C
+  46 005e 2B18D940 		.ascii	"+\030\331@\326\255\017:\320\360\377\177s\303\201\371"
+  46      D6AD0F3A 
+  46      D0F0FF7F 
+  46      73C381F9 
+  47 006e AC4F9980 		.ascii	"\254O\231\200\022\037\200\030d\315G \007H3\277bd\002"
+  47      121F8018 
+  47      64CD4720 
+  47      074833BF 
+  47      626402
+  48 0081 29059BF6 		.ascii	")\005\233\366\201\211\021$\006T\241\344\236\232\227"
+  48      81891124 
+  48      0654A1E4 
+  48      9E9A97
+  49 0090 5A945892 		.ascii	"Z\224X\222\232\022\037\234_Z\224\234\032\023\020\234"
+  49      9A121F9C 
+  49      5F5A949C 
+  49      1A13109C 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 3
+
+
+  50 00a0 EF6C1213 		.ascii	"\357l\022\023\222\231\233Z\024\037\340\253\227\314\000"
+  50      92999B5A 
+  50      141FE0AB 
+  50      97CC00
+  51 00af 00CFDB38 		.ascii	"\000\317\3338\317"
+  51      CF
+  52              		.text
+  53              		.section	.gnu.lto_Timer_Sleep.58566111,"",%progbits
+  54 0000 789C8D91 		.ascii	"x\234\215\221\317k\023Q\020\307\347\373\336\333\315"
+  54      CF6B1351 
+  54      10C7E7FB 
+  54      DEDBCD
+  55 000f 1A5AF00F 		.ascii	"\032Z\360\017(A\304K/\346\342\331\213PA\020\212\365"
+  55      2841C44B 
+  55      2FE6E2D9 
+  55      8B504110 
+  55      8AF5
+  56 0021 66A148BB 		.ascii	"f\241H\273\007\017Z\010z\316K7\333Z\017\342A\275\210"
+  56      070F5A08 
+  56      7ACE4B37 
+  56      DB5A0FE2 
+  56      41BD88
+  57 0034 064FADAD 		.ascii	"\006O\255\2555\2116\326@\305%\264\012\022\364ROE\320"
+  57      358936D6 
+  57      40C525B4 
+  57      0A12F452 
+  57      4F45D0
+  58 0047 1E82D41E 		.ascii	"\036\202\324\036Zh)J\3338\263\033\177\200 \016\354\276"
+  58      5A68294A 
+  58      DB38B31B 
+  58      7F80200E 
+  58      ECBE
+  59 0059 B7F3BE3B 		.ascii	"\267\363\276;\237\357\2331\004\222\030QD\307x=\311\017"
+  59      9FEF9B31 
+  59      04921851 
+  59      44C7783D 
+  59      C90F
+  60 006b 5C82BAF5 		.ascii	"\\\202\272\365\216\250\340)\245\0273d\323f%K\266K\303"
+  60      8EA8E029 
+  60      A5173364 
+  60      D366254B 
+  60      B64BC3
+  61 007e 49D2E6E7 		.ascii	"I\322\346\347\306\001dc=P^i\343 \217\035\265\257\320"
+  61      C6016463 
+  61      3D505E69 
+  61      E3208F1D 
+  61      B5AFD0
+  62 0091 9868D555 		.ascii	"\230h\325U\357\224\345\370\264\374@\333\351\010\241"
+  62      EF94E5F8 
+  62      B4FC40DB 
+  62      E908A1
+  63 00a0 266AAB18 		.ascii	"&j\253\030F\230B/\261l\255zp\247\333-\212\354Hr\210"
+  63      4698422F 
+  63      B16CAD7A 
+  63      70A7DB2D 
+  63      8AEC4872 
+  64 00b5 69B8E2A8 		.ascii	"i\270\342\250|.\262\355v`\243]\347e\227\247)\3240\362"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 4
+
+
+  64      7C2EB2ED 
+  64      7660A35D 
+  64      E76597A7 
+  64      29D430F2 
+  65 00c9 22DA6499 		.ascii	"\"\332d\2310\267\224\222U\267\320\370~\243\265\253\345"
+  65      30B79492 
+  65      55B7D0F8 
+  65      7EA3B5AB 
+  65      E5
+  66 00da CF406BAE 		.ascii	"\317@k\256z7l\274Om\253P+\010d\347\353\333\217N\362"
+  66      7A376CBC 
+  66      4F6DAB50 
+  66      2B0864E7 
+  66      EBDB8F4E 
+  67 00ef C99C82E1 		.ascii	"\311\234\202\341\324\355Zs!]\302\375B\221mi\314\240"
+  67      D4ED5A73 
+  67      215DC2FD 
+  67      42916D69 
+  67      CCA0
+  68 0101 078FD0C3 		.ascii	"\007\217\320\303\364Y\224@-\004{\343{&)h\222\232\363"
+  68      F4599440 
+  68      2D047BE3 
+  68      7B262968 
+  68      929AF3
+  69 0114 4B6FC63D 		.ascii	"Ko\306=)\002\216\307\254\375\214\342j\220\351hXP\336"
+  69      29028EC7 
+  69      ACFD8CE2 
+  69      6A90E968 
+  69      5850DE
+  70 0127 A87FEB4E 		.ascii	"\250\177\353N\004\2049)F\342Q\323b\206-\216mW^\235\021"
+  70      04843929 
+  70      46E251D3 
+  70      62862D8E 
+  70      6D575E9D 
+  71 013c F19FF64C 		.ascii	"\361\237\366Ll\257^\337XM\345\367\355uk\017sn\222\333"
+  71      6CAF5EDF 
+  71      584DE5F7 
+  71      ED756B0F 
+  71      736E92DB 
+  72 0150 24E9F5E6 		.ascii	"$\351\365\346\207\245\330\242\215\363\016\312\334\333"
+  72      87A5D8A2 
+  72      8DF30ECA 
+  72      DCDB
+  73 015e 2752970F 		.ascii	"'R\227\017o\276\250Lz\3319\351\233\275\020j\027\025"
+  73      6FBEA84C 
+  73      7AD939E9 
+  73      9BBD106A 
+  73      1715
+  74 0170 F67D1037 		.ascii	"\366}\0207\027UdYQ\233hV\323\002q\331\357\323\330\316"
+  74      17556459 
+  74      519B6856 
+  74      D30271D9 
+  74      EFD3D8CE 
+  75 0184 9632B492 		.ascii	"\2262\264\222M\314,?<\324q\363\277\370g\377\302\317"
+  75      4DCC2C3F 
+  75      3CD471F3 
+  75      BFF867FF 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 5
+
+
+  75      C2CF
+  76 0196 FFC6D762 		.ascii	"\377\306\327b\374\257;\3620\361\274\203w\342y}A\020"
+  76      FCAF3BF2 
+  76      30F1BC83 
+  76      77E2797D 
+  76      4110
+  77 01a8 DD7BAD04 		.ascii	"\335{\255\004\377\367\365Sm\236\031a\001y\036\266G\353"
+  77      FFF7F553 
+  77      6D9E1961 
+  77      01791EB6 
+  77      47EB
+  78 01ba 188B4A7D 		.ascii	"\030\213J}\261Tb\223\017\271\004\203\216\236\366\257"
+  78      B1546293 
+  78      0FB90483 
+  78      8E9EF6AF 
+  79 01ca F8B98B57 		.ascii	"\370\271\213W\375\221\241\201\321k\271a\177\260\177"
+  79      FD91A181 
+  79      D16BB961 
+  79      7FB07F
+  80 01d9 60F4D489 		.ascii	"`\364\324\211\301\363\227.\373\271\241\376\263\307\207"
+  80      C1F3972E 
+  80      FBB9A1FE 
+  80      B3C787
+  81 01e8 E90749B4 		.ascii	"\351\007I\264\344\021"
+  81      E411
+  82              		.text
+  83              		.section	.gnu.lto_Timer_RestoreConfig.58566111,"",%progbits
+  84 0000 789C6361 		.ascii	"x\234ca`d\000\201\032 V\001bi fdf`d\232p\216\201\241"
+  84      60640081 
+  84      1A205601 
+  84      62692066 
+  84      64666064 
+  85 0019 91838991 		.ascii	"\221\203\211\221\021\304h\340`d\250gb\254g\374\312\364"
+  85      11C468E0 
+  85      6064A867 
+  85      62AC67FC 
+  85      CAF4
+  86 002b 9789F150 		.ascii	"\227\211\361P\373\263\235L\232\313\033\200\340A\353"
+  86      FBB39D4C 
+  86      9ACB1B80 
+  86      E041EB
+  87 003a 3B838615 		.ascii	";\203\206\025\007\030[\231\031\030\3763\201Mb`\\\316"
+  87      07185B99 
+  87      1918FE33 
+  87      814D6260 
+  87      5CCE
+  88 004c A8C90054 		.ascii	"\250\311\000T\366h\343\277\251\274l- e\012\020I\306"
+  88      F668E3BF 
+  88      A9BC6C2D 
+  88      20650A10 
+  88      49C6
+  89 005e 158C6C20 		.ascii	"\025\214l \353\326\007\035h\370\377\277\271\341\300"
+  89      EBD6071D 
+  89      68F8FFBF 
+  89      B9E1C0
+  90 006d 67B683DF 		.ascii	"g\266\203\337\330\2002\037\200\030d\317G&&\020\315\374"
+  90      D880321F 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 6
+
+
+  90      801864CF 
+  90      47262610 
+  90      CDFC
+  91 007f 8A9109A4 		.ascii	"\212\221\011\244\026l\334\007&F\220\030P\205\222{j^"
+  91      166CDC07 
+  91      26469018 
+  91      5085927B 
+  91      6A5E
+  92 0091 6A516249 		.ascii	"jQbIjJ|p~iQrjL@p\276\263ILHfnjQ|\200\257^2\003\000x"
+  92      6A4A7C70 
+  92      7E695172 
+  92      6A4C4070 
+  92      BEB3494C 
+  93 00b2 093A43   		.ascii	"\011:C"
+  94              		.text
+  95              		.section	.gnu.lto_Timer_Wakeup.58566111,"",%progbits
+  96 0000 789C658F 		.ascii	"x\234e\217\275K\202Q\024\306\317s\357\253\257\210B\177"
+  96      BD4B8251 
+  96      14C6CF73 
+  96      EFABAF88 
+  96      427F
+  97 0012 4048448B 		.ascii	"@HD\213C\331\340\177\320\340\024H\037\233 Q\357\320"
+  97      43D9E07F 
+  97      D0E01448 
+  97      1F9B2051 
+  97      EFD0
+  98 0024 5082D4EC 		.ascii	"P\202\324\354\365\343\245\\\242\245\266\210\246\354"
+  98      F5E3A55C 
+  98      A2A5B688 
+  98      A6EC
+  99 0032 3BB7B4E5 		.ascii	";\267\264\345M\202\226\250\311(\\\252A\"\034\012\214"
+  99      4D8296A8 
+  99      C9285CAA 
+  99      41221C0A 
+  99      8C
+ 100 0043 68503BF7 		.ascii	"hP;\367uh\350\300\345\\\236\373\234\373\374\216A ]\263"
+ 100      7568E8C0 
+ 100      E55C9EFB 
+ 100      9CFBFC8E 
+ 100      41205DB3 
+ 101 0057 DC46B847 		.ascii	"\334F\270G\371\300C\020\233wDY\237\020\262\032\"\345"
+ 101      F9C04310 
+ 101      9B774459 
+ 101      9F10B21A 
+ 101      22E5
+ 102 0069 371E22A4 		.ascii	"7\036\"\244\002\022F_6\000}Q>PFH\003\031|\211\216@m"
+ 102      0212465F 
+ 102      36007D51 
+ 102      3E504648 
+ 102      03197C89 
+ 103 0080 AD5911E1 		.ascii	"\255Y\021\341}\305\365l\177\217\253\222\003[\022\365"
+ 103      7DC5F56C 
+ 103      7F8FAB92 
+ 103      035B12F5 
+ 104 0090 841B41D8 		.ascii	"\204\033A\330G\230\330\366Z\356n\005\275\005m\033\352"
+ 104      4798D8F6 
+ 104      5AEE6E05 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 7
+
+
+ 104      BD056D1B 
+ 104      EA
+ 105 00a1 3FA204AF 		.ascii	"?\242\004\257\3468\233rT\257\227W\316\245y\365hz$\331"
+ 105      E6389B72 
+ 105      54AF9757 
+ 105      CEA579F5 
+ 105      687A24D9 
+ 106 00b5 92E50FB6 		.ascii	"\222\345\017\266\350\270O!t\227M\344\252\345\366\236"
+ 106      E8B84F21 
+ 106      74974DE4 
+ 106      AAE5F69E 
+ 107 00c5 A9A7F252 		.ascii	"\251\247\362R\362\217\333v\355\336l\013[\012\350\200"
+ 107      F28FDB76 
+ 107      EDDE6C0B 
+ 107      5B0AE880 
+ 108 00d5 4AA5D530 		.ascii	"J\245\32503\035\265\256\324\000kEf\320\362\373m\375"
+ 108      331DB5AE 
+ 108      D4006B45 
+ 108      66D0F2FB 
+ 108      6DFD
+ 109 00e7 DABF8B9D 		.ascii	"\332\277\213\235\254ru\211C\006?\300\240\373\270qq^"
+ 109      AC727589 
+ 109      43063FC0 
+ 109      A0FBB871 
+ 109      715E
+ 110 00f9 F445466D 		.ascii	"\364EFm\336\346\010\273\350\272\3148F\204^Ph\344C\177"
+ 110      DEE608BB 
+ 110      E8BACC38 
+ 110      46845E50 
+ 110      68E4437F 
+ 111 010d 6167ADCA 		.ascii	"ag\255\312OP\207\001\204\023=N\232MR5$\337\220w\352"
+ 111      4F508701 
+ 111      84133D4E 
+ 111      9A4D5235 
+ 111      24DF9077 
+ 112 0122 37016DFE 		.ascii	"7\001m\376\017\342\3511\036\341\024\031\336\313\353"
+ 112      0FE2E931 
+ 112      1EE11419 
+ 112      DECBEB
+ 113 0131 0E19EE42 		.ascii	"\016\031\356B\357\3109O1wH\327\007\333Xf\202\341\230"
+ 113      EFC8394F 
+ 113      317748D7 
+ 113      07DB5866 
+ 113      82E198
+ 114 0144 B56CA5E7 		.ascii	"\265l\245\347V\254\205\344tj5=o%\342\323\251\211hbf"
+ 114      56AC85E4 
+ 114      746A353D 
+ 114      6F25E2D3 
+ 114      A9896862 
+ 115 0159 71C94A27 		.ascii	"q\311J'\343\223c\363\364\013\253\277\205\343"
+ 115      E39363F3 
+ 115      F40BABBF 
+ 115      85E3
+ 116              		.text
+ 117              		.section	.gnu.lto_.symbol_nodes.58566111,"",%progbits
+ 118 0000 789C55CA 		.ascii	"x\234U\312\273\015\200@\014\003P\347wP3\001\354\300"
+ 118      BB0D8040 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 8
+
+
+ 118      0C0350E7 
+ 118      77503301 
+ 118      ECC0
+ 119 0012 7A281981 		.ascii	"z(\031\201a\250\250\251\331\001\2119\020\021\025qc\371"
+ 119      61A8A8A9 
+ 119      D9018939 
+ 119      10111571 
+ 119      63F9
+ 120 0024 C90AC282 		.ascii	"\311\012\302\202\014\213\003\353\011d\3551%\250S\001"
+ 120      0C8B03EB 
+ 120      0964ED31 
+ 120      25A85301 
+ 121 0034 63C40008 		.ascii	"c\304\000\010\233s}6\227\002\324\271~\000D\214\271{"
+ 121      9B737D36 
+ 121      9702D4B9 
+ 121      7E00448C 
+ 121      B97B
+ 122 0046 B7FF1632 		.ascii	"\267\377\0262\034\327C\242\015\3676\343\005q+\032\265"
+ 122      1CD743A2 
+ 122      0DF736E3 
+ 122      05712B1A 
+ 122      B5
+ 123              		.text
+ 124              		.section	.gnu.lto_.refs.58566111,"",%progbits
+ 125 0000 789C6361 		.ascii	"x\234ca`d\340c```bddbadbed\0012\031\000\002O\000."
+ 125      6064E063 
+ 125      60606062 
+ 125      64646261 
+ 125      64626564 
+ 126              		.text
+ 127              		.section	.gnu.lto_.decls.58566111,"",%progbits
+ 128 0000 789C8D94 		.ascii	"x\234\215\224]L\034U\024\307\357\231\331\005:,\324\024"
+ 128      5D4C1C55 
+ 128      14C7EF99 
+ 128      D9053A2C 
+ 128      D414
+ 129 0012 6378D844 		.ascii	"cx\330D$%lb\202\005|\360\315\217\215\266I\243!\345\303"
+ 129      24256C62 
+ 129      82057CF0 
+ 129      CD8F8DB6 
+ 129      49A321E5 
+ 130 0027 972664C1 		.ascii	"\227&d\301\261\222\"\254t1\351\333\345\243j[chT\220"
+ 130      B19222AC 
+ 130      7431E9DB 
+ 130      E5A36A5B 
+ 130      63685490 
+ 131 003b 4A5202D6 		.ascii	"JR\002\326\202,\354R\330\005\212\224\025Z>j\021(}\261"
+ 131      822CEC52 
+ 131      D8058A94 
+ 131      155A3E6A 
+ 131      11287DB1 
+ 132 004f A0D02021 		.ascii	"\240\320 !\"1k\351\203\233\006\361\334\217a\226\006"
+ 132      22316BE9 
+ 132      839B06F1 
+ 132      DC8F6196 
+ 132      06
+ 133 0060 9ADEEC99 		.ascii	"\232\336\354\231\275\037\347\374\316\177\316\275w,\004"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 9
+
+
+ 133      BD1FE7FC 
+ 133      CE7FCEBD 
+ 133      772C04
+ 134 006f 086BCE18 		.ascii	"\010k\316\030B\254\330=\204\266\205\315\212s\005\304"
+ 134      42ACD83D 
+ 134      84B685CD 
+ 134      8A7305C4 
+ 135 007f 6CB84C3A 		.ascii	"l\270L:\321|h\335h=h\001\264>4F\270Iv\266N9o0@\316="
+ 135      D17C68DD 
+ 135      683D6801 
+ 135      B43E3446 
+ 135      B84976B6 
+ 136 009a DE186F9F 		.ascii	"\336\030o\237\364KG\233F\233B\233A\033E\273\2166\213"
+ 136      F44B479B 
+ 136      469B429B 
+ 136      411B45BB 
+ 136      8E368B
+ 137 00ad E6958C61 		.ascii	"\346\225\214a4E\306\005\366\310\335\275K\356\356]r\263"
+ 137      3445C605 
+ 137      F6C8DDBD 
+ 137      4BEEEE5D 
+ 137      72B3
+ 138 00bf 7788957E 		.ascii	"w\210\225~\366\247\310\331\363\204\367\335T\240mn\203"
+ 138      F6A7C8D9 
+ 138      F384F7DD 
+ 138      54A06D6E 
+ 138      83
+ 139 00d0 6AF3F02B 		.ascii	"j\363\360+\250D\026\225\000\210'p#\302\370\020;\012"
+ 139      A8441695 
+ 139      00882770 
+ 139      23C2F810 
+ 139      3B0A
+ 140 00e2 111D636A 		.ascii	"\021\035cj\273\021\020+\212\234%&\214\377d<l\031\215"
+ 140      BB11102B 
+ 140      8A9C2526 
+ 140      8CFF643C 
+ 140      6C198D
+ 141 00f5 434C3AC8 		.ascii	"CL:\310 \330V\300\227E\020lS\305\237bFD\361\036Sdh6"
+ 141      20D856C0 
+ 141      9745106C 
+ 141      53C59F62 
+ 141      4644F11E 
+ 142 010d D2F072F0 		.ascii	"\322\360r\360\227\236Z\017\257\356W\025`\375\305H\333"
+ 142      979E5A0F 
+ 142      AFEE5715 
+ 142      60FDC548 
+ 142      DB
+ 143 011e 5B195E8A 		.ascii	"[\031^\212\255\216R\345E\2632\263\265\376&\365\241\002"
+ 143      AD8E52E5 
+ 143      45B332B3 
+ 143      B5FE26F5 
+ 143      A102
+ 144 0130 0734B0E0 		.ascii	"\0074\260\340\360\237\251\213\313\2118|V\203\024\034"
+ 144      F09FA98B 
+ 144      CB89387C 
+ 144      5683141C 
+ 145 0140 6E4E7E7B 		.ascii	"nN~{QI\256\347q54\305\002\005\317A\007\330\341\007\300"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 10
+
+
+ 145      5149AEE7 
+ 145      713534C5 
+ 145      0205CF41 
+ 145      07D8E107 
+ 146 0155 4D012F24 		.ascii	"M\001/$\343\263\310\"H\323K\203\0351\251\3154\354\247"
+ 146      E3B3C822 
+ 146      48D34B83 
+ 146      1D31A9CD 
+ 146      34ECA7
+ 147 0168 4B91FEAC 		.ascii	"K\221\376\254F\032\252\245\264Ja^\320\006*\264C\006"
+ 147      461AAAA5 
+ 147      B44A615E 
+ 147      D0062AB4 
+ 147      4306
+ 148 017a 13D9C6F6 		.ascii	"\023\331\306\366\200\300\025\230G\275\235\220\212\221"
+ 148      80C01598 
+ 148      47BD9D90 
+ 148      8A91
+ 149 0188 93C3F523 		.ascii	"\223\303\365#\261\352\253\\\350\375\277[\376M@J\263"
+ 149      B1EAAB5C 
+ 149      E8FDBF5B 
+ 149      FE4D404A 
+ 149      B3
+ 150 0199 9F861EEA 		.ascii	"\237\206\036\352\364,f\266pD\227\211\350\212F\3708\342"
+ 150      F42C66B6 
+ 150      70449789 
+ 150      E88A46F8 
+ 150      38E2
+ 151 01ab 7C75603E 		.ascii	"|u`>Q=\312\021g\327\"u\261BH(<f\243uU\264\3715\316\360"
+ 151      513DCA11 
+ 151      67D72275 
+ 151      B1424828 
+ 151      3C66A375 
+ 152 01c5 9B0C7F34 		.ascii	"\233\014\1774\243\2333\246\266.mX\325B\316\270\363U"
+ 152      A39B33A6 
+ 152      B62E6D58 
+ 152      D542CEB8 
+ 152      F355
+ 153 01d7 FD19AB94 		.ascii	"\375\031\253\224\321?\316\031T0\256\232\214\253\321"
+ 153      D13FCE19 
+ 153      5430AE9A 
+ 153      8CABD1
+ 154 01e6 8C1ECE38 		.ascii	"\214\036\3168\267p\377\274\242\226rF\325B\360s\246c"
+ 154      B770FFBC 
+ 154      A2967246 
+ 154      D542F073 
+ 154      A663
+ 155 01f8 89D2A5C5 		.ascii	"\211\322\245\305\361\312\332\326OBu\300\253\006\275"
+ 155      F1CADAD6 
+ 155      4F4275C0 
+ 155      AB06BD
+ 156 0207 26A49743 		.ascii	"&\244\227C\260\023\340\200\366\371{\353V\265\0018\241"
+ 156      B013E080 
+ 156      F6F97BEB 
+ 156      56B50138 
+ 156      A1
+ 157 0218 B631F0B5 		.ascii	"\2661\360\265\"\010\241;s6\014\347\321A3:hD\367\361"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 11
+
+
+ 157      2208A13B 
+ 157      73360CE7 
+ 157      D141333A 
+ 157      6844F7F1 
+ 158 022c 687FF85E 		.ascii	"h\177\370^\304\242~'\242G\352\027\356\332\324n1\360"
+ 158      C4A27E27 
+ 158      A247EA17 
+ 158      EEDAD46E 
+ 158      31F0
+ 159 023e 9DF9A33D 		.ascii	"\235\371\243=\0167\326\256\301\026\260\361\372@$A\214"
+ 159      0E37D6AE 
+ 159      C116B0F1 
+ 159      FA402441 
+ 159      8C
+ 160 024f D972E385 		.ascii	"\331r\343\205\345\377\342\325!\356\253\314-w\374i\001"
+ 160      E5FFE2D5 
+ 160      21EEABCC 
+ 160      2D77FC69 
+ 160      01
+ 161 0260 87F63DDB 		.ascii	"\207\366=\333\367\245\206/\362\033>\305C\003\327A\203"
+ 161      F7A5862F 
+ 161      F21B3EC5 
+ 161      4303D741 
+ 161      83
+ 162 0271 1FCDD476 		.ascii	"\037\315\324v\015\237\237QZM\303-4&\231@\266\035\016"
+ 162      0D9F9F51 
+ 162      5A4DC32D 
+ 162      34269940 
+ 162      B61D0E
+ 163 0284 D9090C81 		.ascii	"\331\011\014\201\203Q\231\027\014\342Y\271\206geSQ\357"
+ 163      83519917 
+ 163      0CE259B9 
+ 163      86676553 
+ 163      51EF
+ 164 0296 8EF55D8E 		.ascii	"\216\365]\216\207\203I\216\026\026\202\005Ik\352\242"
+ 164      8783498E 
+ 164      16168205 
+ 164      496BEAA2 
+ 165 02a6 B4268663 		.ascii	"\264&\206c\007\020\033\202$\003\361\022;]\231\354\336"
+ 165      07101B82 
+ 165      2403F112 
+ 165      3B5D99EC 
+ 165      DE
+ 166 02b7 5F6012C2 		.ascii	"_`\022\302\325\224\302GF\002\302=\021\017?a\246a8\310"
+ 166      D594C247 
+ 166      4602C23D 
+ 166      110F3F61 
+ 166      A66138C8 
+ 167 02cb 0BC0B586 		.ascii	"\013\300\265\206\276\324)\215c\353D\252\224\247\374"
+ 167      BED4298D 
+ 167      63EB44AA 
+ 167      94A7FC
+ 168 02da D1E6DA15 		.ascii	"\321\346\332\025E]\021\257wc\355\362\210\005\222\034"
+ 168      455D11AF 
+ 168      7763EDF2 
+ 168      8805921C 
+ 169 02ea BBB0E106 		.ascii	"\273\260\341\006\"\367\3067&`\031Fqy\304,\003K\306s"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 12
+
+
+ 169      22F7C637 
+ 169      26601946 
+ 169      7179C42C 
+ 169      034BC673 
+ 170 02fe 4C8E3E70 		.ascii	"L\216>p\245\265R\212\333\025\351umT\323#\334\265_\270"
+ 170      A5B5528A 
+ 170      DB15E975 
+ 170      6D54D323 
+ 170      DCB55FB8 
+ 171 0312 6E8BEFE7 		.ascii	"n\213\357\347\337\240\233\220\206!\277M\264w\260\313"
+ 171      DFA09B90 
+ 171      8621BF4D 
+ 171      B477B0CB 
+ 172 0322 97AEF10F 		.ascii	"\227\256\361\017\306\376\250}I\027\373rkq\345\301>5"
+ 172      C6FEA87D 
+ 172      4917FB72 
+ 172      6B71E5C1 
+ 172      3E35
+ 173 0334 2284075B 		.ascii	"\"\204\007[\361\200\202\346\340E\307\373x`\"\221l_G"
+ 173      F18082E6 
+ 173      E045C7FB 
+ 173      78602291 
+ 173      6C5F47
+ 174 0347 B88572D3 		.ascii	"\270\205r\323e\335\307qr\014'\215\035,\020;8\211\245"
+ 174      65DDC771 
+ 174      720C278D 
+ 174      1D2C103B 
+ 174      3889A5
+ 175 035a 9E30A5A7 		.ascii	"\2360\245\247kB\3715\257\357\033UCj\315\323QY\310\357"
+ 175      6B42F935 
+ 175      AFEF1B55 
+ 175      436ACDD3 
+ 175      5159C8EF 
+ 176 036e B4C9AA52 		.ascii	"\264\311\252R\376qQ\006\372\377\362&\012]\273\020~\331"
+ 176      FE715106 
+ 176      FAFFF226 
+ 176      0A5DBB10 
+ 176      7ED9
+ 177 0380 4B576873 		.ascii	"KWhs\365\010~\"\000\246P\326mS\326\317 u\005'f\003\261"
+ 177      F5087E22 
+ 177      00A650D6 
+ 177      6D53D6CF 
+ 177      20750527 
+ 178 0397 B673E6DB 		.ascii	"\266s\346\333rO\363\3733\0156~\366\361\037\275/\015"
+ 178      724FF3FB 
+ 178      330D367E 
+ 178      F6F11FBD 
+ 178      2F0D
+ 179 03a9 DD1EB4EC 		.ascii	"\335\036\264\354\360f\3457\275g\244\367\014\367~\264"
+ 179      F066E537 
+ 179      BD67A4F7 
+ 179      0CF77EB4 
+ 180 03b9 E25BB5ED 		.ascii	"\342[\265\355\360f7\313\364\236\005\233\241\007\273"
+ 180      F06637CB 
+ 180      F49E059B 
+ 180      A107BB
+ 181 03c8 E499BC92 		.ascii	"\344\231\274\222\017\365\212\302\\\327\307\272\263\274"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 13
+
+
+ 181      0FF58AC2 
+ 181      5CD7C7BA 
+ 181      B3BC
+ 182 03d6 ECFD9213 		.ascii	"\354\375\222\023q\207\337\311Oqff\222\324\303z\231^"
+ 182      7187DFC9 
+ 182      4F716666 
+ 182      92D4C37A 
+ 182      995E
+ 183 03e8 E1F2E8EF 		.ascii	"\341\362\350\357\025\346\226WV\024\353\307sr\313\235"
+ 183      15E69657 
+ 183      5614EBC7 
+ 183      7372CB9D 
+ 184 03f8 2F1F1701 		.ascii	"/\037\027\0019og\024\223x\031\\\252\353\356$\321?\246"
+ 184      396F6714 
+ 184      9378195C 
+ 184      AAEBEE24 
+ 184      D13FA6
+ 185 040b 9FF29457 		.ascii	"\237\362\224WH\226M\314\275\353:\251W\2725\351\354)"
+ 185      48964DCC 
+ 185      BDEB3AA9 
+ 185      57BA35E9 
+ 185      EC29
+ 186 041d 773FFF24 		.ascii	"w?\377$t\306\007D\306\275Y\346**\325\345\240\310U|\262"
+ 186      74C60744 
+ 186      C6BD59E6 
+ 186      2A2AD5E5 
+ 186      A0C8557C 
+ 187 0432 D21DAFF3 		.ascii	"\322\035\257\363\271\\\017\006[+K\312<\257\274\260\007"
+ 187      B95C0F06 
+ 187      5B2B4BCA 
+ 187      3CAFBCB0 
+ 187      07
+ 188 0443 ABF8B4E7 		.ascii	"\253\370\264\347\264[?\2054\251\354\215\327\235G\363"
+ 188      B45B3F85 
+ 188      34A9EC8D 
+ 188      D79D47F3 
+ 189 0453 730A73F3 		.ascii	"s\012s\363\216\345;\363bXlv\226\265B?\221\235\365?\252"
+ 189      8EE53BF3 
+ 189      62586C76 
+ 189      96B5423F 
+ 189      919DF53F 
+ 190 0468 763216   		.ascii	"v2\026"
+ 191              		.text
+ 192              		.section	.gnu.lto_.symtab.58566111,"",%progbits
+ 193 0000 54696D65 		.ascii	"Timer_SaveConfig\000"
+ 193      725F5361 
+ 193      7665436F 
+ 193      6E666967 
+ 193      00
+ 194 0011 00       		.ascii	"\000"
+ 195 0012 00       		.ascii	"\000"
+ 196 0013 00       		.ascii	"\000"
+ 197 0014 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 197      00000000 
+ 198 001c AD000000 		.ascii	"\255\000\000\000"
+ 199 0020 54696D65 		.ascii	"Timer_Sleep\000"
+ 199      725F536C 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 14
+
+
+ 199      65657000 
+ 200 002c 00       		.ascii	"\000"
+ 201 002d 00       		.ascii	"\000"
+ 202 002e 00       		.ascii	"\000"
+ 203 002f 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 203      00000000 
+ 204 0037 AF000000 		.ascii	"\257\000\000\000"
+ 205 003b 54696D65 		.ascii	"Timer_RestoreConfig\000"
+ 205      725F5265 
+ 205      73746F72 
+ 205      65436F6E 
+ 205      66696700 
+ 206 004f 00       		.ascii	"\000"
+ 207 0050 00       		.ascii	"\000"
+ 208 0051 00       		.ascii	"\000"
+ 209 0052 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 209      00000000 
+ 210 005a B1000000 		.ascii	"\261\000\000\000"
+ 211 005e 54696D65 		.ascii	"Timer_Wakeup\000"
+ 211      725F5761 
+ 211      6B657570 
+ 211      00
+ 212 006b 00       		.ascii	"\000"
+ 213 006c 00       		.ascii	"\000"
+ 214 006d 00       		.ascii	"\000"
+ 215 006e 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 215      00000000 
+ 216 0076 B3000000 		.ascii	"\263\000\000\000"
+ 217 007a 54696D65 		.ascii	"Timer_Stop\000"
+ 217      725F5374 
+ 217      6F7000
+ 218 0085 00       		.ascii	"\000"
+ 219 0086 02       		.ascii	"\002"
+ 220 0087 00       		.ascii	"\000"
+ 221 0088 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 221      00000000 
+ 222 0090 B5000000 		.ascii	"\265\000\000\000"
+ 223 0094 54696D65 		.ascii	"Timer_Enable\000"
+ 223      725F456E 
+ 223      61626C65 
+ 223      00
+ 224 00a1 00       		.ascii	"\000"
+ 225 00a2 02       		.ascii	"\002"
+ 226 00a3 00       		.ascii	"\000"
+ 227 00a4 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 227      00000000 
+ 228 00ac B7000000 		.ascii	"\267\000\000\000"
+ 229              		.text
+ 230              		.section	.gnu.lto_.opts,"",%progbits
+ 231 0000 272D666D 		.ascii	"'-fmath-errno' '-fsigned-zeros' '-ftrapping-math' '"
+ 231      6174682D 
+ 231      6572726E 
+ 231      6F272027 
+ 231      2D667369 
+ 232 0033 2D666E6F 		.ascii	"-fno-trapv' '-fno-openmp' '-fno-openacc' '-mcpu=cor"
+ 232      2D747261 
+ 232      70762720 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 15
+
+
+ 232      272D666E 
+ 232      6F2D6F70 
+ 233 0066 7465782D 		.ascii	"tex-m0' '-mthumb' '-g' '-O3' '-ffunction-sections' "
+ 233      6D302720 
+ 233      272D6D74 
+ 233      68756D62 
+ 233      2720272D 
+ 234 0099 272D6666 		.ascii	"'-ffat-lto-objects' '-finline-functions' '-flto'\000"
+ 234      61742D6C 
+ 234      746F2D6F 
+ 234      626A6563 
+ 234      74732720 
+ 235              		.text
+ 236              		.cfi_sections	.debug_frame
+ 237              		.section	.text.Timer_SaveConfig,"ax",%progbits
+ 238              		.align	2
+ 239              		.global	Timer_SaveConfig
+ 240              		.code	16
+ 241              		.thumb_func
+ 242              		.type	Timer_SaveConfig, %function
+ 243              	Timer_SaveConfig:
+ 244              	.LFB7:
+ 245              		.cfi_startproc
+ 246              		@ args = 0, pretend = 0, frame = 0
+ 247              		@ frame_needed = 0, uses_anonymous_args = 0
+ 248              		@ link register save eliminated.
+ 249              		@ sp needed
+ 250 0000 7047     		bx	lr
+ 251              		.cfi_endproc
+ 252              	.LFE7:
+ 253              		.size	Timer_SaveConfig, .-Timer_SaveConfig
+ 254 0002 C046     		.section	.text.Timer_Sleep,"ax",%progbits
+ 255              		.align	2
+ 256              		.global	Timer_Sleep
+ 257              		.code	16
+ 258              		.thumb_func
+ 259              		.type	Timer_Sleep, %function
+ 260              	Timer_Sleep:
+ 261              	.LFB3:
+ 262              		.file 1 "Generated_Source\\PSoC4\\Timer_PM.c"
+   1:Generated_Source\PSoC4/Timer_PM.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/Timer_PM.c **** * File Name: Timer_PM.c
+   3:Generated_Source\PSoC4/Timer_PM.c **** * Version 2.10
+   4:Generated_Source\PSoC4/Timer_PM.c **** *
+   5:Generated_Source\PSoC4/Timer_PM.c **** * Description:
+   6:Generated_Source\PSoC4/Timer_PM.c **** *  This file contains the setup, control, and status commands to support
+   7:Generated_Source\PSoC4/Timer_PM.c **** *  the component operations in the low power mode.
+   8:Generated_Source\PSoC4/Timer_PM.c **** *
+   9:Generated_Source\PSoC4/Timer_PM.c **** * Note:
+  10:Generated_Source\PSoC4/Timer_PM.c **** *  None
+  11:Generated_Source\PSoC4/Timer_PM.c **** *
+  12:Generated_Source\PSoC4/Timer_PM.c **** ********************************************************************************
+  13:Generated_Source\PSoC4/Timer_PM.c **** * Copyright 2013-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC4/Timer_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:Generated_Source\PSoC4/Timer_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:Generated_Source\PSoC4/Timer_PM.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC4/Timer_PM.c **** *******************************************************************************/
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 16
+
+
+  18:Generated_Source\PSoC4/Timer_PM.c **** 
+  19:Generated_Source\PSoC4/Timer_PM.c **** #include "Timer.h"
+  20:Generated_Source\PSoC4/Timer_PM.c **** 
+  21:Generated_Source\PSoC4/Timer_PM.c **** static Timer_BACKUP_STRUCT Timer_backup;
+  22:Generated_Source\PSoC4/Timer_PM.c **** 
+  23:Generated_Source\PSoC4/Timer_PM.c **** 
+  24:Generated_Source\PSoC4/Timer_PM.c **** /*******************************************************************************
+  25:Generated_Source\PSoC4/Timer_PM.c **** * Function Name: Timer_SaveConfig
+  26:Generated_Source\PSoC4/Timer_PM.c **** ********************************************************************************
+  27:Generated_Source\PSoC4/Timer_PM.c **** *
+  28:Generated_Source\PSoC4/Timer_PM.c **** * Summary:
+  29:Generated_Source\PSoC4/Timer_PM.c **** *  All configuration registers are retention. Nothing to save here.
+  30:Generated_Source\PSoC4/Timer_PM.c **** *
+  31:Generated_Source\PSoC4/Timer_PM.c **** * Parameters:
+  32:Generated_Source\PSoC4/Timer_PM.c **** *  None
+  33:Generated_Source\PSoC4/Timer_PM.c **** *
+  34:Generated_Source\PSoC4/Timer_PM.c **** * Return:
+  35:Generated_Source\PSoC4/Timer_PM.c **** *  None
+  36:Generated_Source\PSoC4/Timer_PM.c **** *
+  37:Generated_Source\PSoC4/Timer_PM.c **** *******************************************************************************/
+  38:Generated_Source\PSoC4/Timer_PM.c **** void Timer_SaveConfig(void)
+  39:Generated_Source\PSoC4/Timer_PM.c **** {
+  40:Generated_Source\PSoC4/Timer_PM.c **** 
+  41:Generated_Source\PSoC4/Timer_PM.c **** }
+  42:Generated_Source\PSoC4/Timer_PM.c **** 
+  43:Generated_Source\PSoC4/Timer_PM.c **** 
+  44:Generated_Source\PSoC4/Timer_PM.c **** /*******************************************************************************
+  45:Generated_Source\PSoC4/Timer_PM.c **** * Function Name: Timer_Sleep
+  46:Generated_Source\PSoC4/Timer_PM.c **** ********************************************************************************
+  47:Generated_Source\PSoC4/Timer_PM.c **** *
+  48:Generated_Source\PSoC4/Timer_PM.c **** * Summary:
+  49:Generated_Source\PSoC4/Timer_PM.c **** *  Stops the component operation and saves the user configuration.
+  50:Generated_Source\PSoC4/Timer_PM.c **** *
+  51:Generated_Source\PSoC4/Timer_PM.c **** * Parameters:
+  52:Generated_Source\PSoC4/Timer_PM.c **** *  None
+  53:Generated_Source\PSoC4/Timer_PM.c **** *
+  54:Generated_Source\PSoC4/Timer_PM.c **** * Return:
+  55:Generated_Source\PSoC4/Timer_PM.c **** *  None
+  56:Generated_Source\PSoC4/Timer_PM.c **** *
+  57:Generated_Source\PSoC4/Timer_PM.c **** *******************************************************************************/
+  58:Generated_Source\PSoC4/Timer_PM.c **** void Timer_Sleep(void)
+  59:Generated_Source\PSoC4/Timer_PM.c **** {
+ 263              		.loc 1 59 0
+ 264              		.cfi_startproc
+ 265              		@ args = 0, pretend = 0, frame = 0
+ 266              		@ frame_needed = 0, uses_anonymous_args = 0
+ 267 0000 0122     		movs	r2, #1
+  60:Generated_Source\PSoC4/Timer_PM.c ****     if(0u != (Timer_BLOCK_CONTROL_REG & Timer_MASK))
+ 268              		.loc 1 60 0
+ 269 0002 044B     		ldr	r3, .L3
+  59:Generated_Source\PSoC4/Timer_PM.c ****     if(0u != (Timer_BLOCK_CONTROL_REG & Timer_MASK))
+ 270              		.loc 1 59 0
+ 271 0004 10B5     		push	{r4, lr}
+ 272              		.cfi_def_cfa_offset 8
+ 273              		.cfi_offset 4, -8
+ 274              		.cfi_offset 14, -4
+ 275              		.loc 1 60 0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 17
+
+
+ 276 0006 1B68     		ldr	r3, [r3]
+  61:Generated_Source\PSoC4/Timer_PM.c ****     {
+  62:Generated_Source\PSoC4/Timer_PM.c ****         Timer_backup.enableState = 1u;
+  63:Generated_Source\PSoC4/Timer_PM.c ****     }
+  64:Generated_Source\PSoC4/Timer_PM.c ****     else
+  65:Generated_Source\PSoC4/Timer_PM.c ****     {
+  66:Generated_Source\PSoC4/Timer_PM.c ****         Timer_backup.enableState = 0u;
+  67:Generated_Source\PSoC4/Timer_PM.c ****     }
+  68:Generated_Source\PSoC4/Timer_PM.c **** 
+  69:Generated_Source\PSoC4/Timer_PM.c ****     Timer_Stop();
+  70:Generated_Source\PSoC4/Timer_PM.c ****     Timer_SaveConfig();
+  71:Generated_Source\PSoC4/Timer_PM.c **** }
+ 277              		.loc 1 71 0
+ 278              		@ sp needed
+ 279 0008 1340     		ands	r3, r2
+ 280 000a 034A     		ldr	r2, .L3+4
+ 281 000c 1370     		strb	r3, [r2]
+  69:Generated_Source\PSoC4/Timer_PM.c ****     Timer_SaveConfig();
+ 282              		.loc 1 69 0
+ 283 000e FFF7FEFF 		bl	Timer_Stop
+ 284              	.LVL0:
+ 285              		.loc 1 71 0
+ 286 0012 10BD     		pop	{r4, pc}
+ 287              	.L4:
+ 288              		.align	2
+ 289              	.L3:
+ 290 0014 00002040 		.word	1075838976
+ 291 0018 00000000 		.word	.LANCHOR0
+ 292              		.cfi_endproc
+ 293              	.LFE3:
+ 294              		.size	Timer_Sleep, .-Timer_Sleep
+ 295              		.section	.text.Timer_RestoreConfig,"ax",%progbits
+ 296              		.align	2
+ 297              		.global	Timer_RestoreConfig
+ 298              		.code	16
+ 299              		.thumb_func
+ 300              		.type	Timer_RestoreConfig, %function
+ 301              	Timer_RestoreConfig:
+ 302              	.LFB4:
+  72:Generated_Source\PSoC4/Timer_PM.c **** 
+  73:Generated_Source\PSoC4/Timer_PM.c **** 
+  74:Generated_Source\PSoC4/Timer_PM.c **** /*******************************************************************************
+  75:Generated_Source\PSoC4/Timer_PM.c **** * Function Name: Timer_RestoreConfig
+  76:Generated_Source\PSoC4/Timer_PM.c **** ********************************************************************************
+  77:Generated_Source\PSoC4/Timer_PM.c **** *
+  78:Generated_Source\PSoC4/Timer_PM.c **** * Summary:
+  79:Generated_Source\PSoC4/Timer_PM.c **** *  All configuration registers are retention. Nothing to restore here.
+  80:Generated_Source\PSoC4/Timer_PM.c **** *
+  81:Generated_Source\PSoC4/Timer_PM.c **** * Parameters:
+  82:Generated_Source\PSoC4/Timer_PM.c **** *  None
+  83:Generated_Source\PSoC4/Timer_PM.c **** *
+  84:Generated_Source\PSoC4/Timer_PM.c **** * Return:
+  85:Generated_Source\PSoC4/Timer_PM.c **** *  None
+  86:Generated_Source\PSoC4/Timer_PM.c **** *
+  87:Generated_Source\PSoC4/Timer_PM.c **** *******************************************************************************/
+  88:Generated_Source\PSoC4/Timer_PM.c **** void Timer_RestoreConfig(void)
+  89:Generated_Source\PSoC4/Timer_PM.c **** {
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 18
+
+
+ 303              		.loc 1 89 0
+ 304              		.cfi_startproc
+ 305              		@ args = 0, pretend = 0, frame = 0
+ 306              		@ frame_needed = 0, uses_anonymous_args = 0
+ 307              		@ link register save eliminated.
+  90:Generated_Source\PSoC4/Timer_PM.c **** 
+  91:Generated_Source\PSoC4/Timer_PM.c **** }
+ 308              		.loc 1 91 0
+ 309              		@ sp needed
+ 310 0000 7047     		bx	lr
+ 311              		.cfi_endproc
+ 312              	.LFE4:
+ 313              		.size	Timer_RestoreConfig, .-Timer_RestoreConfig
+ 314 0002 C046     		.section	.text.Timer_Wakeup,"ax",%progbits
+ 315              		.align	2
+ 316              		.global	Timer_Wakeup
+ 317              		.code	16
+ 318              		.thumb_func
+ 319              		.type	Timer_Wakeup, %function
+ 320              	Timer_Wakeup:
+ 321              	.LFB5:
+  92:Generated_Source\PSoC4/Timer_PM.c **** 
+  93:Generated_Source\PSoC4/Timer_PM.c **** 
+  94:Generated_Source\PSoC4/Timer_PM.c **** /*******************************************************************************
+  95:Generated_Source\PSoC4/Timer_PM.c **** * Function Name: Timer_Wakeup
+  96:Generated_Source\PSoC4/Timer_PM.c **** ********************************************************************************
+  97:Generated_Source\PSoC4/Timer_PM.c **** *
+  98:Generated_Source\PSoC4/Timer_PM.c **** * Summary:
+  99:Generated_Source\PSoC4/Timer_PM.c **** *  Restores the user configuration and restores the enable state.
+ 100:Generated_Source\PSoC4/Timer_PM.c **** *
+ 101:Generated_Source\PSoC4/Timer_PM.c **** * Parameters:
+ 102:Generated_Source\PSoC4/Timer_PM.c **** *  None
+ 103:Generated_Source\PSoC4/Timer_PM.c **** *
+ 104:Generated_Source\PSoC4/Timer_PM.c **** * Return:
+ 105:Generated_Source\PSoC4/Timer_PM.c **** *  None
+ 106:Generated_Source\PSoC4/Timer_PM.c **** *
+ 107:Generated_Source\PSoC4/Timer_PM.c **** *******************************************************************************/
+ 108:Generated_Source\PSoC4/Timer_PM.c **** void Timer_Wakeup(void)
+ 109:Generated_Source\PSoC4/Timer_PM.c **** {
+ 322              		.loc 1 109 0
+ 323              		.cfi_startproc
+ 324              		@ args = 0, pretend = 0, frame = 0
+ 325              		@ frame_needed = 0, uses_anonymous_args = 0
+ 326 0000 10B5     		push	{r4, lr}
+ 327              		.cfi_def_cfa_offset 8
+ 328              		.cfi_offset 4, -8
+ 329              		.cfi_offset 14, -4
+ 110:Generated_Source\PSoC4/Timer_PM.c ****     Timer_RestoreConfig();
+ 111:Generated_Source\PSoC4/Timer_PM.c **** 
+ 112:Generated_Source\PSoC4/Timer_PM.c ****     if(0u != Timer_backup.enableState)
+ 330              		.loc 1 112 0
+ 331 0002 034B     		ldr	r3, .L12
+ 332 0004 1B78     		ldrb	r3, [r3]
+ 333 0006 002B     		cmp	r3, #0
+ 334 0008 01D0     		beq	.L6
+ 113:Generated_Source\PSoC4/Timer_PM.c ****     {
+ 114:Generated_Source\PSoC4/Timer_PM.c ****         Timer_Enable();
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 19
+
+
+ 335              		.loc 1 114 0
+ 336 000a FFF7FEFF 		bl	Timer_Enable
+ 337              	.LVL1:
+ 338              	.L6:
+ 115:Generated_Source\PSoC4/Timer_PM.c ****     }
+ 116:Generated_Source\PSoC4/Timer_PM.c **** }
+ 339              		.loc 1 116 0
+ 340              		@ sp needed
+ 341 000e 10BD     		pop	{r4, pc}
+ 342              	.L13:
+ 343              		.align	2
+ 344              	.L12:
+ 345 0010 00000000 		.word	.LANCHOR0
+ 346              		.cfi_endproc
+ 347              	.LFE5:
+ 348              		.size	Timer_Wakeup, .-Timer_Wakeup
+ 349              		.bss
+ 350              		.align	2
+ 351              		.set	.LANCHOR0,. + 0
+ 352              		.type	Timer_backup, %object
+ 353              		.size	Timer_backup, 1
+ 354              	Timer_backup:
+ 355 0000 00       		.space	1
+ 356              		.text
+ 357              	.Letext0:
+ 358              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 359              		.file 3 "Generated_Source\\PSoC4\\Timer.h"
+ 360              		.section	.debug_info,"",%progbits
+ 361              	.Ldebug_info0:
+ 362 0000 5A010000 		.4byte	0x15a
+ 363 0004 0400     		.2byte	0x4
+ 364 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 365 000a 04       		.byte	0x4
+ 366 000b 01       		.uleb128 0x1
+ 367 000c 2E000000 		.4byte	.LASF24
+ 368 0010 0C       		.byte	0xc
+ 369 0011 E8000000 		.4byte	.LASF25
+ 370 0015 99010000 		.4byte	.LASF26
+ 371 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 372 001d 00000000 		.4byte	0
+ 373 0021 00000000 		.4byte	.Ldebug_line0
+ 374 0025 02       		.uleb128 0x2
+ 375 0026 01       		.byte	0x1
+ 376 0027 06       		.byte	0x6
+ 377 0028 10020000 		.4byte	.LASF0
+ 378 002c 02       		.uleb128 0x2
+ 379 002d 01       		.byte	0x1
+ 380 002e 08       		.byte	0x8
+ 381 002f 2C010000 		.4byte	.LASF1
+ 382 0033 02       		.uleb128 0x2
+ 383 0034 02       		.byte	0x2
+ 384 0035 05       		.byte	0x5
+ 385 0036 35020000 		.4byte	.LASF2
+ 386 003a 02       		.uleb128 0x2
+ 387 003b 02       		.byte	0x2
+ 388 003c 07       		.byte	0x7
+ 389 003d FD010000 		.4byte	.LASF3
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 20
+
+
+ 390 0041 02       		.uleb128 0x2
+ 391 0042 04       		.byte	0x4
+ 392 0043 05       		.byte	0x5
+ 393 0044 6A010000 		.4byte	.LASF4
+ 394 0048 02       		.uleb128 0x2
+ 395 0049 04       		.byte	0x4
+ 396 004a 07       		.byte	0x7
+ 397 004b 80010000 		.4byte	.LASF5
+ 398 004f 02       		.uleb128 0x2
+ 399 0050 08       		.byte	0x8
+ 400 0051 05       		.byte	0x5
+ 401 0052 00000000 		.4byte	.LASF6
+ 402 0056 02       		.uleb128 0x2
+ 403 0057 08       		.byte	0x8
+ 404 0058 07       		.byte	0x7
+ 405 0059 0A010000 		.4byte	.LASF7
+ 406 005d 03       		.uleb128 0x3
+ 407 005e 04       		.byte	0x4
+ 408 005f 05       		.byte	0x5
+ 409 0060 696E7400 		.ascii	"int\000"
+ 410 0064 02       		.uleb128 0x2
+ 411 0065 04       		.byte	0x4
+ 412 0066 07       		.byte	0x7
+ 413 0067 21000000 		.4byte	.LASF8
+ 414 006b 04       		.uleb128 0x4
+ 415 006c E2000000 		.4byte	.LASF9
+ 416 0070 02       		.byte	0x2
+ 417 0071 D201     		.2byte	0x1d2
+ 418 0073 2C000000 		.4byte	0x2c
+ 419 0077 04       		.uleb128 0x4
+ 420 0078 0E000000 		.4byte	.LASF10
+ 421 007c 02       		.byte	0x2
+ 422 007d D401     		.2byte	0x1d4
+ 423 007f 48000000 		.4byte	0x48
+ 424 0083 02       		.uleb128 0x2
+ 425 0084 04       		.byte	0x4
+ 426 0085 04       		.byte	0x4
+ 427 0086 21010000 		.4byte	.LASF11
+ 428 008a 02       		.uleb128 0x2
+ 429 008b 08       		.byte	0x8
+ 430 008c 04       		.byte	0x4
+ 431 008d 92010000 		.4byte	.LASF12
+ 432 0091 02       		.uleb128 0x2
+ 433 0092 01       		.byte	0x1
+ 434 0093 08       		.byte	0x8
+ 435 0094 27010000 		.4byte	.LASF13
+ 436 0098 04       		.uleb128 0x4
+ 437 0099 F7010000 		.4byte	.LASF14
+ 438 009d 02       		.byte	0x2
+ 439 009e 7E02     		.2byte	0x27e
+ 440 00a0 A4000000 		.4byte	0xa4
+ 441 00a4 05       		.uleb128 0x5
+ 442 00a5 77000000 		.4byte	0x77
+ 443 00a9 02       		.uleb128 0x2
+ 444 00aa 08       		.byte	0x8
+ 445 00ab 04       		.byte	0x4
+ 446 00ac 29020000 		.4byte	.LASF15
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 21
+
+
+ 447 00b0 02       		.uleb128 0x2
+ 448 00b1 04       		.byte	0x4
+ 449 00b2 07       		.byte	0x7
+ 450 00b3 5F020000 		.4byte	.LASF16
+ 451 00b7 06       		.uleb128 0x6
+ 452 00b8 01       		.byte	0x1
+ 453 00b9 03       		.byte	0x3
+ 454 00ba 21       		.byte	0x21
+ 455 00bb CC000000 		.4byte	0xcc
+ 456 00bf 07       		.uleb128 0x7
+ 457 00c0 15000000 		.4byte	.LASF27
+ 458 00c4 03       		.byte	0x3
+ 459 00c5 23       		.byte	0x23
+ 460 00c6 6B000000 		.4byte	0x6b
+ 461 00ca 00       		.byte	0
+ 462 00cb 00       		.byte	0
+ 463 00cc 08       		.uleb128 0x8
+ 464 00cd 56010000 		.4byte	.LASF17
+ 465 00d1 03       		.byte	0x3
+ 466 00d2 24       		.byte	0x24
+ 467 00d3 B7000000 		.4byte	0xb7
+ 468 00d7 09       		.uleb128 0x9
+ 469 00d8 3A010000 		.4byte	.LASF18
+ 470 00dc 01       		.byte	0x1
+ 471 00dd 26       		.byte	0x26
+ 472 00de 01       		.byte	0x1
+ 473 00df 09       		.uleb128 0x9
+ 474 00e0 3F020000 		.4byte	.LASF19
+ 475 00e4 01       		.byte	0x1
+ 476 00e5 58       		.byte	0x58
+ 477 00e6 01       		.byte	0x1
+ 478 00e7 0A       		.uleb128 0xa
+ 479 00e8 53020000 		.4byte	.LASF20
+ 480 00ec 01       		.byte	0x1
+ 481 00ed 3A       		.byte	0x3a
+ 482 00ee 00000000 		.4byte	.LFB3
+ 483 00f2 1C000000 		.4byte	.LFE3-.LFB3
+ 484 00f6 01       		.uleb128 0x1
+ 485 00f7 9C       		.byte	0x9c
+ 486 00f8 06010000 		.4byte	0x106
+ 487 00fc 0B       		.uleb128 0xb
+ 488 00fd 12000000 		.4byte	.LVL0
+ 489 0101 45010000 		.4byte	0x145
+ 490 0105 00       		.byte	0
+ 491 0106 0C       		.uleb128 0xc
+ 492 0107 DF000000 		.4byte	0xdf
+ 493 010b 00000000 		.4byte	.LFB4
+ 494 010f 02000000 		.4byte	.LFE4-.LFB4
+ 495 0113 01       		.uleb128 0x1
+ 496 0114 9C       		.byte	0x9c
+ 497 0115 0A       		.uleb128 0xa
+ 498 0116 73010000 		.4byte	.LASF21
+ 499 011a 01       		.byte	0x1
+ 500 011b 6C       		.byte	0x6c
+ 501 011c 00000000 		.4byte	.LFB5
+ 502 0120 14000000 		.4byte	.LFE5-.LFB5
+ 503 0124 01       		.uleb128 0x1
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 22
+
+
+ 504 0125 9C       		.byte	0x9c
+ 505 0126 34010000 		.4byte	0x134
+ 506 012a 0B       		.uleb128 0xb
+ 507 012b 0E000000 		.4byte	.LVL1
+ 508 012f 51010000 		.4byte	0x151
+ 509 0133 00       		.byte	0
+ 510 0134 0D       		.uleb128 0xd
+ 511 0135 D5000000 		.4byte	.LASF28
+ 512 0139 01       		.byte	0x1
+ 513 013a 15       		.byte	0x15
+ 514 013b CC000000 		.4byte	0xcc
+ 515 013f 05       		.uleb128 0x5
+ 516 0140 03       		.byte	0x3
+ 517 0141 00000000 		.4byte	Timer_backup
+ 518 0145 0E       		.uleb128 0xe
+ 519 0146 4B010000 		.4byte	.LASF22
+ 520 014a 4B010000 		.4byte	.LASF22
+ 521 014e 03       		.byte	0x3
+ 522 014f 3301     		.2byte	0x133
+ 523 0151 0E       		.uleb128 0xe
+ 524 0152 1C020000 		.4byte	.LASF23
+ 525 0156 1C020000 		.4byte	.LASF23
+ 526 015a 03       		.byte	0x3
+ 527 015b 3101     		.2byte	0x131
+ 528 015d 00       		.byte	0
+ 529              		.section	.debug_abbrev,"",%progbits
+ 530              	.Ldebug_abbrev0:
+ 531 0000 01       		.uleb128 0x1
+ 532 0001 11       		.uleb128 0x11
+ 533 0002 01       		.byte	0x1
+ 534 0003 25       		.uleb128 0x25
+ 535 0004 0E       		.uleb128 0xe
+ 536 0005 13       		.uleb128 0x13
+ 537 0006 0B       		.uleb128 0xb
+ 538 0007 03       		.uleb128 0x3
+ 539 0008 0E       		.uleb128 0xe
+ 540 0009 1B       		.uleb128 0x1b
+ 541 000a 0E       		.uleb128 0xe
+ 542 000b 55       		.uleb128 0x55
+ 543 000c 17       		.uleb128 0x17
+ 544 000d 11       		.uleb128 0x11
+ 545 000e 01       		.uleb128 0x1
+ 546 000f 10       		.uleb128 0x10
+ 547 0010 17       		.uleb128 0x17
+ 548 0011 00       		.byte	0
+ 549 0012 00       		.byte	0
+ 550 0013 02       		.uleb128 0x2
+ 551 0014 24       		.uleb128 0x24
+ 552 0015 00       		.byte	0
+ 553 0016 0B       		.uleb128 0xb
+ 554 0017 0B       		.uleb128 0xb
+ 555 0018 3E       		.uleb128 0x3e
+ 556 0019 0B       		.uleb128 0xb
+ 557 001a 03       		.uleb128 0x3
+ 558 001b 0E       		.uleb128 0xe
+ 559 001c 00       		.byte	0
+ 560 001d 00       		.byte	0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 23
+
+
+ 561 001e 03       		.uleb128 0x3
+ 562 001f 24       		.uleb128 0x24
+ 563 0020 00       		.byte	0
+ 564 0021 0B       		.uleb128 0xb
+ 565 0022 0B       		.uleb128 0xb
+ 566 0023 3E       		.uleb128 0x3e
+ 567 0024 0B       		.uleb128 0xb
+ 568 0025 03       		.uleb128 0x3
+ 569 0026 08       		.uleb128 0x8
+ 570 0027 00       		.byte	0
+ 571 0028 00       		.byte	0
+ 572 0029 04       		.uleb128 0x4
+ 573 002a 16       		.uleb128 0x16
+ 574 002b 00       		.byte	0
+ 575 002c 03       		.uleb128 0x3
+ 576 002d 0E       		.uleb128 0xe
+ 577 002e 3A       		.uleb128 0x3a
+ 578 002f 0B       		.uleb128 0xb
+ 579 0030 3B       		.uleb128 0x3b
+ 580 0031 05       		.uleb128 0x5
+ 581 0032 49       		.uleb128 0x49
+ 582 0033 13       		.uleb128 0x13
+ 583 0034 00       		.byte	0
+ 584 0035 00       		.byte	0
+ 585 0036 05       		.uleb128 0x5
+ 586 0037 35       		.uleb128 0x35
+ 587 0038 00       		.byte	0
+ 588 0039 49       		.uleb128 0x49
+ 589 003a 13       		.uleb128 0x13
+ 590 003b 00       		.byte	0
+ 591 003c 00       		.byte	0
+ 592 003d 06       		.uleb128 0x6
+ 593 003e 13       		.uleb128 0x13
+ 594 003f 01       		.byte	0x1
+ 595 0040 0B       		.uleb128 0xb
+ 596 0041 0B       		.uleb128 0xb
+ 597 0042 3A       		.uleb128 0x3a
+ 598 0043 0B       		.uleb128 0xb
+ 599 0044 3B       		.uleb128 0x3b
+ 600 0045 0B       		.uleb128 0xb
+ 601 0046 01       		.uleb128 0x1
+ 602 0047 13       		.uleb128 0x13
+ 603 0048 00       		.byte	0
+ 604 0049 00       		.byte	0
+ 605 004a 07       		.uleb128 0x7
+ 606 004b 0D       		.uleb128 0xd
+ 607 004c 00       		.byte	0
+ 608 004d 03       		.uleb128 0x3
+ 609 004e 0E       		.uleb128 0xe
+ 610 004f 3A       		.uleb128 0x3a
+ 611 0050 0B       		.uleb128 0xb
+ 612 0051 3B       		.uleb128 0x3b
+ 613 0052 0B       		.uleb128 0xb
+ 614 0053 49       		.uleb128 0x49
+ 615 0054 13       		.uleb128 0x13
+ 616 0055 38       		.uleb128 0x38
+ 617 0056 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 24
+
+
+ 618 0057 00       		.byte	0
+ 619 0058 00       		.byte	0
+ 620 0059 08       		.uleb128 0x8
+ 621 005a 16       		.uleb128 0x16
+ 622 005b 00       		.byte	0
+ 623 005c 03       		.uleb128 0x3
+ 624 005d 0E       		.uleb128 0xe
+ 625 005e 3A       		.uleb128 0x3a
+ 626 005f 0B       		.uleb128 0xb
+ 627 0060 3B       		.uleb128 0x3b
+ 628 0061 0B       		.uleb128 0xb
+ 629 0062 49       		.uleb128 0x49
+ 630 0063 13       		.uleb128 0x13
+ 631 0064 00       		.byte	0
+ 632 0065 00       		.byte	0
+ 633 0066 09       		.uleb128 0x9
+ 634 0067 2E       		.uleb128 0x2e
+ 635 0068 00       		.byte	0
+ 636 0069 3F       		.uleb128 0x3f
+ 637 006a 19       		.uleb128 0x19
+ 638 006b 03       		.uleb128 0x3
+ 639 006c 0E       		.uleb128 0xe
+ 640 006d 3A       		.uleb128 0x3a
+ 641 006e 0B       		.uleb128 0xb
+ 642 006f 3B       		.uleb128 0x3b
+ 643 0070 0B       		.uleb128 0xb
+ 644 0071 27       		.uleb128 0x27
+ 645 0072 19       		.uleb128 0x19
+ 646 0073 20       		.uleb128 0x20
+ 647 0074 0B       		.uleb128 0xb
+ 648 0075 00       		.byte	0
+ 649 0076 00       		.byte	0
+ 650 0077 0A       		.uleb128 0xa
+ 651 0078 2E       		.uleb128 0x2e
+ 652 0079 01       		.byte	0x1
+ 653 007a 3F       		.uleb128 0x3f
+ 654 007b 19       		.uleb128 0x19
+ 655 007c 03       		.uleb128 0x3
+ 656 007d 0E       		.uleb128 0xe
+ 657 007e 3A       		.uleb128 0x3a
+ 658 007f 0B       		.uleb128 0xb
+ 659 0080 3B       		.uleb128 0x3b
+ 660 0081 0B       		.uleb128 0xb
+ 661 0082 27       		.uleb128 0x27
+ 662 0083 19       		.uleb128 0x19
+ 663 0084 11       		.uleb128 0x11
+ 664 0085 01       		.uleb128 0x1
+ 665 0086 12       		.uleb128 0x12
+ 666 0087 06       		.uleb128 0x6
+ 667 0088 40       		.uleb128 0x40
+ 668 0089 18       		.uleb128 0x18
+ 669 008a 9742     		.uleb128 0x2117
+ 670 008c 19       		.uleb128 0x19
+ 671 008d 01       		.uleb128 0x1
+ 672 008e 13       		.uleb128 0x13
+ 673 008f 00       		.byte	0
+ 674 0090 00       		.byte	0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 25
+
+
+ 675 0091 0B       		.uleb128 0xb
+ 676 0092 898201   		.uleb128 0x4109
+ 677 0095 00       		.byte	0
+ 678 0096 11       		.uleb128 0x11
+ 679 0097 01       		.uleb128 0x1
+ 680 0098 31       		.uleb128 0x31
+ 681 0099 13       		.uleb128 0x13
+ 682 009a 00       		.byte	0
+ 683 009b 00       		.byte	0
+ 684 009c 0C       		.uleb128 0xc
+ 685 009d 2E       		.uleb128 0x2e
+ 686 009e 00       		.byte	0
+ 687 009f 31       		.uleb128 0x31
+ 688 00a0 13       		.uleb128 0x13
+ 689 00a1 11       		.uleb128 0x11
+ 690 00a2 01       		.uleb128 0x1
+ 691 00a3 12       		.uleb128 0x12
+ 692 00a4 06       		.uleb128 0x6
+ 693 00a5 40       		.uleb128 0x40
+ 694 00a6 18       		.uleb128 0x18
+ 695 00a7 9742     		.uleb128 0x2117
+ 696 00a9 19       		.uleb128 0x19
+ 697 00aa 00       		.byte	0
+ 698 00ab 00       		.byte	0
+ 699 00ac 0D       		.uleb128 0xd
+ 700 00ad 34       		.uleb128 0x34
+ 701 00ae 00       		.byte	0
+ 702 00af 03       		.uleb128 0x3
+ 703 00b0 0E       		.uleb128 0xe
+ 704 00b1 3A       		.uleb128 0x3a
+ 705 00b2 0B       		.uleb128 0xb
+ 706 00b3 3B       		.uleb128 0x3b
+ 707 00b4 0B       		.uleb128 0xb
+ 708 00b5 49       		.uleb128 0x49
+ 709 00b6 13       		.uleb128 0x13
+ 710 00b7 02       		.uleb128 0x2
+ 711 00b8 18       		.uleb128 0x18
+ 712 00b9 00       		.byte	0
+ 713 00ba 00       		.byte	0
+ 714 00bb 0E       		.uleb128 0xe
+ 715 00bc 2E       		.uleb128 0x2e
+ 716 00bd 00       		.byte	0
+ 717 00be 3F       		.uleb128 0x3f
+ 718 00bf 19       		.uleb128 0x19
+ 719 00c0 3C       		.uleb128 0x3c
+ 720 00c1 19       		.uleb128 0x19
+ 721 00c2 6E       		.uleb128 0x6e
+ 722 00c3 0E       		.uleb128 0xe
+ 723 00c4 03       		.uleb128 0x3
+ 724 00c5 0E       		.uleb128 0xe
+ 725 00c6 3A       		.uleb128 0x3a
+ 726 00c7 0B       		.uleb128 0xb
+ 727 00c8 3B       		.uleb128 0x3b
+ 728 00c9 05       		.uleb128 0x5
+ 729 00ca 00       		.byte	0
+ 730 00cb 00       		.byte	0
+ 731 00cc 00       		.byte	0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 26
+
+
+ 732              		.section	.debug_aranges,"",%progbits
+ 733 0000 2C000000 		.4byte	0x2c
+ 734 0004 0200     		.2byte	0x2
+ 735 0006 00000000 		.4byte	.Ldebug_info0
+ 736 000a 04       		.byte	0x4
+ 737 000b 00       		.byte	0
+ 738 000c 0000     		.2byte	0
+ 739 000e 0000     		.2byte	0
+ 740 0010 00000000 		.4byte	.LFB3
+ 741 0014 1C000000 		.4byte	.LFE3-.LFB3
+ 742 0018 00000000 		.4byte	.LFB4
+ 743 001c 02000000 		.4byte	.LFE4-.LFB4
+ 744 0020 00000000 		.4byte	.LFB5
+ 745 0024 14000000 		.4byte	.LFE5-.LFB5
+ 746 0028 00000000 		.4byte	0
+ 747 002c 00000000 		.4byte	0
+ 748              		.section	.debug_ranges,"",%progbits
+ 749              	.Ldebug_ranges0:
+ 750 0000 00000000 		.4byte	.LFB3
+ 751 0004 1C000000 		.4byte	.LFE3
+ 752 0008 00000000 		.4byte	.LFB4
+ 753 000c 02000000 		.4byte	.LFE4
+ 754 0010 00000000 		.4byte	.LFB5
+ 755 0014 14000000 		.4byte	.LFE5
+ 756 0018 00000000 		.4byte	0
+ 757 001c 00000000 		.4byte	0
+ 758              		.section	.debug_line,"",%progbits
+ 759              	.Ldebug_line0:
+ 760 0000 91000000 		.section	.debug_str,"MS",%progbits,1
+ 760      02005000 
+ 760      00000201 
+ 760      FB0E0D00 
+ 760      01010101 
+ 761              	.LASF6:
+ 762 0000 6C6F6E67 		.ascii	"long long int\000"
+ 762      206C6F6E 
+ 762      6720696E 
+ 762      7400
+ 763              	.LASF10:
+ 764 000e 75696E74 		.ascii	"uint32\000"
+ 764      333200
+ 765              	.LASF27:
+ 766 0015 656E6162 		.ascii	"enableState\000"
+ 766      6C655374 
+ 766      61746500 
+ 767              	.LASF8:
+ 768 0021 756E7369 		.ascii	"unsigned int\000"
+ 768      676E6564 
+ 768      20696E74 
+ 768      00
+ 769              	.LASF24:
+ 770 002e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 770      43313120 
+ 770      352E342E 
+ 770      31203230 
+ 770      31363036 
+ 771 0061 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 27
+
+
+ 771      20726576 
+ 771      6973696F 
+ 771      6E203233 
+ 771      37373135 
+ 772 0094 33202D66 		.ascii	"3 -ffunction-sections -ffat-lto-objects -finline-fu"
+ 772      66756E63 
+ 772      74696F6E 
+ 772      2D736563 
+ 772      74696F6E 
+ 773 00c7 6E637469 		.ascii	"nctions -flto\000"
+ 773      6F6E7320 
+ 773      2D666C74 
+ 773      6F00
+ 774              	.LASF28:
+ 775 00d5 54696D65 		.ascii	"Timer_backup\000"
+ 775      725F6261 
+ 775      636B7570 
+ 775      00
+ 776              	.LASF9:
+ 777 00e2 75696E74 		.ascii	"uint8\000"
+ 777      3800
+ 778              	.LASF25:
+ 779 00e8 47656E65 		.ascii	"Generated_Source\\PSoC4\\Timer_PM.c\000"
+ 779      72617465 
+ 779      645F536F 
+ 779      75726365 
+ 779      5C50536F 
+ 780              	.LASF7:
+ 781 010a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 781      206C6F6E 
+ 781      6720756E 
+ 781      7369676E 
+ 781      65642069 
+ 782              	.LASF11:
+ 783 0121 666C6F61 		.ascii	"float\000"
+ 783      7400
+ 784              	.LASF13:
+ 785 0127 63686172 		.ascii	"char\000"
+ 785      00
+ 786              	.LASF1:
+ 787 012c 756E7369 		.ascii	"unsigned char\000"
+ 787      676E6564 
+ 787      20636861 
+ 787      7200
+ 788              	.LASF18:
+ 789 013a 54696D65 		.ascii	"Timer_SaveConfig\000"
+ 789      725F5361 
+ 789      7665436F 
+ 789      6E666967 
+ 789      00
+ 790              	.LASF22:
+ 791 014b 54696D65 		.ascii	"Timer_Stop\000"
+ 791      725F5374 
+ 791      6F7000
+ 792              	.LASF17:
+ 793 0156 54696D65 		.ascii	"Timer_BACKUP_STRUCT\000"
+ 793      725F4241 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 28
+
+
+ 793      434B5550 
+ 793      5F535452 
+ 793      55435400 
+ 794              	.LASF4:
+ 795 016a 6C6F6E67 		.ascii	"long int\000"
+ 795      20696E74 
+ 795      00
+ 796              	.LASF21:
+ 797 0173 54696D65 		.ascii	"Timer_Wakeup\000"
+ 797      725F5761 
+ 797      6B657570 
+ 797      00
+ 798              	.LASF5:
+ 799 0180 6C6F6E67 		.ascii	"long unsigned int\000"
+ 799      20756E73 
+ 799      69676E65 
+ 799      6420696E 
+ 799      7400
+ 800              	.LASF12:
+ 801 0192 646F7562 		.ascii	"double\000"
+ 801      6C6500
+ 802              	.LASF26:
+ 803 0199 433A5C55 		.ascii	"C:\\Users\\Daniela\\Desktop\\Bluetooth_Project\\Thr"
+ 803      73657273 
+ 803      5C44616E 
+ 803      69656C61 
+ 803      5C446573 
+ 804 01c7 6F756768 		.ascii	"oughput\\GATT Notification - Data Incoming.cydsn\000"
+ 804      7075745C 
+ 804      47415454 
+ 804      204E6F74 
+ 804      69666963 
+ 805              	.LASF14:
+ 806 01f7 72656733 		.ascii	"reg32\000"
+ 806      3200
+ 807              	.LASF3:
+ 808 01fd 73686F72 		.ascii	"short unsigned int\000"
+ 808      7420756E 
+ 808      7369676E 
+ 808      65642069 
+ 808      6E7400
+ 809              	.LASF0:
+ 810 0210 7369676E 		.ascii	"signed char\000"
+ 810      65642063 
+ 810      68617200 
+ 811              	.LASF23:
+ 812 021c 54696D65 		.ascii	"Timer_Enable\000"
+ 812      725F456E 
+ 812      61626C65 
+ 812      00
+ 813              	.LASF15:
+ 814 0229 6C6F6E67 		.ascii	"long double\000"
+ 814      20646F75 
+ 814      626C6500 
+ 815              	.LASF2:
+ 816 0235 73686F72 		.ascii	"short int\000"
+ 816      7420696E 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccyBGRom.s 			page 29
+
+
+ 816      7400
+ 817              	.LASF19:
+ 818 023f 54696D65 		.ascii	"Timer_RestoreConfig\000"
+ 818      725F5265 
+ 818      73746F72 
+ 818      65436F6E 
+ 818      66696700 
+ 819              	.LASF20:
+ 820 0253 54696D65 		.ascii	"Timer_Sleep\000"
+ 820      725F536C 
+ 820      65657000 
+ 821              	.LASF16:
+ 822 025f 73697A65 		.ascii	"sizetype\000"
+ 822      74797065 
+ 822      00
+ 823              		.comm	__gnu_lto_v1,1,1
+ 824              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

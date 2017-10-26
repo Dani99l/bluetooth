@@ -22,15 +22,6 @@ uint16 mtuSize                  = CYBLE_GATT_MTU;   /* MTU size to be used by Cl
 
 const uint8 enableNotificationParam[2] = {0x01, 0x00};
 
-volatile static bool peerDeviceFound         = false;
-volatile static bool notificationEnabled     = false;
-
-static CYBLE_GAP_BD_ADDR_T      peerAddr;           /* BD address of the peer device */
-static INFO_EXCHANGE_STATE_T    infoExchangeState   = INFO_EXCHANGE_START;
-
-CYBLE_GATT_ATTR_HANDLE_RANGE_T  attrHandleRange;
-CYBLE_GATTC_FIND_INFO_REQ_T     charDescHandleRange;
-
 /* UUID of the custom BLE UART service */
 const uint8 bleUartServiceUuid[16]    = {
                                             0x31, 0x01, 0x9b, 0x5f, 0x80, 0x00, 0x00,0x80, \

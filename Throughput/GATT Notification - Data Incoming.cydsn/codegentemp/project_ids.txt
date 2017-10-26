@@ -1,0 +1,6 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|0f7ed094-315a-49f0-a7cd-f19bc3a975b0
+C:\Users\Daniela\Documents\PSoC Creator\4.1\Downloads ( 4.1).cylib\Downloads ( 4.1).cyprj|e41e3159-ee95-4f65-b29f-99641e3a7444
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|664bf281-4c32-4fb0-8f33-c675ee4db851
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|893cf364-c1ff-47f9-9c7d-5c4c95dbc64f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|e53f0b8f-31ba-460b-b924-105e30d7bdf7
+C:\Users\Daniela\Desktop\Bluetooth_Project\Throughput\GATT Notification - Data Incoming.cydsn\GATT Notification - Data Incoming.cyprj|369c83f0-c04a-4e6d-8c4c-df1b211d29ed

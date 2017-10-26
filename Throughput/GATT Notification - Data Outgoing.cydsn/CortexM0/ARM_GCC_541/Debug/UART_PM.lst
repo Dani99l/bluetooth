@@ -1,0 +1,1600 @@
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"UART_PM.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.section	.gnu.lto_.profile.58ebac2c,"",%progbits
+  19 0000 789C6361 		.ascii	"x\234ca`d`a`\000\222\012<\000\000\266\0007"
+  19      60646061 
+  19      6000920A 
+  19      3C0000B6 
+  19      0037
+  20              		.text
+  21              		.section	.gnu.lto_.icf.58ebac2c,"",%progbits
+  22 0000 789C6361 		.ascii	"x\234ca`d\000\001\021\006\004`f\330\270\344\324~F\306"
+  22      60640001 
+  22      11060460 
+  22      66D8B8E4 
+  22      D47E46C6 
+  23 0014 6357DBBE 		.ascii	"cW\333\276\3621u\\\376\367\206\215\001\000a\311\011"
+  23      F231755C 
+  23      FEF7868D 
+  23      010061C9 
+  23      09
+  24 0025 6E       		.ascii	"n"
+  25              		.text
+  26              		.section	.gnu.lto_.jmpfuncs.58ebac2c,"",%progbits
+  27 0000 789C6361 		.ascii	"x\234ca`d\000\001.\006\004`\202\023\000\001\254\000"
+  27      60640001 
+  27      2E060460 
+  27      82130001 
+  27      AC00
+  28 0012 14       		.ascii	"\024"
+  29              		.text
+  30              		.section	.gnu.lto_.inline.58ebac2c,"",%progbits
+  31 0000 789C6361 		.ascii	"x\234ca`d\000\001#\006\004`b`\340\344fd`\342\232\340"
+  31      60640001 
+  31      23060460 
+  31      6260E0E4 
+  31      666460E2 
+  32 0016 C7C0B640 		.ascii	"\307\300\266@\236\011$\306\310\005\226`\347\004\212"
+  32      9E0924C6 
+  32      C8059660 
+  32      E7048A
+  33 0025 B37DD043 		.ascii	"\263}\320C\025g\000\000tV\004\026"
+  33      15670000 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 2
+
+
+  33      74560416 
+  34              		.text
+  35              		.section	.gnu.lto_.pureconst.58ebac2c,"",%progbits
+  36 0000 789C6361 		.ascii	"x\234ca`d`e```b\220b\222\000\000\000\355\000A"
+  36      60646065 
+  36      60606062 
+  36      90629200 
+  36      0000ED00 
+  37              		.text
+  38              		.section	.gnu.lto_UART_Sleep.58ebac2c,"",%progbits
+  39 0000 789C6550 		.ascii	"x\234eP1K\034A\030\375\336\314\354\336y\321`\257\210"
+  39      314B1C41 
+  39      18FDDECC 
+  39      ECDE79D1 
+  39      60AF88
+  40 0013 621A9B9C 		.ascii	"b\032\233\234\205\177 \244\010\004\002\242I!\010\022"
+  40      857F20A4 
+  40      080402A2 
+  40      49210812 
+  41 0023 CCB51124 		.ascii	"\314\265\021$\251o\316\275\305\230\"X\350A@\261R\317"
+  41      A96FCEBD 
+  41      C5982258 
+  41      E84140B1 
+  41      52CF
+  42 0035 183D9528 		.ascii	"\030=\225(Y\261\330\034!E\224\244J\032-\324b\021\261"
+  42      59B1D81C 
+  42      214594A4 
+  42      4A1A2DD4 
+  42      6211B1
+  43 0048 50D12201 		.ascii	"P\321\"\001\275|\337\256\205\220\201\235\231\357\315"
+  43      BD7CDFAE 
+  43      8590819D 
+  43      99EFCD
+  44 0057 FBBEF7F6 		.ascii	"\373\276\367\366\031\002\311R\212\250\235\317.\376\340"
+  44      1902C952 
+  44      8AA89DCF 
+  44      2EFEE0
+  45 0066 10D4F80F 		.ascii	"\020\324\370\017\242BZ)\275\331B6c~g\311\326k\230\004"
+  45      A2425A29 
+  45      BDD94236 
+  45      637E67C9 
+  45      D66B9804 
+  46 007a 36805C6C 		.ascii	"6\200\\l\032\224W\332 \217Ku\245P\035\215\002\3251o"
+  46      1A9457DA 
+  46      208F4B75 
+  46      A5501D8D 
+  46      02D5316F 
+  47 008e 79EDCF46 		.ascii	"y\355\317F\235\266\034\302\327D5\025K\020\346\321AL"
+  47      9DB61CC2 
+  47      D7443515 
+  47      4B10E6D1 
+  47      414C
+  48 00a0 3B5CBD9E 		.ascii	";\\\275\236lp\213BkM\036Q\206+>*=\241\255\325<\033\256"
+  48      6C708B42 
+  48      6B4D1E51 
+  48      862B3E2A 
+  48      3DA1ADD5 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 3
+
+
+  49 00b7 BB5F3E65 		.ascii	"\273_>e\3524\371,\311\233rx\323.o\206\350\224;D\375"
+  49      EA34F92C 
+  49      C99B7278 
+  49      D32E6F86 
+  49      E8943B44 
+  50 00cc 8C3DF3A9 		.ascii	"\214=\363\251#T\377\276\375V\336\200L\361\264f\205\222"
+  50      2354FFBE 
+  50      FD56DE80 
+  50      4CF1B466 
+  50      8592
+  51 00de 5FFD99BA 		.ascii	"_\375\231\272P\276v \202\333\223\321\234\223\224\326"
+  51      50BE7620 
+  51      82DB93D1 
+  51      9C9394D6 
+  52 00ee 8E170C43 		.ascii	"\216\027\014C[sAQ\317`\272Pd\213.>\240\031\013hf'\213"
+  52      5B734151 
+  52      CF60BA50 
+  52      648B2E3E 
+  52      A0190B68 
+  53 0105 98014518 		.ascii	"\230\001E\0309\037\3353\311@\3033\031\361\246RI\355"
+  53      391FDD33 
+  53      C940C333 
+  53      19F1A652 
+  53      49ED
+  54 0117 30745B43 		.ascii	"0t[C\201\360\221{\245\351\206\",\251K\007\367\004\270"
+  54      81F0917B 
+  54      A5E98622 
+  54      2CA94B07 
+  54      F704B8
+  55 012a CD4EC58E 		.ascii	"\315N\305\216\202\340d7\225\277\262o\254mdl\214S\022"
+  55      82E06437 
+  55      95BFB26F 
+  55      AC6D646C 
+  55      8C5312
+  56 013d F878E7D7 		.ascii	"\370x\347\327\327\214\270\2621\236\3062G\273$\276\370"
+  56      D78CB8B2 
+  56      319EC632 
+  56      47BB24BE 
+  56      F8
+  57 014e F1DDE795 		.ascii	"\361\335\347\225\261tvIb\263}\276\256C\205\255^\307"
+  57      B1747649 
+  57      62B37DBE 
+  57      AE4385AD 
+  57      5EC7
+  58 0160 D9620559 		.ascii	"\331b\005YV\245\003\024w\275\305\211\246\033\027\334"
+  58      56A50314 
+  58      77BDC589 
+  58      A61B17DC 
+  59 0170 543909FE 		.ascii	"T9\011\3764\210\256a\227\2532\211$9M\233-\372\010^\370"
+  59      3488AE61 
+  59      97AB3289 
+  59      24394D9B 
+  59      2DFA085E 
+  60 0185 FEFB5D21 		.ascii	"\376\373]!\377\357)S\343\377\"\254!\317\251\337\211"
+  60      FFEF2953 
+  60      E3FF22AC 
+  60      21CFA9DF 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 4
+
+
+  60      89
+  61 0196 9B4C1CF7 		.ascii	"\233L\034\3671F\302\365\307q\223\254S\2461\3146\332"
+  61      3146C2F5 
+  61      C77193AC 
+  61      53A631CC 
+  61      36DA
+  62 01a8 1EE55EE6 		.ascii	"\036\345^\346\206\237\277\312\275\030\350\035z=<\230"
+  62      869FBFCA 
+  62      BD18E81D 
+  62      7A3D3C98 
+  63 01b8 EBEFEE1D 		.ascii	"\353\357\356\035z\330\325\377\354A\317\323\201\356'"
+  63      7AD8D5FF 
+  63      EC41CFD3 
+  63      81EE27
+  64 01c7 F707E91F 		.ascii	"\367\007\351\037;x\271\216"
+  64      3B78B98E 
+  65              		.text
+  66              		.section	.gnu.lto_UART_backup.58ebac2c,"",%progbits
+  67 0000 789C6361 		.ascii	"x\234ca`d\000\001] \206\260\030\030\37621\256\177\263"
+  67      60640001 
+  67      5D2086B0 
+  67      1818FE32 
+  67      31AE7FB3 
+  68 0014 F327EF17 		.ascii	"\363'\357\027\246Vf\240 \220\273sn\373m>\213m\015\035"
+  68      A65666A0 
+  68      2090BB73 
+  68      6EFB6D3E 
+  68      8B6D0D1D 
+  69 0028 0B1A045A 		.ascii	"\013\032\004Z\231\031\377110.g\224a`\\\301h\301\000"
+  69      9919FF31 
+  69      31302E67 
+  69      9461605C 
+  69      C168C100 
+  70 003c 00C3A010 		.ascii	"\000\303\240\020)"
+  70      29
+  71              		.text
+  72              		.section	.gnu.lto_UART_Wakeup.58ebac2c,"",%progbits
+  73 0000 789C658F 		.ascii	"x\234e\217\277KBQ\024\307\317\271\367\371\003K\351\017"
+  73      BF4B4251 
+  73      14C7CFB9 
+  73      F7F9034B 
+  73      E90F
+  74 0012 08299A1C 		.ascii	"\010)\232\034J\002\377\201hh*Ds\023$\354\255\012R\363"
+  74      4A02FF81 
+  74      68682A44 
+  74      731324EC 
+  74      AD0A52F3 
+  75 0026 BBFA7C94 		.ascii	"\273\372|\224K\324P[8j?\315\255\347\364\222\306\260"
+  75      4BD4505B 
+  75      386A3FCD 
+  75      ADE7F492 
+  75      C6B0
+  76 0038 217291A0 		.ascii	"!r\221\240\202$\304\301\240 \007}\235\373\032\032:p"
+  76      8224C4C1 
+  76      A020077D 
+  76      9DFB1A1A 
+  76      3A70
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 5
+
+
+  77 004a 3997EFFD 		.ascii	"9\227\357\375\236\373\375\034\005\020d%\250\315Q\217"
+  77      9EFBFD1C 
+  77      05106425 
+  77      A8CD518F 
+  78 005a D0411720 		.ascii	"\320A\027 \333o\001\344\275\214\361F\020\204Oi\207A"
+  78      DB6F01E4 
+  78      BD8CF146 
+  78      10844F69 
+  78      8741
+  79 006c 4C72547E 		.ascii	"LrT~e\005Q^\204\027Ac\\A\015\277\330\210as\247k\262"
+  79      6505515E 
+  79      84174163 
+  79      5C410DBF 
+  79      D8886173 
+  80 0083 5045503D 		.ascii	"PEP=\277\325\026E\325B\203\003\330\314\211\000\254`"
+  80      BFD51645 
+  80      D5428303 
+  80      D8CC8900 
+  80      AC60
+  81 0095 08C8F65A 		.ascii	"\010\310\366Z\037\037\372\335Ei\233\371}\304*\272%G"
+  81      1F1FFADD 
+  81      45699BF9 
+  81      7DC42ABA 
+  81      2547
+  82 00a7 2D6609DB 		.ascii	"-f\011\333\326\205u0q\363\035pq08\311\003\262\310\270"
+  82      D6857530 
+  82      71F31D70 
+  82      713038C9 
+  82      03B2C8B8 
+  83 00bb 0FC664E7 		.ascii	"\017\306d\347],4\352\355\007\217\234\3229\247\037\217"
+  83      5D2C34EA 
+  83      ED078F9C 
+  83      D239A71F 
+  83      8F
+  84 00cc 8CE6BDE7 		.ascii	"\214\346\275\347\223\031\234\241\0140\315~\307\243\215"
+  84      93199CA1 
+  84      0C30CD7E 
+  84      C7A38D
+  85 00db C4AE1053 		.ascii	"\304\256\020S\244\225\210A\312\275\273\307[_\031\217"
+  85      A4958841 
+  85      CABDBBC7 
+  85      5B5F198F 
+  86 00eb F3C2D139 		.ascii	"\363\302\3219\236\022\370\011N;\217{\327W%ox\336\240"
+  86      9E12F809 
+  86      4E3B8F7B 
+  86      D757256F 
+  86      78DEA0
+  87 00fe 6DCEB08C 		.ascii	"m\316\260\214c\207\031\3171\014/X\354\350\231\277\260"
+  87      638719CF 
+  87      310C2F58 
+  87      ECE899BF 
+  87      B0
+  88 010f 5ADF1CFA 		.ascii	"Z\337\034\372e\030\"\340\205\034\007\311\306\241\021"
+  88      651822E0 
+  88      851C07C9 
+  88      C6A111
+  89 011e E4EFA85B 		.ascii	"\344\357\250[O\255\2004\377\007q\331\204\007x\211\032"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 6
+
+
+  89      4FAD8034 
+  89      FF0771D9 
+  89      84077889 
+  89      1A
+  90 012f EDE57686 		.ascii	"\355\345v\206\024g\241\036\026\254\341\2323$k@6\222"
+  90      1467A11E 
+  90      16ACE19A 
+  90      33246B40 
+  90      3692
+  91 0141 89607645 		.ascii	"\211`vE\315\250\271\215-u3\025\317n\347\322j2\032\317"
+  91      CDA8B98D 
+  91      2D753315 
+  91      CF6EE7D2 
+  91      6A321ACF 
+  92 0155 2E479289 		.ascii	".G\222\211\245\330z*\272\272\220\206\037\227\236\205"
+  92      A5D87A2A 
+  92      BABA9086 
+  92      1F979E85 
+  93 0165 D2       		.ascii	"\322"
+  94              		.text
+  95              		.section	.gnu.lto_.symbol_nodes.58ebac2c,"",%progbits
+  96 0000 789C6361 		.ascii	"x\234ca`d\210b\000\002&\346z\006\206\011\347\030\030"
+  96      60648862 
+  96      000226E6 
+  96      7A068609 
+  96      E71818
+  97 0013 80D4AE06 		.ascii	"\200\324\256\006E\006\006V&\206F!\220\004K=#\212\004"
+  97      45060656 
+  97      26864621 
+  97      90044B3D 
+  97      238A04
+  98 0026 236B3D13 		.ascii	"#k=\023X\200\201\241\241A\001\310g\253gF\3463\003\341"
+  98      588081A1 
+  98      A14101C8 
+  98      67AB6746 
+  98      E63303E1 
+  99 003a 93AD26CC 		.ascii	"\223\255&\314L,\014O\266\2300\000\000&\030\022("
+  99      4C2C0C4F 
+  99      B6983000 
+  99      00261812 
+  99      28
+ 100              		.text
+ 101              		.section	.gnu.lto_.refs.58ebac2c,"",%progbits
+ 102 0000 789C6361 		.ascii	"x\234ca`d\340f`\000\222\214\214\254\214L@\222\001\000"
+ 102      6064E066 
+ 102      6000928C 
+ 102      8CAC8C4C 
+ 102      40920100 
+ 103 0014 0169001E 		.ascii	"\001i\000\036"
+ 104              		.text
+ 105              		.section	.gnu.lto_.decls.58ebac2c,"",%progbits
+ 106 0000 789C8D54 		.ascii	"x\234\215T]L\\U\020>s\357.\013\227\025\0330\206\230"
+ 106      5D4C5C55 
+ 106      103E73EF 
+ 106      2E0B9715 
+ 106      1B308698 
+ 107 0014 D56043C3 		.ascii	"\325`C\303>Q)>\364\321\226jI\214\206\224\037_\232 \320"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 7
+
+
+ 107      3E51293E 
+ 107      F4D1966A 
+ 107      498C8694 
+ 107      1F5F9A20 
+ 108 0029 1B354540 		.ascii	"\0335E@\204\007\236<B\261\244M,\033#-H\342\006\264\202"
+ 108      84079E3C 
+ 108      42B1A44D 
+ 108      2C1B232D 
+ 108      48E206B4 
+ 109 003e FC2C140A 		.ascii	"\374,\024\012\205\026Y\220\002\205b\205\335\252M\313"
+ 109      85165990 
+ 109      02856285 
+ 109      DDAA4DCB 
+ 110 004e 4F02584D 		.ascii	"O\002XMkC\245/U\351:g\316\275\\h\240\351\311\316\335"
+ 110      6B43A52F 
+ 110      55E93A67 
+ 110      CEBD5C68 
+ 110      A0E9C9CE 
+ 111 0063 3367E7FB 		.ascii	"3g\347\373\346;3s\327\306\200\211u2\214\2619\374\336"
+ 111      E63B3373 
+ 111      D7C68089 
+ 111      75328CB1 
+ 111      39FCDE
+ 112 0076 816E0897 		.ascii	"\201n\010\227\015\367Y\314Z\302oC\363\241u\242u\241"
+ 112      0DF759CC 
+ 112      5AC26F43 
+ 112      F3A175A2 
+ 112      75A1
+ 113 0088 09E410DB 		.ascii	"\011\344\020\333\274D\214\323\300&\240\015\243\215\242"
+ 113      BC448CD3 
+ 113      C026A00D 
+ 113      A38DA2
+ 114 0097 B9D00268 		.ascii	"\271\320\002h\323hA\264A\264~\264\353h\255\006\327E"
+ 114      D36841B4 
+ 114      41B47EB4 
+ 114      EB68AD06 
+ 114      D745
+ 115 00a9 34C5E0E8 		.ascii	"4\305\340\350\334\206\177\310\210q\031\034&n\253%\264"
+ 115      DC867FC8 
+ 115      8871191C 
+ 115      266EAB25 
+ 115      B4
+ 116 00ba 3A0C2DAE 		.ascii	":\014-\256\247\310\353{\302\275\326\024h\012\254r\355"
+ 116      A7C8EB7B 
+ 116      C2BDD614 
+ 116      680AAC72 
+ 116      ED
+ 117 00cb 26DC0095 		.ascii	"&\334\000\225\031Ec\000\362\011dL\032\271\270Q\230\334"
+ 117      19456300 
+ 117      F209644C 
+ 117      1AB9B851 
+ 117      98DC
+ 118 00dd 9847EB8B 		.ascii	"\230G\353\213\201\374E1N\231EF\037\003\017!s\021\211"
+ 118      81FC4531 
+ 118      4E994546 
+ 118      1F030F21 
+ 118      731189
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 8
+
+
+ 119 00f0 C50E0608 		.ascii	"\305\016\006\010\326\025\320\317\022\004\353\254\362"
+ 119      D615D0CF 
+ 119      1204EBAC 
+ 119      F2
+ 120 00fd 4BB1101B 		.ascii	"K\261\020\033\370\036Sdj6\323P9\350\322\265\265#m\252"
+ 120      F81E5364 
+ 120      6A36D350 
+ 120      39E8D2B5 
+ 120      B5236DAA 
+ 121 0111 AA80D8CF 		.ascii	"\252\200\330\317?lz#\261\225\343\252\346\\y\321\252"
+ 121      3F6C7A23 
+ 121      B195E3AA 
+ 121      E65C79D1 
+ 121      AA
+ 122 0122 CCF4B18E 		.ascii	"\314\364\261\216z\365\201\002\321\032\330\320\275?U"
+ 122      7AF58102 
+ 122      D11AD8D0 
+ 122      BD3F55
+ 123 0131 B71885EE 		.ascii	"\267\030\205\356s\032\304\241\273v\345\253:%\266\206"
+ 123      731AC4A1 
+ 123      BB76E5AB 
+ 123      3A25B686 
+ 124 0141 70153CCE 		.ascii	"p\025<\316\006Y\317C\013\270\340{\300\246@+\304\342"
+ 124      0659CF43 
+ 124      0BB8E07B 
+ 124      C0A6402B 
+ 124      C4E2
+ 125 0153 33D72699 		.ascii	"3\327&\231\032\327\376j\264\357\364ro\007_\230]r\326"
+ 125      1AD7FE6A 
+ 125      B4EFF472 
+ 125      6F075F98 
+ 125      5D72D6
+ 126 0166 54F07184 		.ascii	"T\360q\204\305\211(h\002\025\232!Q\210l\022=`\360\035"
+ 126      C5892868 
+ 126      02159A21 
+ 126      51886C12 
+ 126      3D60F01D 
+ 127 017a DC44BD6D 		.ascii	"\334D\275m\260\023\221\277\017/\335\215R\367\222\320"
+ 127      B01391BF 
+ 127      0F2FDD8D 
+ 127      52F792D0 
+ 128 018a 2F973F8F 		.ascii	"/\227?\217\227$\376G\023N^\375)\347\257\021E\273E\321"
+ 128      9724FE47 
+ 128      134E5EFD 
+ 128      29E7AF11 
+ 128      45BB45D1 
+ 129 019e BE91C247 		.ascii	"\276\221\302G\024\223\177\370G@=@\024\225]\265w\"\221"
+ 129      14937FF8 
+ 129      47403D40 
+ 129      14955DB5 
+ 129      772291
+ 130 01b1 6381F385 		.ascii	"c\201\363\205K\243\245\236\012o*1tX\014\035\304\200"
+ 130      4BA3A59E 
+ 130      0A6F2A31 
+ 130      74580C1D 
+ 130      C480
+ 131 01c3 9B4E42DF 		.ascii	"\233NB\337:59\246\252\037\022z`f\376\2330\211\366\317"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 9
+
+
+ 131      3A3539A6 
+ 131      AA1F127A 
+ 131      6066FE9B 
+ 131      3089F6CF 
+ 132 01d7 8C39FDD5 		.ascii	"\2149\375\325@\340s\026\370\234\011\356\"\360?_\234"
+ 132      40E07316 
+ 132      F89C09EE 
+ 132      22F03F5F 
+ 132      9C
+ 133 01e8 9A0B57CB 		.ascii	"\232\013W\313\010<\\s+\350T+\201\034_\345Rs8\326\322"
+ 133      083C5C73 
+ 133      2BE8542B 
+ 133      811C5FE5 
+ 133      527338D6 
+ 134 01fd A5410884 		.ascii	"\245A\010\204\177\267\357\3413\322\247\366x\026\037"
+ 134      7FB7EFE1 
+ 134      33D2A7F6 
+ 134      78161F
+ 135 020c 45AA1E8A 		.ascii	"E\252\036\212U\002\213-\177\332\300\255\235\025\245"
+ 135      55028B2D 
+ 135      7FDAC0AD 
+ 135      9D15A5
+ 136 021b 5E983F91 		.ascii	"^\230?\221y\3728\366\011\372A\203\013Vf\227\206\317"
+ 136      79FA38F6 
+ 136      09FA4183 
+ 136      0B566697 
+ 136      86CF
+ 137 022d 2ACECBF9 		.ascii	"*\316\313\371J\003\017\213e\220\354\202W\\\014\372\300"
+ 137      4A030F8B 
+ 137      6590EC82 
+ 137      575C0CFA 
+ 137      C0
+ 138 023e 2D584514 		.ascii	"-XE\024\364b{z\260=k\212\032\034\355\3756\022\342c\334"
+ 138      F4627B7A 
+ 138      B03D6B8A 
+ 138      1A1CEDFD 
+ 138      3612E263 
+ 139 0253 0D02B230 		.ascii	"\015\002\2620\360\231\336\271X\311;\336%\332\363H{\011"
+ 139      F099DEB9 
+ 139      58C93BDE 
+ 139      25DAF348 
+ 139      7B09
+ 140 0265 624C8ADD 		.ascii	"bL\212\335\242\241I\342U\363\010\011+\345\234\303Gf"
+ 140      A2A149E2 
+ 140      55F30809 
+ 140      2BE59CC3 
+ 140      4766
+ 141 0277 02469148 		.ascii	"\002F\221H\017\003\230\351\"\304\323\375I\253\3373\346"
+ 141      0F0398E9 
+ 141      22C4D3FD 
+ 141      49ABDF33 
+ 141      E6
+ 142 0288 E43C5C04 		.ascii	"\344<\\\0040C\2461Y\336\377~\355\002\265O\336\357\267"
+ 142      3043A631 
+ 142      59DEFF7E 
+ 142      ED02B54F 
+ 142      DEEFB7
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 10
+
+
+ 143 029b 93534107 		.ascii	"\223SA\007\304\270\267 \007?rn\317\177z\014\004\377"
+ 143      C4B8B720 
+ 143      073F726E 
+ 143      CF7F7A0C 
+ 143      04FF
+ 144 02ad 2006FC60 		.ascii	" \006\374`UB\244\243,\374^\367}\307\256F\356\305\216"
+ 144      5542A4A3 
+ 144      2CFC5EF7 
+ 144      7DC7AE46 
+ 144      EEC58E
+ 145 02c0 CD3ED8BF 		.ascii	"\315>\330\277Z\316S)\266[\306\256_@\370\031\370Z\017"
+ 145      5ACE5329 
+ 145      B65BC6AE 
+ 145      5F40F819 
+ 145      F85A0F
+ 146 02d3 C12EAC4C 		.ascii	"\301.\254L\375`\240W\005\315\005X,\2502\306;z<\212m"
+ 146      FD60A057 
+ 146      05CD0558 
+ 146      2CA832C6 
+ 146      3B7A3C8A 
+ 147 02e8 98EE61C0 		.ascii	"\230\356a\300j\303\010\372?\242_\3071l%\024\372$\024"
+ 147      6AC308FA 
+ 147      3FA25FC7 
+ 147      316C2514 
+ 147      FA2414
+ 148 02fb 72D04F74 		.ascii	"r\320Ot\300=\015\007\252</\320\201x\240\240\251\313"
+ 148      C03D0D07 
+ 148      AA3C2FD0 
+ 148      8178A0A0 
+ 148      A9CB
+ 149 030d 81330EF5 		.ascii	"\2013\016\365*]\333\266\324\336\375\213\012\0212\217"
+ 149      2A5DDBB6 
+ 149      D4DEFD8B 
+ 149      0A11328F 
+ 150 031d FB3875AE 		.ascii	"\3738u\256\334\033g\335\375\012\336w\024\"0\321\030"
+ 150      DC1B67DD 
+ 150      FD0ADE77 
+ 150      142230D1 
+ 150      18
+ 151 032e 868C53A2 		.ascii	"\206\214S\242p:!\376\035\264=k\276\267L\270p\331\230"
+ 151      703A21FE 
+ 151      1DB43D6B 
+ 151      BEB74CB8 
+ 151      70D998
+ 152 0341 3F5107F4 		.ascii	"?Q\007\3641\347\354xs\213x\211\0234\372\343yv\303\260"
+ 152      31E7EC78 
+ 152      738B7889 
+ 152      1334FAE3 
+ 152      7976C3B0 
+ 153 0355 25C8619B 		.ascii	"%\310a\233\230_\376;B\235\221\315\350i\374z\325\016"
+ 153      985FFE3B 
+ 153      429D91CD 
+ 153      E869FC7A 
+ 153      D50E
+ 154 0367 9A9B26E9 		.ascii	"\232\233&\351\361\213\303O()\301\030\246I<\234\300C"
+ 154      F18BC34F 
+ 154      2829C118 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 11
+
+
+ 154      A6493C9C 
+ 154      C043
+ 155 0379 732CB3E4 		.ascii	"s,\263\344XN\341\374\\\265\232\221\240\311^\364\267"
+ 155      584EE1FC 
+ 155      5CB59A91 
+ 155      A0C95EF4 
+ 155      B7
+ 156 038a FACEA81A 		.ascii	"\372\316\250\032\262V<\035\253\200\314\361z\273zC\352"
+ 156      B2563C1D 
+ 156      AB80CCF1 
+ 156      7ABB7A43 
+ 156      EA
+ 157 039b EABB70A7 		.ascii	"\352\273p\2475J\352\332\202af;]\376\265\333\251\307"
+ 157      354AEADA 
+ 157      8261663B 
+ 157      5DFEB5DB 
+ 157      A9C7
+ 158 03ad 70A2601A 		.ascii	"p\242`\032e\375l\311\272\006\206\256\236\361\351\363"
+ 158      65FD6CC9 
+ 158      BA0686AE 
+ 158      9EF1E9F3 
+ 159 03bd 0EE709EB 		.ascii	"\016\347\011\353\266\024iu:\000N*&~c\364\275f\337\265"
+ 159      B6146975 
+ 159      3A004E2A 
+ 159      267E63F4 
+ 159      BD66DFB5 
+ 160 03d1 CDD1629E 		.ascii	"\315\321b\236\254\350\240\021\035\244\350\177\227}\267"
+ 160      ACE8A011 
+ 160      1DA4E87F 
+ 160      977DB7
+ 161 03e0 9D9BA2C5 		.ascii	"\235\233\242\305\277\205\025}\035\234\246\036\3342-"
+ 161      BF85157D 
+ 161      1D9CA61E 
+ 161      DC322D
+ 162 03ef 73DFA18C 		.ascii	"s\337\241\214\354\364|]/\012?\370vf\\JR\022{\371\240"
+ 162      ECF47C5D 
+ 162      2F0A3FF8 
+ 162      76665C4A 
+ 162      52127BF9 
+ 163 0404 5EA017E7 		.ascii	"^\240\027\347\224\350G\262\323\013K\213\363\364\303"
+ 163      94E847B2 
+ 163      D30B4B8B 
+ 163      F3F4C3
+ 164 0413 69E98529 		.ascii	"i\351\205)\257\036\246\320\264\267\022\363X$m\337\311"
+ 164      AF1EA6D0 
+ 164      B4B712F3 
+ 164      58246DDF 
+ 164      C9
+ 165 0424 39AA9716 		.ascii	"9\252\227\026EH\206\222\302\242\227\236\200K|\337\000"
+ 165      45488692 
+ 165      C2A2979E 
+ 165      804B7CDF 
+ 165      00
+ 166 0435 BD5E9093 		.ascii	"\275^\220\223\233\257\313}nN\336\321\322\242H\235\216"
+ 166      9BAFCB7D 
+ 166      6E4EDED1 
+ 166      D2A2489D 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 12
+
+
+ 166      8E
+ 167 0446 D24B1069 		.ascii	"\322K\020i/\375\240\240d\3576\002v\347\225\225\224\025"
+ 167      2FFDA0A0 
+ 167      64EF3602 
+ 167      76E79595 
+ 167      9415
+ 168 0458 E91F2357 		.ascii	"\351\037#W4\341\367\357Ky33-;=\343PfJ\206={\177aa~\230"
+ 168      34E1F7EF 
+ 168      4B793333 
+ 168      2D3B3DE3 
+ 168      50664A86 
+ 169 0473 2048DE63 		.ascii	" H\336c/\326\337K\336\363?\012\2350\217"
+ 169      2FD6DF4B 
+ 169      DEF33F0A 
+ 169      9D308F
+ 170              		.text
+ 171              		.section	.gnu.lto_.symtab.58ebac2c,"",%progbits
+ 172 0000 55415254 		.ascii	"UART_Sleep\000"
+ 172      5F536C65 
+ 172      657000
+ 173 000b 00       		.ascii	"\000"
+ 174 000c 00       		.ascii	"\000"
+ 175 000d 00       		.ascii	"\000"
+ 176 000e 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 176      00000000 
+ 177 0016 AD000000 		.ascii	"\255\000\000\000"
+ 178 001a 55415254 		.ascii	"UART_backup\000"
+ 178      5F626163 
+ 178      6B757000 
+ 179 0026 00       		.ascii	"\000"
+ 180 0027 00       		.ascii	"\000"
+ 181 0028 00       		.ascii	"\000"
+ 182 0029 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 182      00000000 
+ 183 0031 C1000000 		.ascii	"\301\000\000\000"
+ 184 0035 55415254 		.ascii	"UART_Wakeup\000"
+ 184      5F57616B 
+ 184      65757000 
+ 185 0041 00       		.ascii	"\000"
+ 186 0042 00       		.ascii	"\000"
+ 187 0043 00       		.ascii	"\000"
+ 188 0044 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 188      00000000 
+ 189 004c AF000000 		.ascii	"\257\000\000\000"
+ 190 0050 55415254 		.ascii	"UART_Stop\000"
+ 190      5F53746F 
+ 190      7000
+ 191 005a 00       		.ascii	"\000"
+ 192 005b 02       		.ascii	"\002"
+ 193 005c 00       		.ascii	"\000"
+ 194 005d 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 194      00000000 
+ 195 0065 B1000000 		.ascii	"\261\000\000\000"
+ 196 0069 55415254 		.ascii	"UART_Enable\000"
+ 196      5F456E61 
+ 196      626C6500 
+ 197 0075 00       		.ascii	"\000"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 13
+
+
+ 198 0076 02       		.ascii	"\002"
+ 199 0077 00       		.ascii	"\000"
+ 200 0078 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
+ 200      00000000 
+ 201 0080 B3000000 		.ascii	"\263\000\000\000"
+ 202              		.text
+ 203              		.section	.gnu.lto_.opts,"",%progbits
+ 204 0000 272D666D 		.ascii	"'-fmath-errno' '-fsigned-zeros' '-ftrapping-math' '"
+ 204      6174682D 
+ 204      6572726E 
+ 204      6F272027 
+ 204      2D667369 
+ 205 0033 2D666E6F 		.ascii	"-fno-trapv' '-fno-openmp' '-fno-openacc' '-mcpu=cor"
+ 205      2D747261 
+ 205      70762720 
+ 205      272D666E 
+ 205      6F2D6F70 
+ 206 0066 7465782D 		.ascii	"tex-m0' '-mthumb' '-g' '-O3' '-ffunction-sections' "
+ 206      6D302720 
+ 206      272D6D74 
+ 206      68756D62 
+ 206      2720272D 
+ 207 0099 272D6666 		.ascii	"'-ffat-lto-objects' '-finline-functions' '-flto'\000"
+ 207      61742D6C 
+ 207      746F2D6F 
+ 207      626A6563 
+ 207      74732720 
+ 208              		.text
+ 209              		.cfi_sections	.debug_frame
+ 210              		.section	.text.UART_Sleep,"ax",%progbits
+ 211              		.align	2
+ 212              		.global	UART_Sleep
+ 213              		.code	16
+ 214              		.thumb_func
+ 215              		.type	UART_Sleep, %function
+ 216              	UART_Sleep:
+ 217              	.LFB2:
+ 218              		.file 1 "Generated_Source\\PSoC4\\UART_PM.c"
+   1:Generated_Source\PSoC4/UART_PM.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC4/UART_PM.c **** * \file UART_PM.c
+   3:Generated_Source\PSoC4/UART_PM.c **** * \version 4.0
+   4:Generated_Source\PSoC4/UART_PM.c **** *
+   5:Generated_Source\PSoC4/UART_PM.c **** * \brief
+   6:Generated_Source\PSoC4/UART_PM.c **** *  This file provides the source code to the Power Management support for
+   7:Generated_Source\PSoC4/UART_PM.c **** *  the SCB Component.
+   8:Generated_Source\PSoC4/UART_PM.c **** *
+   9:Generated_Source\PSoC4/UART_PM.c **** * Note:
+  10:Generated_Source\PSoC4/UART_PM.c **** *
+  11:Generated_Source\PSoC4/UART_PM.c **** ********************************************************************************
+  12:Generated_Source\PSoC4/UART_PM.c **** * \copyright
+  13:Generated_Source\PSoC4/UART_PM.c **** * Copyright 2013-2017, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC4/UART_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:Generated_Source\PSoC4/UART_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:Generated_Source\PSoC4/UART_PM.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC4/UART_PM.c **** *******************************************************************************/
+  18:Generated_Source\PSoC4/UART_PM.c **** 
+  19:Generated_Source\PSoC4/UART_PM.c **** #include "UART.h"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 14
+
+
+  20:Generated_Source\PSoC4/UART_PM.c **** #include "UART_PVT.h"
+  21:Generated_Source\PSoC4/UART_PM.c **** 
+  22:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_I2C_INC)
+  23:Generated_Source\PSoC4/UART_PM.c ****     #include "UART_I2C_PVT.h"
+  24:Generated_Source\PSoC4/UART_PM.c **** #endif /* (UART_SCB_MODE_I2C_INC) */
+  25:Generated_Source\PSoC4/UART_PM.c **** 
+  26:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_EZI2C_INC)
+  27:Generated_Source\PSoC4/UART_PM.c ****     #include "UART_EZI2C_PVT.h"
+  28:Generated_Source\PSoC4/UART_PM.c **** #endif /* (UART_SCB_MODE_EZI2C_INC) */
+  29:Generated_Source\PSoC4/UART_PM.c **** 
+  30:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_SPI_INC || UART_SCB_MODE_UART_INC)
+  31:Generated_Source\PSoC4/UART_PM.c ****     #include "UART_SPI_UART_PVT.h"
+  32:Generated_Source\PSoC4/UART_PM.c **** #endif /* (UART_SCB_MODE_SPI_INC || UART_SCB_MODE_UART_INC) */
+  33:Generated_Source\PSoC4/UART_PM.c **** 
+  34:Generated_Source\PSoC4/UART_PM.c **** 
+  35:Generated_Source\PSoC4/UART_PM.c **** /***************************************
+  36:Generated_Source\PSoC4/UART_PM.c **** *   Backup Structure declaration
+  37:Generated_Source\PSoC4/UART_PM.c **** ***************************************/
+  38:Generated_Source\PSoC4/UART_PM.c **** 
+  39:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_UNCONFIG_CONST_CFG || \
+  40:Generated_Source\PSoC4/UART_PM.c ****    (UART_SCB_MODE_I2C_CONST_CFG   && (!UART_I2C_WAKE_ENABLE_CONST))   || \
+  41:Generated_Source\PSoC4/UART_PM.c ****    (UART_SCB_MODE_EZI2C_CONST_CFG && (!UART_EZI2C_WAKE_ENABLE_CONST)) || \
+  42:Generated_Source\PSoC4/UART_PM.c ****    (UART_SCB_MODE_SPI_CONST_CFG   && (!UART_SPI_WAKE_ENABLE_CONST))   || \
+  43:Generated_Source\PSoC4/UART_PM.c ****    (UART_SCB_MODE_UART_CONST_CFG  && (!UART_UART_WAKE_ENABLE_CONST)))
+  44:Generated_Source\PSoC4/UART_PM.c **** 
+  45:Generated_Source\PSoC4/UART_PM.c ****     UART_BACKUP_STRUCT UART_backup =
+  46:Generated_Source\PSoC4/UART_PM.c ****     {
+  47:Generated_Source\PSoC4/UART_PM.c ****         0u, /* enableState */
+  48:Generated_Source\PSoC4/UART_PM.c ****     };
+  49:Generated_Source\PSoC4/UART_PM.c **** #endif
+  50:Generated_Source\PSoC4/UART_PM.c **** 
+  51:Generated_Source\PSoC4/UART_PM.c **** 
+  52:Generated_Source\PSoC4/UART_PM.c **** /*******************************************************************************
+  53:Generated_Source\PSoC4/UART_PM.c **** * Function Name: UART_Sleep
+  54:Generated_Source\PSoC4/UART_PM.c **** ****************************************************************************//**
+  55:Generated_Source\PSoC4/UART_PM.c **** *
+  56:Generated_Source\PSoC4/UART_PM.c **** *  Prepares the UART component to enter Deep Sleep.
+  57:Generated_Source\PSoC4/UART_PM.c **** *  The “Enable wakeup from Deep Sleep Mode” selection has an influence on this 
+  58:Generated_Source\PSoC4/UART_PM.c **** *  function implementation:
+  59:Generated_Source\PSoC4/UART_PM.c **** *  - Checked: configures the component to be wakeup source from Deep Sleep.
+  60:Generated_Source\PSoC4/UART_PM.c **** *  - Unchecked: stores the current component state (enabled or disabled) and 
+  61:Generated_Source\PSoC4/UART_PM.c **** *    disables the component. See SCB_Stop() function for details about component 
+  62:Generated_Source\PSoC4/UART_PM.c **** *    disabling.
+  63:Generated_Source\PSoC4/UART_PM.c **** *
+  64:Generated_Source\PSoC4/UART_PM.c **** *  Call the UART_Sleep() function before calling the 
+  65:Generated_Source\PSoC4/UART_PM.c **** *  CyPmSysDeepSleep() function. 
+  66:Generated_Source\PSoC4/UART_PM.c **** *  Refer to the PSoC Creator System Reference Guide for more information about 
+  67:Generated_Source\PSoC4/UART_PM.c **** *  power management functions and Low power section of this document for the 
+  68:Generated_Source\PSoC4/UART_PM.c **** *  selected mode.
+  69:Generated_Source\PSoC4/UART_PM.c **** *
+  70:Generated_Source\PSoC4/UART_PM.c **** *  This function should not be called before entering Sleep.
+  71:Generated_Source\PSoC4/UART_PM.c **** *
+  72:Generated_Source\PSoC4/UART_PM.c **** *******************************************************************************/
+  73:Generated_Source\PSoC4/UART_PM.c **** void UART_Sleep(void)
+  74:Generated_Source\PSoC4/UART_PM.c **** {
+ 219              		.loc 1 74 0
+ 220              		.cfi_startproc
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 15
+
+
+ 221              		@ args = 0, pretend = 0, frame = 0
+ 222              		@ frame_needed = 0, uses_anonymous_args = 0
+  75:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_UNCONFIG_CONST_CFG)
+  76:Generated_Source\PSoC4/UART_PM.c **** 
+  77:Generated_Source\PSoC4/UART_PM.c ****     if(UART_SCB_WAKE_ENABLE_CHECK)
+  78:Generated_Source\PSoC4/UART_PM.c ****     {
+  79:Generated_Source\PSoC4/UART_PM.c ****         if(UART_SCB_MODE_I2C_RUNTM_CFG)
+  80:Generated_Source\PSoC4/UART_PM.c ****         {
+  81:Generated_Source\PSoC4/UART_PM.c ****             UART_I2CSaveConfig();
+  82:Generated_Source\PSoC4/UART_PM.c ****         }
+  83:Generated_Source\PSoC4/UART_PM.c ****         else if(UART_SCB_MODE_EZI2C_RUNTM_CFG)
+  84:Generated_Source\PSoC4/UART_PM.c ****         {
+  85:Generated_Source\PSoC4/UART_PM.c ****             UART_EzI2CSaveConfig();
+  86:Generated_Source\PSoC4/UART_PM.c ****         }
+  87:Generated_Source\PSoC4/UART_PM.c ****     #if(!UART_CY_SCBIP_V1)
+  88:Generated_Source\PSoC4/UART_PM.c ****         else if(UART_SCB_MODE_SPI_RUNTM_CFG)
+  89:Generated_Source\PSoC4/UART_PM.c ****         {
+  90:Generated_Source\PSoC4/UART_PM.c ****             UART_SpiSaveConfig();
+  91:Generated_Source\PSoC4/UART_PM.c ****         }
+  92:Generated_Source\PSoC4/UART_PM.c ****         else if(UART_SCB_MODE_UART_RUNTM_CFG)
+  93:Generated_Source\PSoC4/UART_PM.c ****         {
+  94:Generated_Source\PSoC4/UART_PM.c ****             UART_UartSaveConfig();
+  95:Generated_Source\PSoC4/UART_PM.c ****         }
+  96:Generated_Source\PSoC4/UART_PM.c ****     #endif /* (!UART_CY_SCBIP_V1) */
+  97:Generated_Source\PSoC4/UART_PM.c ****         else
+  98:Generated_Source\PSoC4/UART_PM.c ****         {
+  99:Generated_Source\PSoC4/UART_PM.c ****             /* Unknown mode */
+ 100:Generated_Source\PSoC4/UART_PM.c ****         }
+ 101:Generated_Source\PSoC4/UART_PM.c ****     }
+ 102:Generated_Source\PSoC4/UART_PM.c ****     else
+ 103:Generated_Source\PSoC4/UART_PM.c ****     {
+ 104:Generated_Source\PSoC4/UART_PM.c ****         UART_backup.enableState = (uint8) UART_GET_CTRL_ENABLED;
+ 105:Generated_Source\PSoC4/UART_PM.c **** 
+ 106:Generated_Source\PSoC4/UART_PM.c ****         if(0u != UART_backup.enableState)
+ 107:Generated_Source\PSoC4/UART_PM.c ****         {
+ 108:Generated_Source\PSoC4/UART_PM.c ****             UART_Stop();
+ 109:Generated_Source\PSoC4/UART_PM.c ****         }
+ 110:Generated_Source\PSoC4/UART_PM.c ****     }
+ 111:Generated_Source\PSoC4/UART_PM.c **** 
+ 112:Generated_Source\PSoC4/UART_PM.c **** #else
+ 113:Generated_Source\PSoC4/UART_PM.c **** 
+ 114:Generated_Source\PSoC4/UART_PM.c ****     #if (UART_SCB_MODE_I2C_CONST_CFG && UART_I2C_WAKE_ENABLE_CONST)
+ 115:Generated_Source\PSoC4/UART_PM.c ****         UART_I2CSaveConfig();
+ 116:Generated_Source\PSoC4/UART_PM.c **** 
+ 117:Generated_Source\PSoC4/UART_PM.c ****     #elif (UART_SCB_MODE_EZI2C_CONST_CFG && UART_EZI2C_WAKE_ENABLE_CONST)
+ 118:Generated_Source\PSoC4/UART_PM.c ****         UART_EzI2CSaveConfig();
+ 119:Generated_Source\PSoC4/UART_PM.c **** 
+ 120:Generated_Source\PSoC4/UART_PM.c ****     #elif (UART_SCB_MODE_SPI_CONST_CFG && UART_SPI_WAKE_ENABLE_CONST)
+ 121:Generated_Source\PSoC4/UART_PM.c ****         UART_SpiSaveConfig();
+ 122:Generated_Source\PSoC4/UART_PM.c **** 
+ 123:Generated_Source\PSoC4/UART_PM.c ****     #elif (UART_SCB_MODE_UART_CONST_CFG && UART_UART_WAKE_ENABLE_CONST)
+ 124:Generated_Source\PSoC4/UART_PM.c ****         UART_UartSaveConfig();
+ 125:Generated_Source\PSoC4/UART_PM.c **** 
+ 126:Generated_Source\PSoC4/UART_PM.c ****     #else
+ 127:Generated_Source\PSoC4/UART_PM.c **** 
+ 128:Generated_Source\PSoC4/UART_PM.c ****         UART_backup.enableState = (uint8) UART_GET_CTRL_ENABLED;
+ 223              		.loc 1 128 0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 16
+
+
+ 224 0000 054B     		ldr	r3, .L4
+ 225 0002 064A     		ldr	r2, .L4+4
+ 226 0004 1B68     		ldr	r3, [r3]
+  74:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_UNCONFIG_CONST_CFG)
+ 227              		.loc 1 74 0
+ 228 0006 10B5     		push	{r4, lr}
+ 229              		.cfi_def_cfa_offset 8
+ 230              		.cfi_offset 4, -8
+ 231              		.cfi_offset 14, -4
+ 232              		.loc 1 128 0
+ 233 0008 D90F     		lsrs	r1, r3, #31
+ 234 000a 1170     		strb	r1, [r2]
+ 129:Generated_Source\PSoC4/UART_PM.c **** 
+ 130:Generated_Source\PSoC4/UART_PM.c ****         if(0u != UART_backup.enableState)
+ 235              		.loc 1 130 0
+ 236 000c 002B     		cmp	r3, #0
+ 237 000e 01DA     		bge	.L1
+ 131:Generated_Source\PSoC4/UART_PM.c ****         {
+ 132:Generated_Source\PSoC4/UART_PM.c ****             UART_Stop();
+ 238              		.loc 1 132 0
+ 239 0010 FFF7FEFF 		bl	UART_Stop
+ 240              	.LVL0:
+ 241              	.L1:
+ 133:Generated_Source\PSoC4/UART_PM.c ****         }
+ 134:Generated_Source\PSoC4/UART_PM.c **** 
+ 135:Generated_Source\PSoC4/UART_PM.c ****     #endif /* defined (UART_SCB_MODE_I2C_CONST_CFG) && (UART_I2C_WAKE_ENABLE_CONST) */
+ 136:Generated_Source\PSoC4/UART_PM.c **** 
+ 137:Generated_Source\PSoC4/UART_PM.c **** #endif /* (UART_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 138:Generated_Source\PSoC4/UART_PM.c **** }
+ 242              		.loc 1 138 0
+ 243              		@ sp needed
+ 244 0014 10BD     		pop	{r4, pc}
+ 245              	.L5:
+ 246 0016 C046     		.align	2
+ 247              	.L4:
+ 248 0018 00002440 		.word	1076101120
+ 249 001c 00000000 		.word	.LANCHOR0
+ 250              		.cfi_endproc
+ 251              	.LFE2:
+ 252              		.size	UART_Sleep, .-UART_Sleep
+ 253              		.section	.text.UART_Wakeup,"ax",%progbits
+ 254              		.align	2
+ 255              		.global	UART_Wakeup
+ 256              		.code	16
+ 257              		.thumb_func
+ 258              		.type	UART_Wakeup, %function
+ 259              	UART_Wakeup:
+ 260              	.LFB3:
+ 139:Generated_Source\PSoC4/UART_PM.c **** 
+ 140:Generated_Source\PSoC4/UART_PM.c **** 
+ 141:Generated_Source\PSoC4/UART_PM.c **** /*******************************************************************************
+ 142:Generated_Source\PSoC4/UART_PM.c **** * Function Name: UART_Wakeup
+ 143:Generated_Source\PSoC4/UART_PM.c **** ****************************************************************************//**
+ 144:Generated_Source\PSoC4/UART_PM.c **** *
+ 145:Generated_Source\PSoC4/UART_PM.c **** *  Prepares the UART component for Active mode operation after 
+ 146:Generated_Source\PSoC4/UART_PM.c **** *  Deep Sleep.
+ 147:Generated_Source\PSoC4/UART_PM.c **** *  The “Enable wakeup from Deep Sleep Mode” selection has influence on this 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 17
+
+
+ 148:Generated_Source\PSoC4/UART_PM.c **** *  function implementation:
+ 149:Generated_Source\PSoC4/UART_PM.c **** *  - Checked: restores the component Active mode configuration.
+ 150:Generated_Source\PSoC4/UART_PM.c **** *  - Unchecked: enables the component if it was enabled before enter Deep Sleep.
+ 151:Generated_Source\PSoC4/UART_PM.c **** *
+ 152:Generated_Source\PSoC4/UART_PM.c **** *  This function should not be called after exiting Sleep.
+ 153:Generated_Source\PSoC4/UART_PM.c **** *
+ 154:Generated_Source\PSoC4/UART_PM.c **** *  \sideeffect
+ 155:Generated_Source\PSoC4/UART_PM.c **** *   Calling the UART_Wakeup() function without first calling the 
+ 156:Generated_Source\PSoC4/UART_PM.c **** *   UART_Sleep() function may produce unexpected behavior.
+ 157:Generated_Source\PSoC4/UART_PM.c **** *
+ 158:Generated_Source\PSoC4/UART_PM.c **** *******************************************************************************/
+ 159:Generated_Source\PSoC4/UART_PM.c **** void UART_Wakeup(void)
+ 160:Generated_Source\PSoC4/UART_PM.c **** {
+ 261              		.loc 1 160 0
+ 262              		.cfi_startproc
+ 263              		@ args = 0, pretend = 0, frame = 0
+ 264              		@ frame_needed = 0, uses_anonymous_args = 0
+ 265 0000 10B5     		push	{r4, lr}
+ 266              		.cfi_def_cfa_offset 8
+ 267              		.cfi_offset 4, -8
+ 268              		.cfi_offset 14, -4
+ 161:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_UNCONFIG_CONST_CFG)
+ 162:Generated_Source\PSoC4/UART_PM.c **** 
+ 163:Generated_Source\PSoC4/UART_PM.c ****     if(UART_SCB_WAKE_ENABLE_CHECK)
+ 164:Generated_Source\PSoC4/UART_PM.c ****     {
+ 165:Generated_Source\PSoC4/UART_PM.c ****         if(UART_SCB_MODE_I2C_RUNTM_CFG)
+ 166:Generated_Source\PSoC4/UART_PM.c ****         {
+ 167:Generated_Source\PSoC4/UART_PM.c ****             UART_I2CRestoreConfig();
+ 168:Generated_Source\PSoC4/UART_PM.c ****         }
+ 169:Generated_Source\PSoC4/UART_PM.c ****         else if(UART_SCB_MODE_EZI2C_RUNTM_CFG)
+ 170:Generated_Source\PSoC4/UART_PM.c ****         {
+ 171:Generated_Source\PSoC4/UART_PM.c ****             UART_EzI2CRestoreConfig();
+ 172:Generated_Source\PSoC4/UART_PM.c ****         }
+ 173:Generated_Source\PSoC4/UART_PM.c ****     #if(!UART_CY_SCBIP_V1)
+ 174:Generated_Source\PSoC4/UART_PM.c ****         else if(UART_SCB_MODE_SPI_RUNTM_CFG)
+ 175:Generated_Source\PSoC4/UART_PM.c ****         {
+ 176:Generated_Source\PSoC4/UART_PM.c ****             UART_SpiRestoreConfig();
+ 177:Generated_Source\PSoC4/UART_PM.c ****         }
+ 178:Generated_Source\PSoC4/UART_PM.c ****         else if(UART_SCB_MODE_UART_RUNTM_CFG)
+ 179:Generated_Source\PSoC4/UART_PM.c ****         {
+ 180:Generated_Source\PSoC4/UART_PM.c ****             UART_UartRestoreConfig();
+ 181:Generated_Source\PSoC4/UART_PM.c ****         }
+ 182:Generated_Source\PSoC4/UART_PM.c ****     #endif /* (!UART_CY_SCBIP_V1) */
+ 183:Generated_Source\PSoC4/UART_PM.c ****         else
+ 184:Generated_Source\PSoC4/UART_PM.c ****         {
+ 185:Generated_Source\PSoC4/UART_PM.c ****             /* Unknown mode */
+ 186:Generated_Source\PSoC4/UART_PM.c ****         }
+ 187:Generated_Source\PSoC4/UART_PM.c ****     }
+ 188:Generated_Source\PSoC4/UART_PM.c ****     else
+ 189:Generated_Source\PSoC4/UART_PM.c ****     {
+ 190:Generated_Source\PSoC4/UART_PM.c ****         if(0u != UART_backup.enableState)
+ 191:Generated_Source\PSoC4/UART_PM.c ****         {
+ 192:Generated_Source\PSoC4/UART_PM.c ****             UART_Enable();
+ 193:Generated_Source\PSoC4/UART_PM.c ****         }
+ 194:Generated_Source\PSoC4/UART_PM.c ****     }
+ 195:Generated_Source\PSoC4/UART_PM.c **** 
+ 196:Generated_Source\PSoC4/UART_PM.c **** #else
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 18
+
+
+ 197:Generated_Source\PSoC4/UART_PM.c **** 
+ 198:Generated_Source\PSoC4/UART_PM.c ****     #if (UART_SCB_MODE_I2C_CONST_CFG  && UART_I2C_WAKE_ENABLE_CONST)
+ 199:Generated_Source\PSoC4/UART_PM.c ****         UART_I2CRestoreConfig();
+ 200:Generated_Source\PSoC4/UART_PM.c **** 
+ 201:Generated_Source\PSoC4/UART_PM.c ****     #elif (UART_SCB_MODE_EZI2C_CONST_CFG && UART_EZI2C_WAKE_ENABLE_CONST)
+ 202:Generated_Source\PSoC4/UART_PM.c ****         UART_EzI2CRestoreConfig();
+ 203:Generated_Source\PSoC4/UART_PM.c **** 
+ 204:Generated_Source\PSoC4/UART_PM.c ****     #elif (UART_SCB_MODE_SPI_CONST_CFG && UART_SPI_WAKE_ENABLE_CONST)
+ 205:Generated_Source\PSoC4/UART_PM.c ****         UART_SpiRestoreConfig();
+ 206:Generated_Source\PSoC4/UART_PM.c **** 
+ 207:Generated_Source\PSoC4/UART_PM.c ****     #elif (UART_SCB_MODE_UART_CONST_CFG && UART_UART_WAKE_ENABLE_CONST)
+ 208:Generated_Source\PSoC4/UART_PM.c ****         UART_UartRestoreConfig();
+ 209:Generated_Source\PSoC4/UART_PM.c **** 
+ 210:Generated_Source\PSoC4/UART_PM.c ****     #else
+ 211:Generated_Source\PSoC4/UART_PM.c **** 
+ 212:Generated_Source\PSoC4/UART_PM.c ****         if(0u != UART_backup.enableState)
+ 269              		.loc 1 212 0
+ 270 0002 034B     		ldr	r3, .L11
+ 271 0004 1B78     		ldrb	r3, [r3]
+ 272 0006 002B     		cmp	r3, #0
+ 273 0008 01D0     		beq	.L6
+ 213:Generated_Source\PSoC4/UART_PM.c ****         {
+ 214:Generated_Source\PSoC4/UART_PM.c ****             UART_Enable();
+ 274              		.loc 1 214 0
+ 275 000a FFF7FEFF 		bl	UART_Enable
+ 276              	.LVL1:
+ 277              	.L6:
+ 215:Generated_Source\PSoC4/UART_PM.c ****         }
+ 216:Generated_Source\PSoC4/UART_PM.c **** 
+ 217:Generated_Source\PSoC4/UART_PM.c ****     #endif /* (UART_I2C_WAKE_ENABLE_CONST) */
+ 218:Generated_Source\PSoC4/UART_PM.c **** 
+ 219:Generated_Source\PSoC4/UART_PM.c **** #endif /* (UART_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 220:Generated_Source\PSoC4/UART_PM.c **** }
+ 278              		.loc 1 220 0
+ 279              		@ sp needed
+ 280 000e 10BD     		pop	{r4, pc}
+ 281              	.L12:
+ 282              		.align	2
+ 283              	.L11:
+ 284 0010 00000000 		.word	.LANCHOR0
+ 285              		.cfi_endproc
+ 286              	.LFE3:
+ 287              		.size	UART_Wakeup, .-UART_Wakeup
+ 288              		.global	UART_backup
+ 289              		.bss
+ 290              		.align	2
+ 291              		.set	.LANCHOR0,. + 0
+ 292              		.type	UART_backup, %object
+ 293              		.size	UART_backup, 1
+ 294              	UART_backup:
+ 295 0000 00       		.space	1
+ 296              		.text
+ 297              	.Letext0:
+ 298              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 299              		.file 3 "Generated_Source\\PSoC4\\UART.h"
+ 300              		.section	.debug_info,"",%progbits
+ 301              	.Ldebug_info0:
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 19
+
+
+ 302 0000 39010000 		.4byte	0x139
+ 303 0004 0400     		.2byte	0x4
+ 304 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 305 000a 04       		.byte	0x4
+ 306 000b 01       		.uleb128 0x1
+ 307 000c 38000000 		.4byte	.LASF22
+ 308 0010 0C       		.byte	0xc
+ 309 0011 9D010000 		.4byte	.LASF23
+ 310 0015 20010000 		.4byte	.LASF24
+ 311 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 312 001d 00000000 		.4byte	0
+ 313 0021 00000000 		.4byte	.Ldebug_line0
+ 314 0025 02       		.uleb128 0x2
+ 315 0026 01       		.byte	0x1
+ 316 0027 06       		.byte	0x6
+ 317 0028 06020000 		.4byte	.LASF0
+ 318 002c 02       		.uleb128 0x2
+ 319 002d 01       		.byte	0x1
+ 320 002e 08       		.byte	0x8
+ 321 002f 8A010000 		.4byte	.LASF1
+ 322 0033 02       		.uleb128 0x2
+ 323 0034 02       		.byte	0x2
+ 324 0035 05       		.byte	0x5
+ 325 0036 1E020000 		.4byte	.LASF2
+ 326 003a 02       		.uleb128 0x2
+ 327 003b 02       		.byte	0x2
+ 328 003c 07       		.byte	0x7
+ 329 003d F3010000 		.4byte	.LASF3
+ 330 0041 02       		.uleb128 0x2
+ 331 0042 04       		.byte	0x4
+ 332 0043 05       		.byte	0x5
+ 333 0044 E4010000 		.4byte	.LASF4
+ 334 0048 02       		.uleb128 0x2
+ 335 0049 04       		.byte	0x4
+ 336 004a 07       		.byte	0x7
+ 337 004b E5000000 		.4byte	.LASF5
+ 338 004f 02       		.uleb128 0x2
+ 339 0050 08       		.byte	0x8
+ 340 0051 05       		.byte	0x5
+ 341 0052 00000000 		.4byte	.LASF6
+ 342 0056 02       		.uleb128 0x2
+ 343 0057 08       		.byte	0x8
+ 344 0058 07       		.byte	0x7
+ 345 0059 F7000000 		.4byte	.LASF7
+ 346 005d 03       		.uleb128 0x3
+ 347 005e 04       		.byte	0x4
+ 348 005f 05       		.byte	0x5
+ 349 0060 696E7400 		.ascii	"int\000"
+ 350 0064 02       		.uleb128 0x2
+ 351 0065 04       		.byte	0x4
+ 352 0066 07       		.byte	0x7
+ 353 0067 21000000 		.4byte	.LASF8
+ 354 006b 04       		.uleb128 0x4
+ 355 006c DF000000 		.4byte	.LASF9
+ 356 0070 02       		.byte	0x2
+ 357 0071 D201     		.2byte	0x1d2
+ 358 0073 2C000000 		.4byte	0x2c
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 20
+
+
+ 359 0077 04       		.uleb128 0x4
+ 360 0078 0E000000 		.4byte	.LASF10
+ 361 007c 02       		.byte	0x2
+ 362 007d D401     		.2byte	0x1d4
+ 363 007f 48000000 		.4byte	0x48
+ 364 0083 02       		.uleb128 0x2
+ 365 0084 04       		.byte	0x4
+ 366 0085 04       		.byte	0x4
+ 367 0086 1A010000 		.4byte	.LASF11
+ 368 008a 02       		.uleb128 0x2
+ 369 008b 08       		.byte	0x8
+ 370 008c 04       		.byte	0x4
+ 371 008d DD010000 		.4byte	.LASF12
+ 372 0091 02       		.uleb128 0x2
+ 373 0092 01       		.byte	0x1
+ 374 0093 08       		.byte	0x8
+ 375 0094 98010000 		.4byte	.LASF13
+ 376 0098 04       		.uleb128 0x4
+ 377 0099 ED010000 		.4byte	.LASF14
+ 378 009d 02       		.byte	0x2
+ 379 009e 7E02     		.2byte	0x27e
+ 380 00a0 A4000000 		.4byte	0xa4
+ 381 00a4 05       		.uleb128 0x5
+ 382 00a5 77000000 		.4byte	0x77
+ 383 00a9 02       		.uleb128 0x2
+ 384 00aa 08       		.byte	0x8
+ 385 00ab 04       		.byte	0x4
+ 386 00ac 12020000 		.4byte	.LASF15
+ 387 00b0 02       		.uleb128 0x2
+ 388 00b1 04       		.byte	0x4
+ 389 00b2 07       		.byte	0x7
+ 390 00b3 28020000 		.4byte	.LASF16
+ 391 00b7 06       		.uleb128 0x6
+ 392 00b8 01       		.byte	0x1
+ 393 00b9 03       		.byte	0x3
+ 394 00ba 60       		.byte	0x60
+ 395 00bb CC000000 		.4byte	0xcc
+ 396 00bf 07       		.uleb128 0x7
+ 397 00c0 D1010000 		.4byte	.LASF25
+ 398 00c4 03       		.byte	0x3
+ 399 00c5 62       		.byte	0x62
+ 400 00c6 6B000000 		.4byte	0x6b
+ 401 00ca 00       		.byte	0
+ 402 00cb 00       		.byte	0
+ 403 00cc 08       		.uleb128 0x8
+ 404 00cd BE010000 		.4byte	.LASF17
+ 405 00d1 03       		.byte	0x3
+ 406 00d2 63       		.byte	0x63
+ 407 00d3 B7000000 		.4byte	0xb7
+ 408 00d7 09       		.uleb128 0x9
+ 409 00d8 31020000 		.4byte	.LASF18
+ 410 00dc 01       		.byte	0x1
+ 411 00dd 49       		.byte	0x49
+ 412 00de 00000000 		.4byte	.LFB2
+ 413 00e2 20000000 		.4byte	.LFE2-.LFB2
+ 414 00e6 01       		.uleb128 0x1
+ 415 00e7 9C       		.byte	0x9c
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 21
+
+
+ 416 00e8 F6000000 		.4byte	0xf6
+ 417 00ec 0A       		.uleb128 0xa
+ 418 00ed 14000000 		.4byte	.LVL0
+ 419 00f1 26010000 		.4byte	0x126
+ 420 00f5 00       		.byte	0
+ 421 00f6 09       		.uleb128 0x9
+ 422 00f7 0E010000 		.4byte	.LASF19
+ 423 00fb 01       		.byte	0x1
+ 424 00fc 9F       		.byte	0x9f
+ 425 00fd 00000000 		.4byte	.LFB3
+ 426 0101 14000000 		.4byte	.LFE3-.LFB3
+ 427 0105 01       		.uleb128 0x1
+ 428 0106 9C       		.byte	0x9c
+ 429 0107 15010000 		.4byte	0x115
+ 430 010b 0A       		.uleb128 0xa
+ 431 010c 0E000000 		.4byte	.LVL1
+ 432 0110 31010000 		.4byte	0x131
+ 433 0114 00       		.byte	0
+ 434 0115 0B       		.uleb128 0xb
+ 435 0116 15000000 		.4byte	.LASF26
+ 436 011a 01       		.byte	0x1
+ 437 011b 2D       		.byte	0x2d
+ 438 011c CC000000 		.4byte	0xcc
+ 439 0120 05       		.uleb128 0x5
+ 440 0121 03       		.byte	0x3
+ 441 0122 00000000 		.4byte	UART_backup
+ 442 0126 0C       		.uleb128 0xc
+ 443 0127 2E000000 		.4byte	.LASF20
+ 444 012b 2E000000 		.4byte	.LASF20
+ 445 012f 03       		.byte	0x3
+ 446 0130 73       		.byte	0x73
+ 447 0131 0C       		.uleb128 0xc
+ 448 0132 7E010000 		.4byte	.LASF21
+ 449 0136 7E010000 		.4byte	.LASF21
+ 450 013a 03       		.byte	0x3
+ 451 013b 71       		.byte	0x71
+ 452 013c 00       		.byte	0
+ 453              		.section	.debug_abbrev,"",%progbits
+ 454              	.Ldebug_abbrev0:
+ 455 0000 01       		.uleb128 0x1
+ 456 0001 11       		.uleb128 0x11
+ 457 0002 01       		.byte	0x1
+ 458 0003 25       		.uleb128 0x25
+ 459 0004 0E       		.uleb128 0xe
+ 460 0005 13       		.uleb128 0x13
+ 461 0006 0B       		.uleb128 0xb
+ 462 0007 03       		.uleb128 0x3
+ 463 0008 0E       		.uleb128 0xe
+ 464 0009 1B       		.uleb128 0x1b
+ 465 000a 0E       		.uleb128 0xe
+ 466 000b 55       		.uleb128 0x55
+ 467 000c 17       		.uleb128 0x17
+ 468 000d 11       		.uleb128 0x11
+ 469 000e 01       		.uleb128 0x1
+ 470 000f 10       		.uleb128 0x10
+ 471 0010 17       		.uleb128 0x17
+ 472 0011 00       		.byte	0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 22
+
+
+ 473 0012 00       		.byte	0
+ 474 0013 02       		.uleb128 0x2
+ 475 0014 24       		.uleb128 0x24
+ 476 0015 00       		.byte	0
+ 477 0016 0B       		.uleb128 0xb
+ 478 0017 0B       		.uleb128 0xb
+ 479 0018 3E       		.uleb128 0x3e
+ 480 0019 0B       		.uleb128 0xb
+ 481 001a 03       		.uleb128 0x3
+ 482 001b 0E       		.uleb128 0xe
+ 483 001c 00       		.byte	0
+ 484 001d 00       		.byte	0
+ 485 001e 03       		.uleb128 0x3
+ 486 001f 24       		.uleb128 0x24
+ 487 0020 00       		.byte	0
+ 488 0021 0B       		.uleb128 0xb
+ 489 0022 0B       		.uleb128 0xb
+ 490 0023 3E       		.uleb128 0x3e
+ 491 0024 0B       		.uleb128 0xb
+ 492 0025 03       		.uleb128 0x3
+ 493 0026 08       		.uleb128 0x8
+ 494 0027 00       		.byte	0
+ 495 0028 00       		.byte	0
+ 496 0029 04       		.uleb128 0x4
+ 497 002a 16       		.uleb128 0x16
+ 498 002b 00       		.byte	0
+ 499 002c 03       		.uleb128 0x3
+ 500 002d 0E       		.uleb128 0xe
+ 501 002e 3A       		.uleb128 0x3a
+ 502 002f 0B       		.uleb128 0xb
+ 503 0030 3B       		.uleb128 0x3b
+ 504 0031 05       		.uleb128 0x5
+ 505 0032 49       		.uleb128 0x49
+ 506 0033 13       		.uleb128 0x13
+ 507 0034 00       		.byte	0
+ 508 0035 00       		.byte	0
+ 509 0036 05       		.uleb128 0x5
+ 510 0037 35       		.uleb128 0x35
+ 511 0038 00       		.byte	0
+ 512 0039 49       		.uleb128 0x49
+ 513 003a 13       		.uleb128 0x13
+ 514 003b 00       		.byte	0
+ 515 003c 00       		.byte	0
+ 516 003d 06       		.uleb128 0x6
+ 517 003e 13       		.uleb128 0x13
+ 518 003f 01       		.byte	0x1
+ 519 0040 0B       		.uleb128 0xb
+ 520 0041 0B       		.uleb128 0xb
+ 521 0042 3A       		.uleb128 0x3a
+ 522 0043 0B       		.uleb128 0xb
+ 523 0044 3B       		.uleb128 0x3b
+ 524 0045 0B       		.uleb128 0xb
+ 525 0046 01       		.uleb128 0x1
+ 526 0047 13       		.uleb128 0x13
+ 527 0048 00       		.byte	0
+ 528 0049 00       		.byte	0
+ 529 004a 07       		.uleb128 0x7
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 23
+
+
+ 530 004b 0D       		.uleb128 0xd
+ 531 004c 00       		.byte	0
+ 532 004d 03       		.uleb128 0x3
+ 533 004e 0E       		.uleb128 0xe
+ 534 004f 3A       		.uleb128 0x3a
+ 535 0050 0B       		.uleb128 0xb
+ 536 0051 3B       		.uleb128 0x3b
+ 537 0052 0B       		.uleb128 0xb
+ 538 0053 49       		.uleb128 0x49
+ 539 0054 13       		.uleb128 0x13
+ 540 0055 38       		.uleb128 0x38
+ 541 0056 0B       		.uleb128 0xb
+ 542 0057 00       		.byte	0
+ 543 0058 00       		.byte	0
+ 544 0059 08       		.uleb128 0x8
+ 545 005a 16       		.uleb128 0x16
+ 546 005b 00       		.byte	0
+ 547 005c 03       		.uleb128 0x3
+ 548 005d 0E       		.uleb128 0xe
+ 549 005e 3A       		.uleb128 0x3a
+ 550 005f 0B       		.uleb128 0xb
+ 551 0060 3B       		.uleb128 0x3b
+ 552 0061 0B       		.uleb128 0xb
+ 553 0062 49       		.uleb128 0x49
+ 554 0063 13       		.uleb128 0x13
+ 555 0064 00       		.byte	0
+ 556 0065 00       		.byte	0
+ 557 0066 09       		.uleb128 0x9
+ 558 0067 2E       		.uleb128 0x2e
+ 559 0068 01       		.byte	0x1
+ 560 0069 3F       		.uleb128 0x3f
+ 561 006a 19       		.uleb128 0x19
+ 562 006b 03       		.uleb128 0x3
+ 563 006c 0E       		.uleb128 0xe
+ 564 006d 3A       		.uleb128 0x3a
+ 565 006e 0B       		.uleb128 0xb
+ 566 006f 3B       		.uleb128 0x3b
+ 567 0070 0B       		.uleb128 0xb
+ 568 0071 27       		.uleb128 0x27
+ 569 0072 19       		.uleb128 0x19
+ 570 0073 11       		.uleb128 0x11
+ 571 0074 01       		.uleb128 0x1
+ 572 0075 12       		.uleb128 0x12
+ 573 0076 06       		.uleb128 0x6
+ 574 0077 40       		.uleb128 0x40
+ 575 0078 18       		.uleb128 0x18
+ 576 0079 9742     		.uleb128 0x2117
+ 577 007b 19       		.uleb128 0x19
+ 578 007c 01       		.uleb128 0x1
+ 579 007d 13       		.uleb128 0x13
+ 580 007e 00       		.byte	0
+ 581 007f 00       		.byte	0
+ 582 0080 0A       		.uleb128 0xa
+ 583 0081 898201   		.uleb128 0x4109
+ 584 0084 00       		.byte	0
+ 585 0085 11       		.uleb128 0x11
+ 586 0086 01       		.uleb128 0x1
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 24
+
+
+ 587 0087 31       		.uleb128 0x31
+ 588 0088 13       		.uleb128 0x13
+ 589 0089 00       		.byte	0
+ 590 008a 00       		.byte	0
+ 591 008b 0B       		.uleb128 0xb
+ 592 008c 34       		.uleb128 0x34
+ 593 008d 00       		.byte	0
+ 594 008e 03       		.uleb128 0x3
+ 595 008f 0E       		.uleb128 0xe
+ 596 0090 3A       		.uleb128 0x3a
+ 597 0091 0B       		.uleb128 0xb
+ 598 0092 3B       		.uleb128 0x3b
+ 599 0093 0B       		.uleb128 0xb
+ 600 0094 49       		.uleb128 0x49
+ 601 0095 13       		.uleb128 0x13
+ 602 0096 3F       		.uleb128 0x3f
+ 603 0097 19       		.uleb128 0x19
+ 604 0098 02       		.uleb128 0x2
+ 605 0099 18       		.uleb128 0x18
+ 606 009a 00       		.byte	0
+ 607 009b 00       		.byte	0
+ 608 009c 0C       		.uleb128 0xc
+ 609 009d 2E       		.uleb128 0x2e
+ 610 009e 00       		.byte	0
+ 611 009f 3F       		.uleb128 0x3f
+ 612 00a0 19       		.uleb128 0x19
+ 613 00a1 3C       		.uleb128 0x3c
+ 614 00a2 19       		.uleb128 0x19
+ 615 00a3 6E       		.uleb128 0x6e
+ 616 00a4 0E       		.uleb128 0xe
+ 617 00a5 03       		.uleb128 0x3
+ 618 00a6 0E       		.uleb128 0xe
+ 619 00a7 3A       		.uleb128 0x3a
+ 620 00a8 0B       		.uleb128 0xb
+ 621 00a9 3B       		.uleb128 0x3b
+ 622 00aa 0B       		.uleb128 0xb
+ 623 00ab 00       		.byte	0
+ 624 00ac 00       		.byte	0
+ 625 00ad 00       		.byte	0
+ 626              		.section	.debug_aranges,"",%progbits
+ 627 0000 24000000 		.4byte	0x24
+ 628 0004 0200     		.2byte	0x2
+ 629 0006 00000000 		.4byte	.Ldebug_info0
+ 630 000a 04       		.byte	0x4
+ 631 000b 00       		.byte	0
+ 632 000c 0000     		.2byte	0
+ 633 000e 0000     		.2byte	0
+ 634 0010 00000000 		.4byte	.LFB2
+ 635 0014 20000000 		.4byte	.LFE2-.LFB2
+ 636 0018 00000000 		.4byte	.LFB3
+ 637 001c 14000000 		.4byte	.LFE3-.LFB3
+ 638 0020 00000000 		.4byte	0
+ 639 0024 00000000 		.4byte	0
+ 640              		.section	.debug_ranges,"",%progbits
+ 641              	.Ldebug_ranges0:
+ 642 0000 00000000 		.4byte	.LFB2
+ 643 0004 20000000 		.4byte	.LFE2
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 25
+
+
+ 644 0008 00000000 		.4byte	.LFB3
+ 645 000c 14000000 		.4byte	.LFE3
+ 646 0010 00000000 		.4byte	0
+ 647 0014 00000000 		.4byte	0
+ 648              		.section	.debug_line,"",%progbits
+ 649              	.Ldebug_line0:
+ 650 0000 85000000 		.section	.debug_str,"MS",%progbits,1
+ 650      02004E00 
+ 650      00000201 
+ 650      FB0E0D00 
+ 650      01010101 
+ 651              	.LASF6:
+ 652 0000 6C6F6E67 		.ascii	"long long int\000"
+ 652      206C6F6E 
+ 652      6720696E 
+ 652      7400
+ 653              	.LASF10:
+ 654 000e 75696E74 		.ascii	"uint32\000"
+ 654      333200
+ 655              	.LASF26:
+ 656 0015 55415254 		.ascii	"UART_backup\000"
+ 656      5F626163 
+ 656      6B757000 
+ 657              	.LASF8:
+ 658 0021 756E7369 		.ascii	"unsigned int\000"
+ 658      676E6564 
+ 658      20696E74 
+ 658      00
+ 659              	.LASF20:
+ 660 002e 55415254 		.ascii	"UART_Stop\000"
+ 660      5F53746F 
+ 660      7000
+ 661              	.LASF22:
+ 662 0038 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 662      43313120 
+ 662      352E342E 
+ 662      31203230 
+ 662      31363036 
+ 663 006b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 663      20726576 
+ 663      6973696F 
+ 663      6E203233 
+ 663      37373135 
+ 664 009e 33202D66 		.ascii	"3 -ffunction-sections -ffat-lto-objects -finline-fu"
+ 664      66756E63 
+ 664      74696F6E 
+ 664      2D736563 
+ 664      74696F6E 
+ 665 00d1 6E637469 		.ascii	"nctions -flto\000"
+ 665      6F6E7320 
+ 665      2D666C74 
+ 665      6F00
+ 666              	.LASF9:
+ 667 00df 75696E74 		.ascii	"uint8\000"
+ 667      3800
+ 668              	.LASF5:
+ 669 00e5 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 26
+
+
+ 669      20756E73 
+ 669      69676E65 
+ 669      6420696E 
+ 669      7400
+ 670              	.LASF7:
+ 671 00f7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 671      206C6F6E 
+ 671      6720756E 
+ 671      7369676E 
+ 671      65642069 
+ 672              	.LASF19:
+ 673 010e 55415254 		.ascii	"UART_Wakeup\000"
+ 673      5F57616B 
+ 673      65757000 
+ 674              	.LASF11:
+ 675 011a 666C6F61 		.ascii	"float\000"
+ 675      7400
+ 676              	.LASF24:
+ 677 0120 433A5C55 		.ascii	"C:\\Users\\Daniela\\Desktop\\Bluetooth_Project\\Thr"
+ 677      73657273 
+ 677      5C44616E 
+ 677      69656C61 
+ 677      5C446573 
+ 678 014e 6F756768 		.ascii	"oughput\\GATT Notification - Data Outgoing.cydsn\000"
+ 678      7075745C 
+ 678      47415454 
+ 678      204E6F74 
+ 678      69666963 
+ 679              	.LASF21:
+ 680 017e 55415254 		.ascii	"UART_Enable\000"
+ 680      5F456E61 
+ 680      626C6500 
+ 681              	.LASF1:
+ 682 018a 756E7369 		.ascii	"unsigned char\000"
+ 682      676E6564 
+ 682      20636861 
+ 682      7200
+ 683              	.LASF13:
+ 684 0198 63686172 		.ascii	"char\000"
+ 684      00
+ 685              	.LASF23:
+ 686 019d 47656E65 		.ascii	"Generated_Source\\PSoC4\\UART_PM.c\000"
+ 686      72617465 
+ 686      645F536F 
+ 686      75726365 
+ 686      5C50536F 
+ 687              	.LASF17:
+ 688 01be 55415254 		.ascii	"UART_BACKUP_STRUCT\000"
+ 688      5F424143 
+ 688      4B55505F 
+ 688      53545255 
+ 688      435400
+ 689              	.LASF25:
+ 690 01d1 656E6162 		.ascii	"enableState\000"
+ 690      6C655374 
+ 690      61746500 
+ 691              	.LASF12:
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\ccxZcYNI.s 			page 27
+
+
+ 692 01dd 646F7562 		.ascii	"double\000"
+ 692      6C6500
+ 693              	.LASF4:
+ 694 01e4 6C6F6E67 		.ascii	"long int\000"
+ 694      20696E74 
+ 694      00
+ 695              	.LASF14:
+ 696 01ed 72656733 		.ascii	"reg32\000"
+ 696      3200
+ 697              	.LASF3:
+ 698 01f3 73686F72 		.ascii	"short unsigned int\000"
+ 698      7420756E 
+ 698      7369676E 
+ 698      65642069 
+ 698      6E7400
+ 699              	.LASF0:
+ 700 0206 7369676E 		.ascii	"signed char\000"
+ 700      65642063 
+ 700      68617200 
+ 701              	.LASF15:
+ 702 0212 6C6F6E67 		.ascii	"long double\000"
+ 702      20646F75 
+ 702      626C6500 
+ 703              	.LASF2:
+ 704 021e 73686F72 		.ascii	"short int\000"
+ 704      7420696E 
+ 704      7400
+ 705              	.LASF16:
+ 706 0228 73697A65 		.ascii	"sizetype\000"
+ 706      74797065 
+ 706      00
+ 707              	.LASF18:
+ 708 0231 55415254 		.ascii	"UART_Sleep\000"
+ 708      5F536C65 
+ 708      657000
+ 709              		.comm	__gnu_lto_v1,1,1
+ 710              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
