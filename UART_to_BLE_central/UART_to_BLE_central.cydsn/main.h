@@ -32,19 +32,20 @@
     /************APP BLE*****************/
     volatile static bool peerDeviceFound         = false;
     volatile static bool notificationEnabled     = false;
-    static INFO_EXCHANGE_STATE_T    infoExchangeState   = INFO_EXCHANGE_START;
-    static CYBLE_GAP_BD_ADDR_T      peerAddr;           /* BD address of the peer device */
-    static INFO_EXCHANGE_STATE_T    infoExchangeState   = INFO_EXCHANGE_START;
+
 
     CYBLE_GATT_ATTR_HANDLE_RANGE_T  attrHandleRange;
     CYBLE_GATTC_FIND_INFO_REQ_T     charDescHandleRange;
     /***************************************
     *       Function Prototypes
     ***************************************/
-    void AppCallBack(uint32 , void *);  
+    //void AppCallBack(uint32 , void *);  
     void stopBLE();
     void startBLE();
     void start();
+    //void HandleBleProcessing(void);
+   // void enableNotifications();
+    void AppCallBack(uint32 event, void *eventParam);
 #endif
 
 /* [] END OF FILE */

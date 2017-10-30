@@ -14,7 +14,7 @@
 #include "app_UART.h"
 
 /*******************************************************************************
-* Function Name: HandleUartRxTraffic
+*                        Function Name: HandleUartRxTraffic
 ********************************************************************************
 *
 * Summary:
@@ -37,7 +37,6 @@ void HandleUartRxTraffic(CYBLE_GATTC_HANDLE_VALUE_NTF_PARAM_T *uartRxDataNotific
             (uint32) uartRxDataNotification->handleValPair.value.len);
     }
 }
-
 
 /*******************************************************************************
 * Function Name: HandleUartTxTraffic
