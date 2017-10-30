@@ -1,0 +1,2311 @@
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"app_Ble.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.comm	bleApiResult,2,2
+  20              		.comm	count,4,4
+  21              		.comm	mode,1,1
+  22              		.global	mtuSize
+  23              		.data
+  24              		.align	1
+  25              		.type	mtuSize, %object
+  26              		.size	mtuSize, 2
+  27              	mtuSize:
+  28 0000 1700     		.short	23
+  29              		.comm	cyBle_last_state,1,1
+  30              		.section	.rodata
+  31              		.align	2
+  32              	.LC3:
+  33 0000 0A0D2043 		.ascii	"\012\015 CYBLE_STATE_ADVERTISING \012\015 \000"
+  33      59424C45 
+  33      5F535441 
+  33      54455F41 
+  33      44564552 
+  34 001f 00       		.align	2
+  35              	.LC5:
+  36 0020 0A0D2043 		.ascii	"\012\015 CYBLE_STATE_CONNECTED \012\015 \000"
+  36      59424C45 
+  36      5F535441 
+  36      54455F43 
+  36      4F4E4E45 
+  37 003d 000000   		.align	2
+  38              	.LC9:
+  39 0040 0A0D2043 		.ascii	"\012\015 CYBLE_STATE_DISCONNECTED \012\015 \000"
+  39      59424C45 
+  39      5F535441 
+  39      54455F44 
+  39      4953434F 
+  40              		.align	2
+  41              	.LC11:
+  42 0060 0A0D2043 		.ascii	"\012\015 CYBLE_STATE_INITIALIZING \012\015 \000"
+  42      59424C45 
+  42      5F535441 
+  42      54455F49 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 2
+
+
+  42      4E495449 
+  43              		.align	2
+  44              	.LC13:
+  45 0080 0A0D2043 		.ascii	"\012\015 CYBLE_STATE_STOPPED \012\015 \000"
+  45      59424C45 
+  45      5F535441 
+  45      54455F53 
+  45      544F5050 
+  46              		.section	.text.HandleBleProcessing,"ax",%progbits
+  47              		.align	2
+  48              		.global	HandleBleProcessing
+  49              		.code	16
+  50              		.thumb_func
+  51              		.type	HandleBleProcessing, %function
+  52              	HandleBleProcessing:
+  53              	.LFB35:
+  54              		.file 1 "app_Ble.c"
+   1:app_Ble.c     **** /*******************************************************************************
+   2:app_Ble.c     **** * File Name: app_Ble.c
+   3:app_Ble.c     **** *
+   4:app_Ble.c     **** * Description:
+   5:app_Ble.c     **** *  Common BLE application code for client devices.
+   6:app_Ble.c     **** *
+   7:app_Ble.c     **** *******************************************************************************
+   8:app_Ble.c     **** * Copyright 2015, Cypress Semiconductor Corporation.  All rights reserved.
+   9:app_Ble.c     **** * You may use this file only in accordance with the license, terms, conditions,
+  10:app_Ble.c     **** * disclaimers, and limitations in the end user license agreement accompanying
+  11:app_Ble.c     **** * the software package with which this file was provided.
+  12:app_Ble.c     **** *******************************************************************************/
+  13:app_Ble.c     **** 
+  14:app_Ble.c     **** #include "app_ble.h"
+  15:app_Ble.c     **** 
+  16:app_Ble.c     **** /* MTU size to be used by Client and Server after MTU exchange */
+  17:app_Ble.c     **** uint16 mtuSize      = CYBLE_GATT_MTU;   
+  18:app_Ble.c     **** 
+  19:app_Ble.c     **** 
+  20:app_Ble.c     **** /*******************************************************************************
+  21:app_Ble.c     **** * Function Name: HandleBleProcessing
+  22:app_Ble.c     **** ********************************************************************************
+  23:app_Ble.c     **** *
+  24:app_Ble.c     **** * Summary:
+  25:app_Ble.c     **** *   Handles the BLE state machine for intiating different procedures
+  26:app_Ble.c     **** *   during different states of BLESS.
+  27:app_Ble.c     **** *
+  28:app_Ble.c     **** * Parameters:
+  29:app_Ble.c     **** *   None.
+  30:app_Ble.c     **** *
+  31:app_Ble.c     **** * Return:
+  32:app_Ble.c     **** *   None.
+  33:app_Ble.c     **** *
+  34:app_Ble.c     **** *******************************************************************************/
+  35:app_Ble.c     **** 
+  36:app_Ble.c     **** CYBLE_STATE_T cyBle_last_state;
+  37:app_Ble.c     **** 
+  38:app_Ble.c     **** void HandleBleProcessing(void)
+  39:app_Ble.c     **** {    
+  55              		.loc 1 39 0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 3
+
+
+  56              		.cfi_startproc
+  57              		@ args = 0, pretend = 0, frame = 16
+  58              		@ frame_needed = 1, uses_anonymous_args = 0
+  59 0000 80B5     		push	{r7, lr}
+  60              		.cfi_def_cfa_offset 8
+  61              		.cfi_offset 7, -8
+  62              		.cfi_offset 14, -4
+  63 0002 84B0     		sub	sp, sp, #16
+  64              		.cfi_def_cfa_offset 24
+  65 0004 00AF     		add	r7, sp, #0
+  66              		.cfi_def_cfa_register 7
+  40:app_Ble.c     ****     uint8 txDataClientConfigDesc[2];
+  41:app_Ble.c     ****    
+  42:app_Ble.c     ****     CYBLE_GATT_HANDLE_VALUE_PAIR_T  attrValue = { 
+  67              		.loc 1 42 0
+  68 0006 3B00     		movs	r3, r7
+  69 0008 0C22     		movs	r2, #12
+  70 000a BA18     		adds	r2, r7, r2
+  71 000c 1A60     		str	r2, [r3]
+  72 000e 3B00     		movs	r3, r7
+  73 0010 0222     		movs	r2, #2
+  74 0012 9A80     		strh	r2, [r3, #4]
+  75 0014 3B00     		movs	r3, r7
+  76 0016 0222     		movs	r2, #2
+  77 0018 DA80     		strh	r2, [r3, #6]
+  78 001a 3B00     		movs	r3, r7
+  79 001c 0F22     		movs	r2, #15
+  80 001e 1A81     		strh	r2, [r3, #8]
+  43:app_Ble.c     ****                                                     {(uint8 *)txDataClientConfigDesc, 2, 2}, 
+  44:app_Ble.c     ****                                                     CYBLE_SERVER_UART_SERVER_UART_TX_DATA_CLIENT_CH
+  45:app_Ble.c     ****                                                 };
+  46:app_Ble.c     ****     switch (cyBle_state)
+  81              		.loc 1 46 0
+  82 0020 364B     		ldr	r3, .L21
+  83 0022 1B78     		ldrb	r3, [r3]
+  84 0024 042B     		cmp	r3, #4
+  85 0026 58D8     		bhi	.L16
+  86 0028 9A00     		lsls	r2, r3, #2
+  87 002a 354B     		ldr	r3, .L21+4
+  88 002c D318     		adds	r3, r2, r3
+  89 002e 1B68     		ldr	r3, [r3]
+  90 0030 9F46     		mov	pc, r3
+  91              		.section	.rodata
+  92 009b 00       		.align	2
+  93              	.L4:
+  94 009c C4000000 		.word	.L3
+  95 00a0 AE000000 		.word	.L5
+  96 00a4 48000000 		.word	.L6
+  97 00a8 32000000 		.word	.L7
+  98 00ac 82000000 		.word	.L8
+  99              		.section	.text.HandleBleProcessing
+ 100              	.L7:
+  47:app_Ble.c     ****     {
+  48:app_Ble.c     ****         case CYBLE_STATE_ADVERTISING:
+  49:app_Ble.c     ****         if (cyBle_last_state != cyBle_state) {
+ 101              		.loc 1 49 0
+ 102 0032 344B     		ldr	r3, .L21+8
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 4
+
+
+ 103 0034 1A78     		ldrb	r2, [r3]
+ 104 0036 314B     		ldr	r3, .L21
+ 105 0038 1B78     		ldrb	r3, [r3]
+ 106 003a 9A42     		cmp	r2, r3
+ 107 003c 4FD0     		beq	.L17
+  50:app_Ble.c     ****             UART_UartPutString("\n\r CYBLE_STATE_ADVERTISING \n\r ");
+ 108              		.loc 1 50 0
+ 109 003e 324B     		ldr	r3, .L21+12
+ 110 0040 1800     		movs	r0, r3
+ 111 0042 FFF7FEFF 		bl	UART_UartPutString
+  51:app_Ble.c     ****         }
+  52:app_Ble.c     ****             break;
+ 112              		.loc 1 52 0
+ 113 0046 4AE0     		b	.L17
+ 114              	.L6:
+  53:app_Ble.c     ****         
+  54:app_Ble.c     ****         case CYBLE_STATE_CONNECTED:
+  55:app_Ble.c     ****         if (cyBle_last_state != cyBle_state) {
+ 115              		.loc 1 55 0
+ 116 0048 2E4B     		ldr	r3, .L21+8
+ 117 004a 1A78     		ldrb	r2, [r3]
+ 118 004c 2B4B     		ldr	r3, .L21
+ 119 004e 1B78     		ldrb	r3, [r3]
+ 120 0050 9A42     		cmp	r2, r3
+ 121 0052 03D0     		beq	.L11
+  56:app_Ble.c     ****             UART_UartPutString("\n\r CYBLE_STATE_CONNECTED \n\r ");
+ 122              		.loc 1 56 0
+ 123 0054 2D4B     		ldr	r3, .L21+16
+ 124 0056 1800     		movs	r0, r3
+ 125 0058 FFF7FEFF 		bl	UART_UartPutString
+ 126              	.L11:
+  57:app_Ble.c     ****         }
+  58:app_Ble.c     ****             /* read CCCD for TX characteristic for checking if notifications are enabled*/
+  59:app_Ble.c     ****             CyBle_GattsReadAttributeValue(&attrValue, &cyBle_connHandle, CYBLE_GATT_DB_LOCALLY_INIT
+ 127              		.loc 1 59 0
+ 128 005c 2C49     		ldr	r1, .L21+20
+ 129 005e 3B00     		movs	r3, r7
+ 130 0060 0022     		movs	r2, #0
+ 131 0062 1800     		movs	r0, r3
+ 132 0064 FFF7FEFF 		bl	CyBle_GattsReadAttributeValue
+  60:app_Ble.c     ****             
+  61:app_Ble.c     ****             /* if stack is free, handle UART traffic */
+  62:app_Ble.c     ****             if(CyBle_GattGetBusStatus() != CYBLE_STACK_STATE_BUSY)
+ 133              		.loc 1 62 0
+ 134 0068 2A4B     		ldr	r3, .L21+24
+ 135 006a 1B78     		ldrb	r3, [r3]
+ 136 006c DBB2     		uxtb	r3, r3
+ 137 006e 012B     		cmp	r3, #1
+ 138 0070 37D0     		beq	.L18
+  63:app_Ble.c     ****             {
+  64:app_Ble.c     ****                 HandleUartTxTraffic((uint16)txDataClientConfigDesc[0]);
+ 139              		.loc 1 64 0
+ 140 0072 0C23     		movs	r3, #12
+ 141 0074 FB18     		adds	r3, r7, r3
+ 142 0076 1B78     		ldrb	r3, [r3]
+ 143 0078 9BB2     		uxth	r3, r3
+ 144 007a 1800     		movs	r0, r3
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 5
+
+
+ 145 007c FFF7FEFF 		bl	HandleUartTxTraffic
+  65:app_Ble.c     ****             }
+  66:app_Ble.c     ****             break;
+ 146              		.loc 1 66 0
+ 147 0080 2FE0     		b	.L18
+ 148              	.L8:
+  67:app_Ble.c     ****                 
+  68:app_Ble.c     ****         case CYBLE_STATE_DISCONNECTED:
+  69:app_Ble.c     ****             if (cyBle_last_state != cyBle_state) {
+ 149              		.loc 1 69 0
+ 150 0082 204B     		ldr	r3, .L21+8
+ 151 0084 1A78     		ldrb	r2, [r3]
+ 152 0086 1D4B     		ldr	r3, .L21
+ 153 0088 1B78     		ldrb	r3, [r3]
+ 154 008a 9A42     		cmp	r2, r3
+ 155 008c 03D0     		beq	.L13
+  70:app_Ble.c     ****             UART_UartPutString("\n\r CYBLE_STATE_DISCONNECTED \n\r ");
+ 156              		.loc 1 70 0
+ 157 008e 224B     		ldr	r3, .L21+28
+ 158 0090 1800     		movs	r0, r3
+ 159 0092 FFF7FEFF 		bl	UART_UartPutString
+ 160              	.L13:
+  71:app_Ble.c     ****             }
+  72:app_Ble.c     ****             txDataClientConfigDesc[0] = NOTIFICATON_DISABLED;
+ 161              		.loc 1 72 0
+ 162 0096 0C23     		movs	r3, #12
+ 163 0098 FB18     		adds	r3, r7, r3
+ 164 009a 0022     		movs	r2, #0
+ 165 009c 1A70     		strb	r2, [r3]
+  73:app_Ble.c     ****             txDataClientConfigDesc[1] = NOTIFICATON_DISABLED;
+ 166              		.loc 1 73 0
+ 167 009e 0C23     		movs	r3, #12
+ 168 00a0 FB18     		adds	r3, r7, r3
+ 169 00a2 0022     		movs	r2, #0
+ 170 00a4 5A70     		strb	r2, [r3, #1]
+  74:app_Ble.c     ****             
+  75:app_Ble.c     ****             CyBle_GappStartAdvertisement(CYBLE_ADVERTISING_FAST);
+ 171              		.loc 1 75 0
+ 172 00a6 0020     		movs	r0, #0
+ 173 00a8 FFF7FEFF 		bl	CyBle_GappStartAdvertisement
+  76:app_Ble.c     **** 
+  77:app_Ble.c     ****             break;
+ 174              		.loc 1 77 0
+ 175 00ac 1EE0     		b	.L10
+ 176              	.L5:
+  78:app_Ble.c     ****        
+  79:app_Ble.c     ****         case CYBLE_STATE_INITIALIZING:
+  80:app_Ble.c     ****             if (cyBle_last_state != cyBle_state) {
+ 177              		.loc 1 80 0
+ 178 00ae 154B     		ldr	r3, .L21+8
+ 179 00b0 1A78     		ldrb	r2, [r3]
+ 180 00b2 124B     		ldr	r3, .L21
+ 181 00b4 1B78     		ldrb	r3, [r3]
+ 182 00b6 9A42     		cmp	r2, r3
+ 183 00b8 15D0     		beq	.L19
+  81:app_Ble.c     ****             UART_UartPutString("\n\r CYBLE_STATE_INITIALIZING \n\r ");
+ 184              		.loc 1 81 0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 6
+
+
+ 185 00ba 184B     		ldr	r3, .L21+32
+ 186 00bc 1800     		movs	r0, r3
+ 187 00be FFF7FEFF 		bl	UART_UartPutString
+  82:app_Ble.c     ****             }
+  83:app_Ble.c     ****             break;
+ 188              		.loc 1 83 0
+ 189 00c2 10E0     		b	.L19
+ 190              	.L3:
+  84:app_Ble.c     ****         case CYBLE_STATE_STOPPED:
+  85:app_Ble.c     ****             if (cyBle_last_state != cyBle_state) {
+ 191              		.loc 1 85 0
+ 192 00c4 0F4B     		ldr	r3, .L21+8
+ 193 00c6 1A78     		ldrb	r2, [r3]
+ 194 00c8 0C4B     		ldr	r3, .L21
+ 195 00ca 1B78     		ldrb	r3, [r3]
+ 196 00cc 9A42     		cmp	r2, r3
+ 197 00ce 0CD0     		beq	.L20
+  86:app_Ble.c     ****             UART_UartPutString("\n\r CYBLE_STATE_STOPPED \n\r ");
+ 198              		.loc 1 86 0
+ 199 00d0 134B     		ldr	r3, .L21+36
+ 200 00d2 1800     		movs	r0, r3
+ 201 00d4 FFF7FEFF 		bl	UART_UartPutString
+  87:app_Ble.c     ****             }
+  88:app_Ble.c     ****             break;
+ 202              		.loc 1 88 0
+ 203 00d8 07E0     		b	.L20
+ 204              	.L16:
+  89:app_Ble.c     ****         default:
+  90:app_Ble.c     ****             break;       
+ 205              		.loc 1 90 0
+ 206 00da C046     		nop
+ 207 00dc 06E0     		b	.L10
+ 208              	.L17:
+  52:app_Ble.c     ****         
+ 209              		.loc 1 52 0
+ 210 00de C046     		nop
+ 211 00e0 04E0     		b	.L10
+ 212              	.L18:
+  66:app_Ble.c     ****                 
+ 213              		.loc 1 66 0
+ 214 00e2 C046     		nop
+ 215 00e4 02E0     		b	.L10
+ 216              	.L19:
+  83:app_Ble.c     ****         case CYBLE_STATE_STOPPED:
+ 217              		.loc 1 83 0
+ 218 00e6 C046     		nop
+ 219 00e8 00E0     		b	.L10
+ 220              	.L20:
+  88:app_Ble.c     ****         default:
+ 221              		.loc 1 88 0
+ 222 00ea C046     		nop
+ 223              	.L10:
+  91:app_Ble.c     ****     }
+  92:app_Ble.c     ****     cyBle_last_state = cyBle_state;
+ 224              		.loc 1 92 0
+ 225 00ec 034B     		ldr	r3, .L21
+ 226 00ee 1A78     		ldrb	r2, [r3]
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 7
+
+
+ 227 00f0 044B     		ldr	r3, .L21+8
+ 228 00f2 1A70     		strb	r2, [r3]
+  93:app_Ble.c     **** }
+ 229              		.loc 1 93 0
+ 230 00f4 C046     		nop
+ 231 00f6 BD46     		mov	sp, r7
+ 232 00f8 04B0     		add	sp, sp, #16
+ 233              		@ sp needed
+ 234 00fa 80BD     		pop	{r7, pc}
+ 235              	.L22:
+ 236              		.align	2
+ 237              	.L21:
+ 238 00fc 00000000 		.word	cyBle_state
+ 239 0100 9C000000 		.word	.L4
+ 240 0104 00000000 		.word	cyBle_last_state
+ 241 0108 00000000 		.word	.LC3
+ 242 010c 20000000 		.word	.LC5
+ 243 0110 00000000 		.word	cyBle_connHandle
+ 244 0114 00000000 		.word	cyBle_busyStatus
+ 245 0118 40000000 		.word	.LC9
+ 246 011c 60000000 		.word	.LC11
+ 247 0120 80000000 		.word	.LC13
+ 248              		.cfi_endproc
+ 249              	.LFE35:
+ 250              		.size	HandleBleProcessing, .-HandleBleProcessing
+ 251              		.text
+ 252              	.Letext0:
+ 253              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 254              		.file 3 "Generated_Source\\PSoC4/BLE_Stack.h"
+ 255              		.file 4 "Generated_Source\\PSoC4/BLE_StackGatt.h"
+ 256              		.file 5 "Generated_Source\\PSoC4/BLE_eventHandler.h"
+ 257              		.file 6 "main.h"
+ 258              		.section	.debug_info,"",%progbits
+ 259              	.Ldebug_info0:
+ 260 0000 20050000 		.4byte	0x520
+ 261 0004 0400     		.2byte	0x4
+ 262 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 263 000a 04       		.byte	0x4
+ 264 000b 01       		.uleb128 0x1
+ 265 000c E9070000 		.4byte	.LASF151
+ 266 0010 0C       		.byte	0xc
+ 267 0011 6F070000 		.4byte	.LASF152
+ 268 0015 97060000 		.4byte	.LASF153
+ 269 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 270 001d 00000000 		.4byte	0
+ 271 0021 00000000 		.4byte	.Ldebug_line0
+ 272 0025 02       		.uleb128 0x2
+ 273 0026 01       		.byte	0x1
+ 274 0027 06       		.byte	0x6
+ 275 0028 0D030000 		.4byte	.LASF0
+ 276 002c 02       		.uleb128 0x2
+ 277 002d 01       		.byte	0x1
+ 278 002e 08       		.byte	0x8
+ 279 002f 3A0B0000 		.4byte	.LASF1
+ 280 0033 02       		.uleb128 0x2
+ 281 0034 02       		.byte	0x2
+ 282 0035 05       		.byte	0x5
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 8
+
+
+ 283 0036 730B0000 		.4byte	.LASF2
+ 284 003a 02       		.uleb128 0x2
+ 285 003b 02       		.byte	0x2
+ 286 003c 07       		.byte	0x7
+ 287 003d ED0D0000 		.4byte	.LASF3
+ 288 0041 02       		.uleb128 0x2
+ 289 0042 04       		.byte	0x4
+ 290 0043 05       		.byte	0x5
+ 291 0044 E4010000 		.4byte	.LASF4
+ 292 0048 02       		.uleb128 0x2
+ 293 0049 04       		.byte	0x4
+ 294 004a 07       		.byte	0x7
+ 295 004b EE050000 		.4byte	.LASF5
+ 296 004f 02       		.uleb128 0x2
+ 297 0050 08       		.byte	0x8
+ 298 0051 05       		.byte	0x5
+ 299 0052 FF020000 		.4byte	.LASF6
+ 300 0056 02       		.uleb128 0x2
+ 301 0057 08       		.byte	0x8
+ 302 0058 07       		.byte	0x7
+ 303 0059 4F050000 		.4byte	.LASF7
+ 304 005d 03       		.uleb128 0x3
+ 305 005e 04       		.byte	0x4
+ 306 005f 05       		.byte	0x5
+ 307 0060 696E7400 		.ascii	"int\000"
+ 308 0064 02       		.uleb128 0x2
+ 309 0065 04       		.byte	0x4
+ 310 0066 07       		.byte	0x7
+ 311 0067 FB0C0000 		.4byte	.LASF8
+ 312 006b 04       		.uleb128 0x4
+ 313 006c 52040000 		.4byte	.LASF9
+ 314 0070 02       		.byte	0x2
+ 315 0071 D201     		.2byte	0x1d2
+ 316 0073 2C000000 		.4byte	0x2c
+ 317 0077 04       		.uleb128 0x4
+ 318 0078 480B0000 		.4byte	.LASF10
+ 319 007c 02       		.byte	0x2
+ 320 007d D301     		.2byte	0x1d3
+ 321 007f 3A000000 		.4byte	0x3a
+ 322 0083 02       		.uleb128 0x2
+ 323 0084 04       		.byte	0x4
+ 324 0085 04       		.byte	0x4
+ 325 0086 EF0A0000 		.4byte	.LASF11
+ 326 008a 02       		.uleb128 0x2
+ 327 008b 08       		.byte	0x8
+ 328 008c 04       		.byte	0x4
+ 329 008d 77040000 		.4byte	.LASF12
+ 330 0091 02       		.uleb128 0x2
+ 331 0092 01       		.byte	0x1
+ 332 0093 08       		.byte	0x8
+ 333 0094 D10C0000 		.4byte	.LASF13
+ 334 0098 05       		.uleb128 0x5
+ 335 0099 6B000000 		.4byte	0x6b
+ 336 009d 02       		.uleb128 0x2
+ 337 009e 08       		.byte	0x8
+ 338 009f 04       		.byte	0x4
+ 339 00a0 C50C0000 		.4byte	.LASF14
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 9
+
+
+ 340 00a4 02       		.uleb128 0x2
+ 341 00a5 04       		.byte	0x4
+ 342 00a6 07       		.byte	0x7
+ 343 00a7 56090000 		.4byte	.LASF15
+ 344 00ab 06       		.uleb128 0x6
+ 345 00ac 01       		.byte	0x1
+ 346 00ad 2C000000 		.4byte	0x2c
+ 347 00b1 03       		.byte	0x3
+ 348 00b2 3501     		.2byte	0x135
+ 349 00b4 69020000 		.4byte	0x269
+ 350 00b8 07       		.uleb128 0x7
+ 351 00b9 21070000 		.4byte	.LASF16
+ 352 00bd 00       		.byte	0
+ 353 00be 07       		.uleb128 0x7
+ 354 00bf 19030000 		.4byte	.LASF17
+ 355 00c3 01       		.byte	0x1
+ 356 00c4 07       		.uleb128 0x7
+ 357 00c5 D2010000 		.4byte	.LASF18
+ 358 00c9 02       		.byte	0x2
+ 359 00ca 07       		.uleb128 0x7
+ 360 00cb D40D0000 		.4byte	.LASF19
+ 361 00cf 03       		.byte	0x3
+ 362 00d0 07       		.uleb128 0x7
+ 363 00d1 42020000 		.4byte	.LASF20
+ 364 00d5 04       		.byte	0x4
+ 365 00d6 07       		.uleb128 0x7
+ 366 00d7 5A010000 		.4byte	.LASF21
+ 367 00db 05       		.byte	0x5
+ 368 00dc 07       		.uleb128 0x7
+ 369 00dd 56070000 		.4byte	.LASF22
+ 370 00e1 06       		.byte	0x6
+ 371 00e2 07       		.uleb128 0x7
+ 372 00e3 AE080000 		.4byte	.LASF23
+ 373 00e7 20       		.byte	0x20
+ 374 00e8 07       		.uleb128 0x7
+ 375 00e9 75030000 		.4byte	.LASF24
+ 376 00ed 21       		.byte	0x21
+ 377 00ee 07       		.uleb128 0x7
+ 378 00ef 79070000 		.4byte	.LASF25
+ 379 00f3 22       		.byte	0x22
+ 380 00f4 07       		.uleb128 0x7
+ 381 00f5 AE0D0000 		.4byte	.LASF26
+ 382 00f9 23       		.byte	0x23
+ 383 00fa 07       		.uleb128 0x7
+ 384 00fb 1C0A0000 		.4byte	.LASF27
+ 385 00ff 24       		.byte	0x24
+ 386 0100 07       		.uleb128 0x7
+ 387 0101 78090000 		.4byte	.LASF28
+ 388 0105 25       		.byte	0x25
+ 389 0106 07       		.uleb128 0x7
+ 390 0107 07040000 		.4byte	.LASF29
+ 391 010b 26       		.byte	0x26
+ 392 010c 07       		.uleb128 0x7
+ 393 010d 9D070000 		.4byte	.LASF30
+ 394 0111 27       		.byte	0x27
+ 395 0112 07       		.uleb128 0x7
+ 396 0113 7F020000 		.4byte	.LASF31
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 10
+
+
+ 397 0117 28       		.byte	0x28
+ 398 0118 07       		.uleb128 0x7
+ 399 0119 A1020000 		.4byte	.LASF32
+ 400 011d 29       		.byte	0x29
+ 401 011e 07       		.uleb128 0x7
+ 402 011f 95000000 		.4byte	.LASF33
+ 403 0123 2A       		.byte	0x2a
+ 404 0124 07       		.uleb128 0x7
+ 405 0125 12010000 		.4byte	.LASF34
+ 406 0129 2B       		.byte	0x2b
+ 407 012a 07       		.uleb128 0x7
+ 408 012b 470F0000 		.4byte	.LASF35
+ 409 012f 2C       		.byte	0x2c
+ 410 0130 07       		.uleb128 0x7
+ 411 0131 BE020000 		.4byte	.LASF36
+ 412 0135 2D       		.byte	0x2d
+ 413 0136 07       		.uleb128 0x7
+ 414 0137 4F0B0000 		.4byte	.LASF37
+ 415 013b 2E       		.byte	0x2e
+ 416 013c 07       		.uleb128 0x7
+ 417 013d 31010000 		.4byte	.LASF38
+ 418 0141 2F       		.byte	0x2f
+ 419 0142 07       		.uleb128 0x7
+ 420 0143 DE090000 		.4byte	.LASF39
+ 421 0147 30       		.byte	0x30
+ 422 0148 07       		.uleb128 0x7
+ 423 0149 CC0F0000 		.4byte	.LASF40
+ 424 014d 31       		.byte	0x31
+ 425 014e 07       		.uleb128 0x7
+ 426 014f BD090000 		.4byte	.LASF41
+ 427 0153 32       		.byte	0x32
+ 428 0154 07       		.uleb128 0x7
+ 429 0155 870C0000 		.4byte	.LASF42
+ 430 0159 33       		.byte	0x33
+ 431 015a 07       		.uleb128 0x7
+ 432 015b 00060000 		.4byte	.LASF43
+ 433 015f 34       		.byte	0x34
+ 434 0160 07       		.uleb128 0x7
+ 435 0161 FF090000 		.4byte	.LASF44
+ 436 0165 35       		.byte	0x35
+ 437 0166 07       		.uleb128 0x7
+ 438 0167 BC070000 		.4byte	.LASF45
+ 439 016b 36       		.byte	0x36
+ 440 016c 07       		.uleb128 0x7
+ 441 016d D8080000 		.4byte	.LASF46
+ 442 0171 37       		.byte	0x37
+ 443 0172 07       		.uleb128 0x7
+ 444 0173 E0040000 		.4byte	.LASF47
+ 445 0177 40       		.byte	0x40
+ 446 0178 07       		.uleb128 0x7
+ 447 0179 77080000 		.4byte	.LASF48
+ 448 017d 41       		.byte	0x41
+ 449 017e 07       		.uleb128 0x7
+ 450 017f 0C100000 		.4byte	.LASF49
+ 451 0183 42       		.byte	0x42
+ 452 0184 07       		.uleb128 0x7
+ 453 0185 1E0E0000 		.4byte	.LASF50
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 11
+
+
+ 454 0189 43       		.byte	0x43
+ 455 018a 07       		.uleb128 0x7
+ 456 018b 32060000 		.4byte	.LASF51
+ 457 018f 44       		.byte	0x44
+ 458 0190 07       		.uleb128 0x7
+ 459 0191 C80A0000 		.4byte	.LASF52
+ 460 0195 45       		.byte	0x45
+ 461 0196 07       		.uleb128 0x7
+ 462 0197 35090000 		.4byte	.LASF53
+ 463 019b 46       		.byte	0x46
+ 464 019c 07       		.uleb128 0x7
+ 465 019d 38070000 		.4byte	.LASF54
+ 466 01a1 47       		.byte	0x47
+ 467 01a2 07       		.uleb128 0x7
+ 468 01a3 0B0F0000 		.4byte	.LASF55
+ 469 01a7 48       		.byte	0x48
+ 470 01a8 07       		.uleb128 0x7
+ 471 01a9 8C030000 		.4byte	.LASF56
+ 472 01ad 49       		.byte	0x49
+ 473 01ae 07       		.uleb128 0x7
+ 474 01af 6D0E0000 		.4byte	.LASF57
+ 475 01b3 4A       		.byte	0x4a
+ 476 01b4 07       		.uleb128 0x7
+ 477 01b5 76010000 		.4byte	.LASF58
+ 478 01b9 4B       		.byte	0x4b
+ 479 01ba 07       		.uleb128 0x7
+ 480 01bb 18060000 		.4byte	.LASF59
+ 481 01bf 4C       		.byte	0x4c
+ 482 01c0 07       		.uleb128 0x7
+ 483 01c1 A3090000 		.4byte	.LASF60
+ 484 01c5 4D       		.byte	0x4d
+ 485 01c6 07       		.uleb128 0x7
+ 486 01c7 BF030000 		.4byte	.LASF61
+ 487 01cb 4E       		.byte	0x4e
+ 488 01cc 07       		.uleb128 0x7
+ 489 01cd D80B0000 		.4byte	.LASF62
+ 490 01d1 4F       		.byte	0x4f
+ 491 01d2 07       		.uleb128 0x7
+ 492 01d3 95010000 		.4byte	.LASF63
+ 493 01d7 50       		.byte	0x50
+ 494 01d8 07       		.uleb128 0x7
+ 495 01d9 58040000 		.4byte	.LASF64
+ 496 01dd 51       		.byte	0x51
+ 497 01de 07       		.uleb128 0x7
+ 498 01df 4B0A0000 		.4byte	.LASF65
+ 499 01e3 52       		.byte	0x52
+ 500 01e4 07       		.uleb128 0x7
+ 501 01e5 7D0B0000 		.4byte	.LASF66
+ 502 01e9 53       		.byte	0x53
+ 503 01ea 07       		.uleb128 0x7
+ 504 01eb 480C0000 		.4byte	.LASF67
+ 505 01ef 54       		.byte	0x54
+ 506 01f0 07       		.uleb128 0x7
+ 507 01f1 50060000 		.4byte	.LASF68
+ 508 01f5 55       		.byte	0x55
+ 509 01f6 07       		.uleb128 0x7
+ 510 01f7 66050000 		.4byte	.LASF69
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 12
+
+
+ 511 01fb 56       		.byte	0x56
+ 512 01fc 07       		.uleb128 0x7
+ 513 01fd 0F0D0000 		.4byte	.LASF70
+ 514 0201 57       		.byte	0x57
+ 515 0202 07       		.uleb128 0x7
+ 516 0203 74060000 		.4byte	.LASF71
+ 517 0207 58       		.byte	0x58
+ 518 0208 07       		.uleb128 0x7
+ 519 0209 FA040000 		.4byte	.LASF72
+ 520 020d 70       		.byte	0x70
+ 521 020e 07       		.uleb128 0x7
+ 522 020f A60F0000 		.4byte	.LASF73
+ 523 0213 71       		.byte	0x71
+ 524 0214 07       		.uleb128 0x7
+ 525 0215 92080000 		.4byte	.LASF74
+ 526 0219 72       		.byte	0x72
+ 527 021a 07       		.uleb128 0x7
+ 528 021b B4010000 		.4byte	.LASF75
+ 529 021f 73       		.byte	0x73
+ 530 0220 07       		.uleb128 0x7
+ 531 0221 AA0A0000 		.4byte	.LASF76
+ 532 0225 74       		.byte	0x74
+ 533 0226 07       		.uleb128 0x7
+ 534 0227 7E040000 		.4byte	.LASF77
+ 535 022b 75       		.byte	0x75
+ 536 022c 07       		.uleb128 0x7
+ 537 022d BE000000 		.4byte	.LASF78
+ 538 0231 76       		.byte	0x76
+ 539 0232 07       		.uleb128 0x7
+ 540 0233 3D000000 		.4byte	.LASF79
+ 541 0237 77       		.byte	0x77
+ 542 0238 07       		.uleb128 0x7
+ 543 0239 00000000 		.4byte	.LASF80
+ 544 023d 78       		.byte	0x78
+ 545 023e 07       		.uleb128 0x7
+ 546 023f 380D0000 		.4byte	.LASF81
+ 547 0243 79       		.byte	0x79
+ 548 0244 07       		.uleb128 0x7
+ 549 0245 20050000 		.4byte	.LASF82
+ 550 0249 7A       		.byte	0x7a
+ 551 024a 07       		.uleb128 0x7
+ 552 024b 740F0000 		.4byte	.LASF83
+ 553 024f FA       		.byte	0xfa
+ 554 0250 07       		.uleb128 0x7
+ 555 0251 A6050000 		.4byte	.LASF84
+ 556 0255 FB       		.byte	0xfb
+ 557 0256 07       		.uleb128 0x7
+ 558 0257 9E0B0000 		.4byte	.LASF85
+ 559 025b FC       		.byte	0xfc
+ 560 025c 07       		.uleb128 0x7
+ 561 025d 52100000 		.4byte	.LASF86
+ 562 0261 FD       		.byte	0xfd
+ 563 0262 07       		.uleb128 0x7
+ 564 0263 C3040000 		.4byte	.LASF87
+ 565 0267 FF       		.byte	0xff
+ 566 0268 00       		.byte	0
+ 567 0269 06       		.uleb128 0x6
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 13
+
+
+ 568 026a 02       		.byte	0x2
+ 569 026b 3A000000 		.4byte	0x3a
+ 570 026f 03       		.byte	0x3
+ 571 0270 EA03     		.2byte	0x3ea
+ 572 0272 48030000 		.4byte	0x348
+ 573 0276 07       		.uleb128 0x7
+ 574 0277 D1040000 		.4byte	.LASF88
+ 575 027b 00       		.byte	0
+ 576 027c 07       		.uleb128 0x7
+ 577 027d 9F040000 		.4byte	.LASF89
+ 578 0281 01       		.byte	0x1
+ 579 0282 07       		.uleb128 0x7
+ 580 0283 000E0000 		.4byte	.LASF90
+ 581 0287 02       		.byte	0x2
+ 582 0288 07       		.uleb128 0x7
+ 583 0289 70000000 		.4byte	.LASF91
+ 584 028d 03       		.byte	0x3
+ 585 028e 07       		.uleb128 0x7
+ 586 028f 3C0E0000 		.4byte	.LASF92
+ 587 0293 04       		.byte	0x4
+ 588 0294 07       		.uleb128 0x7
+ 589 0295 88050000 		.4byte	.LASF93
+ 590 0299 05       		.byte	0x5
+ 591 029a 07       		.uleb128 0x7
+ 592 029b B00B0000 		.4byte	.LASF94
+ 593 029f 06       		.byte	0x6
+ 594 02a0 07       		.uleb128 0x7
+ 595 02a1 4E030000 		.4byte	.LASF95
+ 596 02a5 07       		.byte	0x7
+ 597 02a6 07       		.uleb128 0x7
+ 598 02a7 690C0000 		.4byte	.LASF96
+ 599 02ab 08       		.byte	0x8
+ 600 02ac 07       		.uleb128 0x7
+ 601 02ad 320F0000 		.4byte	.LASF97
+ 602 02b1 09       		.byte	0x9
+ 603 02b2 07       		.uleb128 0x7
+ 604 02b3 FD0A0000 		.4byte	.LASF98
+ 605 02b7 0A       		.byte	0xa
+ 606 02b8 07       		.uleb128 0x7
+ 607 02b9 D60C0000 		.4byte	.LASF99
+ 608 02bd 0B       		.byte	0xb
+ 609 02be 07       		.uleb128 0x7
+ 610 02bf 68020000 		.4byte	.LASF100
+ 611 02c3 0C       		.byte	0xc
+ 612 02c4 07       		.uleb128 0x7
+ 613 02c5 0A020000 		.4byte	.LASF101
+ 614 02c9 0D       		.byte	0xd
+ 615 02ca 07       		.uleb128 0x7
+ 616 02cb C5050000 		.4byte	.LASF102
+ 617 02cf 0E       		.byte	0xe
+ 618 02d0 07       		.uleb128 0x7
+ 619 02d1 D00E0000 		.4byte	.LASF103
+ 620 02d5 0F       		.byte	0xf
+ 621 02d6 07       		.uleb128 0x7
+ 622 02d7 800D0000 		.4byte	.LASF104
+ 623 02db 10       		.byte	0x10
+ 624 02dc 07       		.uleb128 0x7
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 14
+
+
+ 625 02dd E4060000 		.4byte	.LASF105
+ 626 02e1 11       		.byte	0x11
+ 627 02e2 07       		.uleb128 0x7
+ 628 02e3 2F040000 		.4byte	.LASF106
+ 629 02e7 12       		.byte	0x12
+ 630 02e8 07       		.uleb128 0x7
+ 631 02e9 2A100000 		.4byte	.LASF107
+ 632 02ed 13       		.byte	0x13
+ 633 02ee 07       		.uleb128 0x7
+ 634 02ef 2C030000 		.4byte	.LASF108
+ 635 02f3 27       		.byte	0x27
+ 636 02f4 07       		.uleb128 0x7
+ 637 02f5 5B0D0000 		.4byte	.LASF109
+ 638 02f9 28       		.byte	0x28
+ 639 02fa 07       		.uleb128 0x7
+ 640 02fb B40E0000 		.4byte	.LASF110
+ 641 02ff 29       		.byte	0x29
+ 642 0300 07       		.uleb128 0x7
+ 643 0301 ED010000 		.4byte	.LASF111
+ 644 0305 2A       		.byte	0x2a
+ 645 0306 07       		.uleb128 0x7
+ 646 0307 DF000000 		.4byte	.LASF112
+ 647 030b 2B       		.byte	0x2b
+ 648 030c 07       		.uleb128 0x7
+ 649 030d 1D090000 		.4byte	.LASF113
+ 650 0311 2C       		.byte	0x2c
+ 651 0312 07       		.uleb128 0x7
+ 652 0313 140C0000 		.4byte	.LASF114
+ 653 0317 2D       		.byte	0x2d
+ 654 0318 07       		.uleb128 0x7
+ 655 0319 8B0E0000 		.4byte	.LASF115
+ 656 031d FE       		.byte	0xfe
+ 657 031e 07       		.uleb128 0x7
+ 658 031f 0D090000 		.4byte	.LASF116
+ 659 0323 FF       		.byte	0xff
+ 660 0324 08       		.uleb128 0x8
+ 661 0325 08070000 		.4byte	.LASF117
+ 662 0329 0001     		.2byte	0x100
+ 663 032b 08       		.uleb128 0x8
+ 664 032c 6C0A0000 		.4byte	.LASF118
+ 665 0330 0101     		.2byte	0x101
+ 666 0332 08       		.uleb128 0x8
+ 667 0333 170B0000 		.4byte	.LASF119
+ 668 0337 0201     		.2byte	0x102
+ 669 0339 08       		.uleb128 0x8
+ 670 033a A5030000 		.4byte	.LASF120
+ 671 033e 0301     		.2byte	0x103
+ 672 0340 08       		.uleb128 0x8
+ 673 0341 AE0C0000 		.4byte	.LASF121
+ 674 0345 0401     		.2byte	0x104
+ 675 0347 00       		.byte	0
+ 676 0348 04       		.uleb128 0x4
+ 677 0349 380A0000 		.4byte	.LASF122
+ 678 034d 03       		.byte	0x3
+ 679 034e 5C04     		.2byte	0x45c
+ 680 0350 69020000 		.4byte	0x269
+ 681 0354 09       		.uleb128 0x9
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 15
+
+
+ 682 0355 04       		.byte	0x4
+ 683 0356 6B000000 		.4byte	0x6b
+ 684 035a 04       		.uleb128 0x4
+ 685 035b F00F0000 		.4byte	.LASF123
+ 686 035f 04       		.byte	0x4
+ 687 0360 8901     		.2byte	0x189
+ 688 0362 77000000 		.4byte	0x77
+ 689 0366 0A       		.uleb128 0xa
+ 690 0367 02       		.byte	0x2
+ 691 0368 04       		.byte	0x4
+ 692 0369 9301     		.2byte	0x193
+ 693 036b 8A030000 		.4byte	0x38a
+ 694 036f 0B       		.uleb128 0xb
+ 695 0370 6B0F0000 		.4byte	.LASF124
+ 696 0374 04       		.byte	0x4
+ 697 0375 9A01     		.2byte	0x19a
+ 698 0377 6B000000 		.4byte	0x6b
+ 699 037b 00       		.byte	0
+ 700 037c 0B       		.uleb128 0xb
+ 701 037d D2080000 		.4byte	.LASF125
+ 702 0381 04       		.byte	0x4
+ 703 0382 A001     		.2byte	0x1a0
+ 704 0384 6B000000 		.4byte	0x6b
+ 705 0388 01       		.byte	0x1
+ 706 0389 00       		.byte	0
+ 707 038a 04       		.uleb128 0x4
+ 708 038b 5C000000 		.4byte	.LASF126
+ 709 038f 04       		.byte	0x4
+ 710 0390 A201     		.2byte	0x1a2
+ 711 0392 66030000 		.4byte	0x366
+ 712 0396 0A       		.uleb128 0xa
+ 713 0397 08       		.byte	0x8
+ 714 0398 04       		.byte	0x4
+ 715 0399 BE01     		.2byte	0x1be
+ 716 039b C7030000 		.4byte	0x3c7
+ 717 039f 0C       		.uleb128 0xc
+ 718 03a0 76616C00 		.ascii	"val\000"
+ 719 03a4 04       		.byte	0x4
+ 720 03a5 C101     		.2byte	0x1c1
+ 721 03a7 54030000 		.4byte	0x354
+ 722 03ab 00       		.byte	0
+ 723 03ac 0C       		.uleb128 0xc
+ 724 03ad 6C656E00 		.ascii	"len\000"
+ 725 03b1 04       		.byte	0x4
+ 726 03b2 C401     		.2byte	0x1c4
+ 727 03b4 77000000 		.4byte	0x77
+ 728 03b8 04       		.byte	0x4
+ 729 03b9 0B       		.uleb128 0xb
+ 730 03ba 6B030000 		.4byte	.LASF127
+ 731 03be 04       		.byte	0x4
+ 732 03bf CB01     		.2byte	0x1cb
+ 733 03c1 77000000 		.4byte	0x77
+ 734 03c5 06       		.byte	0x6
+ 735 03c6 00       		.byte	0
+ 736 03c7 04       		.uleb128 0x4
+ 737 03c8 2F020000 		.4byte	.LASF128
+ 738 03cc 04       		.byte	0x4
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 16
+
+
+ 739 03cd CD01     		.2byte	0x1cd
+ 740 03cf 96030000 		.4byte	0x396
+ 741 03d3 0A       		.uleb128 0xa
+ 742 03d4 0C       		.byte	0xc
+ 743 03d5 04       		.byte	0x4
+ 744 03d6 D001     		.2byte	0x1d0
+ 745 03d8 F7030000 		.4byte	0x3f7
+ 746 03dc 0B       		.uleb128 0xb
+ 747 03dd 0E0C0000 		.4byte	.LASF129
+ 748 03e1 04       		.byte	0x4
+ 749 03e2 D301     		.2byte	0x1d3
+ 750 03e4 C7030000 		.4byte	0x3c7
+ 751 03e8 00       		.byte	0
+ 752 03e9 0B       		.uleb128 0xb
+ 753 03ea 44050000 		.4byte	.LASF130
+ 754 03ee 04       		.byte	0x4
+ 755 03ef D601     		.2byte	0x1d6
+ 756 03f1 5A030000 		.4byte	0x35a
+ 757 03f5 08       		.byte	0x8
+ 758 03f6 00       		.byte	0
+ 759 03f7 04       		.uleb128 0x4
+ 760 03f8 8B0A0000 		.4byte	.LASF131
+ 761 03fc 04       		.byte	0x4
+ 762 03fd D801     		.2byte	0x1d8
+ 763 03ff D3030000 		.4byte	0x3d3
+ 764 0403 06       		.uleb128 0x6
+ 765 0404 01       		.byte	0x1
+ 766 0405 2C000000 		.4byte	0x2c
+ 767 0409 05       		.byte	0x5
+ 768 040a 5A08     		.2byte	0x85a
+ 769 040c 2F040000 		.4byte	0x42f
+ 770 0410 07       		.uleb128 0x7
+ 771 0411 29000000 		.4byte	.LASF132
+ 772 0415 00       		.byte	0
+ 773 0416 07       		.uleb128 0x7
+ 774 0417 5F090000 		.4byte	.LASF133
+ 775 041b 01       		.byte	0x1
+ 776 041c 07       		.uleb128 0x7
+ 777 041d F50E0000 		.4byte	.LASF134
+ 778 0421 02       		.byte	0x2
+ 779 0422 07       		.uleb128 0x7
+ 780 0423 E7020000 		.4byte	.LASF135
+ 781 0427 03       		.byte	0x3
+ 782 0428 07       		.uleb128 0x7
+ 783 0429 DD030000 		.4byte	.LASF136
+ 784 042d 04       		.byte	0x4
+ 785 042e 00       		.byte	0
+ 786 042f 04       		.uleb128 0x4
+ 787 0430 5F0E0000 		.4byte	.LASF137
+ 788 0434 05       		.byte	0x5
+ 789 0435 6808     		.2byte	0x868
+ 790 0437 03040000 		.4byte	0x403
+ 791 043b 0D       		.uleb128 0xd
+ 792 043c 080D0000 		.4byte	.LASF154
+ 793 0440 01       		.byte	0x1
+ 794 0441 2C000000 		.4byte	0x2c
+ 795 0445 06       		.byte	0x6
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 17
+
+
+ 796 0446 36       		.byte	0x36
+ 797 0447 68040000 		.4byte	0x468
+ 798 044b 07       		.uleb128 0x7
+ 799 044c 850A0000 		.4byte	.LASF138
+ 800 0450 00       		.byte	0
+ 801 0451 07       		.uleb128 0x7
+ 802 0452 CA0B0000 		.4byte	.LASF139
+ 803 0456 01       		.byte	0x1
+ 804 0457 0E       		.uleb128 0xe
+ 805 0458 545800   		.ascii	"TX\000"
+ 806 045b 02       		.byte	0x2
+ 807 045c 0E       		.uleb128 0xe
+ 808 045d 525800   		.ascii	"RX\000"
+ 809 0460 03       		.byte	0x3
+ 810 0461 07       		.uleb128 0x7
+ 811 0462 23000000 		.4byte	.LASF140
+ 812 0466 04       		.byte	0x4
+ 813 0467 00       		.byte	0
+ 814 0468 0F       		.uleb128 0xf
+ 815 0469 920F0000 		.4byte	.LASF155
+ 816 046d 01       		.byte	0x1
+ 817 046e 26       		.byte	0x26
+ 818 046f 00000000 		.4byte	.LFB35
+ 819 0473 24010000 		.4byte	.LFE35-.LFB35
+ 820 0477 01       		.uleb128 0x1
+ 821 0478 9C       		.byte	0x9c
+ 822 0479 9A040000 		.4byte	0x49a
+ 823 047d 10       		.uleb128 0x10
+ 824 047e F70B0000 		.4byte	.LASF141
+ 825 0482 01       		.byte	0x1
+ 826 0483 28       		.byte	0x28
+ 827 0484 9A040000 		.4byte	0x49a
+ 828 0488 02       		.uleb128 0x2
+ 829 0489 91       		.byte	0x91
+ 830 048a 74       		.sleb128 -12
+ 831 048b 10       		.uleb128 0x10
+ 832 048c 3E0C0000 		.4byte	.LASF142
+ 833 0490 01       		.byte	0x1
+ 834 0491 2A       		.byte	0x2a
+ 835 0492 F7030000 		.4byte	0x3f7
+ 836 0496 02       		.uleb128 0x2
+ 837 0497 91       		.byte	0x91
+ 838 0498 68       		.sleb128 -24
+ 839 0499 00       		.byte	0
+ 840 049a 11       		.uleb128 0x11
+ 841 049b 6B000000 		.4byte	0x6b
+ 842 049f AA040000 		.4byte	0x4aa
+ 843 04a3 12       		.uleb128 0x12
+ 844 04a4 A4000000 		.4byte	0xa4
+ 845 04a8 01       		.byte	0x1
+ 846 04a9 00       		.byte	0
+ 847 04aa 13       		.uleb128 0x13
+ 848 04ab DD070000 		.4byte	.LASF143
+ 849 04af 05       		.byte	0x5
+ 850 04b0 B30A     		.2byte	0xab3
+ 851 04b2 2F040000 		.4byte	0x42f
+ 852 04b6 13       		.uleb128 0x13
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 18
+
+
+ 853 04b7 92090000 		.4byte	.LASF144
+ 854 04bb 05       		.byte	0x5
+ 855 04bc B40A     		.2byte	0xab4
+ 856 04be 8A030000 		.4byte	0x38a
+ 857 04c2 13       		.uleb128 0x13
+ 858 04c3 57020000 		.4byte	.LASF145
+ 859 04c7 05       		.byte	0x5
+ 860 04c8 B50A     		.2byte	0xab5
+ 861 04ca 98000000 		.4byte	0x98
+ 862 04ce 14       		.uleb128 0x14
+ 863 04cf F50A0000 		.4byte	.LASF146
+ 864 04d3 01       		.byte	0x1
+ 865 04d4 11       		.byte	0x11
+ 866 04d5 77000000 		.4byte	0x77
+ 867 04d9 05       		.uleb128 0x5
+ 868 04da 03       		.byte	0x3
+ 869 04db 00000000 		.4byte	mtuSize
+ 870 04df 14       		.uleb128 0x14
+ 871 04e0 A70E0000 		.4byte	.LASF147
+ 872 04e4 06       		.byte	0x6
+ 873 04e5 2E       		.byte	0x2e
+ 874 04e6 48030000 		.4byte	0x348
+ 875 04ea 05       		.uleb128 0x5
+ 876 04eb 03       		.byte	0x3
+ 877 04ec 00000000 		.4byte	bleApiResult
+ 878 04f0 14       		.uleb128 0x14
+ 879 04f1 BD040000 		.4byte	.LASF148
+ 880 04f5 06       		.byte	0x6
+ 881 04f6 2F       		.byte	0x2f
+ 882 04f7 5D000000 		.4byte	0x5d
+ 883 04fb 05       		.uleb128 0x5
+ 884 04fc 03       		.byte	0x3
+ 885 04fd 00000000 		.4byte	count
+ 886 0501 14       		.uleb128 0x14
+ 887 0502 F60C0000 		.4byte	.LASF149
+ 888 0506 06       		.byte	0x6
+ 889 0507 3C       		.byte	0x3c
+ 890 0508 3B040000 		.4byte	0x43b
+ 891 050c 05       		.uleb128 0x5
+ 892 050d 03       		.byte	0x3
+ 893 050e 00000000 		.4byte	mode
+ 894 0512 14       		.uleb128 0x14
+ 895 0513 F6030000 		.4byte	.LASF150
+ 896 0517 01       		.byte	0x1
+ 897 0518 24       		.byte	0x24
+ 898 0519 2F040000 		.4byte	0x42f
+ 899 051d 05       		.uleb128 0x5
+ 900 051e 03       		.byte	0x3
+ 901 051f 00000000 		.4byte	cyBle_last_state
+ 902 0523 00       		.byte	0
+ 903              		.section	.debug_abbrev,"",%progbits
+ 904              	.Ldebug_abbrev0:
+ 905 0000 01       		.uleb128 0x1
+ 906 0001 11       		.uleb128 0x11
+ 907 0002 01       		.byte	0x1
+ 908 0003 25       		.uleb128 0x25
+ 909 0004 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 19
+
+
+ 910 0005 13       		.uleb128 0x13
+ 911 0006 0B       		.uleb128 0xb
+ 912 0007 03       		.uleb128 0x3
+ 913 0008 0E       		.uleb128 0xe
+ 914 0009 1B       		.uleb128 0x1b
+ 915 000a 0E       		.uleb128 0xe
+ 916 000b 55       		.uleb128 0x55
+ 917 000c 17       		.uleb128 0x17
+ 918 000d 11       		.uleb128 0x11
+ 919 000e 01       		.uleb128 0x1
+ 920 000f 10       		.uleb128 0x10
+ 921 0010 17       		.uleb128 0x17
+ 922 0011 00       		.byte	0
+ 923 0012 00       		.byte	0
+ 924 0013 02       		.uleb128 0x2
+ 925 0014 24       		.uleb128 0x24
+ 926 0015 00       		.byte	0
+ 927 0016 0B       		.uleb128 0xb
+ 928 0017 0B       		.uleb128 0xb
+ 929 0018 3E       		.uleb128 0x3e
+ 930 0019 0B       		.uleb128 0xb
+ 931 001a 03       		.uleb128 0x3
+ 932 001b 0E       		.uleb128 0xe
+ 933 001c 00       		.byte	0
+ 934 001d 00       		.byte	0
+ 935 001e 03       		.uleb128 0x3
+ 936 001f 24       		.uleb128 0x24
+ 937 0020 00       		.byte	0
+ 938 0021 0B       		.uleb128 0xb
+ 939 0022 0B       		.uleb128 0xb
+ 940 0023 3E       		.uleb128 0x3e
+ 941 0024 0B       		.uleb128 0xb
+ 942 0025 03       		.uleb128 0x3
+ 943 0026 08       		.uleb128 0x8
+ 944 0027 00       		.byte	0
+ 945 0028 00       		.byte	0
+ 946 0029 04       		.uleb128 0x4
+ 947 002a 16       		.uleb128 0x16
+ 948 002b 00       		.byte	0
+ 949 002c 03       		.uleb128 0x3
+ 950 002d 0E       		.uleb128 0xe
+ 951 002e 3A       		.uleb128 0x3a
+ 952 002f 0B       		.uleb128 0xb
+ 953 0030 3B       		.uleb128 0x3b
+ 954 0031 05       		.uleb128 0x5
+ 955 0032 49       		.uleb128 0x49
+ 956 0033 13       		.uleb128 0x13
+ 957 0034 00       		.byte	0
+ 958 0035 00       		.byte	0
+ 959 0036 05       		.uleb128 0x5
+ 960 0037 35       		.uleb128 0x35
+ 961 0038 00       		.byte	0
+ 962 0039 49       		.uleb128 0x49
+ 963 003a 13       		.uleb128 0x13
+ 964 003b 00       		.byte	0
+ 965 003c 00       		.byte	0
+ 966 003d 06       		.uleb128 0x6
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 20
+
+
+ 967 003e 04       		.uleb128 0x4
+ 968 003f 01       		.byte	0x1
+ 969 0040 0B       		.uleb128 0xb
+ 970 0041 0B       		.uleb128 0xb
+ 971 0042 49       		.uleb128 0x49
+ 972 0043 13       		.uleb128 0x13
+ 973 0044 3A       		.uleb128 0x3a
+ 974 0045 0B       		.uleb128 0xb
+ 975 0046 3B       		.uleb128 0x3b
+ 976 0047 05       		.uleb128 0x5
+ 977 0048 01       		.uleb128 0x1
+ 978 0049 13       		.uleb128 0x13
+ 979 004a 00       		.byte	0
+ 980 004b 00       		.byte	0
+ 981 004c 07       		.uleb128 0x7
+ 982 004d 28       		.uleb128 0x28
+ 983 004e 00       		.byte	0
+ 984 004f 03       		.uleb128 0x3
+ 985 0050 0E       		.uleb128 0xe
+ 986 0051 1C       		.uleb128 0x1c
+ 987 0052 0B       		.uleb128 0xb
+ 988 0053 00       		.byte	0
+ 989 0054 00       		.byte	0
+ 990 0055 08       		.uleb128 0x8
+ 991 0056 28       		.uleb128 0x28
+ 992 0057 00       		.byte	0
+ 993 0058 03       		.uleb128 0x3
+ 994 0059 0E       		.uleb128 0xe
+ 995 005a 1C       		.uleb128 0x1c
+ 996 005b 05       		.uleb128 0x5
+ 997 005c 00       		.byte	0
+ 998 005d 00       		.byte	0
+ 999 005e 09       		.uleb128 0x9
+ 1000 005f 0F       		.uleb128 0xf
+ 1001 0060 00       		.byte	0
+ 1002 0061 0B       		.uleb128 0xb
+ 1003 0062 0B       		.uleb128 0xb
+ 1004 0063 49       		.uleb128 0x49
+ 1005 0064 13       		.uleb128 0x13
+ 1006 0065 00       		.byte	0
+ 1007 0066 00       		.byte	0
+ 1008 0067 0A       		.uleb128 0xa
+ 1009 0068 13       		.uleb128 0x13
+ 1010 0069 01       		.byte	0x1
+ 1011 006a 0B       		.uleb128 0xb
+ 1012 006b 0B       		.uleb128 0xb
+ 1013 006c 3A       		.uleb128 0x3a
+ 1014 006d 0B       		.uleb128 0xb
+ 1015 006e 3B       		.uleb128 0x3b
+ 1016 006f 05       		.uleb128 0x5
+ 1017 0070 01       		.uleb128 0x1
+ 1018 0071 13       		.uleb128 0x13
+ 1019 0072 00       		.byte	0
+ 1020 0073 00       		.byte	0
+ 1021 0074 0B       		.uleb128 0xb
+ 1022 0075 0D       		.uleb128 0xd
+ 1023 0076 00       		.byte	0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 21
+
+
+ 1024 0077 03       		.uleb128 0x3
+ 1025 0078 0E       		.uleb128 0xe
+ 1026 0079 3A       		.uleb128 0x3a
+ 1027 007a 0B       		.uleb128 0xb
+ 1028 007b 3B       		.uleb128 0x3b
+ 1029 007c 05       		.uleb128 0x5
+ 1030 007d 49       		.uleb128 0x49
+ 1031 007e 13       		.uleb128 0x13
+ 1032 007f 38       		.uleb128 0x38
+ 1033 0080 0B       		.uleb128 0xb
+ 1034 0081 00       		.byte	0
+ 1035 0082 00       		.byte	0
+ 1036 0083 0C       		.uleb128 0xc
+ 1037 0084 0D       		.uleb128 0xd
+ 1038 0085 00       		.byte	0
+ 1039 0086 03       		.uleb128 0x3
+ 1040 0087 08       		.uleb128 0x8
+ 1041 0088 3A       		.uleb128 0x3a
+ 1042 0089 0B       		.uleb128 0xb
+ 1043 008a 3B       		.uleb128 0x3b
+ 1044 008b 05       		.uleb128 0x5
+ 1045 008c 49       		.uleb128 0x49
+ 1046 008d 13       		.uleb128 0x13
+ 1047 008e 38       		.uleb128 0x38
+ 1048 008f 0B       		.uleb128 0xb
+ 1049 0090 00       		.byte	0
+ 1050 0091 00       		.byte	0
+ 1051 0092 0D       		.uleb128 0xd
+ 1052 0093 04       		.uleb128 0x4
+ 1053 0094 01       		.byte	0x1
+ 1054 0095 03       		.uleb128 0x3
+ 1055 0096 0E       		.uleb128 0xe
+ 1056 0097 0B       		.uleb128 0xb
+ 1057 0098 0B       		.uleb128 0xb
+ 1058 0099 49       		.uleb128 0x49
+ 1059 009a 13       		.uleb128 0x13
+ 1060 009b 3A       		.uleb128 0x3a
+ 1061 009c 0B       		.uleb128 0xb
+ 1062 009d 3B       		.uleb128 0x3b
+ 1063 009e 0B       		.uleb128 0xb
+ 1064 009f 01       		.uleb128 0x1
+ 1065 00a0 13       		.uleb128 0x13
+ 1066 00a1 00       		.byte	0
+ 1067 00a2 00       		.byte	0
+ 1068 00a3 0E       		.uleb128 0xe
+ 1069 00a4 28       		.uleb128 0x28
+ 1070 00a5 00       		.byte	0
+ 1071 00a6 03       		.uleb128 0x3
+ 1072 00a7 08       		.uleb128 0x8
+ 1073 00a8 1C       		.uleb128 0x1c
+ 1074 00a9 0B       		.uleb128 0xb
+ 1075 00aa 00       		.byte	0
+ 1076 00ab 00       		.byte	0
+ 1077 00ac 0F       		.uleb128 0xf
+ 1078 00ad 2E       		.uleb128 0x2e
+ 1079 00ae 01       		.byte	0x1
+ 1080 00af 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 22
+
+
+ 1081 00b0 19       		.uleb128 0x19
+ 1082 00b1 03       		.uleb128 0x3
+ 1083 00b2 0E       		.uleb128 0xe
+ 1084 00b3 3A       		.uleb128 0x3a
+ 1085 00b4 0B       		.uleb128 0xb
+ 1086 00b5 3B       		.uleb128 0x3b
+ 1087 00b6 0B       		.uleb128 0xb
+ 1088 00b7 27       		.uleb128 0x27
+ 1089 00b8 19       		.uleb128 0x19
+ 1090 00b9 11       		.uleb128 0x11
+ 1091 00ba 01       		.uleb128 0x1
+ 1092 00bb 12       		.uleb128 0x12
+ 1093 00bc 06       		.uleb128 0x6
+ 1094 00bd 40       		.uleb128 0x40
+ 1095 00be 18       		.uleb128 0x18
+ 1096 00bf 9642     		.uleb128 0x2116
+ 1097 00c1 19       		.uleb128 0x19
+ 1098 00c2 01       		.uleb128 0x1
+ 1099 00c3 13       		.uleb128 0x13
+ 1100 00c4 00       		.byte	0
+ 1101 00c5 00       		.byte	0
+ 1102 00c6 10       		.uleb128 0x10
+ 1103 00c7 34       		.uleb128 0x34
+ 1104 00c8 00       		.byte	0
+ 1105 00c9 03       		.uleb128 0x3
+ 1106 00ca 0E       		.uleb128 0xe
+ 1107 00cb 3A       		.uleb128 0x3a
+ 1108 00cc 0B       		.uleb128 0xb
+ 1109 00cd 3B       		.uleb128 0x3b
+ 1110 00ce 0B       		.uleb128 0xb
+ 1111 00cf 49       		.uleb128 0x49
+ 1112 00d0 13       		.uleb128 0x13
+ 1113 00d1 02       		.uleb128 0x2
+ 1114 00d2 18       		.uleb128 0x18
+ 1115 00d3 00       		.byte	0
+ 1116 00d4 00       		.byte	0
+ 1117 00d5 11       		.uleb128 0x11
+ 1118 00d6 01       		.uleb128 0x1
+ 1119 00d7 01       		.byte	0x1
+ 1120 00d8 49       		.uleb128 0x49
+ 1121 00d9 13       		.uleb128 0x13
+ 1122 00da 01       		.uleb128 0x1
+ 1123 00db 13       		.uleb128 0x13
+ 1124 00dc 00       		.byte	0
+ 1125 00dd 00       		.byte	0
+ 1126 00de 12       		.uleb128 0x12
+ 1127 00df 21       		.uleb128 0x21
+ 1128 00e0 00       		.byte	0
+ 1129 00e1 49       		.uleb128 0x49
+ 1130 00e2 13       		.uleb128 0x13
+ 1131 00e3 2F       		.uleb128 0x2f
+ 1132 00e4 0B       		.uleb128 0xb
+ 1133 00e5 00       		.byte	0
+ 1134 00e6 00       		.byte	0
+ 1135 00e7 13       		.uleb128 0x13
+ 1136 00e8 34       		.uleb128 0x34
+ 1137 00e9 00       		.byte	0
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 23
+
+
+ 1138 00ea 03       		.uleb128 0x3
+ 1139 00eb 0E       		.uleb128 0xe
+ 1140 00ec 3A       		.uleb128 0x3a
+ 1141 00ed 0B       		.uleb128 0xb
+ 1142 00ee 3B       		.uleb128 0x3b
+ 1143 00ef 05       		.uleb128 0x5
+ 1144 00f0 49       		.uleb128 0x49
+ 1145 00f1 13       		.uleb128 0x13
+ 1146 00f2 3F       		.uleb128 0x3f
+ 1147 00f3 19       		.uleb128 0x19
+ 1148 00f4 3C       		.uleb128 0x3c
+ 1149 00f5 19       		.uleb128 0x19
+ 1150 00f6 00       		.byte	0
+ 1151 00f7 00       		.byte	0
+ 1152 00f8 14       		.uleb128 0x14
+ 1153 00f9 34       		.uleb128 0x34
+ 1154 00fa 00       		.byte	0
+ 1155 00fb 03       		.uleb128 0x3
+ 1156 00fc 0E       		.uleb128 0xe
+ 1157 00fd 3A       		.uleb128 0x3a
+ 1158 00fe 0B       		.uleb128 0xb
+ 1159 00ff 3B       		.uleb128 0x3b
+ 1160 0100 0B       		.uleb128 0xb
+ 1161 0101 49       		.uleb128 0x49
+ 1162 0102 13       		.uleb128 0x13
+ 1163 0103 3F       		.uleb128 0x3f
+ 1164 0104 19       		.uleb128 0x19
+ 1165 0105 02       		.uleb128 0x2
+ 1166 0106 18       		.uleb128 0x18
+ 1167 0107 00       		.byte	0
+ 1168 0108 00       		.byte	0
+ 1169 0109 00       		.byte	0
+ 1170              		.section	.debug_aranges,"",%progbits
+ 1171 0000 1C000000 		.4byte	0x1c
+ 1172 0004 0200     		.2byte	0x2
+ 1173 0006 00000000 		.4byte	.Ldebug_info0
+ 1174 000a 04       		.byte	0x4
+ 1175 000b 00       		.byte	0
+ 1176 000c 0000     		.2byte	0
+ 1177 000e 0000     		.2byte	0
+ 1178 0010 00000000 		.4byte	.LFB35
+ 1179 0014 24010000 		.4byte	.LFE35-.LFB35
+ 1180 0018 00000000 		.4byte	0
+ 1181 001c 00000000 		.4byte	0
+ 1182              		.section	.debug_ranges,"",%progbits
+ 1183              	.Ldebug_ranges0:
+ 1184 0000 00000000 		.4byte	.LFB35
+ 1185 0004 24010000 		.4byte	.LFE35
+ 1186 0008 00000000 		.4byte	0
+ 1187 000c 00000000 		.4byte	0
+ 1188              		.section	.debug_line,"",%progbits
+ 1189              	.Ldebug_line0:
+ 1190 0000 BF000000 		.section	.debug_str,"MS",%progbits,1
+ 1190      02008600 
+ 1190      00000201 
+ 1190      FB0E0D00 
+ 1190      01010101 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 24
+
+
+ 1191              	.LASF80:
+ 1192 0000 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_RX_CREDIT_IND\000"
+ 1192      455F4556 
+ 1192      545F4C32 
+ 1192      4341505F 
+ 1192      43424643 
+ 1193              	.LASF140:
+ 1194 0023 534C4545 		.ascii	"SLEEP\000"
+ 1194      5000
+ 1195              	.LASF132:
+ 1196 0029 4359424C 		.ascii	"CYBLE_STATE_STOPPED\000"
+ 1196      455F5354 
+ 1196      4154455F 
+ 1196      53544F50 
+ 1196      50454400 
+ 1197              	.LASF79:
+ 1198 003d 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DATA_READ\000"
+ 1198      455F4556 
+ 1198      545F4C32 
+ 1198      4341505F 
+ 1198      43424643 
+ 1199              	.LASF126:
+ 1200 005c 4359424C 		.ascii	"CYBLE_CONN_HANDLE_T\000"
+ 1200      455F434F 
+ 1200      4E4E5F48 
+ 1200      414E444C 
+ 1200      455F5400 
+ 1201              	.LASF91:
+ 1202 0070 4359424C 		.ascii	"CYBLE_ERROR_MEMORY_ALLOCATION_FAILED\000"
+ 1202      455F4552 
+ 1202      524F525F 
+ 1202      4D454D4F 
+ 1202      52595F41 
+ 1203              	.LASF33:
+ 1204 0095 4359424C 		.ascii	"CYBLE_EVT_GAP_CONNECTION_UPDATE_COMPLETE\000"
+ 1204      455F4556 
+ 1204      545F4741 
+ 1204      505F434F 
+ 1204      4E4E4543 
+ 1205              	.LASF78:
+ 1206 00be 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DISCONN_CNF\000"
+ 1206      455F4556 
+ 1206      545F4C32 
+ 1206      4341505F 
+ 1206      43424643 
+ 1207              	.LASF112:
+ 1208 00df 4359424C 		.ascii	"CYBLE_ERROR_UNSUPPORTED_FEATURE_OR_PARAMETER_VALUE\000"
+ 1208      455F4552 
+ 1208      524F525F 
+ 1208      554E5355 
+ 1208      50504F52 
+ 1209              	.LASF34:
+ 1210 0112 4359424C 		.ascii	"CYBLE_EVT_GAPC_SCAN_START_STOP\000"
+ 1210      455F4556 
+ 1210      545F4741 
+ 1210      50435F53 
+ 1210      43414E5F 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 25
+
+
+ 1211              	.LASF38:
+ 1212 0131 4359424C 		.ascii	"CYBLE_EVT_GAP_OOB_GENERATED_NOTIFICATION\000"
+ 1212      455F4556 
+ 1212      545F4741 
+ 1212      505F4F4F 
+ 1212      425F4745 
+ 1213              	.LASF21:
+ 1214 015a 4359424C 		.ascii	"CYBLE_EVT_STACK_BUSY_STATUS\000"
+ 1214      455F4556 
+ 1214      545F5354 
+ 1214      41434B5F 
+ 1214      42555359 
+ 1215              	.LASF58:
+ 1216 0176 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_MULTI_RSP\000"
+ 1216      455F4556 
+ 1216      545F4741 
+ 1216      5454435F 
+ 1216      52454144 
+ 1217              	.LASF63:
+ 1218 0195 4359424C 		.ascii	"CYBLE_EVT_GATTS_EXEC_WRITE_REQ\000"
+ 1218      455F4556 
+ 1218      545F4741 
+ 1218      5454535F 
+ 1218      45584543 
+ 1219              	.LASF75:
+ 1220 01b4 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_CONN_IND\000"
+ 1220      455F4556 
+ 1220      545F4C32 
+ 1220      4341505F 
+ 1220      43424643 
+ 1221              	.LASF18:
+ 1222 01d2 4359424C 		.ascii	"CYBLE_EVT_TIMEOUT\000"
+ 1222      455F4556 
+ 1222      545F5449 
+ 1222      4D454F55 
+ 1222      5400
+ 1223              	.LASF4:
+ 1224 01e4 6C6F6E67 		.ascii	"long int\000"
+ 1224      20696E74 
+ 1224      00
+ 1225              	.LASF111:
+ 1226 01ed 4359424C 		.ascii	"CYBLE_ERROR_HARDWARE_FAILURE\000"
+ 1226      455F4552 
+ 1226      524F525F 
+ 1226      48415244 
+ 1226      57415245 
+ 1227              	.LASF101:
+ 1228 020a 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_WRONG_ENCODING\000"
+ 1228      455F4552 
+ 1228      524F525F 
+ 1228      4C324341 
+ 1228      505F5053 
+ 1229              	.LASF128:
+ 1230 022f 4359424C 		.ascii	"CYBLE_GATT_VALUE_T\000"
+ 1230      455F4741 
+ 1230      54545F56 
+ 1230      414C5545 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 26
+
+
+ 1230      5F5400
+ 1231              	.LASF20:
+ 1232 0242 4359424C 		.ascii	"CYBLE_EVT_HCI_STATUS\000"
+ 1232      455F4556 
+ 1232      545F4843 
+ 1232      495F5354 
+ 1232      41545553 
+ 1233              	.LASF145:
+ 1234 0257 6379426C 		.ascii	"cyBle_busyStatus\000"
+ 1234      655F6275 
+ 1234      73795374 
+ 1234      61747573 
+ 1234      00
+ 1235              	.LASF100:
+ 1236 0268 4359424C 		.ascii	"CYBLE_ERROR_SEC_FAILED\000"
+ 1236      455F4552 
+ 1236      524F525F 
+ 1236      5345435F 
+ 1236      4641494C 
+ 1237              	.LASF31:
+ 1238 027f 4359424C 		.ascii	"CYBLE_EVT_GAP_DEVICE_DISCONNECTED\000"
+ 1238      455F4556 
+ 1238      545F4741 
+ 1238      505F4445 
+ 1238      56494345 
+ 1239              	.LASF32:
+ 1240 02a1 4359424C 		.ascii	"CYBLE_EVT_GAP_ENCRYPT_CHANGE\000"
+ 1240      455F4556 
+ 1240      545F4741 
+ 1240      505F454E 
+ 1240      43525950 
+ 1241              	.LASF36:
+ 1242 02be 4359424C 		.ascii	"CYBLE_EVT_GAP_NUMERIC_COMPARISON_REQUEST\000"
+ 1242      455F4556 
+ 1242      545F4741 
+ 1242      505F4E55 
+ 1242      4D455249 
+ 1243              	.LASF135:
+ 1244 02e7 4359424C 		.ascii	"CYBLE_STATE_ADVERTISING\000"
+ 1244      455F5354 
+ 1244      4154455F 
+ 1244      41445645 
+ 1244      52544953 
+ 1245              	.LASF6:
+ 1246 02ff 6C6F6E67 		.ascii	"long long int\000"
+ 1246      206C6F6E 
+ 1246      6720696E 
+ 1246      7400
+ 1247              	.LASF0:
+ 1248 030d 7369676E 		.ascii	"signed char\000"
+ 1248      65642063 
+ 1248      68617200 
+ 1249              	.LASF17:
+ 1250 0319 4359424C 		.ascii	"CYBLE_EVT_STACK_ON\000"
+ 1250      455F4556 
+ 1250      545F5354 
+ 1250      41434B5F 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 27
+
+
+ 1250      4F4E00
+ 1251              	.LASF108:
+ 1252 032c 4359424C 		.ascii	"CYBLE_ERROR_DEVICE_ALREADY_EXISTS\000"
+ 1252      455F4552 
+ 1252      524F525F 
+ 1252      44455649 
+ 1252      43455F41 
+ 1253              	.LASF95:
+ 1254 034e 4359424C 		.ascii	"CYBLE_ERROR_NO_DEVICE_ENTITY\000"
+ 1254      455F4552 
+ 1254      524F525F 
+ 1254      4E4F5F44 
+ 1254      45564943 
+ 1255              	.LASF127:
+ 1256 036b 61637475 		.ascii	"actualLen\000"
+ 1256      616C4C65 
+ 1256      6E00
+ 1257              	.LASF24:
+ 1258 0375 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_REQ\000"
+ 1258      455F4556 
+ 1258      545F4741 
+ 1258      505F4155 
+ 1258      54485F52 
+ 1259              	.LASF56:
+ 1260 038c 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_RSP\000"
+ 1260      455F4556 
+ 1260      545F4741 
+ 1260      5454435F 
+ 1260      52454144 
+ 1261              	.LASF120:
+ 1262 03a5 4359424C 		.ascii	"CYBLE_ERROR_INVALID_STATE\000"
+ 1262      455F4552 
+ 1262      524F525F 
+ 1262      494E5641 
+ 1262      4C49445F 
+ 1263              	.LASF61:
+ 1264 03bf 4359424C 		.ascii	"CYBLE_EVT_GATTS_WRITE_CMD_REQ\000"
+ 1264      455F4556 
+ 1264      545F4741 
+ 1264      5454535F 
+ 1264      57524954 
+ 1265              	.LASF136:
+ 1266 03dd 4359424C 		.ascii	"CYBLE_STATE_DISCONNECTED\000"
+ 1266      455F5354 
+ 1266      4154455F 
+ 1266      44495343 
+ 1266      4F4E4E45 
+ 1267              	.LASF150:
+ 1268 03f6 6379426C 		.ascii	"cyBle_last_state\000"
+ 1268      655F6C61 
+ 1268      73745F73 
+ 1268      74617465 
+ 1268      00
+ 1269              	.LASF29:
+ 1270 0407 4359424C 		.ascii	"CYBLE_EVT_GAPP_ADVERTISEMENT_START_STOP\000"
+ 1270      455F4556 
+ 1270      545F4741 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 28
+
+
+ 1270      50505F41 
+ 1270      44564552 
+ 1271              	.LASF106:
+ 1272 042f 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_IN_RANGE\000"
+ 1272      455F4552 
+ 1272      524F525F 
+ 1272      4C324341 
+ 1272      505F5053 
+ 1273              	.LASF9:
+ 1274 0452 75696E74 		.ascii	"uint8\000"
+ 1274      3800
+ 1275              	.LASF64:
+ 1276 0458 4359424C 		.ascii	"CYBLE_EVT_GATTC_EXEC_WRITE_RSP\000"
+ 1276      455F4556 
+ 1276      545F4741 
+ 1276      5454435F 
+ 1276      45584543 
+ 1277              	.LASF12:
+ 1278 0477 646F7562 		.ascii	"double\000"
+ 1278      6C6500
+ 1279              	.LASF77:
+ 1280 047e 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DISCONN_IND\000"
+ 1280      455F4556 
+ 1280      545F4C32 
+ 1280      4341505F 
+ 1280      43424643 
+ 1281              	.LASF89:
+ 1282 049f 4359424C 		.ascii	"CYBLE_ERROR_INVALID_PARAMETER\000"
+ 1282      455F4552 
+ 1282      524F525F 
+ 1282      494E5641 
+ 1282      4C49445F 
+ 1283              	.LASF148:
+ 1284 04bd 636F756E 		.ascii	"count\000"
+ 1284      7400
+ 1285              	.LASF87:
+ 1286 04c3 4359424C 		.ascii	"CYBLE_EVT_MAX\000"
+ 1286      455F4556 
+ 1286      545F4D41 
+ 1286      5800
+ 1287              	.LASF88:
+ 1288 04d1 4359424C 		.ascii	"CYBLE_ERROR_OK\000"
+ 1288      455F4552 
+ 1288      524F525F 
+ 1288      4F4B00
+ 1289              	.LASF47:
+ 1290 04e0 4359424C 		.ascii	"CYBLE_EVT_GATTC_ERROR_RSP\000"
+ 1290      455F4556 
+ 1290      545F4741 
+ 1290      5454435F 
+ 1290      4552524F 
+ 1291              	.LASF72:
+ 1292 04fa 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CONN_PARAM_UPDATE_REQ\000"
+ 1292      455F4556 
+ 1292      545F4C32 
+ 1292      4341505F 
+ 1292      434F4E4E 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 29
+
+
+ 1293              	.LASF82:
+ 1294 0520 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DATA_WRITE_IND\000"
+ 1294      455F4556 
+ 1294      545F4C32 
+ 1294      4341505F 
+ 1294      43424643 
+ 1295              	.LASF130:
+ 1296 0544 61747472 		.ascii	"attrHandle\000"
+ 1296      48616E64 
+ 1296      6C6500
+ 1297              	.LASF7:
+ 1298 054f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1298      206C6F6E 
+ 1298      6720756E 
+ 1298      7369676E 
+ 1298      65642069 
+ 1299              	.LASF69:
+ 1300 0566 4359424C 		.ascii	"CYBLE_EVT_GATTC_STOP_CMD_COMPLETE\000"
+ 1300      455F4556 
+ 1300      545F4741 
+ 1300      5454435F 
+ 1300      53544F50 
+ 1301              	.LASF93:
+ 1302 0588 4359424C 		.ascii	"CYBLE_ERROR_OOB_NOT_AVAILABLE\000"
+ 1302      455F4552 
+ 1302      524F525F 
+ 1302      4F4F425F 
+ 1302      4E4F545F 
+ 1303              	.LASF84:
+ 1304 05a6 4359424C 		.ascii	"CYBLE_EVT_LE_PING_AUTH_TIMEOUT\000"
+ 1304      455F4556 
+ 1304      545F4C45 
+ 1304      5F50494E 
+ 1304      475F4155 
+ 1305              	.LASF102:
+ 1306 05c5 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_ALREADY_REGISTERED\000"
+ 1306      455F4552 
+ 1306      524F525F 
+ 1306      4C324341 
+ 1306      505F5053 
+ 1307              	.LASF5:
+ 1308 05ee 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1308      20756E73 
+ 1308      69676E65 
+ 1308      6420696E 
+ 1308      7400
+ 1309              	.LASF43:
+ 1310 0600 4359424C 		.ascii	"CYBLE_EVT_GAP_CONN_ESTB\000"
+ 1310      455F4556 
+ 1310      545F4741 
+ 1310      505F434F 
+ 1310      4E4E5F45 
+ 1311              	.LASF59:
+ 1312 0618 4359424C 		.ascii	"CYBLE_EVT_GATTS_WRITE_REQ\000"
+ 1312      455F4556 
+ 1312      545F4741 
+ 1312      5454535F 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 30
+
+
+ 1312      57524954 
+ 1313              	.LASF51:
+ 1314 0632 4359424C 		.ascii	"CYBLE_EVT_GATTC_XCHNG_MTU_RSP\000"
+ 1314      455F4556 
+ 1314      545F4741 
+ 1314      5454435F 
+ 1314      5843484E 
+ 1315              	.LASF68:
+ 1316 0650 4359424C 		.ascii	"CYBLE_EVT_GATTS_DATA_SIGNED_CMD_REQ\000"
+ 1316      455F4556 
+ 1316      545F4741 
+ 1316      5454535F 
+ 1316      44415441 
+ 1317              	.LASF71:
+ 1318 0674 4359424C 		.ascii	"CYBLE_EVT_GATTC_LONG_PROCEDURE_END\000"
+ 1318      455F4556 
+ 1318      545F4741 
+ 1318      5454435F 
+ 1318      4C4F4E47 
+ 1319              	.LASF153:
+ 1320 0697 433A5C55 		.ascii	"C:\\Users\\Daniela\\Desktop\\Bluetooth_Project\\UAR"
+ 1320      73657273 
+ 1320      5C44616E 
+ 1320      69656C61 
+ 1320      5C446573 
+ 1321 06c5 545F746F 		.ascii	"T_to_BLE_peripheral_test.cydsn\000"
+ 1321      5F424C45 
+ 1321      5F706572 
+ 1321      69706865 
+ 1321      72616C5F 
+ 1322              	.LASF105:
+ 1323 06e4 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CHANNEL_NOT_FOUND\000"
+ 1323      455F4552 
+ 1323      524F525F 
+ 1323      4C324341 
+ 1323      505F4348 
+ 1324              	.LASF117:
+ 1325 0708 4359424C 		.ascii	"CYBLE_ERROR_NTF_DISABLED\000"
+ 1325      455F4552 
+ 1325      524F525F 
+ 1325      4E54465F 
+ 1325      44495341 
+ 1326              	.LASF16:
+ 1327 0721 4359424C 		.ascii	"CYBLE_EVT_HOST_INVALID\000"
+ 1327      455F4556 
+ 1327      545F484F 
+ 1327      53545F49 
+ 1327      4E56414C 
+ 1328              	.LASF54:
+ 1329 0738 4359424C 		.ascii	"CYBLE_EVT_GATTC_FIND_INFO_RSP\000"
+ 1329      455F4556 
+ 1329      545F4741 
+ 1329      5454435F 
+ 1329      46494E44 
+ 1330              	.LASF22:
+ 1331 0756 4359424C 		.ascii	"CYBLE_EVT_MEMORY_REQUEST\000"
+ 1331      455F4556 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 31
+
+
+ 1331      545F4D45 
+ 1331      4D4F5259 
+ 1331      5F524551 
+ 1332              	.LASF152:
+ 1333 076f 6170705F 		.ascii	"app_Ble.c\000"
+ 1333      426C652E 
+ 1333      6300
+ 1334              	.LASF25:
+ 1335 0779 4359424C 		.ascii	"CYBLE_EVT_GAP_PASSKEY_ENTRY_REQUEST\000"
+ 1335      455F4556 
+ 1335      545F4741 
+ 1335      505F5041 
+ 1335      53534B45 
+ 1336              	.LASF30:
+ 1337 079d 4359424C 		.ascii	"CYBLE_EVT_GAP_DEVICE_CONNECTED\000"
+ 1337      455F4556 
+ 1337      545F4741 
+ 1337      505F4445 
+ 1337      56494345 
+ 1338              	.LASF45:
+ 1339 07bc 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_REQ_REPLY_ERR\000"
+ 1339      455F4556 
+ 1339      545F4741 
+ 1339      505F4155 
+ 1339      54485F52 
+ 1340              	.LASF143:
+ 1341 07dd 6379426C 		.ascii	"cyBle_state\000"
+ 1341      655F7374 
+ 1341      61746500 
+ 1342              	.LASF151:
+ 1343 07e9 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1343      43313120 
+ 1343      352E342E 
+ 1343      31203230 
+ 1343      31363036 
+ 1344 081c 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1344      20726576 
+ 1344      6973696F 
+ 1344      6E203233 
+ 1344      37373135 
+ 1345 084f 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1345      66756E63 
+ 1345      74696F6E 
+ 1345      2D736563 
+ 1345      74696F6E 
+ 1346              	.LASF48:
+ 1347 0877 4359424C 		.ascii	"CYBLE_EVT_GATT_CONNECT_IND\000"
+ 1347      455F4556 
+ 1347      545F4741 
+ 1347      54545F43 
+ 1347      4F4E4E45 
+ 1348              	.LASF74:
+ 1349 0892 4359424C 		.ascii	"CYBLE_EVT_L2CAP_COMMAND_REJ\000"
+ 1349      455F4556 
+ 1349      545F4C32 
+ 1349      4341505F 
+ 1349      434F4D4D 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 32
+
+
+ 1350              	.LASF23:
+ 1351 08ae 4359424C 		.ascii	"CYBLE_EVT_GAPC_SCAN_PROGRESS_RESULT\000"
+ 1351      455F4556 
+ 1351      545F4741 
+ 1351      50435F53 
+ 1351      43414E5F 
+ 1352              	.LASF125:
+ 1353 08d2 61747449 		.ascii	"attId\000"
+ 1353      6400
+ 1354              	.LASF46:
+ 1355 08d8 4359424C 		.ascii	"CYBLE_EVT_GAP_SMP_LOC_P256_KEYS_GEN_AND_SET_COMPLET"
+ 1355      455F4556 
+ 1355      545F4741 
+ 1355      505F534D 
+ 1355      505F4C4F 
+ 1356 090b 4500     		.ascii	"E\000"
+ 1357              	.LASF116:
+ 1358 090d 4359424C 		.ascii	"CYBLE_ERROR_MAX\000"
+ 1358      455F4552 
+ 1358      524F525F 
+ 1358      4D415800 
+ 1359              	.LASF113:
+ 1360 091d 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE\000"
+ 1360      455F4552 
+ 1360      524F525F 
+ 1360      464C4153 
+ 1360      485F5752 
+ 1361              	.LASF53:
+ 1362 0935 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BY_TYPE_RSP\000"
+ 1362      455F4556 
+ 1362      545F4741 
+ 1362      5454435F 
+ 1362      52454144 
+ 1363              	.LASF15:
+ 1364 0956 73697A65 		.ascii	"sizetype\000"
+ 1364      74797065 
+ 1364      00
+ 1365              	.LASF133:
+ 1366 095f 4359424C 		.ascii	"CYBLE_STATE_INITIALIZING\000"
+ 1366      455F5354 
+ 1366      4154455F 
+ 1366      494E4954 
+ 1366      49414C49 
+ 1367              	.LASF28:
+ 1368 0978 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_FAILED\000"
+ 1368      455F4556 
+ 1368      545F4741 
+ 1368      505F4155 
+ 1368      54485F46 
+ 1369              	.LASF144:
+ 1370 0992 6379426C 		.ascii	"cyBle_connHandle\000"
+ 1370      655F636F 
+ 1370      6E6E4861 
+ 1370      6E646C65 
+ 1370      00
+ 1371              	.LASF60:
+ 1372 09a3 4359424C 		.ascii	"CYBLE_EVT_GATTC_WRITE_RSP\000"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 33
+
+
+ 1372      455F4556 
+ 1372      545F4741 
+ 1372      5454435F 
+ 1372      57524954 
+ 1373              	.LASF41:
+ 1374 09bd 4359424C 		.ascii	"CYBLE_EVT_GAPC_DIRECT_ADV_REPORT\000"
+ 1374      455F4556 
+ 1374      545F4741 
+ 1374      50435F44 
+ 1374      49524543 
+ 1375              	.LASF39:
+ 1376 09de 4359424C 		.ascii	"CYBLE_EVT_GAP_DATA_LENGTH_CHANGE\000"
+ 1376      455F4556 
+ 1376      545F4741 
+ 1376      505F4441 
+ 1376      54415F4C 
+ 1377              	.LASF44:
+ 1378 09ff 4359424C 		.ascii	"CYBLE_EVT_GAP_SCAN_REQ_RECVD\000"
+ 1378      455F4556 
+ 1378      545F4741 
+ 1378      505F5343 
+ 1378      414E5F52 
+ 1379              	.LASF27:
+ 1380 0a1c 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_COMPLETE\000"
+ 1380      455F4556 
+ 1380      545F4741 
+ 1380      505F4155 
+ 1380      54485F43 
+ 1381              	.LASF122:
+ 1382 0a38 4359424C 		.ascii	"CYBLE_API_RESULT_T\000"
+ 1382      455F4150 
+ 1382      495F5245 
+ 1382      53554C54 
+ 1382      5F5400
+ 1383              	.LASF65:
+ 1384 0a4b 4359424C 		.ascii	"CYBLE_EVT_GATTC_HANDLE_VALUE_NTF\000"
+ 1384      455F4556 
+ 1384      545F4741 
+ 1384      5454435F 
+ 1384      48414E44 
+ 1385              	.LASF118:
+ 1386 0a6c 4359424C 		.ascii	"CYBLE_ERROR_IND_DISABLED\000"
+ 1386      455F4552 
+ 1386      524F525F 
+ 1386      494E445F 
+ 1386      44495341 
+ 1387              	.LASF138:
+ 1388 0a85 53544152 		.ascii	"START\000"
+ 1388      5400
+ 1389              	.LASF131:
+ 1390 0a8b 4359424C 		.ascii	"CYBLE_GATT_HANDLE_VALUE_PAIR_T\000"
+ 1390      455F4741 
+ 1390      54545F48 
+ 1390      414E444C 
+ 1390      455F5641 
+ 1391              	.LASF76:
+ 1392 0aaa 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_CONN_CNF\000"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 34
+
+
+ 1392      455F4556 
+ 1392      545F4C32 
+ 1392      4341505F 
+ 1392      43424643 
+ 1393              	.LASF52:
+ 1394 0ac8 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BY_GROUP_TYPE_RSP\000"
+ 1394      455F4556 
+ 1394      545F4741 
+ 1394      5454435F 
+ 1394      52454144 
+ 1395              	.LASF11:
+ 1396 0aef 666C6F61 		.ascii	"float\000"
+ 1396      7400
+ 1397              	.LASF146:
+ 1398 0af5 6D747553 		.ascii	"mtuSize\000"
+ 1398      697A6500 
+ 1399              	.LASF98:
+ 1400 0afd 4359424C 		.ascii	"CYBLE_ERROR_TX_POWER_READ\000"
+ 1400      455F4552 
+ 1400      524F525F 
+ 1400      54585F50 
+ 1400      4F574552 
+ 1401              	.LASF119:
+ 1402 0b17 4359424C 		.ascii	"CYBLE_ERROR_CHAR_IS_NOT_DISCOVERED\000"
+ 1402      455F4552 
+ 1402      524F525F 
+ 1402      43484152 
+ 1402      5F49535F 
+ 1403              	.LASF1:
+ 1404 0b3a 756E7369 		.ascii	"unsigned char\000"
+ 1404      676E6564 
+ 1404      20636861 
+ 1404      7200
+ 1405              	.LASF10:
+ 1406 0b48 75696E74 		.ascii	"uint16\000"
+ 1406      313600
+ 1407              	.LASF37:
+ 1408 0b4f 4359424C 		.ascii	"CYBLE_EVT_GAP_KEYPRESS_NOTIFICATION\000"
+ 1408      455F4556 
+ 1408      545F4741 
+ 1408      505F4B45 
+ 1408      59505245 
+ 1409              	.LASF2:
+ 1410 0b73 73686F72 		.ascii	"short int\000"
+ 1410      7420696E 
+ 1410      7400
+ 1411              	.LASF66:
+ 1412 0b7d 4359424C 		.ascii	"CYBLE_EVT_GATTC_HANDLE_VALUE_IND\000"
+ 1412      455F4556 
+ 1412      545F4741 
+ 1412      5454435F 
+ 1412      48414E44 
+ 1413              	.LASF85:
+ 1414 0b9e 4359424C 		.ascii	"CYBLE_EVT_HCI_PKT\000"
+ 1414      455F4556 
+ 1414      545F4843 
+ 1414      495F504B 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 35
+
+
+ 1414      5400
+ 1415              	.LASF94:
+ 1416 0bb0 4359424C 		.ascii	"CYBLE_ERROR_NO_CONNECTION\000"
+ 1416      455F4552 
+ 1416      524F525F 
+ 1416      4E4F5F43 
+ 1416      4F4E4E45 
+ 1417              	.LASF139:
+ 1418 0bca 53454E53 		.ascii	"SENSOR_PACKET\000"
+ 1418      4F525F50 
+ 1418      41434B45 
+ 1418      5400
+ 1419              	.LASF62:
+ 1420 0bd8 4359424C 		.ascii	"CYBLE_EVT_GATTS_PREP_WRITE_REQ\000"
+ 1420      455F4556 
+ 1420      545F4741 
+ 1420      5454535F 
+ 1420      50524550 
+ 1421              	.LASF141:
+ 1422 0bf7 74784461 		.ascii	"txDataClientConfigDesc\000"
+ 1422      7461436C 
+ 1422      69656E74 
+ 1422      436F6E66 
+ 1422      69674465 
+ 1423              	.LASF129:
+ 1424 0c0e 76616C75 		.ascii	"value\000"
+ 1424      6500
+ 1425              	.LASF114:
+ 1426 0c14 4359424C 		.ascii	"CYBLE_ERROR_LL_SAME_TRANSACTION_COLLISION\000"
+ 1426      455F4552 
+ 1426      524F525F 
+ 1426      4C4C5F53 
+ 1426      414D455F 
+ 1427              	.LASF142:
+ 1428 0c3e 61747472 		.ascii	"attrValue\000"
+ 1428      56616C75 
+ 1428      6500
+ 1429              	.LASF67:
+ 1430 0c48 4359424C 		.ascii	"CYBLE_EVT_GATTS_HANDLE_VALUE_CNF\000"
+ 1430      455F4556 
+ 1430      545F4741 
+ 1430      5454535F 
+ 1430      48414E44 
+ 1431              	.LASF96:
+ 1432 0c69 4359424C 		.ascii	"CYBLE_ERROR_REPEATED_ATTEMPTS\000"
+ 1432      455F4552 
+ 1432      524F525F 
+ 1432      52455045 
+ 1432      41544544 
+ 1433              	.LASF42:
+ 1434 0c87 4359424C 		.ascii	"CYBLE_EVT_GAP_SMP_NEGOTIATED_AUTH_INFO\000"
+ 1434      455F4556 
+ 1434      545F4741 
+ 1434      505F534D 
+ 1434      505F4E45 
+ 1435              	.LASF121:
+ 1436 0cae 4359424C 		.ascii	"CYBLE_ERROR_STACK_BUSY\000"
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 36
+
+
+ 1436      455F4552 
+ 1436      524F525F 
+ 1436      53544143 
+ 1436      4B5F4255 
+ 1437              	.LASF14:
+ 1438 0cc5 6C6F6E67 		.ascii	"long double\000"
+ 1438      20646F75 
+ 1438      626C6500 
+ 1439              	.LASF13:
+ 1440 0cd1 63686172 		.ascii	"char\000"
+ 1440      00
+ 1441              	.LASF99:
+ 1442 0cd6 4359424C 		.ascii	"CYBLE_ERROR_BT_ON_NOT_COMPLETED\000"
+ 1442      455F4552 
+ 1442      524F525F 
+ 1442      42545F4F 
+ 1442      4E5F4E4F 
+ 1443              	.LASF149:
+ 1444 0cf6 6D6F6465 		.ascii	"mode\000"
+ 1444      00
+ 1445              	.LASF8:
+ 1446 0cfb 756E7369 		.ascii	"unsigned int\000"
+ 1446      676E6564 
+ 1446      20696E74 
+ 1446      00
+ 1447              	.LASF154:
+ 1448 0d08 73746174 		.ascii	"states\000"
+ 1448      657300
+ 1449              	.LASF70:
+ 1450 0d0f 4359424C 		.ascii	"CYBLE_EVT_GATTS_READ_CHAR_VAL_ACCESS_REQ\000"
+ 1450      455F4556 
+ 1450      545F4741 
+ 1450      5454535F 
+ 1450      52454144 
+ 1451              	.LASF81:
+ 1452 0d38 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_TX_CREDIT_IND\000"
+ 1452      455F4556 
+ 1452      545F4C32 
+ 1452      4341505F 
+ 1452      43424643 
+ 1453              	.LASF109:
+ 1454 0d5b 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE_NOT_PERMITED\000"
+ 1454      455F4552 
+ 1454      524F525F 
+ 1454      464C4153 
+ 1454      485F5752 
+ 1455              	.LASF104:
+ 1456 0d80 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CONNECTION_ENTITY_NOT_FOUND\000"
+ 1456      455F4552 
+ 1456      524F525F 
+ 1456      4C324341 
+ 1456      505F434F 
+ 1457              	.LASF26:
+ 1458 0dae 4359424C 		.ascii	"CYBLE_EVT_GAP_PASSKEY_DISPLAY_REQUEST\000"
+ 1458      455F4556 
+ 1458      545F4741 
+ 1458      505F5041 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 37
+
+
+ 1458      53534B45 
+ 1459              	.LASF19:
+ 1460 0dd4 4359424C 		.ascii	"CYBLE_EVT_HARDWARE_ERROR\000"
+ 1460      455F4556 
+ 1460      545F4841 
+ 1460      52445741 
+ 1460      52455F45 
+ 1461              	.LASF3:
+ 1462 0ded 73686F72 		.ascii	"short unsigned int\000"
+ 1462      7420756E 
+ 1462      7369676E 
+ 1462      65642069 
+ 1462      6E7400
+ 1463              	.LASF90:
+ 1464 0e00 4359424C 		.ascii	"CYBLE_ERROR_INVALID_OPERATION\000"
+ 1464      455F4552 
+ 1464      524F525F 
+ 1464      494E5641 
+ 1464      4C49445F 
+ 1465              	.LASF50:
+ 1466 0e1e 4359424C 		.ascii	"CYBLE_EVT_GATTS_XCNHG_MTU_REQ\000"
+ 1466      455F4556 
+ 1466      545F4741 
+ 1466      5454535F 
+ 1466      58434E48 
+ 1467              	.LASF92:
+ 1468 0e3c 4359424C 		.ascii	"CYBLE_ERROR_INSUFFICIENT_RESOURCES\000"
+ 1468      455F4552 
+ 1468      524F525F 
+ 1468      494E5355 
+ 1468      46464943 
+ 1469              	.LASF137:
+ 1470 0e5f 4359424C 		.ascii	"CYBLE_STATE_T\000"
+ 1470      455F5354 
+ 1470      4154455F 
+ 1470      5400
+ 1471              	.LASF57:
+ 1472 0e6d 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BLOB_RSP\000"
+ 1472      455F4556 
+ 1472      545F4741 
+ 1472      5454435F 
+ 1472      52454144 
+ 1473              	.LASF115:
+ 1474 0e8b 4359424C 		.ascii	"CYBLE_ERROR_CONTROLLER_BUSY\000"
+ 1474      455F4552 
+ 1474      524F525F 
+ 1474      434F4E54 
+ 1474      524F4C4C 
+ 1475              	.LASF147:
+ 1476 0ea7 626C6541 		.ascii	"bleApiResult\000"
+ 1476      70695265 
+ 1476      73756C74 
+ 1476      00
+ 1477              	.LASF110:
+ 1478 0eb4 4359424C 		.ascii	"CYBLE_ERROR_MIC_AUTH_FAILED\000"
+ 1478      455F4552 
+ 1478      524F525F 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 38
+
+
+ 1478      4D49435F 
+ 1478      41555448 
+ 1479              	.LASF103:
+ 1480 0ed0 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_REGISTERED\000"
+ 1480      455F4552 
+ 1480      524F525F 
+ 1480      4C324341 
+ 1480      505F5053 
+ 1481              	.LASF134:
+ 1482 0ef5 4359424C 		.ascii	"CYBLE_STATE_CONNECTED\000"
+ 1482      455F5354 
+ 1482      4154455F 
+ 1482      434F4E4E 
+ 1482      45435445 
+ 1483              	.LASF55:
+ 1484 0f0b 4359424C 		.ascii	"CYBLE_EVT_GATTC_FIND_BY_TYPE_VALUE_RSP\000"
+ 1484      455F4556 
+ 1484      545F4741 
+ 1484      5454435F 
+ 1484      46494E44 
+ 1485              	.LASF97:
+ 1486 0f32 4359424C 		.ascii	"CYBLE_ERROR_GAP_ROLE\000"
+ 1486      455F4552 
+ 1486      524F525F 
+ 1486      4741505F 
+ 1486      524F4C45 
+ 1487              	.LASF35:
+ 1488 0f47 4359424C 		.ascii	"CYBLE_EVT_GAP_KEYINFO_EXCHNGE_CMPLT\000"
+ 1488      455F4556 
+ 1488      545F4741 
+ 1488      505F4B45 
+ 1488      59494E46 
+ 1489              	.LASF124:
+ 1490 0f6b 62644861 		.ascii	"bdHandle\000"
+ 1490      6E646C65 
+ 1490      00
+ 1491              	.LASF83:
+ 1492 0f74 4359424C 		.ascii	"CYBLE_EVT_PENDING_FLASH_WRITE\000"
+ 1492      455F4556 
+ 1492      545F5045 
+ 1492      4E44494E 
+ 1492      475F464C 
+ 1493              	.LASF155:
+ 1494 0f92 48616E64 		.ascii	"HandleBleProcessing\000"
+ 1494      6C65426C 
+ 1494      6550726F 
+ 1494      63657373 
+ 1494      696E6700 
+ 1495              	.LASF73:
+ 1496 0fa6 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CONN_PARAM_UPDATE_RSP\000"
+ 1496      455F4556 
+ 1496      545F4C32 
+ 1496      4341505F 
+ 1496      434F4E4E 
+ 1497              	.LASF40:
+ 1498 0fcc 4359424C 		.ascii	"CYBLE_EVT_GAP_ENHANCE_CONN_COMPLETE\000"
+ 1498      455F4556 
+ARM GAS  C:\Users\Daniela\AppData\Local\Temp\cca3VOGj.s 			page 39
+
+
+ 1498      545F4741 
+ 1498      505F454E 
+ 1498      48414E43 
+ 1499              	.LASF123:
+ 1500 0ff0 4359424C 		.ascii	"CYBLE_GATT_DB_ATTR_HANDLE_T\000"
+ 1500      455F4741 
+ 1500      54545F44 
+ 1500      425F4154 
+ 1500      54525F48 
+ 1501              	.LASF49:
+ 1502 100c 4359424C 		.ascii	"CYBLE_EVT_GATT_DISCONNECT_IND\000"
+ 1502      455F4556 
+ 1502      545F4741 
+ 1502      54545F44 
+ 1502      4953434F 
+ 1503              	.LASF107:
+ 1504 102a 4359424C 		.ascii	"CYBLE_ERROR_GATT_DB_INVALID_ATTR_HANDLE\000"
+ 1504      455F4552 
+ 1504      524F525F 
+ 1504      47415454 
+ 1504      5F44425F 
+ 1505              	.LASF86:
+ 1506 1052 4359424C 		.ascii	"CYBLE_EVT_FLASH_CORRUPT\000"
+ 1506      455F4556 
+ 1506      545F464C 
+ 1506      4153485F 
+ 1506      434F5252 
+ 1507              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
