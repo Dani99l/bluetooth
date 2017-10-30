@@ -25,7 +25,7 @@
     *   Conditional compilation parameters
     ***************************************/      
 //    #define     FLOW_CONTROL
-    #define     PRINT_MESSAGE_LOG
+  //  #define     PRINT_MESSAGE_LOG
 //    #define     LOW_POWER_MODE
     CYBLE_API_RESULT_T      bleApiResult;
     
@@ -33,9 +33,16 @@
     volatile static bool peerDeviceFound         = false;
     volatile static bool notificationEnabled     = false;
 
-
+    CYBLE_API_RESULT_T      cyBle_last_state;
     CYBLE_GATT_ATTR_HANDLE_RANGE_T  attrHandleRange;
     CYBLE_GATTC_FIND_INFO_REQ_T     charDescHandleRange;
+    
+    /***************************************
+    *       Glabal Variables
+    ***************************************/
+    int packetSum;
+    
+    
     /***************************************
     *       Function Prototypes
     ***************************************/
@@ -46,6 +53,12 @@
     //void HandleBleProcessing(void);
    // void enableNotifications();
     void AppCallBack(uint32 event, void *eventParam);
+    void packetReceivedToPrint(CYBLE_GATTC_HANDLE_VALUE_NTF_PARAM_T *uartRxDataNotification);    
+    
+
+    
+    
+    
 #endif
 
 /* [] END OF FILE */

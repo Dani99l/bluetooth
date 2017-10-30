@@ -124,61 +124,6 @@
 <file name=".\main.c" />
 <file name=".\main.h" />
 <file name=".\teste.h" />
-<file name=".\CortexM0\ARM_GCC_541\Debug\app_UART.o">
-<dep name=".\Generated_Source\PSoC4\BLE.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_HAL_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_STACK_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_Stack.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGap.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGatt.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGattClient.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGattDb.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGattServer.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackHostMain.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackL2cap.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_bless_isr.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_custom.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_eventHandler.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_gatt.h" />
-<dep name=".\Generated_Source\PSoC4\Conn_LED.h" />
-<dep name=".\Generated_Source\PSoC4\Conn_LED_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
-<dep name=".\Generated_Source\PSoC4\CyLib.h" />
-<dep name=".\Generated_Source\PSoC4\Scan_LED.h" />
-<dep name=".\Generated_Source\PSoC4\Scan_LED_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\UART.h" />
-<dep name=".\Generated_Source\PSoC4\UART_BOOT.h" />
-<dep name=".\Generated_Source\PSoC4\UART_PINS.h" />
-<dep name=".\Generated_Source\PSoC4\UART_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\UART_SCBCLK.h" />
-<dep name=".\Generated_Source\PSoC4\UART_SCB_IRQ.h" />
-<dep name=".\Generated_Source\PSoC4\UART_SPI_UART.h" />
-<dep name=".\Generated_Source\PSoC4\UART_SPI_UART_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\UART_rx.h" />
-<dep name=".\Generated_Source\PSoC4\UART_rx_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\UART_tx.h" />
-<dep name=".\Generated_Source\PSoC4\UART_tx_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_gcc.h" />
-<dep name=".\Generated_Source\PSoC4\core_cm0.h" />
-<dep name=".\Generated_Source\PSoC4\core_cm0_psoc4.h" />
-<dep name=".\Generated_Source\PSoC4\cyPm.h" />
-<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC4\cydisabledsheets.h" />
-<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
-<dep name=".\Generated_Source\PSoC4\cypins.h" />
-<dep name=".\Generated_Source\PSoC4\cytypes.h" />
-<dep name=".\Generated_Source\PSoC4\project.h" />
-<dep name=".\app_Ble.h" />
-<dep name=".\app_LED.h" />
-<dep name=".\app_UART.c" />
-<dep name=".\app_UART.h" />
-<dep name=".\main.h" />
-</file>
-<file name=".\app_UART.c" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\BLE.o">
 <dep name=".\Generated_Source\PSoC4\BLE.c" />
 <dep name=".\Generated_Source\PSoC4\BLE.h" />
@@ -749,6 +694,61 @@
 <dep name=".\main.h" />
 </file>
 <file name=".\app_LED.c" />
+<file name=".\CortexM0\ARM_GCC_541\Debug\app_UART.o">
+<dep name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC4\core_cm0.h" />
+<dep name=".\Generated_Source\PSoC4\core_cm0_psoc4.h" />
+<dep name=".\Generated_Source\PSoC4\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC4\project.h" />
+<dep name=".\Generated_Source\PSoC4\BLE.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_HAL_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_STACK_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_Stack.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGap.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGatt.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGattClient.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGattDb.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGattServer.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackHostMain.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackL2cap.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_bless_isr.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_custom.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_eventHandler.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_gatt.h" />
+<dep name=".\Generated_Source\PSoC4\Conn_LED.h" />
+<dep name=".\Generated_Source\PSoC4\Conn_LED_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
+<dep name=".\Generated_Source\PSoC4\CyLib.h" />
+<dep name=".\Generated_Source\PSoC4\Scan_LED.h" />
+<dep name=".\Generated_Source\PSoC4\Scan_LED_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\UART.h" />
+<dep name=".\Generated_Source\PSoC4\UART_BOOT.h" />
+<dep name=".\Generated_Source\PSoC4\UART_PINS.h" />
+<dep name=".\Generated_Source\PSoC4\UART_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\UART_SCBCLK.h" />
+<dep name=".\Generated_Source\PSoC4\UART_SCB_IRQ.h" />
+<dep name=".\Generated_Source\PSoC4\UART_SPI_UART.h" />
+<dep name=".\Generated_Source\PSoC4\UART_SPI_UART_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\UART_rx.h" />
+<dep name=".\Generated_Source\PSoC4\UART_rx_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\UART_tx.h" />
+<dep name=".\Generated_Source\PSoC4\UART_tx_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\cyPm.h" />
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC4\cypins.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\app_Ble.h" />
+<dep name=".\app_LED.h" />
+<dep name=".\app_UART.c" />
+<dep name=".\app_UART.h" />
+<dep name=".\main.h" />
+</file>
+<file name=".\app_UART.c" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\teste.o">
 <dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
 <dep name=".\Generated_Source\PSoC4\cyfitter.h" />
@@ -1285,7 +1285,7 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 </warp_dep>
-<deps_time v="131535732144924578" />
+<deps_time v="131538464889827522" />
 <top_block v="TopDesign" />
 <last_generation v="3" />
 <pdl_path v="" />
@@ -1295,7 +1295,7 @@
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
 <link_deps_times>
-<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0" v="131535827504239995" />
+<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0" v="131538467856246350" />
 </link_deps_times>
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>

@@ -11,48 +11,48 @@
 
 #include "main.h"
 #include "teste.h"
-uint16 txCharHandle             = 0;                /* Handle for the TX data characteristic */
-uint16 rxCharHandle             = 0;                /* Handle for the RX data characteristic */
-uint16 txCharDescHandle         = 0;                /* Handle for the TX data characteristic descriptor */
-uint16 bleUartServiceHandle     = 0;                /* Handle for the BLE UART service */
-uint16 bleUartServiceEndHandle  = 0;                /* End handle for the BLE UART service */
-uint16 mtuSize                  = CYBLE_GATT_MTU;   /* MTU size to be used by Client and Server after MTU exchange */
+    uint16 txCharHandle             = 0;                /* Handle for the TX data characteristic */
+    uint16 rxCharHandle             = 0;                /* Handle for the RX data characteristic */
+    uint16 txCharDescHandle         = 0;                /* Handle for the TX data characteristic descriptor */
+    uint16 bleUartServiceHandle     = 0;                /* Handle for the BLE UART service */
+    uint16 bleUartServiceEndHandle  = 0;                /* End handle for the BLE UART service */
+    uint16 mtuSize                  = CYBLE_GATT_MTU;   /* MTU size to be used by Client and Server after MTU exchange */
 
-const uint8 enableNotificationParam[2] = {0x01, 0x00};
+    const uint8 enableNotificationParam[2] = {0x01, 0x00};
 
-/* UUID of the custom BLE UART service */
-const uint8 bleUartServiceUuid[16]    = {
-                                            0x31, 0x01, 0x9b, 0x5f, 0x80, 0x00, 0x00,0x80, \
-                                            0x00, 0x10, 0x00, 0x00, 0xd0, 0xcd, 0x03, 0x00 \
-                                        };
+    /* UUID of the custom BLE UART service */
+    const uint8 bleUartServiceUuid[16]    = {
+                                                0x31, 0x01, 0x9b, 0x5f, 0x80, 0x00, 0x00,0x80, \
+                                                0x00, 0x10, 0x00, 0x00, 0xd0, 0xcd, 0x03, 0x00 \
+                                            };
 
-/* UUID of the TX attribute of the custom BLE UART service */
-const uint8 uartTxAttrUuid[16]        = {
-                                            0x31, 0x01, 0x9b, 0x5f, 0x80, 0x00, 0x00,0x80, \
-                                            0x00, 0x10, 0x00, 0x00, 0xd1, 0xcd, 0x03, 0x00 \
-                                        };
+    /* UUID of the TX attribute of the custom BLE UART service */
+    const uint8 uartTxAttrUuid[16]        = {
+                                                0x31, 0x01, 0x9b, 0x5f, 0x80, 0x00, 0x00,0x80, \
+                                                0x00, 0x10, 0x00, 0x00, 0xd1, 0xcd, 0x03, 0x00 \
+                                            };
 
-/* UUID of the RX attribute of the custom BLE UART service */
-const uint8 uartRxAttrUuid[16]        = {
-                                            0x31, 0x01, 0x9b, 0x5f, 0x80, 0x00, 0x00,0x80, \
-                                            0x00, 0x10, 0x00, 0x00, 0xd2, 0xcd, 0x03, 0x00 \
-                                        };
+    /* UUID of the RX attribute of the custom BLE UART service */
+    const uint8 uartRxAttrUuid[16]        = {
+                                                0x31, 0x01, 0x9b, 0x5f, 0x80, 0x00, 0x00,0x80, \
+                                                0x00, 0x10, 0x00, 0x00, 0xd2, 0xcd, 0x03, 0x00 \
+                                            };
 
-/* structure to be passed for discovering service by UUID */
-const CYBLE_GATT_VALUE_T    bleUartServiceUuidInfo = { 
-                                                        (uint8 *) bleUartServiceUuid, \
-                                                        CYBLE_GATT_128_BIT_UUID_SIZE,\
-                                                        CYBLE_GATT_128_BIT_UUID_SIZE \
-                                                      };
+    /* structure to be passed for discovering service by UUID */
+    const CYBLE_GATT_VALUE_T    bleUartServiceUuidInfo = { 
+                                                            (uint8 *) bleUartServiceUuid, \
+                                                            CYBLE_GATT_128_BIT_UUID_SIZE,\
+                                                            CYBLE_GATT_128_BIT_UUID_SIZE \
+                                                          };
 
-/* structure to be passed for the enable notification request */
-CYBLE_GATTC_WRITE_REQ_T     enableNotificationReqParam   = {
-                                                                {(uint8*)enableNotificationParam, 2, 2},
-                                                                0
-                                                            };
-static INFO_EXCHANGE_STATE_T    infoExchangeState   = INFO_EXCHANGE_START;
-    
-static CYBLE_GAP_BD_ADDR_T      peerAddr;           /* BD address of the peer device */
+    /* structure to be passed for the enable notification request */
+    CYBLE_GATTC_WRITE_REQ_T     enableNotificationReqParam   = {
+                                                                    {(uint8*)enableNotificationParam, 2, 2},
+                                                                    0
+                                                                };
+    static INFO_EXCHANGE_STATE_T    infoExchangeState   = INFO_EXCHANGE_START;
+        
+    static CYBLE_GAP_BD_ADDR_T      peerAddr;           /* BD address of the peer device */    
     
 int main()
 {
@@ -60,7 +60,7 @@ int main()
         CYBLE_LP_MODE_T         lpMode;
         CYBLE_BLESS_STATE_T     blessState;
     #endif
-    
+    packetSum=0;
     start();
     startBLE();
     while(1){   //if server is connected
@@ -95,7 +95,7 @@ void start(){
  
     /* Start UART and BLE component and display project information */
     UART_Start();  
-    UART_UartPutString("\n\r Star ");
+    UART_UartPutString("\n\r Star central role \n\r ");
 }
 
 
@@ -121,7 +121,12 @@ void HandleBleProcessing(void)
     switch (cyBle_state)
     {
         case CYBLE_STATE_SCANNING:
-        UART_UartPutString("\n\r CYBLE_STATE_SCANNING \n\r ");
+        if (cyBle_last_state != cyBle_state) {
+            #ifdef PRINT_MESSAGE_LOG   
+             UART_UartPutString("\n\r CYBLE_STATE_SCANNING \n\r ");
+            #endif             
+            
+        }
             if(peerDeviceFound)
             {
                 CyBle_GapcStopScan();
@@ -129,7 +134,13 @@ void HandleBleProcessing(void)
             break;
     
         case CYBLE_STATE_CONNECTED:
-            UART_UartPutString("\n\r CYBLE_STATE_CONNECTED \n\r ");
+            if (cyBle_last_state != cyBle_state) {
+                
+            #ifdef PRINT_MESSAGE_LOG   
+             UART_UartPutString("\n\r CYBLE_STATE_CONNECTED \n\r ");
+            #endif                 
+                
+            }
             /* if Client does not has all the information about attribute handles 
              * call procedure for getting it */
             if((INFO_EXCHANGE_COMPLETE != infoExchangeState))
@@ -152,7 +163,12 @@ void HandleBleProcessing(void)
             break;
                 
         case CYBLE_STATE_DISCONNECTED:
-         UART_UartPutString("\n\r CYBLE_STATE_DISCONNECTED \n\r ");
+         if (cyBle_last_state != cyBle_state) {
+            #ifdef PRINT_MESSAGE_LOG   
+             UART_UartPutString("\n\r CYBLE_STATE_DISCONNECTED \n\r ");
+            #endif             
+            
+        }
         {
             if(peerDeviceFound)
             {
@@ -173,6 +189,7 @@ void HandleBleProcessing(void)
         default:
             break;       
     }
+    cyBle_last_state = cyBle_state;
 }
 
 /*******************************************************************************
@@ -200,12 +217,17 @@ void AppCallBack(uint32 event, void *eventParam)
     switch (event)
     {
         case CYBLE_EVT_STACK_ON:
-      
-            break;
+           #ifdef PRINT_MESSAGE_LOG   
+                 UART_UartPutString("\n\r CYBLE_EVT_STACK_ON \n\r");
+           #endif                   
+           
+        break;
         
         case CYBLE_EVT_GAPC_SCAN_PROGRESS_RESULT:
-            UART_UartPutString("\n\r CYBLE_EVT_GAPC_SCAN_PROGRESS_RESULT \n\r");
-            advReport = (CYBLE_GAPC_ADV_REPORT_T *) eventParam;
+            #ifdef PRINT_MESSAGE_LOG   
+             UART_UartPutString("\n\r CYBLE_EVT_GAPC_SCAN_PROGRESS_RESULT \n\r");
+            #endif             
+           advReport = (CYBLE_GAPC_ADV_REPORT_T *) eventParam;
             
             /* check if report has manfacturing data corresponding to the intended matching peer */
             if((advReport->eventType == CYBLE_GAPC_SCAN_RSP) && (advReport->dataLen == 0x06) \
@@ -222,10 +244,12 @@ void AppCallBack(uint32 event, void *eventParam)
                     UART_UartPutString("\n\r\n\rServer with matching custom service discovered...");
                 #endif
             }           
-            break;    
+        break;    
             
         case CYBLE_EVT_GAP_DEVICE_DISCONNECTED:
-            UART_UartPutString("\n\r CYBLE_EVT_GAP_DEVICE_DISCONNECTED \n\r");
+            #ifdef PRINT_MESSAGE_LOG   
+             UART_UartPutString("\n\r CYBLE_EVT_GAP_DEVICE_DISCONNECTED \n\r");
+            #endif            
             /* RESET all flags */
             peerDeviceFound         = false;
             notificationEnabled     = false;
@@ -242,10 +266,13 @@ void AppCallBack(uint32 event, void *eventParam)
             UART_SpiUartClearRxBuffer();
             UART_Start();
             
-            break;
+        break;
         
         case CYBLE_EVT_GATTC_READ_BY_TYPE_RSP:
-            UART_UartPutString("\n\r CYBLE_EVT_GATTC_READ_BY_TYPE_RSP \n\r");
+            #ifdef PRINT_MESSAGE_LOG   
+                UART_UartPutString("\n\r CYBLE_EVT_GATTC_READ_BY_TYPE_RSP \n\r");
+            #endif
+            
             readResponse = (CYBLE_GATTC_READ_BY_TYPE_RSP_PARAM_T *) eventParam;
             
             if(0 == memcmp((uint8 *)&(readResponse->attrData.attrValue[5]), (uint8 *)uartTxAttrUuid, 16))
@@ -263,10 +290,15 @@ void AppCallBack(uint32 event, void *eventParam)
                 infoExchangeState |= RX_ATTR_HANDLE_FOUND;
             }
 
-            break;
+        break;
             
         case CYBLE_EVT_GATTC_FIND_INFO_RSP:
-            UART_UartPutString("\n\r CYBLE_EVT_GATTC_FIND_INFO_RSP \n\r");
+           
+            #ifdef PRINT_MESSAGE_LOG   
+                UART_UartPutString("\n\r CYBLE_EVT_GATTC_FIND_INFO_RSP \n\r");
+            #endif 
+            
+            
             findInfoResponse = (CYBLE_GATTC_FIND_INFO_RSP_PARAM_T *) eventParam;
             
             if((0x29 == findInfoResponse->handleValueList.list[3]) && \
@@ -280,8 +312,12 @@ void AppCallBack(uint32 event, void *eventParam)
            
             break;
             
-        case CYBLE_EVT_GATTC_XCHNG_MTU_RSP:   
-            UART_UartPutString("\n\r CYBLE_EVT_GATTC_XCHNG_MTU_RSP \n\r");
+        case CYBLE_EVT_GATTC_XCHNG_MTU_RSP:
+            
+            #ifdef PRINT_MESSAGE_LOG   
+                UART_UartPutString("\n\r CYBLE_EVT_GATTC_XCHNG_MTU_RSP \n\r");
+            #endif  
+            
             /*set the 'mtuSize' variable based on the minimum MTU supported by both devices */
             if(CYBLE_GATT_MTU > ((CYBLE_GATT_XCHG_MTU_PARAM_T *)eventParam)->mtu)
             {
@@ -294,27 +330,35 @@ void AppCallBack(uint32 event, void *eventParam)
             
             infoExchangeState |= MTU_XCHNG_COMPLETE;
             
-            break;
+        break;
             
         case CYBLE_EVT_GATTC_HANDLE_VALUE_NTF:
-            UART_UartPutString("\n\r CYBLE_EVT_GATTC_HANDLE_VALUE_NTF  \n\r");
-            HandleUartRxTraffic((CYBLE_GATTC_HANDLE_VALUE_NTF_PARAM_T *)eventParam);
-			
+            #ifdef PRINT_MESSAGE_LOG   
+                UART_UartPutString("\n\r CYBLE_EVT_GATTC_HANDLE_VALUE_NTF  \n\r");
+            #endif            
+            
+            packetReceivedToPrint((CYBLE_GATTC_HANDLE_VALUE_NTF_PARAM_T *)eventParam);
             break;
         
         case CYBLE_EVT_GATTC_FIND_BY_TYPE_VALUE_RSP:
-            UART_UartPutString("\n\r CYBLE_EVT_GATTC_FIND_BY_TYPE_VALUE_RSP \n\r");
-            findResponse            = (CYBLE_GATTC_FIND_BY_TYPE_RSP_PARAM_T *) eventParam;
+            #ifdef PRINT_MESSAGE_LOG   
+                UART_UartPutString("\n\r CYBLE_EVT_GATTC_FIND_BY_TYPE_VALUE_RSP \n\r");
+            #endif
             
+            findResponse            = (CYBLE_GATTC_FIND_BY_TYPE_RSP_PARAM_T *) eventParam;
             bleUartServiceHandle    = findResponse->range->startHandle;
             bleUartServiceEndHandle = findResponse->range->endHandle;
             
             infoExchangeState |= BLE_UART_SERVICE_HANDLE_FOUND;
             
-            break;
+        break;
         
-        case CYBLE_EVT_GATTS_XCNHG_MTU_REQ:
-            UART_UartPutString("\n\r CYBLE_EVT_GATTS_XCNHG_MTU_REQ \n\r");
+        case CYBLE_EVT_GATTS_XCNHG_MTU_REQ:           
+            
+            
+            #ifdef PRINT_MESSAGE_LOG   
+                UART_UartPutString("\n\r CYBLE_EVT_GATTS_XCNHG_MTU_REQ \n\r");
+            #endif
             /*set the 'mtuSize' variable based on the minimum MTU supported by both devices */
             if(CYBLE_GATT_MTU > ((CYBLE_GATT_XCHG_MTU_PARAM_T *)eventParam)->mtu)
             {
@@ -325,7 +369,7 @@ void AppCallBack(uint32 event, void *eventParam)
                 mtuSize = CYBLE_GATT_MTU;
             }
             
-            break;    
+        break;    
         
         case CYBLE_EVT_GATTC_WRITE_RSP:
             
@@ -336,7 +380,7 @@ void AppCallBack(uint32 event, void *eventParam)
                 UART_UartPutString("\n\rStart entering data:\n\r");
             #endif
             
-            break;
+        break;
         
         case CYBLE_EVT_GATT_CONNECT_IND:
             
@@ -344,7 +388,7 @@ void AppCallBack(uint32 event, void *eventParam)
                 UART_UartPutString("\n\rConnection established");             
             #endif
             
-            break;
+        break;
             
         default:            
             break;
@@ -404,4 +448,23 @@ void enableNotifications()
 {     
     enableNotificationReqParam.attrHandle = txCharDescHandle;   
     CyBle_GattcWriteCharacteristicDescriptors(cyBle_connHandle, (CYBLE_GATTC_WRITE_REQ_T *)(&enableNotificationReqParam));
+}
+
+void packetReceivedToPrint(CYBLE_GATTC_HANDLE_VALUE_NTF_PARAM_T *uartRxDataNotification)
+{
+    
+    if(uartRxDataNotification->handleValPair.attrHandle == txCharHandle)
+    {
+        packetSum++;
+        UART_UartPutString("\n\r ");
+        UART_UartPutString(ultoa(packetSum));
+        UART_UartPutString(" ");
+        UART_SpiUartPutArray(uartRxDataNotification->handleValPair.value.val, \
+            (uint32) uartRxDataNotification->handleValPair.value.len);
+        UART_UartPutString("\n\r");
+    }
+    
+    if(packetSum==250){
+        packetSum=0;
+    }
 }
