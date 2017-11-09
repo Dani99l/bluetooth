@@ -23,40 +23,45 @@
     #include "teste.h"
     #include "htu21d.h"
     #include "bme280.h"
-    
+    #include "Sleep.h"
     /***************************************
     *   Conditional compilation parameters
     ***************************************/      
   //  #define     FLOW_CONTROL
-  //  #define     PRINT_MESSAGE_LOG
-  //  #define     DEBUG_ble
-  //  #define     LOW_POWER_MODE
+     #define     PRINT_MESSAGE_LOG
+     #define     DEBUG_ble
+     #define     LOW_POWER_MODE
     
     
     
     /***************************************
     *       DEFINES Parameters
     ***************************************/
-    #define PACKET_LENGHT 0X5   //5 bytes para o pacote (temp, hum, seqn, press, id)
-    
+    #define PACKET_LENGHT 0X6   //5 bytes para o pacote (temp, hum, seqn, press, id)
+    #define FLAG_SENDTOBLE 
     /***************************************
     *       Function Prototypes
     ***************************************/
     void AppCallBack(uint32 , void *);  
   //  void sendtoble(uint8* buffer, uint16 size);
     void sendtoble(uint8 *buf);
-    uint8* Getsensor_data();
-    uint8 *createPacket(uint8 *buf);
+    void Getsensor_data();
+    uint8 *createPacket();
     void start();
     void state_machine();    
     void startBLE();
-
+    void init_globalVariables();
+    void tx();
+    void stopBLE();
     /***************************************
     *       Variables declaration
     ***************************************/
     CYBLE_API_RESULT_T      bleApiResult;
     uint8 count;
-    uint8 total_dados;
+    uint8 buffer[PACKET_LENGHT];
+    
+    int lasTemp, lastHum;
+    int sameTemp, sameHum;
     
     struct Packet{
         uint8 ID;
@@ -64,7 +69,7 @@
         uint8 temperature;
         uint8 pressure;
         uint8 sequence;
-    };
+    }sensor;
     
     enum states{
     START,

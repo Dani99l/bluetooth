@@ -15,16 +15,20 @@
 
 int main()
 {       
-        start();
-    
-        
-        #ifdef LOW_POWER_MODE    
+       
+       
+   #ifdef LOW_POWER_MODE    
             CYBLE_LP_MODE_T         lpMode;
-            CYBLE_BLESS_STATE_T     blessState;
-        #endif
+          //  CYBLE_BLESS_STATE_T     blessState
+    #endif
+
+
+    while(1){
         state_machine();
+    }
 
 }
+    
 
 // State machine allows to read the sensors, set the ble component and send data to the periferical
 
@@ -33,10 +37,9 @@ void state_machine(){
         
      case START:
         // init interrupts
-        //init uart
-        #ifdef PRINT_MESSAGE_LOG   
+       
+        start();
         UART_UartPutString("\n\r START  \n\r ");
-        #endif
         mode=SENSOR_PACKET;
         break;
         
@@ -44,71 +47,29 @@ void state_machine(){
         #ifdef PRINT_MESSAGE_LOG   
         UART_UartPutString("\n\r SENSOR \n\r ");     
         #endif
-        //get sensor data
-         Getsensor_data();
         
-
+        I2C_1_Start(); 
+        createPacket();
+        Getsensor_data();
         mode=TX;
         break;
         
      case TX:
-        // BLE GAP functions
-       //check if it possible to transmit
         
         #ifdef PRINT_MESSAGE_LOG   
         UART_UartPutString("\n\r After TX mode \n\r ");
         #endif
         
-       startBLE();
-        
-        while(1){
-            
-               do{
-                   HandleBleProcessing();
-                   CyBle_ProcessEvents();
-               }while(CyBle_GetState()!= CYBLE_STATE_CONNECTED);
-               
-               if(CyBle_GattGetBusStatus() != CYBLE_STACK_STATE_BUSY && count<1){
-               // snprintf(message, 100, "teste%u", count);
-              
-                //snprintf(buf, total_dados, "teste %u", buf[total_dados] );
+        tx();
 
-              //  sendtoble();   
-  
-                count++;
-                }
-    //        
-    //            if (count>3) {
-    //                count=0;
-    //              //CyBle_Stop();
-    //            } 
-    //            if(CyBle_GetState()== CYBLE_STATE_STOPPED) {  //este if bloqueia as mensagem (penso que seja pela reset das interrupções no start)
-    //                start();
-    //                startBLE();
-    //            }
-                    
-                HandleBleProcessing();
-                CyBle_ProcessEvents();
-        }        
-
-        mode=RX;
-        break;
-        
-     case RX:
-        //check if central device is connected, if not, sum ERROR        
-        //receive ACK from central device?
-        
-        #ifdef PRINT_MESSAGE_LOG       
-        UART_UartPutString("\n\r RX \n\r ");
-        #endif        
         mode=SLEEP;
-        break; 
-        
+        break;
+
      case SLEEP:
         
         //go to sleep mode untill next time to operate! 
         //check sleep time functions
-       // sleepMode();
+        goSleep();
         #ifdef PRINT_MESSAGE_LOG   
         UART_UartPutString("\n\r After sleep mode \n\r ");
         #endif
@@ -124,30 +85,85 @@ void state_machine(){
     }
 }
         
-
-uint8* Getsensor_data(){
-    //Init I2C block to read HTU
-    I2C_1_Start(); 
-    int lasTemp, lastHum;
+void tx(){
     
+       startBLE();
+        int check;
+        while(1){
+            
+               do{
+                   HandleBleProcessing();
+                   CyBle_ProcessEvents();
+               }while(CyBle_GetState()!= CYBLE_STATE_CONNECTED);
+               
+               if(CyBle_GattGetBusStatus() != CYBLE_STACK_STATE_BUSY && check<1){
+        
+                    sendtoble(buffer);   
+      
+                    check++;
+                }
+    //        
+    //            if (count>3) {
+    //                count=0;
+    //              //CyBle_Stop();
+    //            } 
+    //            if(CyBle_GetState()== CYBLE_STATE_STOPPED) {  //este if bloqueia as mensagem (penso que seja pela reset das interrupções no start)
+    //                start();
+    //                startBLE();
+    //            }
+                    
+                HandleBleProcessing();
+                CyBle_ProcessEvents();
+        }
+        stopBLE();
+}
+
+void Getsensor_data(){
+       
     #ifdef DEBUG_ble  
      UART_UartPutString("\n\r Getsensor_data function \n\r ");     
     #endif
     
+     if(lasTemp==sensor.temperature){
+        
+        sameTemp++;
+    }
+    
+    
+     if(lastHum==sensor.humidity){
+        
+        sameHum++;
+    }
+    lasTemp=sensor.temperature;
+    lastHum=sensor.humidity;
     
 }
 
-uint8* createPacket(uint8 *buf){
+void init_globalVariables(){
+    
+    count=0;
+    lasTemp=0;
+    lastHum=0;
+    sameTemp=0;
+    sameHum=0;
+    sensor.ID=0;
+    sensor.sequence=0;
+    sensor.humidity=0;
+    sensor.pressure=0;
+    sensor.temperature=0;
+    
+}
+
+uint8* createPacket(uint8 *buffer){
  
     // Packet is a buffer with total data that will be sent 
     // It depends on MTU(maximum bytes allowed )
     
-    struct Packet sensores;
-    Packet.humidity= getHum();
-    sensores.temperature = getTemp();
-    sensores.pressure=3;
-    sensores.ID=2;
-    sensores.sequence=count;
+    sensor.humidity= getHum();
+    sensor.temperature = getTemp();
+    sensor.pressure=3;
+    sensor.ID=2;
+    sensor.sequence=count;
     count++;
     if(count>=250){
         count=0;
@@ -155,13 +171,13 @@ uint8* createPacket(uint8 *buf){
     #ifdef DEBUG_ble  
      UART_UartPutString("\n\r After construct packet \n\r ");     
     #endif
-    buf[PACKET_LENGHT]=sensores.humidity;
-    buf[PACKET_LENGHT-1]=sensores.temperature;
-    buf[PACKET_LENGHT-2]=sensores.pressure;
-    buf[PACKET_LENGHT-3]=sensores.ID;
-    buf[PACKET_LENGHT-4]=sensores.sequence;    
+    buffer[PACKET_LENGHT]=sensor.humidity;
+    buffer[PACKET_LENGHT-1]=sensor.temperature;
+    buffer[PACKET_LENGHT-2]=sensor.pressure;
+    buffer[PACKET_LENGHT-3]=sensor.ID;
+    buffer[PACKET_LENGHT-4]=sensor.sequence;    
       
-    return buf;
+    return buffer;
 }
 
 
@@ -242,29 +258,29 @@ void AppCallBack(uint32 event, void *eventParam)
             
             break;
             
-        case CYBLE_EVT_GATTS_WRITE_REQ:
-                 #ifdef PRINT_MESSAGE_LOG       
-                 UART_UartPutString("\n\r CYBLE_EVT_GATTS_WRITE_REQ \n\r ");
-                 #endif
-            writeReqParam = (CYBLE_GATTS_WRITE_REQ_PARAM_T *) eventParam;
-            
-            if(CYBLE_SERVER_UART_SERVER_UART_TX_DATA_CLIENT_CHARACTERISTIC_CONFIGURATION_DESC_HANDLE == \
-                                                                    writeReqParam->handleValPair.attrHandle)
-            {
-                errorCode = CyBle_GattsWriteAttributeValue(&(writeReqParam->handleValPair), \
-                                                0, &cyBle_connHandle, CYBLE_GATT_DB_PEER_INITIATED);
-                
-                if (CYBLE_GATT_ERR_NONE  == errorCode)
-                {
-                    CyBle_GattsWriteRsp(cyBle_connHandle);  //works as an ACK
-                    #ifdef PRINT_MESSAGE_LOG   
-                        UART_UartPutString("\n\r Notifications enabled\n\r");
-                        UART_UartPutString("\n\r Start entering data:\n\r");
-                    #endif
-                }  
-            }
-            
-            break;
+//        case CYBLE_EVT_GATTS_WRITE_REQ:
+//                 #ifdef PRINT_MESSAGE_LOG       
+//                 UART_UartPutString("\n\r CYBLE_EVT_GATTS_WRITE_REQ \n\r ");
+//                 #endif
+//            writeReqParam = (CYBLE_GATTS_WRITE_REQ_PARAM_T *) eventParam;
+//            
+//            if(CYBLE_SERVER_UART_SERVER_UART_TX_DATA_CLIENT_CHARACTERISTIC_CONFIGURATION_DESC_HANDLE == \
+//                                                                    writeReqParam->handleValPair.attrHandle)
+//            {
+//                errorCode = CyBle_GattsWriteAttributeValue(&(writeReqParam->handleValPair), \
+//                                                0, &cyBle_connHandle, CYBLE_GATT_DB_PEER_INITIATED);
+//                
+//                if (CYBLE_GATT_ERR_NONE  == errorCode)
+//                {
+//                    CyBle_GattsWriteRsp(cyBle_connHandle);  //works as an ACK
+//                    #ifdef PRINT_MESSAGE_LOG   
+//                        UART_UartPutString("\n\r Notifications enabled\n\r");
+//                        UART_UartPutString("\n\r Start entering data:\n\r");
+//                    #endif
+//                }  
+//            }
+//            
+//            break;
         
         default:
             break;
@@ -276,8 +292,11 @@ void start(){
     CyGlobalIntEnable;
     
     UART_Start();
+    init_globalVariables();
     
+    UART_UartPutString("\n\r --------------------- \n\r ");
     UART_UartPutString("\n\r Start peripheral role \n\r ");
+    UART_UartPutString("\n\r --------------------- \n\r ");
 }
 
 

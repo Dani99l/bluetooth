@@ -4,13 +4,14 @@
  * ========================================
 */
 
- #include "goSleep.h"
+#include "Sleep.h"
+
 
 void goSleep(){
     
     
-    
-    
+    CyBle_EnterLPM(CYBLE_BLESS_SLEEP);
+    CyBle_ExitLPM();
     
 }
 
